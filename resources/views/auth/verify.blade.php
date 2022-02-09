@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('meta-content')
+    <title> Verify Email | Dotori </title>
+@endsection
+
 @section('content')
     <div id="login_wrap">
         <div class="index_l_box">
@@ -18,8 +22,9 @@
 
                         <div class="index_input">
                             @if (session('resent'))
-                                <div class="alert alert-success" role="alert">
+                                <div class="alert alert-success alert-dismissible fade show">
                                     {{ __('A fresh verification link has been sent to your email address.') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                             @endif
                         </div>
@@ -30,8 +35,8 @@
                             </p>
                         </div>
 
-                        <div>
-                            <p>
+                        <div class="index_input">
+                            <p style="margin-bottom:0.8em">
                                 If you did not receive the email, request a new verification link.
                             </p>
                             <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">

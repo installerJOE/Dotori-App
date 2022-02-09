@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('meta-content')
+	<title> Create Account | Dotori </title>
     <style>
         .index_input {
             margin-top:8px;
