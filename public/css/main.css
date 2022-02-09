@@ -1,0 +1,80 @@
+ul{
+    margin:0px;
+    padding:0px;
+}
+.btn{
+    border-radius: 10px;
+    box-shadow: none;
+    margin-bottom: 0px;
+    border-width: 1.5px;
+    border-style: solid;
+    /* padding: 10px 30px; */
+    height: 50px;
+    width: 100%;
+}
+.btn:hover{
+    box-shadow: none;
+    cursor:pointer;
+}
+.btn-purple-bd{
+    border-color:  #4e076e;
+    background-color: rgba(0,0,0,0);
+    color:  #4e076e;
+}
+.btn-purple-bd:hover{
+    background-color: #efefef;
+    color: #4e076e;
+}
+.btn-purple-bg{
+    border-color:   #4e076e;
+    background-color:  #4e076e;
+    color: #fff;
+}
+.btn-purple-bg:hover{
+    background-color: rgba(0,0,0,0);
+    color:  #4e076e;
+}
+.text-purple{
+    color: #4e076e;
+}
+.text-light-blue{
+    color: #b4c9ff;
+}
+.sub_title{
+    font-size: 36px !important;
+    padding: 20px !important
+}
+.btn-light-blue-bg{
+    border-color:  #b4c9ff;
+    background-color: #b4c9ff;
+    color: #000;
+}
+.btn-light-blue-bg:hover{
+    background-color: #f2f2f2
+}
+.note-pad{
+    padding: 20px;
+}
+.note-pad > div{
+    padding: 20px; 
+    border:2px solid #b4c9ff;
+    /* margin-top: 2em; */
+    border-radius: 10px;
+}
+.referral-block p{
+    line-height: 1.5em !important;
+    margin-bottom: 1.2em;
+}
+.referral-link{
+    padding: 15px 25px;
+    background-color: #efefef;
+    border-radius: 10px;
+    color:#520177;
+    /* font-weight: bold; */
+}
+.subheader{
+    font-size: 24px;
+}
+.form-control{
+    margin-bottom: 0.85em;
+}
