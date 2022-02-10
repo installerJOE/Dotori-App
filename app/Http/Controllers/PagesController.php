@@ -3,6 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Models\Rank;
+use App\Models\Account;
+use App\Models\SubscribedUser;
+use App\Models\Referral;
+
+
 
 class PagesController extends Controller
 {
@@ -13,45 +22,57 @@ class PagesController extends Controller
     }
     
     public function index(){
-        return view('pages.main.dashboard');
+        $user = Auth::user()->subscribed_user;
+        if($user === null){
+            $rank = Rank::where('referral_limit', 0)->first();
+        }
+
+        // get total number of referrals
+        $referrals = Referral::where('user_id', Auth::user()->id)->get()->count();
+        
+        return view('pages.dashboard')
+            ->with([
+                'rank' => $rank,
+                'referrals' => $referrals
+            ]);
     }
 
     public function deposit(){
-        return view('pages.sub.deposit');
+        return view('pages.deposit');
     }
 
     public function announcement(){
-        return view('pages.sub.announcement');
+        return view('pages.announcement');
     }
 
     public function purchase(){
-        return view('pages.sub.packagepurchase');
+        return view('pages.packagepurchase');
     }
 
     public function profile(){
-        return view('pages.sub.profile');
+        return view('pages.profile');
     }
 
     public function changePassword(){
-        return view('pages.sub.changepwd');
+        return view('pages.changepwd');
     }
 
     public function changePin(){
-        return view('pages.sub.changepin');
+        return view('pages.changepin');
     }
 
     public function referral(){
-        return view('pages.sub.referral');
+        return view('pages.referral');
     }
 
     public function dailyHistory(){
-        return view('pages.sub.daily_history');
+        return view('pages.daily_history');
     }
 
     public function referralHistory(){
-        return view('pages.sub.referralHistory');
+        return view('pages.referralHistory');
     }
     public function withdrawal(){
-        return view('pages.sub.withdrawal');
+        return view('pages.withdrawal');
     }
 }

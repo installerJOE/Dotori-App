@@ -93,12 +93,7 @@
 		}
 
 	</script>
-
-	<div id="wrap">
-		@include('includes.sidebar')	
-		<form name='sellfrm' method='post' id="form">
-			@csrf
-			<div class="section_right"><!--section_right-->
+	
 				<div class="sub_top"><!--sub_top-->
 					<div class="sub_title">
 						<i class="fas fa-fw fa-cube"></i>
@@ -106,7 +101,8 @@
 					</div>
 				</div><!--sub_top end-->
 
-
+			<form action method='POST'>
+				@csrf
 				<div class="section_right_inner"><!--section_right_inner-->
 					<p> Choose a product to purchase </p>
 					
@@ -173,8 +169,6 @@
 							Package purchase is only available from Monday to Friday, from 10:00am to 6:00pm.
 						</p>
 					</div>
-				</div><!--section_right end-->
-			</div>
-		</form>
-	</div><!-- / wrap end -->
+				</div><!--section_right_inner end-->
+			</form>
 @endsection

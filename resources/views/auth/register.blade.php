@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.auth_app')
 
 @section('meta-content')
 	<title> Create Account | Dotori </title>

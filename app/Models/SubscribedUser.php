@@ -12,4 +12,8 @@ class SubscribedUser extends Model
     public function subscriber(){
         return $this->morphTo();
     }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

@@ -78,3 +78,6 @@ ul{
 .form-control{
     margin-bottom: 0.85em;
 }
+.text-red{
+    color:red;
+}

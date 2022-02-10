@@ -46,24 +46,10 @@
 	<script src="{{URL::asset('/js/jquery-3.2.1.min.js')}}"></script>
 
     @yield('meta-content')
-    <style>
-        .alert-boxes{
-            padding:0px 20px;
-            padding-top: 1.4em;
-        }
-    </style>
 </head>
 <body>
     <div>
-        <div id="wrap"><!--wrap-->
-            @include('includes.sidebar')
-            <div class="section_right"><!--section_right-->
-                <div class="alert-boxes">
-                    @include('includes.messages')
-                </div>
-                @yield('content')
-            </div>
-        </div>
+        @yield('content')
     </div>
 </body>
 </html>

@@ -21,11 +21,11 @@ class CreateTransactionsTable extends Migration
             $table->string('category'); //deposit, withdraw
             $table->string('status'); //pending, issued
             $table->string('amount');
-            $table->string('fee');
-            $table->string('total_amount');
+            $table->string('fee')->nullable();
+            $table->string('total_amount')->nullable();
             $table->string('bank_name');
             $table->string('account_name');
-            $table->string('account_number');            
+            $table->string('account_number')->nullable();            
             $table->timestamps();
         });
     }

@@ -9,7 +9,7 @@ class Package extends Model
 {
     use HasFactory;
     
-    public function subscribed_users(){
+    public function subscribed_user(){
         return $this->morphMany(SubscribedUser::class);
     }
 }

@@ -34,8 +34,16 @@ Route::get('/daily-history',  [App\Http\Controllers\PagesController::class, 'dai
 Route::get('/referral-history',  [App\Http\Controllers\PagesController::class, 'referralHistory']);
 
 
-// Routes for User settings
+// Get Routes for User settings
 Route::get('/settings/profile',  [App\Http\Controllers\PagesController::class, 'profile']);
 Route::get('/settings/password',  [App\Http\Controllers\PagesController::class, 'changePassword']);
 Route::get('/settings/pin',  [App\Http\Controllers\PagesController::class, 'changePin']);
 
+// Post Routes for user settings
+Route::post('/settings/profile',  [App\Http\Controllers\SettingsController::class, 'updateProfile']);
+Route::post('/settings/password',  [App\Http\Controllers\SettingsController::class, 'changePassword']);
+Route::post('/settings/pin',  [App\Http\Controllers\SettingsController::class, 'changePin']);
+
+// Post Routes for user transactions
+Route::post('/transactions/deposit',  [App\Http\Controllers\TransactionsController::class, 'deposit']);
+Route::post('/transactions/withdraw',  [App\Http\Controllers\TransactionsController::class, 'withdraw']);

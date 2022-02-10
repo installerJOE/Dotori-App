@@ -21,11 +21,11 @@ class CreateSubscribedUsersTable extends Migration
             $table->foreignId('package_id')
                 ->constrained('packages')
                 ->onDelete('cascade');
+            $table->integer('quantity');
+            $table->integer('repurchase')->default(0);
             $table->foreignId('rank_id')
                 ->constrained('ranks')
                 ->onDelete('cascade');
-            $table->integer('quantity');
-            $table->integer('repurchase')->default(0);
             $table->timestamps();
         });
     }

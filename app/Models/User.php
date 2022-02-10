@@ -46,9 +46,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    // public function subscribed_users(){
-    //     return $this->morphMany(SubscribedUser::class);
-    // }
+    public function subscribed_user(){
+        return $this->hasOne(SubscribedUser::class);
+    }
 
     public function account(){
         return $this->hasOne(Account::class);

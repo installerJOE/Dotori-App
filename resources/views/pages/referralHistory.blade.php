@@ -5,9 +5,6 @@
 @endsection
 
 @section('content')
-	<div id="wrap"><!--wrap-->
-		@include('includes.sidebar')	
-		<div class="section_right"><!--section_right-->
 			<div class="sub_top"><!--sub_top-->
 				<div class="sub_title">
 					<i class="fas fa-fw fa-history"></i>
@@ -30,6 +27,4 @@
 					</div>
 				</div>
 			</div><!--section_right_inner end-->
-		</div><!--section_right end-->
-	</div><!-- / wrap end -->
 @endsection
