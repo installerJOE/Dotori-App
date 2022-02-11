@@ -25,14 +25,15 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/dashboard',  [App\Http\Controllers\PagesController::class, 'index']);
 Route::get('/deposit',  [App\Http\Controllers\PagesController::class, 'deposit']);
+Route::get('/deposits/history',  [App\Http\Controllers\PagesController::class, 'depositHistory']);
 Route::get('/withdrawal',  [App\Http\Controllers\PagesController::class, 'withdrawal']);
+Route::get('/withdrawals/history',  [App\Http\Controllers\PagesController::class, 'withdrawalHistory']);
 Route::get('/packages/subscribe',  [App\Http\Controllers\PagesController::class, 'purchasePackage']);
 Route::get('/packages/subscribed',  [App\Http\Controllers\PagesController::class, 'subscribedPackages']);
 
 Route::get('/announcement',  [App\Http\Controllers\PagesController::class, 'announcement']);
 Route::get('/referral',  [App\Http\Controllers\PagesController::class, 'referral']);
 Route::get('/daily-history',  [App\Http\Controllers\PagesController::class, 'dailyHistory']);
-Route::get('/referral-history',  [App\Http\Controllers\PagesController::class, 'referralHistory']);
 
 
 // Get Routes for User settings

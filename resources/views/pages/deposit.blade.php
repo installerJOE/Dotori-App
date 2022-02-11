@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> Deposit | Dotori </title>
+	<title> Deposit Request | Dotori </title>
 @endsection
 
 @section('content')
@@ -12,6 +12,14 @@
 		</div>
 	</div><!--sub_top end-->
 	<div class="section_right_inner"><!--section_right_inner-->
+		<div class="col-md-12 col-sm-12 col-12 mb-4">
+			<div class="ctrl-btn col-md-3 col-sm-6 col-12"> 
+				<a href="/deposits/history"> 
+					<button class="btn btn-purple-bd"> Deposit history </button>
+				</a>
+			</div>
+		</div><br/>
+
 		<!--withdrawal_left-->
 		<div class="withdrawal_left">
 			<!--form01-->
@@ -70,40 +78,7 @@
 			</div>
 			<!--form01 end-->
 		</div>
-		<!--withdrawal_left end-->
-
-		<!--deposit_right-->
-		<div class="deposit_right">
-			<p class="title">
-				<i class="fas fa-fw fa-history"></i>
-				Deposit History
-			</p>
-			<div class="history_table">
-				<table>
-					<tbody>
-						<tr>
-							<th> Amount (KRW) </th>
-							<th> Date </th>
-							<th> Status </th>
-						</tr>						
-						@if($deposits->count() > 0)
-							@foreach($deposits as $deposit)
-							<tr>
-								<td> {{$deposit->amount}} </td>
-								<td> {{$deposit->updated_at}}</td>
-								<td> {{$deposit->status}} </td>
-							</tr>
-							@endforeach
-						@else
-							<tr>
-								<td colspan="3"> No deposit has been made yet. </td>
-							</tr>
-						@endif
-					</tbody>
-				</table>
-			</div>
-		</div>
-		<!--deposit_right end-->
+		<!--withdrawal_left end-->	
 	</div><!--section_right_inner end-->
 
 	<!--section_right_inner end-->
@@ -115,13 +90,13 @@
 			</p>
 			<div class="referral-link" style="margin:1em 0px; line-height:2em !important">
 				<h3 class="subheader">
-					Bank Name: Zenith Bank LTD
+					Bank Name: Dotori Bank LTD
 				</h3>
 				<h3 class="subheader">
-					Account Name:  Joe Mike
+					Account Name:  Dotori
 				</h3>
 				<h3 class="subheader">
-					Account Number: 2111390715
+					Account Number: 5627891728
 				</h3>
 			</div>
 			<p style="font-weight:bold" class="text-light-blue">

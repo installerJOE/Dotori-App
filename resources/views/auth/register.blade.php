@@ -167,7 +167,8 @@
 			
 							<div class="index_input">
 								<p class="input_title"> Referral ID </p>
-								<input type="text" class="form-control" name="referral_id" disabled value="">
+								<input type="text" class="form-control" disabled value="{{request()->refer}}">
+								<input type="hidden" name="referral_id" value="{{request()->refer}}"/>
 							</div>
 		
 							<div class="index_input">

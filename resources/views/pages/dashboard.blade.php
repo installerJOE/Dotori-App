@@ -93,7 +93,9 @@
 					Referral Link
 				</div><br/>
 				<p class="referral-link">
-					<span> https://www.dotori.com/user?refer=devijo </span>
+					<span id="linkBar"> 
+						{{"http://127.0.0.1:8000/register?refer=" . Auth::user()->memberId}}
+					</span>
 				</p>
 				<p>
 					<button class="btn btn-purple-bd"> Copy link </button>

@@ -128,16 +128,6 @@
         </li>
 
         <li class='sub-menu'>
-            <a href="#">
-                <i class="fas fa-fw fa-sitemap"></i> &nbsp;
-                Organization
-            </a>
-            <ul>
-                <li><a href="/referral"> Referrals </a></li>
-            </ul>
-        </li>
-
-        <li class='sub-menu'>
             <a href="#!profile">
                 <i class="fas fa-fw fa-cube"></i> &nbsp;
                 My Packages
@@ -147,20 +137,36 @@
                 <li><a href="/packages/subscribe"> Subscribe Package </a></li>
             </ul>
         </li>
+
+        <li class='sub-menu'>
+            <a href="/referral">
+                <i class="fas fa-fw fa-sitemap"></i> &nbsp;
+                Referrals
+            </a>
+        </li>
         
         <li class='sub-menu'>
-            <a href="/deposit">
+            <a href="#!deposit">
                 <i class="fas fa-fw fa-money-check-alt"></i> &nbsp; 
-                Deposit
+                My Deposits
             </a>
+            <ul>
+                <li><a href="/deposit"> Request Deposit </a></li>
+                <li><a href="/deposits/history"> Deposit History </a></li>
+            </ul>
         </li>
 
         <li class='sub-menu'>
-            <a href="/withdrawal">
+            <a href="#!withdrawal">
                 <i class="fas fa-fw fa-share-square"></i> &nbsp;
-                Withdrawal
+                Withdrawals
             </a>
+            <ul>
+                <li><a href="/withdrawal"> Request Withdrawal </a></li>
+                <li><a href="/withdrawals/history"> Withdrawal History </a></li>
+            </ul>
         </li>
+    
         <li class='sub-menu'>
             <a href="#!history">
                 <i class="fas fa-fw fa-history"></i> &nbsp;
@@ -168,7 +174,6 @@
             </a>
             <ul>
                 <li><a href="/daily-history"> Daily History </a></li>
-                <li><a href="/referral-history"> Referral History </a></li>		
             </ul>
         </li>
 

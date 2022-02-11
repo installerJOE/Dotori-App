@@ -29,15 +29,53 @@
 	<div class="section_right_inner"><!--section_right_inner-->				
 		<div class="col-md-6 col-sm-6 col-12 card">
 			<h4 class="text-purple"> Referral Link: </h4>
-			<p class="referral-link">
-				https://www.detori.com/user?referral=devijo
+			<p class="referral-link" id="linkBar">
+				{{"http://127.0.0.1:8000/register?refer=" . Auth::user()->memberId}}
 			</p>
 			<p> 
-				<input type="button" value="Copy Link" class="btn btn-purple-bd"/>
+				<input type="button" value="Copy Link" class="btn btn-purple-bd" onclick="copyToClipBoard()"/>
 			</p>
 		</div><br/>
-		<div style="background:#FFFFFF">
-			<iframe src="tree_view2.php?code=1000001" width="100%" height="750px" style="border:hidden;"></iframe>
-		</div>					
+		
+		<!--Withdrawal_right-->
+		<div class="deposit_right col-md-12 col-sm-12 col-12 mt-4">
+			<p class="title">
+				<i class="fas fa-fw fa-history"></i>
+				Referral History 
+			</p>
+			<div class="history_table">
+				<table>
+					<tbody>
+						<tr>
+							<th> Member ID </th>
+							<th> Member Rank </th>
+							<th> Subscription Status </th>
+							<th> Join Date </th>
+						</tr>
+
+						@if($referrals->count() > 0)
+							@foreach($referrals as $referral)
+							<tr>
+								<td> {{$referral->memberId}} </td>
+								<td>
+									{{$referral->subscribed_user !== null ? $referral->rank->name : "Level 1"}}
+								</td>
+								<td> 
+									{{$referral->subscribed_user !== null ? $referral->subscribed_user->status : "inactive" }}
+								</td>
+								<td> {{$referral->created_at}} </td>
+							</tr>
+							@endforeach
+						@else
+							<tr>
+								<td colspan="3"> You have not recommended anyone yet. </td>
+							</tr>
+						@endif
+
+					</tbody>
+				</table>
+			</div>
+		</div>
 	</div><!--section_right_inner end-->
+
 @endsection

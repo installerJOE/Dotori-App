@@ -567,8 +567,8 @@ input[type="button"]:hover, input[type="submit"]:hover{
     color: #a0afcf;
     font-weight: 700;
 }
-.left_menu ul li {
-    line-height: 50px;
+.left_menu ul li a {
+    padding: 10px 0px;
     margin-top: 10px;
 }
 .left_menu ul li a {
@@ -618,7 +618,6 @@ input[type="button"]:hover, input[type="submit"]:hover{
 
 .m_top_section {display:none;}
 
-.sub-menu ul li {line-height:45px !important;}
 .sub-menu ul li a {
     padding-left: 20px;
     font-size: 16px;
@@ -1112,12 +1111,12 @@ input[type="button"]:hover, input[type="submit"]:hover{
 	}
 .deposit_right .history_table table tr th {
     background: #f3f5f6;
-    padding:15px 0px;
+    padding:15px 10px;
     line-height: 1.4em;
     font-size: 16px;
     color: #44068a;
     font-weight: 700;
-    text-align: Center;
+    text-align: center;
     border-bottom: 1px #e4e4e4 solid;
 }
 .deposit_right .history_table table tr th:nth-child(1) {

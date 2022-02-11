@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('pin')->nullable();
             $table->boolean('is_admin')->default(false);
             $table->string('memberId');
+            $table->string('referrerId');
             $table->string('profile_image')->default('noimage.png');
             $table->float('earnings')->default(0);
             $table->float('available_points')->default(0);

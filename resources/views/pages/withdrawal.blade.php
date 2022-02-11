@@ -139,41 +139,6 @@
 			</div>
 		</div>
 		<!--withdrawal_left end-->
-
-		<!--Withdrawal_right-->
-		<div class="deposit_right">
-			<p class="title">
-				<i class="fas fa-fw fa-history"></i>
-				Withdrawal History 
-			</p>
-			<div class="history_table">
-				<table>
-					<tbody>
-						<tr>
-							<th> Amount (KRW) </th>
-							<th> Date </th>
-							<th> Status </th>
-						</tr>
-
-						@if($withdrawals->count() > 0)
-							@foreach($withdrawals as $withdrawal)
-							<tr>
-								<td> {{$withdrawal->amount}} </td>
-								<td> {{$withdrawal->updated_at}}</td>
-								<td> {{$withdrawal->status}} </td>
-							</tr>
-							@endforeach
-						@else
-							<tr>
-								<td colspan="3"> No withdrawal has been made yet. </td>
-							</tr>
-						@endif
-
-					</tbody>
-				</table>
-			</div>
-		</div>
-		<!--Withdrawal_right end-->
 	</div>
 	<!--section_right_inner end-->
 	<div style="clear:left;" class="col-md-6 col-sm-12 col-12 note-pad">

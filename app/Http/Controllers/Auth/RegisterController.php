@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Referral;
 
 class RegisterController extends Controller
 {
@@ -66,15 +67,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $memberIdArr = explode($data['phone'], ' ');
-        $memberId = join($memberIdArr, '');
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'pin' => Hash::make($data['pin']),
             'phone' => $data['phone'],
-            'memberId' => $memberId,
+            'memberId' => $this->uniqueCodeGenerator(8),
+            'referrerId' => $data["referral_id"],
         ]);
     }
 }

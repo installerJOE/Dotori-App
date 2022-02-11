@@ -26,14 +26,14 @@ class PagesController extends Controller
     public function index(){
         $subscribedUser = Auth::user()->subscribed_user;
         if($subscribedUser === null){
-            $rank = Rank::where('referral_limit', 0)->first();
+            $rank = Rank::where('referral_limit', 5)->first();
         }
         else{
             $rank = $subscribedUser->rank;
         }
 
         // get total number of referrals
-        $referrals = Referral::where('user_id', Auth::user()->id)->get()->count();
+        $referrals = User::where('referrerId', Auth::user()->memberId)->get()->count();
         
         return view('pages.dashboard')
             ->with([
@@ -43,15 +43,23 @@ class PagesController extends Controller
     }
 
     public function deposit(){
+        return view('pages.deposit');
+    }
+
+    public function depositHistory(){
         //get deposit history
         $deposits = Transaction::where(['user_id' => Auth::user()->id, 'category'=>'deposit'])->get();
-        return view('pages.deposit')->with('deposits', $deposits);
+        return view('pages.depositHistory')->with('deposits', $deposits);
     }
 
     public function withdrawal(){
+        return view('pages.withdrawal');
+    }
+
+    public function withdrawalHistory(){
         //get withdrawal history
         $withdrawals = Transaction::where(['user_id' => Auth::user()->id, 'category'=>'withdraw'])->get();
-        return view('pages.withdrawal')->with('withdrawals', $withdrawals);
+        return view('pages.withdrawalHistory')->with('withdrawals', $withdrawals);
     }
 
     public function announcement(){
@@ -86,7 +94,9 @@ class PagesController extends Controller
     }
 
     public function referral(){
-        return view('pages.referral');
+        // get total number of referrals
+        $referrals = User::where('referrerId', Auth::user()->memberId)->get();
+        return view('pages.referral')->with('referrals', $referrals);
     }
 
     public function dailyHistory(){
