@@ -14,6 +14,6 @@ class Rank extends Model
     // }
 
     public function subscribed_users(){
-        return $this->morphMany(SubscribedUser::class);
+        return $this->hasMany(SubscribedUser::class);
     }
 }

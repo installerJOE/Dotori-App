@@ -8,7 +8,7 @@
 	<div class="sub_top"><!--sub_top-->
 		<div class="sub_title">
 			<i class="fas fa-fw fa-money-check-alt"></i>
-			Deposit (Purchase Request)
+			Deposit
 		</div>
 	</div><!--sub_top end-->
 	<div class="section_right_inner"><!--section_right_inner-->
@@ -16,7 +16,9 @@
 		<div class="withdrawal_left">
 			<!--form01-->
 			<div class="form01">
-				<p class="title"></p>
+				<p class="title">
+					Deposit Request
+				</p>
 				<form method='POST' action='/transactions/deposit'>
 					@csrf
 					<!--withdrawal_input_box-->
@@ -80,19 +82,52 @@
 				<table>
 					<tbody>
 						<tr>
-							<th> Amount </th>
+							<th> Amount (KRW) </th>
 							<th> Date </th>
 							<th> Status </th>
 						</tr>						
-						<tr>
-							<td> 454,545 </td>
-							<td> 2022-02-01 18:00:25</td>
-							<td> Request </td>
-						</tr>
+						@if($deposits->count() > 0)
+							@foreach($deposits as $deposit)
+							<tr>
+								<td> {{$deposit->amount}} </td>
+								<td> {{$deposit->updated_at}}</td>
+								<td> {{$deposit->status}} </td>
+							</tr>
+							@endforeach
+						@else
+							<tr>
+								<td colspan="3"> No deposit has been made yet. </td>
+							</tr>
+						@endif
 					</tbody>
 				</table>
 			</div>
 		</div>
 		<!--deposit_right end-->
 	</div><!--section_right_inner end-->
+
+	<!--section_right_inner end-->
+	<div style="clear:left;" class="col-md-6 col-sm-12 col-12 note-pad">
+		<div>
+			<p style="font-weight:bold">
+				Send requested deposit amount to the account below to credit your Dotori 
+				account.
+			</p>
+			<div class="referral-link" style="margin:1em 0px; line-height:2em !important">
+				<h3 class="subheader">
+					Bank Name: Zenith Bank LTD
+				</h3>
+				<h3 class="subheader">
+					Account Name:  Joe Mike
+				</h3>
+				<h3 class="subheader">
+					Account Number: 2111390715
+				</h3>
+			</div>
+			<p style="font-weight:bold" class="text-light-blue">
+				Your account will be credited after your payment to the above account has 
+				been verified and confirmed.
+			</p>
+		</div>
+	</div>
 @endsection

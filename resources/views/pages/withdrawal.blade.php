@@ -155,17 +155,19 @@
 							<th> Status </th>
 						</tr>
 
-						<tr>
-							<td> 120,000 </td>
-							<td> 02 Feb 2022 10:22:01</td>
-							<td> Issued </td>
-						</tr>
-
-						<tr>
-							<td> 150,000 </td>
-							<td> 08 Feb 2022 14:22:01</td>
-							<td> Pending </td>
-						</tr>
+						@if($withdrawals->count() > 0)
+							@foreach($withdrawals as $withdrawal)
+							<tr>
+								<td> {{$withdrawal->amount}} </td>
+								<td> {{$withdrawal->updated_at}}</td>
+								<td> {{$withdrawal->status}} </td>
+							</tr>
+							@endforeach
+						@else
+							<tr>
+								<td colspan="3"> No withdrawal has been made yet. </td>
+							</tr>
+						@endif
 
 					</tbody>
 				</table>
@@ -174,7 +176,7 @@
 		<!--Withdrawal_right end-->
 	</div>
 	<!--section_right_inner end-->
-	<div style="clear:left;" class="note-pad">
+	<div style="clear:left;" class="col-md-6 col-sm-12 col-12 note-pad">
 		<div>
 			<h2>Note:</h2>
 			<p>

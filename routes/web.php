@@ -26,7 +26,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/dashboard',  [App\Http\Controllers\PagesController::class, 'index']);
 Route::get('/deposit',  [App\Http\Controllers\PagesController::class, 'deposit']);
 Route::get('/withdrawal',  [App\Http\Controllers\PagesController::class, 'withdrawal']);
-Route::get('/purchase-package',  [App\Http\Controllers\PagesController::class, 'purchase']);
+Route::get('/packages/subscribe',  [App\Http\Controllers\PagesController::class, 'purchasePackage']);
+Route::get('/packages/subscribed',  [App\Http\Controllers\PagesController::class, 'subscribedPackages']);
 
 Route::get('/announcement',  [App\Http\Controllers\PagesController::class, 'announcement']);
 Route::get('/referral',  [App\Http\Controllers\PagesController::class, 'referral']);
@@ -47,3 +48,4 @@ Route::post('/settings/pin',  [App\Http\Controllers\SettingsController::class, '
 // Post Routes for user transactions
 Route::post('/transactions/deposit',  [App\Http\Controllers\TransactionsController::class, 'deposit']);
 Route::post('/transactions/withdraw',  [App\Http\Controllers\TransactionsController::class, 'withdraw']);
+Route::post('/package/purchase',  [App\Http\Controllers\TransactionsController::class, 'purchasePackage']);

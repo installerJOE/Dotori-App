@@ -23,6 +23,7 @@ class CreateSubscribedUsersTable extends Migration
                 ->onDelete('cascade');
             $table->integer('quantity');
             $table->integer('repurchase')->default(0);
+            $table->string('status');
             $table->foreignId('rank_id')
                 ->constrained('ranks')
                 ->onDelete('cascade');

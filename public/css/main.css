@@ -1,3 +1,6 @@
+[class*="col-"]{
+    float: left;
+}
 ul{
     margin:0px;
     padding:0px;
@@ -38,7 +41,7 @@ ul{
     color: #4e076e;
 }
 .text-light-blue{
-    color: #b4c9ff;
+    color: #91affa;
 }
 .sub_title{
     font-size: 36px !important;

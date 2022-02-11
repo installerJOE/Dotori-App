@@ -138,10 +138,14 @@
         </li>
 
         <li class='sub-menu'>
-            <a href="/purchase-package"> 
+            <a href="#!profile">
                 <i class="fas fa-fw fa-cube"></i> &nbsp;
-                Purchase
+                My Packages
             </a>
+            <ul>
+                <li><a href="/packages/subscribed"> All Packages </a></li>
+                <li><a href="/packages/subscribe"> Subscribe Package </a></li>
+            </ul>
         </li>
         
         <li class='sub-menu'>

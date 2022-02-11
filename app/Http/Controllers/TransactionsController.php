@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\Account;
 use App\Models\DeliveryAddress;
 use App\Models\Transaction;
+use App\Models\Package;
+use App\Models\Referral;
+use App\Models\Rank;
+use App\Models\SubscribedUser;
 
 class TransactionsController extends Controller
 {
@@ -65,6 +69,49 @@ class TransactionsController extends Controller
         // Send email notification of withdrawal request
         return redirect('/withdrawal')->with('success', 'Your withdrawal request has been sent');
 
+    }
+
+    public function purchasePackage(Request $request){
+        //check if purchase limit is exceeded
+        $this->validate($request, [
+            'package_price' => 'required',
+            'quantity' => 'required',
+            'total_amount' => 'required',
+        ]);
+        
+        if(!Hash::check($request->input('pin'), Auth::user()->pin)){
+            return back()->with('error', 'Oops, your PIN is incorrect. Try again! ');
+        } 
+        
+        if(Auth::user()->available_points < $request->input('total_amount')){
+            return back()->with("error", "Insufficient funds! Please credit your Dotori account to purchase more package");
+        }
+        
+        // Get the rank id of the subscribed user
+        $referrals = Referral::where('user_id', Auth::user()->id)->get()->count();
+        $ranks = Rank::select('id', 'referral_limit')->orderBy('id', 'asc')->get();
+        foreach($ranks as $rank){
+            if($rank->referral_limit > $referrals){
+                $rank_id = $rank->id;
+                break;
+            }
+        }        
+
+        //create new instance of subscribed user
+        $subscriber = new SubscribedUser;
+        $subscriber->user_id = Auth::user()->id;
+        $subscriber->package_id = $request->input("package_id");
+        $subscriber->rank_id = $rank_id;
+        $subscriber->quantity = $request->input('quantity');
+        $subscriber->status = "active";
+        $subscriber->save();
+
+        //update user balance
+        $user = Auth::user();
+        $user->available_points = $user->available_points - $request->input('total_amount');
+        $user->save();
+
+        return redirect('/purchase-package')->with('success', 'Package has been subscribed successfully.');
     }
 
 }

@@ -9,7 +9,9 @@ use App\Models\User;
 use App\Models\Rank;
 use App\Models\Account;
 use App\Models\SubscribedUser;
+use App\Models\Transaction;
 use App\Models\Referral;
+use App\Models\Package;
 
 
 
@@ -22,9 +24,12 @@ class PagesController extends Controller
     }
     
     public function index(){
-        $user = Auth::user()->subscribed_user;
-        if($user === null){
+        $subscribedUser = Auth::user()->subscribed_user;
+        if($subscribedUser === null){
             $rank = Rank::where('referral_limit', 0)->first();
+        }
+        else{
+            $rank = $subscribedUser->rank;
         }
 
         // get total number of referrals
@@ -38,15 +43,34 @@ class PagesController extends Controller
     }
 
     public function deposit(){
-        return view('pages.deposit');
+        //get deposit history
+        $deposits = Transaction::where(['user_id' => Auth::user()->id, 'category'=>'deposit'])->get();
+        return view('pages.deposit')->with('deposits', $deposits);
+    }
+
+    public function withdrawal(){
+        //get withdrawal history
+        $withdrawals = Transaction::where(['user_id' => Auth::user()->id, 'category'=>'withdraw'])->get();
+        return view('pages.withdrawal')->with('withdrawals', $withdrawals);
     }
 
     public function announcement(){
         return view('pages.announcement');
     }
 
-    public function purchase(){
-        return view('pages.packagepurchase');
+    public function subscribedPackages(){
+        $subscribed_packages = SubscribedUser::where('user_id', Auth::user()->id)->get();
+        return view('pages.packages')
+            ->with([
+                'subscribed_packages' => $subscribed_packages
+            ]);
+    }
+    public function purchasePackage(){
+        $packages = Package::all();
+        return view('pages.packagepurchase')
+            ->with([
+                'packages' => $packages,
+            ]);
     }
 
     public function profile(){
@@ -71,8 +95,5 @@ class PagesController extends Controller
 
     public function referralHistory(){
         return view('pages.referralHistory');
-    }
-    public function withdrawal(){
-        return view('pages.withdrawal');
     }
 }

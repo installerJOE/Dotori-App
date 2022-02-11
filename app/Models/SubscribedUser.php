@@ -9,8 +9,16 @@ class SubscribedUser extends Model
 {
     use HasFactory;
 
-    public function subscriber(){
-        return $this->morphTo();
+    // public function subscribable(){
+    //     return $this->morphTo();
+    // }
+
+    public function rank(){
+        return $this->belongsTo(Rank::class);
+    }
+
+    public function package(){
+        return $this->belongsTo(Package::class);
     }
 
     public function user(){
