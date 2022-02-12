@@ -7,7 +7,7 @@
 @section('content')
 	<div class="sub_top"><!--sub_top-->
 		<div class="sub_title">
-			<i class="fas fa-fw fa-history"></i>
+			<i class="fas fa-fw fa-users"></i>
             Subscribers
 		</div>
 	</div><!--sub_top end-->
@@ -24,6 +24,22 @@
                             <th> Status </th>
                             <th> Date </th>
 						</tr>						
+
+						@if($subscribers->count() > 0)
+							@foreach ($subscribers as $subscriber)
+								<tr>
+									<td>{{$subscriber->user->name}}</td>
+									<td> {{$subscriber->package->name}}</td>
+									<td> {{$subscriber->quantity}} </td>
+									<td> {{$subscriber->status}} </td>
+									<td> {{$subscriber->updated_at}} </td>
+								</tr>
+							@endforeach
+						@else
+							<tr>
+								<td colspan="5"> No deposit has been made yet. </td>
+							</tr>
+						@endif
 					</tbody>
 				</table>
 			</div>

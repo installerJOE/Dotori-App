@@ -26,9 +26,12 @@ class TransactionsController extends Controller
             'bank_name' => 'required',
             'account_name' => 'required',
         ]);
+        
+        // return strtoupper($this->uniqueCodeGenerator(12));
 
         $transaction = new Transaction;
         $transaction->user_id = Auth::user()->id;
+        // $transaction->reference_id = strtoupper($this->uniqueCodeGenerator(12));
         $transaction->category = "deposit";
         $transaction->status = "pending";
         $transaction->amount = $request->input('deposit_amount');
@@ -96,16 +99,29 @@ class TransactionsController extends Controller
                 break;
             }
         }        
-
-        //create new instance of subscribed user
-        $subscriber = new SubscribedUser;
-        $subscriber->user_id = Auth::user()->id;
-        $subscriber->package_id = $request->input("package_id");
-        $subscriber->rank_id = $rank_id;
-        $subscriber->quantity = $request->input('quantity');
-        $subscriber->status = "active";
+        
+        // Check if user has subscribed to selected package
+        $subscriber = SubscribedUser::where([
+            'user_id' => Auth::user()->id,
+            'package_id' => $request->input("package_id"),
+            ])->first();
+        
+        if($subscriber !== null){
+            // Update quantity of package
+            $subscriber->quantity += $request->input('quantity');
+            $subscriber->status = "active";
+        }
+        else{
+            //create new instance of subscribed user
+            $subscriber = new SubscribedUser;
+            $subscriber->user_id = Auth::user()->id;
+            $subscriber->package_id = $request->input("package_id");
+            $subscriber->rank_id = $rank_id;
+            $subscriber->quantity = $request->input('quantity');
+            $subscriber->status = "active";
+        }
         $subscriber->save();
-
+        
         //update user balance
         $user = Auth::user();
         $user->available_points = $user->available_points - $request->input('total_amount');

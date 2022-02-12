@@ -31,26 +31,24 @@
                             <th> Account Number </th>
                             <th> Status </th>
 							<th> Date </th>
-							<th> Action </th>
 						</tr>						
-						{{-- @if($deposits->count() > 0)
-							@foreach($deposits as $deposit)
+						@if($withdrawals->count() > 0)
+							@foreach($withdrawals as $withdrawal)
 							<tr>
-								<td> {{$deposit->amount}} </td>
-								<td> {{$deposit->updated_at}}</td>
-								<td> {{$deposit->status}} </td>
-								<td> {{$deposit->amount}} </td>
-								<td> {{$deposit->updated_at}}</td>
-								<td> {{$deposit->status}} </td>
-								<td> {{$deposit->amount}} </td>
-								<td> {{$deposit->updated_at}}</td>
+								<td> {{$withdrawal->user->name}} </td>
+								<td> {{$withdrawal->amount}}</td>
+								<td> {{$withdrawal->bank_name}}</td>
+								<td> {{$withdrawal->account_name}}</td>
+								<td> {{$withdrawal->account_number}}</td>
+								<td> {{$withdrawal->status}} </td>
+								<td> {{$withdrawal->updated_at}} </td>
 							</tr>
 							@endforeach
-						@else --}}
+						@else
 							<tr>
-								<td colspan="3"> There are no successful withdrawals yet. </td>
+								<td colspan="7"> There are no successful withdrawals yet. </td>
 							</tr>
-						{{-- @endif --}}
+						@endif
 					</tbody>
 				</table>
 			</div>

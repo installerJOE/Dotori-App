@@ -40,6 +40,7 @@
     <!------------------------------------------------------------------------------------------------------>
 
     <link href="{{asset('/css/main.css')}}" rel="stylesheet">
+    <link href="{{asset('/css/bsmodal.css')}}" rel="stylesheet">
     <link href="{{asset('/css/style.css')}}" rel="stylesheet" media="screen and (min-width:1024px)">
     <link href="{{asset('/css/responsive.css')}}" rel="stylesheet" type="text/css" media="screen and (max-width:1023px)">
     <link href="{{asset('/css/reset.css')}}" rel="stylesheet">

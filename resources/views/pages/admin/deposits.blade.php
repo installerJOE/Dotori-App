@@ -28,32 +28,29 @@
                             <th> Deposit Amount </th>
                             <th> Bank Name </th>
                             <th> Account Holder </th>
-                            <th> Account Number </th>
                             <th> Status </th>
 							<th> Date </th>
-							<th> Action </th>
 						</tr>						
-						{{-- @if($deposits->count() > 0)
+						@if($deposits->count() > 0)
 							@foreach($deposits as $deposit)
 							<tr>
-                                <td> {{$deposit->amount}} </td>
-								<td> {{$deposit->updated_at}}</td>
+                                <td> {{$deposit->user->name}} </td>
+								<td> {{$deposit->amount}}</td>
+								<td> {{$deposit->bank_name}} </td>
+								<td> {{$deposit->account_name}} </td>
 								<td> {{$deposit->status}} </td>
-								<td> {{$deposit->amount}} </td>
-								<td> {{$deposit->updated_at}}</td>
-								<td> {{$deposit->status}} </td>
-								<td> {{$deposit->amount}} </td>
-								<td> {{$deposit->updated_at}}</td>
+								<td> {{$deposit->updated_at}} </td>
 							</tr>
 							@endforeach
-						@else --}}
+						@else
 							<tr>
-								<td colspan="3"> No completed deposits has been made yet. </td>
+								<td colspan="7"> No completed deposits has been made yet. </td>
 							</tr>
-						{{-- @endif --}}
+						@endif
 					</tbody>
 				</table>
 			</div>
 		</div>
 	</div><!--section_right_inner end-->
+
 @endsection

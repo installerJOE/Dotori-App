@@ -128,38 +128,38 @@
         </li>
 
         @if(Auth::user()->is_admin)
-        <li class='sub-menu'>
-            <a href="/admin/packages">
-                <i class="fas fa-fw fa-cube"></i> &nbsp;
-                Packages
-            </a>
-        </li>
-        <li class='sub-menu'>
-            <a href="/admin/subscribers">
-                <i class="fas fa-fw fa-cube"></i> &nbsp;
-                Subscribers
-            </a>
-        </li>
-        <li class='sub-menu'>
-            <a href="#!deposit">
-                <i class="fas fa-fw fa-money-check-alt"></i> &nbsp; 
-                Deposits
-            </a>
-            <ul>
-                <li><a href="/admin/deposits"> Deposits History </a></li>
-                <li><a href="/admin/deposits/requests"> Deposit Requests </a></li>
-            </ul>
-        </li>
-        <li class='sub-menu'>
-            <a href="#!deposit">
-                <i class="fas fa-fw fa-share-square"></i> &nbsp;
-                Withdrawals
-            </a>
-            <ul>
-                <li><a href="/admin/withdrawals"> Deposits History </a></li>
-                <li><a href="/admin/withdrawals/requests"> Deposit Requests </a></li>
-            </ul>
-        </li>
+            <li class='sub-menu'>
+                <a href="/admin/packages">
+                    <i class="fas fa-fw fa-cube"></i> &nbsp;
+                    Packages
+                </a>
+            </li>
+            <li class='sub-menu'>
+                <a href="/admin/subscribers">
+                    <i class="fas fa-fw fa-users"></i> &nbsp;
+                    Subscribers
+                </a>
+            </li>
+            <li class='sub-menu'>
+                <a href="#!deposit">
+                    <i class="fas fa-fw fa-money-check-alt"></i> &nbsp; 
+                    Deposits
+                </a>
+                <ul>
+                    <li><a href="/admin/deposits"> Deposits History </a></li>
+                    <li><a href="/admin/deposits/requests"> Deposit Requests </a></li>
+                </ul>
+            </li>
+            <li class='sub-menu'>
+                <a href="#!deposit">
+                    <i class="fas fa-fw fa-share-square"></i> &nbsp;
+                    Withdrawals
+                </a>
+                <ul>
+                    <li><a href="/admin/withdrawals"> Withdrawal History </a></li>
+                    <li><a href="/admin/withdrawals/requests"> Withdrawal Requests </a></li>
+                </ul>
+            </li>
         @else
             <li class='sub-menu'>
                 <a href="#!profile">

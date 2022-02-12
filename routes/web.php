@@ -23,7 +23,11 @@ Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-//Routes for users/subscribers
+/*
+|-------------------------------------------------------------------------------------------------------------
+| Routes for users/subscribers
+|-------------------------------------------------------------------------------------------------------------
+*/
 Route::get('/dashboard',  [App\Http\Controllers\PagesController::class, 'index']);
 Route::get('/deposit',  [App\Http\Controllers\PagesController::class, 'deposit']);
 Route::get('/deposits/history',  [App\Http\Controllers\PagesController::class, 'depositHistory']);
@@ -53,13 +57,23 @@ Route::post('/transactions/withdraw',  [App\Http\Controllers\TransactionsControl
 Route::post('/package/purchase',  [App\Http\Controllers\TransactionsController::class, 'purchasePackage']);
 
 
-// Routes for administrator
+/*
+|-------------------------------------------------------------------------------------------------------------
+| Routes for administrator
+|-------------------------------------------------------------------------------------------------------------
+*/
 Route::get('/admin/dashboard',  [App\Http\Controllers\AdminController::class, 'dashboard']);
+
 Route::get('/admin/deposits',  [App\Http\Controllers\AdminController::class, 'deposits']);
 Route::get('/admin/deposits/requests',  [App\Http\Controllers\AdminController::class, 'depositRequests']);
+Route::post('/admin/deposit/validate',  [App\Http\Controllers\AdminController::class, 'validateDepositRequest']);
+
 Route::get('/admin/withdrawals',  [App\Http\Controllers\AdminController::class, 'withdrawals']);
 Route::get('/admin/withdrawals/requests',  [App\Http\Controllers\AdminController::class, 'withdrawalRequests']);
+Route::post('/admin/withdrawal/validate',  [App\Http\Controllers\AdminController::class, 'validateWithdrawalRequest']);
 Route::get('/admin/packages',  [App\Http\Controllers\AdminController::class, 'packages']);
-Route::post('/admin/packages/create',  [App\Http\Controllers\AdminController::class, 'createPackage']);
+
+Route::post('/admin/packages/store',  [App\Http\Controllers\AdminController::class, 'storePackage']);
+Route::post('/admin/packages/update/{id}',  [App\Http\Controllers\AdminController::class, 'updatePackage']);
+
 Route::get('/admin/subscribers',  [App\Http\Controllers\AdminController::class, 'subscribers']);
-// Route::post('/admin/packages/update',  [App\Http\Controllers\AdminController::class, 'updatePackage']);

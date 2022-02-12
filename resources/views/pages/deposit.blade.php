@@ -34,7 +34,7 @@
 						<table style="width:100%;">
 							<tbody>
 								<tr>
-									<td> Purchase Request Amount (KRW) </td>
+									<td> Deposit Request Amount (KRW) </td>
 									<td>
 										<input type="number" 
 											placeholder="Please enter deposit amount" 
