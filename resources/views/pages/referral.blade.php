@@ -71,7 +71,6 @@
 								<td colspan="3"> You have not recommended anyone yet. </td>
 							</tr>
 						@endif
-
 					</tbody>
 				</table>
 			</div>

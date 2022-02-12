@@ -127,74 +127,109 @@
             </a>
         </li>
 
+        @if(Auth::user()->is_admin)
         <li class='sub-menu'>
-            <a href="#!profile">
+            <a href="/admin/packages">
                 <i class="fas fa-fw fa-cube"></i> &nbsp;
-                My Packages
+                Packages
             </a>
-            <ul>
-                <li><a href="/packages/subscribed"> All Packages </a></li>
-                <li><a href="/packages/subscribe"> Subscribe Package </a></li>
-            </ul>
         </li>
-
         <li class='sub-menu'>
-            <a href="/referral">
-                <i class="fas fa-fw fa-sitemap"></i> &nbsp;
-                Referrals
+            <a href="/admin/subscribers">
+                <i class="fas fa-fw fa-cube"></i> &nbsp;
+                Subscribers
             </a>
         </li>
-        
         <li class='sub-menu'>
             <a href="#!deposit">
                 <i class="fas fa-fw fa-money-check-alt"></i> &nbsp; 
-                My Deposits
+                Deposits
             </a>
             <ul>
-                <li><a href="/deposit"> Request Deposit </a></li>
-                <li><a href="/deposits/history"> Deposit History </a></li>
+                <li><a href="/admin/deposits"> Deposits History </a></li>
+                <li><a href="/admin/deposits/requests"> Deposit Requests </a></li>
             </ul>
         </li>
-
         <li class='sub-menu'>
-            <a href="#!withdrawal">
+            <a href="#!deposit">
                 <i class="fas fa-fw fa-share-square"></i> &nbsp;
                 Withdrawals
             </a>
             <ul>
-                <li><a href="/withdrawal"> Request Withdrawal </a></li>
-                <li><a href="/withdrawals/history"> Withdrawal History </a></li>
+                <li><a href="/admin/withdrawals"> Deposits History </a></li>
+                <li><a href="/admin/withdrawals/requests"> Deposit Requests </a></li>
             </ul>
         </li>
-    
-        <li class='sub-menu'>
-            <a href="#!history">
-                <i class="fas fa-fw fa-history"></i> &nbsp;
-                History
-            </a>
-            <ul>
-                <li><a href="/daily-history"> Daily History </a></li>
-            </ul>
-        </li>
+        @else
+            <li class='sub-menu'>
+                <a href="#!profile">
+                    <i class="fas fa-fw fa-cube"></i> &nbsp;
+                    My Packages
+                </a>
+                <ul>
+                    <li><a href="/packages/subscribed"> All Packages </a></li>
+                    <li><a href="/packages/subscribe"> Subscribe Package </a></li>
+                </ul>
+            </li>
 
-        <li class='sub-menu'>
-            <a href="#!profile">
-                <i class="fas fa-fw fa-cogs"></i> &nbsp;
-                Settings
-            </a>
-            <ul>
-                <li><a href="/settings/profile"> Profile Settings </a></li>
-                <li><a href="/settings/password"> Password Settings </a></li>
-                <li><a href="/settings/pin"> PIN Settings </a></li>
-            </ul>
-        </li>
+            <li class='sub-menu'>
+                <a href="/referral">
+                    <i class="fas fa-fw fa-sitemap"></i> &nbsp;
+                    Referrals
+                </a>
+            </li>
+            
+            <li class='sub-menu'>
+                <a href="#!deposit">
+                    <i class="fas fa-fw fa-money-check-alt"></i> &nbsp; 
+                    My Deposits
+                </a>
+                <ul>
+                    <li><a href="/deposit"> Request Deposit </a></li>
+                    <li><a href="/deposits/history"> Deposit History </a></li>
+                </ul>
+            </li>
 
-        <li class='sub-menu'>
-            <a href="/announcement">
-                <i class="fas fa-bullhorn fa-fw"></i> &nbsp;
-                Announcement
-            </a>
-        </li>
+            <li class='sub-menu'>
+                <a href="#!withdrawal">
+                    <i class="fas fa-fw fa-share-square"></i> &nbsp;
+                    Withdrawals
+                </a>
+                <ul>
+                    <li><a href="/withdrawal"> Request Withdrawal </a></li>
+                    <li><a href="/withdrawals/history"> Withdrawal History </a></li>
+                </ul>
+            </li>
+        
+            <li class='sub-menu'>
+                <a href="#!history">
+                    <i class="fas fa-fw fa-history"></i> &nbsp;
+                    History
+                </a>
+                <ul>
+                    <li><a href="/daily-history"> Daily History </a></li>
+                </ul>
+            </li>
+
+            <li class='sub-menu'>
+                <a href="#!profile">
+                    <i class="fas fa-fw fa-cogs"></i> &nbsp;
+                    Settings
+                </a>
+                <ul>
+                    <li><a href="/settings/profile"> Profile Settings </a></li>
+                    <li><a href="/settings/password"> Password Settings </a></li>
+                    <li><a href="/settings/pin"> PIN Settings </a></li>
+                </ul>
+            </li>
+
+            <li class='sub-menu'>
+                <a href="/announcement">
+                    <i class="fas fa-bullhorn fa-fw"></i> &nbsp;
+                    Announcement
+                </a>
+            </li>
+        @endif
         
         {{-- Logout menu --}}
         <li class='sub-menu'>

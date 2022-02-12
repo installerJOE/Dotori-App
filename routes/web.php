@@ -23,6 +23,7 @@ Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
+//Routes for users/subscribers
 Route::get('/dashboard',  [App\Http\Controllers\PagesController::class, 'index']);
 Route::get('/deposit',  [App\Http\Controllers\PagesController::class, 'deposit']);
 Route::get('/deposits/history',  [App\Http\Controllers\PagesController::class, 'depositHistory']);
@@ -50,3 +51,15 @@ Route::post('/settings/pin',  [App\Http\Controllers\SettingsController::class, '
 Route::post('/transactions/deposit',  [App\Http\Controllers\TransactionsController::class, 'deposit']);
 Route::post('/transactions/withdraw',  [App\Http\Controllers\TransactionsController::class, 'withdraw']);
 Route::post('/package/purchase',  [App\Http\Controllers\TransactionsController::class, 'purchasePackage']);
+
+
+// Routes for administrator
+Route::get('/admin/dashboard',  [App\Http\Controllers\AdminController::class, 'dashboard']);
+Route::get('/admin/deposits',  [App\Http\Controllers\AdminController::class, 'deposits']);
+Route::get('/admin/deposits/requests',  [App\Http\Controllers\AdminController::class, 'depositRequests']);
+Route::get('/admin/withdrawals',  [App\Http\Controllers\AdminController::class, 'withdrawals']);
+Route::get('/admin/withdrawals/requests',  [App\Http\Controllers\AdminController::class, 'withdrawalRequests']);
+Route::get('/admin/packages',  [App\Http\Controllers\AdminController::class, 'packages']);
+Route::post('/admin/packages/create',  [App\Http\Controllers\AdminController::class, 'createPackage']);
+Route::get('/admin/subscribers',  [App\Http\Controllers\AdminController::class, 'subscribers']);
+// Route::post('/admin/packages/update',  [App\Http\Controllers\AdminController::class, 'updatePackage']);
