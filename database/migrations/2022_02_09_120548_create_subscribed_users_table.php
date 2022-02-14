@@ -24,6 +24,7 @@ class CreateSubscribedUsersTable extends Migration
             $table->integer('quantity');
             $table->integer('repurchase')->default(0);
             $table->string('status');
+            $table->float('percent_paid')->default(0.00);
             $table->foreignId('rank_id')
                 ->constrained('ranks')
                 ->onDelete('cascade');

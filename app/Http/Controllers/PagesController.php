@@ -12,6 +12,7 @@ use App\Models\SubscribedUser;
 use App\Models\Transaction;
 use App\Models\Referral;
 use App\Models\Package;
+use App\Jobs\SettleDailyPayment;
 
 
 
@@ -45,7 +46,6 @@ class PagesController extends Controller
     public function deposit(){
         return view('pages.deposit');
     }
-
     public function depositHistory(){
         //get deposit history
         $deposits = Transaction::where(['user_id' => Auth::user()->id, 'category'=>'deposit'])->get();
@@ -53,9 +53,24 @@ class PagesController extends Controller
     }
 
     public function withdrawal(){
-        return view('pages.withdrawal');
-    }
+        $timestamp = time();
+        $time = (float)date("H", $timestamp); //UTC or GMT time
+        $day = (string)date('l', $timestamp);
+        $withdraw_active = true;
+        $message = "You can only make withrawal requests on Tuesdays, Thursdays and Saturdays, between 10:00am to 9:00pm (UTC).";
+        $active_days = ["Tuesday", "Thursday", "Saturday"];
 
+        for($i=0; $i<count($active_days); $i++){
+            if($day !== $active_days[$i] || $time < 10 || $time > 20){
+                $withdraw_active = false;
+                break;
+            }
+        }
+        return view('pages.withdrawal')->with([
+            'withdraw_active' => $withdraw_active,
+            'inactive_message' => $message
+        ]);
+    }
     public function withdrawalHistory(){
         //get withdrawal history
         $withdrawals = Transaction::where(['user_id' => Auth::user()->id, 'category'=>'withdraw'])->get();
@@ -74,10 +89,24 @@ class PagesController extends Controller
             ]);
     }
     public function purchasePackage(){
+        // check day of the week and validate get requests 
+        $timestamp = time();
+        $time = (float)date("H", $timestamp); //UTC or GMT time
+        $day = date('l', $timestamp);
+        $purchase_active = true;
+        $message = "";
+
+        if($day === "Saturday" || $day === "Sunday" || $time < 10 || $time > 18){
+            $message = "Package purchase is only available from Monday to Friday, from 10:00am to 6:00pm (UTC).";
+            $purchase_active = false;
+        }
+
         $packages = Package::all();
         return view('pages.packagepurchase')
             ->with([
                 'packages' => $packages,
+                'purchase_active' => $purchase_active,
+                'inactive_message' => $message
             ]);
     }
 
@@ -101,9 +130,5 @@ class PagesController extends Controller
 
     public function dailyHistory(){
         return view('pages.daily_history');
-    }
-
-    public function referralHistory(){
-        return view('pages.referralHistory');
     }
 }

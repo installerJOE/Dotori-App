@@ -1,0 +1,59 @@
+-------------------------------------------------------
+users -> name, 
+	 email, 
+	 phone(string), 
+	 password (string/hash), 
+	 address (string), 
+	 pin (string/hash), 
+	 is_admin (boolean), 
+	 memberId (string), 
+	 profile_image (string), 
+	 earnings (float/default=0),
+	 available_points (float/default=0),
+
+-------------------------------------------------------
+subscribed_users -> user_id, 
+		    package_id, 
+		    quantity (integer),
+		    rank_id (foreign key),
+		    repurchase (integer/default=0),
+
+-------------------------------------------------------
+accounts -> user_id, 
+	    bank_name, 
+	    account_name, 
+	    account_number,
+
+-------------------------------------------------------
+referrals -> user_id, 
+	     referee_id, 
+	     status,
+	     bonus,
+-------------------------------------------------------
+delivery_addresses -> 	user_id,
+			street, 
+		  	city, 
+			province/state, 
+			country
+
+-------------------------------------------------------
+transactions ->	user_id, 
+		category (deposit/withdraw), 
+		amount, 
+		fee, 
+		total_amount, 
+		bank, 
+		account_id
+
+-------------------------------------------------------
+packages -> name, 
+	    staking_amount, 
+	    rewards
+
+-------------------------------------------------------
+ranks -> name, 
+	 referral_limit, 
+ 	 daily_percent_yield
+
+-------------------------------------------------------
+
