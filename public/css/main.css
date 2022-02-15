@@ -84,3 +84,25 @@ ul{
 .text-red{
     color:red;
 }
+.light-blue-bg{
+    background-color: #dde7ff;    
+}
+.orange-bg{
+    background-color: #fde5c8;    
+}
+.grey-bg{
+    background-color: #e6e6e6;    
+}
+.modal-header .close{
+    background-color: red;
+    padding: 3px 10px;
+    border-radius:50%;
+    border: 0px;
+    color:#fff;
+    font-size: 21px;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+}
+.modal-header .close:hover{
+    opacity: 0.3
+}

@@ -35,21 +35,21 @@
 				</div>
 			</div>
 			<div class="main_balance_box main_balance_box01">
-				<p class="title01"> My Level </p>
+				<p class="title01"> No of registered users </p>
 				<p class="s_title01"></p>
 				<div class="total_sum total_sum01">
 					<p> {{$rank->title}} </p>
 				</div>
 			</div>					
 			<div class="main_balance_box main_balance_box04">
-				<p class="title01"> My Balance (PTS) </p>
+				<p class="title01"> Withdrawal Requests </p>
 				<p class="s_title01">&nbsp;</p>
 				<div class="total_sum total_sum04">
 					<p> {{Auth::user()->available_points}} </p>
 				</div>
 			</div>
 			<div class="main_balance_box main_balance_box03">
-				<p class="title01"> No. of Referrals </p>
+				<p class="title01"> Deposit Requests </p>
 				<p class="s_title01">&nbsp;</p>
 				<div class="total_sum total_sum03">
 					<p> {{$referrals}} </p>
@@ -58,7 +58,7 @@
 		</div>
 		<!--main_section01 end-->
 
-		<!--main_section02-->
+		{{-- <!--main_section02-->
 		<div class="main_section02">
 			<div class="bonus_div">
 				<p class="title">
@@ -102,10 +102,10 @@
 				</p>
 			</div>
 		</div>
-		<!--main_section02 end-->
+		<!--main_section02 end--> --}}
 
 		<!--main_section03-->
-		<div class="main_section03">
+		{{-- <div class="main_section03">
 			<!--history_box01-->
 			<div class="history_box01">
 				<p class="title">
@@ -168,7 +168,7 @@
 				</div>
 			</div>
 			<!--history_box02 end-->
-		</div>
+		</div> --}}
 		<!--main_section03 end-->
 	</div><!--section_right inner end-->
 

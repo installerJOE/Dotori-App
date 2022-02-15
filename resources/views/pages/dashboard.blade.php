@@ -63,19 +63,19 @@
 			<div class="bonus_div">
 				<p class="title">
 					<i class="fas fa-chart-pie"></i>
-					Bonus Chart
+					Subscription Chart
 				</p>
 				<div id="app"></div>
 				<div class="bonus_total">
 					<ul>
 						<li>
 							<span class="span01"></span>
-							<span> inducement </span>
+							<span> earnings </span>
 							<span class="total"> </span>
 						</li>
 						<li>
 							<span class="span01"></span>
-							<span>accumulate</span>
+							<span> referrals </span>
 							<span class="total"> </span>
 						</li>
 						<li>
@@ -107,7 +107,7 @@
 		<!--main_section03-->
 		<div class="main_section03">
 			<!--history_box01-->
-			<div class="history_box01">
+			<div class="history_box01 mb-4">
 				<p class="title">
 					<i class="fas fa-gift"></i> 
 					Bonus History	
@@ -117,28 +117,13 @@
 				<div id ="tab-1" class="tab-content current table_a">
 					<table>
 						<tr>
-							<th> Bonus </th>
+							<th> Package </th>
 							<th> Amount (PTS) </th>
-							<th> Date </th>
+							<th> Countdown </th>
 							<th> Status </th>
 						</tr>
 						<tr>
-							<td> Inducement </td>
-							<td> 120,000 </td>
-							<td>2022-02-07</td>
-							<td> Paid </td>
-						</tr>
-						<tr>
-							<td> Accumulate </td>
-							<td> 240,000 </td>
-							<td>2022-02-07</td>
-							<td> Pending </td>
-						</tr>
-						<tr>
-							<td> Rank </td>
-							<td> 45,000,000 </td>
-							<td>2022-02-07</td>
-							<td> Paid </td>
+							<td colspan="4" style="font-size:21px; padding: 10px;"> No active package yet </td>
 						</tr>
 					</table>
 				</div>
@@ -147,7 +132,7 @@
 			<!--history_box01 end-->
 
 			<!--history_box02-->
-			<div class="history_box02">	
+			<div class="col-md-12 col-sm-12 col-12 history_box02">	
 				<p class="title">
 					<i class="fas fa-history"></i>
 					Withdrawal History
@@ -160,9 +145,7 @@
 							<th> Status </th>
 						</tr>
 						<tr>
-							<td> 45,000,000 </td>
-							<td> 2022-02-07 </td>
-							<td> Pending </td>
+							<td colspan="3" style="font-size:21px; padding: 10px;"> No withdrawals have been made yet </td>
 						</tr>
 					</table>
 				</div>

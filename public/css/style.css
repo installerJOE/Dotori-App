@@ -868,7 +868,7 @@ input[type="button"]:hover, input[type="submit"]:hover{
 
 .main_section03 {overflow:hidden; margin-top:20px;}
 .main_section03 .history_box01 {
-    width: 60%;
+    width: 100%;
     overflow: hidden;
     float: left;
 }
@@ -894,9 +894,7 @@ input[type="button"]:hover, input[type="submit"]:hover{
  
 .main_section03 .tab-content.current {
     display: inherit;
-    height: 100px;
     overflow: hidden;
-    height: 290px;
     overflow-y: auto;
 }
 .main_section03 .tab_active a{
@@ -937,9 +935,8 @@ input[type="button"]:hover, input[type="submit"]:hover{
 
 
 .main_section03 .history_box02 {
-    width: 38%;
     overflow: hidden;
-    float: right;
+    float: left;
 }
 .main_section03 .history_box02 .title, .main_section03 .history_box01 .title{
     height: 45px;
@@ -1118,15 +1115,6 @@ input[type="button"]:hover, input[type="submit"]:hover{
     font-weight: 700;
     text-align: center;
     border-bottom: 1px #e4e4e4 solid;
-}
-.deposit_right .history_table table tr th:nth-child(1) {
-    width: 30%;
-}
-.deposit_right .history_table table tr th:nth-child(2) {
-    width: 30%;
-}
-.deposit_right .history_table table tr th:nth-child(3) {
-    width: 40%;
 }
 .deposit_right .history_table table tr td {
     height: 45px;
@@ -1385,18 +1373,6 @@ input[type="button"]:hover, input[type="submit"]:hover{
     font-weight: 700;
     text-align: Center;
     border-bottom: 1px #e4e4e4 solid;
-}
-.bonus_history_box .history_table table tr th:nth-child(1) {
-    width: 25%;
-}
-.bonus_history_box .history_table table tr th:nth-child(2) {
-    width: 25%;
-}
-.bonus_history_box .history_table table tr th:nth-child(3) {
-    width: 25%;
-}
-.bonus_history_box .history_table table tr th:nth-child(4) {
-    width: 25%;
 }
 .bonus_history_box .history_table table tr td {
     height: 45px;

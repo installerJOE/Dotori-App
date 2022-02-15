@@ -100,26 +100,38 @@ class TransactionsController extends Controller
             }
         }        
         
-        // Check if user has subscribed to selected package
-        $subscriber = SubscribedUser::where([
-            'user_id' => Auth::user()->id,
-            'package_id' => $request->input("package_id"),
-            ])->first();
+        // check if daily purchase limit of 11 million won is exceeded
+        $yesterday_midnight = strtotime('today midnight');
+        $today_midnight = strtotime('tomorrow midnight');
+        $timestamp = time();
+
+        $subscribers = SubscribedUser::where("user_id", Auth::user()->id)->get();
+        $subscribed_amt = 0;
+        foreach($subscribers as $subscriber){
+            $transaction_time = strtotime($subscriber->created_at);
+            if($transaction_time > $yesterday_midnight && $transaction_time < $today_midnight){
+                $price = $subscriber->package->staking_amount;
+                $qty = $subscriber->quantity;
+                $subscribed_amt += $price * $qty;
+            }            
+        }
+        if($subscribed_amt >= 11000000){
+            return back()->with('error', 'You have exceeded your daily limit of purchase');
+        }
+        $allowed_amount = 11000000 - $subscribed_amt;
+        if($request->input('total_amount') > $allowed_amount){
+            return back()->with('error', 'You can only subscribe ' . $allowed_amount . 'KRW worth of package for today.');
+        }
         
-        if($subscriber !== null){
-            // Update quantity of package
-            $subscriber->quantity += $request->input('quantity');
-            $subscriber->status = "active";
-        }
-        else{
-            //create new instance of subscribed user
-            $subscriber = new SubscribedUser;
-            $subscriber->user_id = Auth::user()->id;
-            $subscriber->package_id = $request->input("package_id");
-            $subscriber->rank_id = $rank_id;
-            $subscriber->quantity = $request->input('quantity');
-            $subscriber->status = "active";
-        }
+        $time = date($timestamp); //UTC or GMT time
+
+        //create new instance of subscribed user
+        $subscriber = new SubscribedUser;
+        $subscriber->user_id = Auth::user()->id;
+        $subscriber->package_id = $request->input("package_id");
+        $subscriber->rank_id = $rank_id;
+        $subscriber->quantity = $request->input('quantity');
+        $subscriber->status = "active";
         $subscriber->save();
         
         //update user balance
@@ -127,7 +139,7 @@ class TransactionsController extends Controller
         $user->available_points = $user->available_points - $request->input('total_amount');
         $user->save();
 
-        return redirect('/purchase-package')->with('success', 'Package has been subscribed successfully.');
+        return redirect('/packages/subscribed')->with('success', 'Package has been subscribed successfully.');
     }
 
 }
