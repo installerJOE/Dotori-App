@@ -45,7 +45,9 @@ class AdminController extends Controller
     public function validateDepositRequest(Request $request){
         $deposit = Transaction::findOrFail($request->input('deposit_id'));
         $deposit->status = "completed";
+        $deposit->user->available_points = $deposit->user->available_points + $deposit->amount;
         $deposit->save();
+        $deposit->user->save();
         
         //send dotori user an email of payment confirmation
         return redirect('/admin/deposits/requests')->with('success', "Deposit request has been validated successfully");
@@ -70,6 +72,7 @@ class AdminController extends Controller
     public function validateWithdrawalRequest(Request $request){
         $withdrawal = Transaction::findOrFail($request->input('withdrawal_id'));
         $withdrawal->status = "completed";
+        $withdrawal->user->available_points = $withdrawal->user->available_points - $withdrawal->amount;
         $withdrawal->save();
         
         //send dotori user an email of withdrawal confirmation

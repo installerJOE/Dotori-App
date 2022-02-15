@@ -56,13 +56,13 @@ class PagesController extends Controller
         $timestamp = time();
         $time = (float)date("H", $timestamp); //UTC or GMT time
         $day = (string)date('l', $timestamp);
-        $withdraw_active = true;
+        $withdraw_active = false;
         $message = "You can only make withrawal requests on Tuesdays, Thursdays and Saturdays, between 10:00am to 9:00pm (UTC).";
         $active_days = ["Tuesday", "Thursday", "Saturday"];
 
         for($i=0; $i<count($active_days); $i++){
-            if($day !== $active_days[$i] || $time < 10 || $time > 20){
-                $withdraw_active = false;
+            if($day === $active_days[$i] && $time > 10 && $time < 20){
+                $withdraw_active = true;
                 break;
             }
         }

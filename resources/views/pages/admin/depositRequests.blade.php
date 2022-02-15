@@ -49,7 +49,7 @@
 							@endforeach
 						@else
 							<tr>
-								<td colspan="8"> No deposit has been made yet. </td>
+								<td colspan="8"> There are no deposit requests yet. </td>
 							</tr>
 						@endif
 					</tbody>
