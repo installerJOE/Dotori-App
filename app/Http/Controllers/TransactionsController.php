@@ -21,6 +21,7 @@ class TransactionsController extends Controller
         $this->middleware(['auth', 'verified']);
     } 
 
+    // Send deposit request to the admin
     public function deposit(Request $request){
         $inputs = $request->validate([
             'deposit_amount' => 'required',
@@ -46,6 +47,7 @@ class TransactionsController extends Controller
         return redirect('/deposit')->with('success', 'Your deposit request has been sent');
     }
 
+    // Send withdrawal request to the admin
     public function withdraw(Request $request){
         $inputs = $request->validate([
             'pin' => 'required|string|max:6',
@@ -77,6 +79,7 @@ class TransactionsController extends Controller
 
     }
 
+    // Purchase a package
     public function purchasePackage(Request $request){
         //check if purchase limit is exceeded
         $this->validate($request, [
@@ -105,7 +108,7 @@ class TransactionsController extends Controller
         
         // check if daily purchase limit of 11 million won is exceeded
         $this->checkDailySubStatus($request->input('total_amount'));        
-        $time = date($timestamp); 
+        // $time = date($timestamp); 
 
         //create new instance of subscribed user
         $subscriber = new SubscribedUser;
@@ -124,6 +127,7 @@ class TransactionsController extends Controller
         return redirect('/packages/subscribed')->with('success', 'Package has been subscribed successfully.');
     }
 
+    // get the total amount that has been spent of subscription between two midnights
     private function getDaySubscriptionAmount(){
         $yesterday_midnight = strtotime('today midnight');
         $today_midnight = strtotime('tomorrow midnight');
@@ -142,6 +146,7 @@ class TransactionsController extends Controller
         return $subscribed_amt;
     }
 
+    // check if daily subscription limit is reached and return back to previous page
     private function checkDailySubStatus($purchase_amount){
         $subscribed_amt = $this->getDaySubscriptionAmount();
         if($subscribed_amt >= 11000000){
@@ -153,7 +158,7 @@ class TransactionsController extends Controller
         }
     }
 
-
+    // repurchase an existing subscription package on completion of an earning cycle
     public function repurchasePackage(Request $request){
         if(!Hash::check($request->input('pin'), Auth::user()->pin)){
             return back()->with('error', 'Oops, your PIN is incorrect. Try again! ');
@@ -172,6 +177,7 @@ class TransactionsController extends Controller
         return back()->with('success', 'Package repurchase is successful.');
     }
 
+    // revoke a subscription and withdraw funds
     public function cancelPackageSub(Request $request){
         return $request;
     }

@@ -22,8 +22,12 @@
 
             <div id="m_nav" style="left:-150%;">
                 <div class="m_nav_logo"> 
-                    <img src="../img/level1.png" alt="" class="level_img">
-                    <span class="username">test2<br>홍길동</span></span>
+                    <img src="{{URL::asset('/storage/images/profile_images/'. Auth::user()->profile_image)}}" alt="profile image" class="level_img">
+                    <span class="username">
+                        {{Auth::user()->name}}
+                        <br> 
+                        <span class="text-light-blue">{{ strtoupper(Auth::user()->memberId)}}</span>
+                    </span>
                     <div class="close close-btn">
                         &times;
                     </div>
