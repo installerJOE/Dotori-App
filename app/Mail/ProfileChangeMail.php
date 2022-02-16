@@ -28,6 +28,8 @@ class ProfileChangeMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.profile_change');
+        return $this->markdown('emails.profile_change')
+            ->from(env('MAIL_FROM_ADDRESS'), "Dotori Investment Inc.")
+            ->subject("Profile Change Notification!");
     }
 }

@@ -28,6 +28,8 @@ class WithdrawalRequestMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.withdrawal_request');
+        return $this->markdown('emails.withdrawal_request')
+            ->from(env('MAIL_FROM_ADDRESS'), "Dotori Investment Inc.")
+            ->subject("Withdrawal Request Received");
     }
 }

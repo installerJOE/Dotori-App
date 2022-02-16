@@ -1,12 +1,12 @@
 @component('mail::message')
-# Introduction
+# Updated Profile!
 
-The body of your message.
+Your profile has been updated successfully.
 
-@component('mail::button', ['url' => ''])
+{{-- @component('mail::button', ['url' => ''])
 Button Text
-@endcomponent
+@endcomponent --}}
 
-Thanks,<br>
+Thanks for choosing Dotori,<br>
 {{ config('app.name') }}
 @endcomponent

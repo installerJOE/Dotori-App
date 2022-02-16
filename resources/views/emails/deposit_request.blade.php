@@ -1,10 +1,10 @@
 @component('mail::message')
-# Deposit Request has been received
+# Your Deposit Request Has Been Received!
 
-Your deposit request has been sent.  
-Please be patient as we look into your request for 
+We have received your deposit request.  
+Please be patient as we look into it for 
 confirmation.
 
-Thanks,<br>
+Thanks for choosing Dotori,<br>
 {{ config('app.name') }}
 @endcomponent

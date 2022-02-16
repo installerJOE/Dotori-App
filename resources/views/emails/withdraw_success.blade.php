@@ -1,12 +1,14 @@
 @component('mail::message')
-# Introduction
+# Withdrawal Request Approved!
 
-The body of your message.
+Your withdrawal request has been approved.
+Requested amount has been sent to your bank account.
+If there's any issue, reach us at info@dotori.com
 
-@component('mail::button', ['url' => ''])
+{{-- @component('mail::button', ['url' => ''])
 Button Text
-@endcomponent
+@endcomponent --}}
 
-Thanks,<br>
+Thanks for choosing Dotori,<br>
 {{ config('app.name') }}
 @endcomponent

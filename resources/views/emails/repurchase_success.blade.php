@@ -1,12 +1,13 @@
 @component('mail::message')
-# Introduction
+# Package Repurchase Successful
 
-The body of your message.
+Repurchasing of your package is successful.
+Your earning cycle has resumed automatically.
 
-@component('mail::button', ['url' => ''])
+{{-- @component('mail::button', ['url' => ''])
 Button Text
-@endcomponent
+@endcomponent --}}
 
-Thanks,<br>
+Thanks for choosing Dotori,<br>
 {{ config('app.name') }}
 @endcomponent

@@ -6,9 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\Models\User;
 use App\Models\Account;
 use App\Models\DeliveryAddress;
+use App\Mail\PINChangeMail;
+use App\Mail\PasswordChangeMail;
 
 
 class SettingsController extends Controller
@@ -51,8 +54,6 @@ class SettingsController extends Controller
         $address->country = $request->input('country');
         $address->user_id = Auth::user()->id;
         $address->save();
-
-        //send notification of change of details
         return redirect('/settings/profile')->with('success', 'Your profile has been updated successfully');
         
     }
@@ -69,6 +70,9 @@ class SettingsController extends Controller
         $user->save();
 
         //send a notification for password change
+        $notifyMail = new PasswordChangeMail();    
+        Mail::to(Auth::user()->email)->send($notifyMail);       
+
         return redirect('/settings/password')->with('success', 'Your password has been updated successfully');    
     }
 
@@ -83,6 +87,9 @@ class SettingsController extends Controller
         $user->save();
         
         //send a notification for password change
+        $notifyMail = new PINChangeMail();    
+        Mail::to(Auth::user()->email)->send($notifyMail);       
+
         return redirect('/settings/pin')->with('success', 'Your pin has been updated successfully');    
     }
     

@@ -28,6 +28,8 @@ class WithdrawalSuccessMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.withdraw_success');
+        return $this->markdown('emails.withdraw_success')
+            ->from(env('MAIL_FROM_ADDRESS'), "Dotori Investment Inc.")
+            ->subject("Withdrawal Success!");
     }
 }

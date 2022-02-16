@@ -28,6 +28,8 @@ class DepositSuccessMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.deposit_success');
+        return $this->markdown('emails.deposit_success')
+            ->from(env('MAIL_FROM_ADDRESS'), "Dotori Investment Inc.")
+            ->subject("Dotori Account Credited!");
     }
 }

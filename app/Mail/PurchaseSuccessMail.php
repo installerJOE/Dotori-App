@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class DepositRequestMail extends Mailable
+class PurchaseSuccessMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -28,8 +28,8 @@ class DepositRequestMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.deposit_request')
+        return $this->markdown('emails.purchase_success')
             ->from(env('MAIL_FROM_ADDRESS'), "Dotori Investment Inc.")
-            ->subject("Deposit Request Received for Confirmation");
+            ->subject("Package Purchase Successful");
     }
 }

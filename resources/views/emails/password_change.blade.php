@@ -1,12 +1,12 @@
 @component('mail::message')
-# Introduction
+# Your Password was changed Recently!
 
-The body of your message.
+Password change is successful. 
 
-@component('mail::button', ['url' => ''])
+{{-- @component('mail::button', ['url' => ''])
 Button Text
-@endcomponent
+@endcomponent --}}
 
-Thanks,<br>
+Thanks for choosing Dotori,<br>
 {{ config('app.name') }}
 @endcomponent

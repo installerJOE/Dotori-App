@@ -1,12 +1,14 @@
 @component('mail::message')
-# Introduction
+# Your Deposit Request has been confirmed!
 
-The body of your message.
+Your Dotori account has been credited with the amount you 
+deposited with the ratio of 1PTS to 1KRW.
 
-@component('mail::button', ['url' => ''])
+
+{{-- @component('mail::button', ['url' => ''])
 Button Text
-@endcomponent
+@endcomponent --}}
 
-Thanks,<br>
+Thanks for choosing Dotori,<br>
 {{ config('app.name') }}
 @endcomponent

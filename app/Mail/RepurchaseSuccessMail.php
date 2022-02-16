@@ -28,6 +28,8 @@ class RepurchaseSuccessMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.repurchase_success');
+        return $this->markdown('emails.repurchase_success')
+            ->from(env('MAIL_FROM_ADDRESS'), "Dotori Investment Inc.")
+            ->subject("Package Repurchase Successful");
     }
 }

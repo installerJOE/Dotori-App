@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use App\Models\User;
 use App\Models\Rank;
 use App\Models\Account;
@@ -12,11 +13,14 @@ use App\Models\SubscribedUser;
 use App\Models\Transaction;
 use App\Models\Referral;
 use App\Models\Package;
+use App\Mail\WithdrawalSuccessMail;
+use App\Mail\DepositSuccessMail;
 
 
 
 class AdminController extends Controller
 {
+    // all functions of this class are restricted to only authenticated admin users
     public function __construct(){
         $this->middleware(['auth', 'verified', 'admin']);
     }
@@ -49,7 +53,10 @@ class AdminController extends Controller
         $deposit->save();
         $deposit->user->save();
         
-        //send dotori user an email of payment confirmation
+        //send dotori user an email of deposit confirmation
+        $notifyMail = new DepositSuccessMail();    
+        Mail::to($deposit->user->email)->send($notifyMail);       
+
         return redirect('/admin/deposits/requests')->with('success', "Deposit request has been validated successfully");
     }
 
@@ -76,6 +83,8 @@ class AdminController extends Controller
         $withdrawal->save();
         
         //send dotori user an email of withdrawal confirmation
+        $notifyMail = new WithdrawalSuccessMail();    
+        Mail::to($withdrawal->user->email, $withdrawal->user->name)->send($notifyMail); 
         return redirect('/admin/withdrawals/requests')->with('success', "Withdrawal request has been approved successfully");
     }
 

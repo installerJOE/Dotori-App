@@ -1,9 +1,7 @@
 @component('mail::message')
-# Withdrawal Request Received
+# Package Purchase Successful
 
-We have received your withdrawal request.
-Please be patient as we look into your
-request for confirmation and approval.
+Your package purchase is successful.
 
 {{-- @component('mail::button', ['url' => ''])
 Button Text

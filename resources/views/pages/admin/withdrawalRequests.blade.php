@@ -44,12 +44,20 @@
 								<td> {{$withdrawal->status}} </td>
 								<td> {{$withdrawal->updated_at}} </td>
 								<td> 
-									<button 
+									<input type="button" 
 										class="btn btn-light-blue-bg" 
-										onclick="showWithdrawalModal(`{{$withdrawal->id}}`, `{{$withdrawal->user->name}}`, 
-											`{{$withdrawal->amount}}`, `{{$withdrawal->bank_name}}`, `{{$withdrawal->account_name}}`, 
-											`{{$withdrawal->account_number}}`, `{{$withdrawal->status}}`, `{{$withdrawal->updated_at}}`)"
-									> View </button>
+										onclick="showWithdrawalModal(
+											`{{$withdrawal->id}}`, 
+											`{{$withdrawal->user->name}}`, 
+											`{{$withdrawal->amount}}`, 
+											`{{$withdrawal->bank_name}}`, 
+											`{{$withdrawal->account_name}}`, 
+											`{{$withdrawal->account_number}}`,
+											`{{$withdrawal->status}}`, 
+											`{{$withdrawal->updated_at}}`
+										)"
+										value="View"
+									/>
 								</td>
 							</tr>
 							@endforeach
@@ -70,7 +78,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="text-blue modal-title" id="request-withdrawal-label">
-						Deposit Request
+						Withdrawal Request
 					</h4>
 					<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
@@ -184,8 +192,8 @@
 			$modal.modal('show');
 		}	
 
-		function validateWithdraw()(){
-			var confirmVal = confirm("Are you sure that the account holder has made payment?");
+		function validateWithdraw(){
+			var confirmVal = confirm("Are you sure you have credited the bank account holder?");
 			if(confirmVal){
 				document.getElementById('form-validate-withdrawal').submit();
 			}

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\Models\Account;
 use App\Models\DeliveryAddress;
 use App\Models\Transaction;
@@ -14,6 +15,10 @@ use App\Models\Referral;
 use App\Models\Rank;
 use App\Models\SubscribedUser;
 use App\Jobs\NotifyRequestJob;
+use App\Mail\DepositRequestMail;
+use App\Mail\WithdrawalRequestMail;
+use App\Mail\PurchaseSuccessMail;
+use App\Mail\RepurchaseSuccessMail;
 
 class TransactionsController extends Controller
 {
@@ -75,6 +80,9 @@ class TransactionsController extends Controller
         $user->save();
 
         // Send email notification of withdrawal request
+        $notifyMail = new WithdrawalRequestMail();    
+        Mail::to(Auth::user()->email)->send($notifyMail);       
+
         return redirect('/withdrawal')->with('success', 'Your withdrawal request has been sent');
 
     }
@@ -123,6 +131,10 @@ class TransactionsController extends Controller
         $user = Auth::user();
         $user->available_points = $user->available_points - $request->input('total_amount');
         $user->save();
+
+        //send purchase success notification to user email
+        $notifyMail = new PurchaseSuccessMail();    
+        Mail::to(Auth::user()->email)->send($notifyMail);   
 
         return redirect('/packages/subscribed')->with('success', 'Package has been subscribed successfully.');
     }
@@ -173,6 +185,8 @@ class TransactionsController extends Controller
         $subscriber->save();  
 
         // Send notification on successful package repurchase
+        $notifyMail = new RepurchaseSuccessMail();    
+        Mail::to(Auth::user()->email)->send($notifyMail);   
 
         return back()->with('success', 'Package repurchase is successful.');
     }

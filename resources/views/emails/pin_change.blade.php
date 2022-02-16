@@ -1,12 +1,13 @@
 @component('mail::message')
-# Introduction
+# Your PIN was Changed Recently!
 
-The body of your message.
+Your PIN has been changed successfully. Please ensure
+your keep it secret and safe.
 
-@component('mail::button', ['url' => ''])
+{{-- @component('mail::button', ['url' => ''])
 Button Text
-@endcomponent
+@endcomponent --}}
 
-Thanks,<br>
+Thanks for choosing Dotori,<br>
 {{ config('app.name') }}
 @endcomponent
