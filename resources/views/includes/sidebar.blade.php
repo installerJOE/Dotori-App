@@ -40,60 +40,64 @@
                     </li>
 
                     <li class='sub-menu'>
-                        <a href="#">
-                            <i class="fas fa-fw fa-sitemap"></i> &nbsp;
-                            Organization    
+                        <a href="#!profile">
+                            <i class="fas fa-fw fa-cube"></i> &nbsp;
+                            My Packages
                         </a>
-                        <ul class="tab_menu" style="display:none;">
-                            <li class="tab_menu2">
-                                <a href="/referral">
-                                    Referrals
-                                </a>
-                            </li>
+                        <ul>
+                            <li class="tab_menu2"><a href="/packages/subscribed"> All Packages </a></li>
+                            <li class="tab_menu2"><a href="/packages/subscribe"> Subscribe Package </a></li>
                         </ul>
                     </li>
-                
+
                     <li class='sub-menu'>
-                        <a href="/purchase-package">
-                            <i class="fas fa-fw fa-cube"></i> &nbsp;
-                            Purchase
+                        <a href="/referral">
+                            <i class="fas fa-fw fa-sitemap"></i> &nbsp;
+                            Referrals
                         </a>
                     </li>
 
                     <li class='sub-menu'>
-                        <a href="/deposit">
+                        <a href="#!deposit">
                             <i class="fas fa-fw fa-money-check-alt"></i> &nbsp; 
-                            Deposit
+                            My Deposits
                         </a>
+                        <ul>
+                            <li class="tab_menu2"><a href="/deposit"> Request Deposit </a></li>
+                            <li class="tab_menu2"><a href="/deposits/history"> Deposit History </a></li>
+                        </ul>
                     </li>
 
                     <li class='sub-menu'>
-                        <a href="/withdrawal">
+                        <a href="#!withdrawal">
                             <i class="fas fa-fw fa-share-square"></i> &nbsp;
-                            Withdrawal
+                            Withdrawals
                         </a>
+                        <ul>
+                            <li class="tab_menu2"><a href="/withdrawal"> Request Withdrawal </a></li>
+                            <li class="tab_menu2"><a href="/withdrawals/history"> Withdrawal History </a></li>
+                        </ul>
                     </li>
 
                     <li class='sub-menu'>
-                        <a href="#">
+                        <a href="#!history">
                             <i class="fas fa-fw fa-history"></i> &nbsp;
                             History
                         </a>
-                        <ul class="tab_menu" style="display:none;">
+                        <ul>
                             <li class="tab_menu2"><a href="/daily-history"> Daily History </a></li>
-                            <li class="tab_menu2"><a href="/referral-history"> Referral History </a></li>	
                         </ul>
                     </li>
 
                     <li class='sub-menu'>
-                        <a href="#">
+                        <a href="#!profile">
                             <i class="fas fa-fw fa-cogs"></i> &nbsp;
                             Settings
                         </a>
                         <ul>
-                            <li><a href="/settings/profile"> Profile Settings </a></li>
-                            <li><a href="/settings/password"> Password Settings </a></li>
-                            <li><a href="/settings/pin"> PIN Settings </a></li>
+                            <li class="tab_menu2"><a href="/settings/profile"> Profile Settings </a></li>
+                            <li class="tab_menu2"><a href="/settings/password"> Password Settings </a></li>
+                            <li class="tab_menu2"><a href="/settings/pin"> PIN Settings </a></li>
                         </ul>
                     </li>
 
@@ -106,7 +110,7 @@
 
                     {{-- Logout button --}}
                     <li class='sub-menu'>
-                        <a href="/">
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <i class="fas fa-fw fa-sign-out-alt"></i> &nbsp;
                             Logout
                         </a>

@@ -38,11 +38,11 @@
 					<div class="withdrawal_input_box">
 						<table style="width:100%;">
 							<tbody>
-								<tr>
-									<td style="font-weight:bold"> Available Amount (KRW)</td>
+								<tr style="font-weight:bold">
+									<td> Available Amount (KRW)</td>
 									<td>
 										{{Auth::user()->available_points}}
-										<input type="hidden" value="290" id="available_amount"/>
+										<input type="hidden" value="{{Auth::user()->available_points}}" id="available_amount"/>
 									</td>
 								</tr>
 							</tbody>
@@ -172,16 +172,16 @@
 	</div>
 
 	<script>
-		function calc_fee(values){	
+		function calc_fee(value){	
 			// var amount_to_withdraw = document.getElementById('withdrawal_amount').value;
 			var withdrawal_fee = document.getElementById('withdrawal_fee');
 			var total_amount = document.getElementById('total_amount');	
 			var balance_ok = checkBalance();
 			if(balance_ok){
 				document.getElementById('insufficientErrorMessage').innerHTML = ""
-				var fee = Number(values) * Number(0.5) / 100;
+				var fee = Number(value) * Number(0.5) / 100;
 				withdrawal_fee.value = fee;
-				total_amount.value = Number(values) - Number(fee);
+				total_amount.value = Number(value) - Number(fee);
 				document.getElementById('form_withdraw_fee').value = fee;
 				document.getElementById('form_total_amount').value = total_amount.value;
 			}

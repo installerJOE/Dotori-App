@@ -13,6 +13,7 @@ use App\Models\Package;
 use App\Models\Referral;
 use App\Models\Rank;
 use App\Models\SubscribedUser;
+use App\Jobs\NotifyRequestJob;
 
 class TransactionsController extends Controller
 {
@@ -40,6 +41,8 @@ class TransactionsController extends Controller
         $transaction->save();
 
         //send notification of deposit request
+        dispatch(new NotifyRequestJob("deposit_request"));
+
         return redirect('/deposit')->with('success', 'Your deposit request has been sent');
     }
 
@@ -101,29 +104,8 @@ class TransactionsController extends Controller
         }        
         
         // check if daily purchase limit of 11 million won is exceeded
-        $yesterday_midnight = strtotime('today midnight');
-        $today_midnight = strtotime('tomorrow midnight');
-        $timestamp = time();
-
-        $subscribers = SubscribedUser::where("user_id", Auth::user()->id)->get();
-        $subscribed_amt = 0;
-        foreach($subscribers as $subscriber){
-            $transaction_time = strtotime($subscriber->created_at);
-            if($transaction_time > $yesterday_midnight && $transaction_time < $today_midnight){
-                $price = $subscriber->package->staking_amount;
-                $qty = $subscriber->quantity;
-                $subscribed_amt += $price * $qty;
-            }            
-        }
-        if($subscribed_amt >= 11000000){
-            return back()->with('error', 'You have exceeded your daily limit of purchase');
-        }
-        $allowed_amount = 11000000 - $subscribed_amt;
-        if($request->input('total_amount') > $allowed_amount){
-            return back()->with('error', 'You can only subscribe ' . $allowed_amount . 'KRW worth of package for today.');
-        }
-        
-        $time = date($timestamp); //UTC or GMT time
+        $this->checkDailySubStatus($request->input('total_amount'));        
+        $time = date($timestamp); 
 
         //create new instance of subscribed user
         $subscriber = new SubscribedUser;
@@ -140,6 +122,58 @@ class TransactionsController extends Controller
         $user->save();
 
         return redirect('/packages/subscribed')->with('success', 'Package has been subscribed successfully.');
+    }
+
+    private function getDaySubscriptionAmount(){
+        $yesterday_midnight = strtotime('today midnight');
+        $today_midnight = strtotime('tomorrow midnight');
+        $timestamp = time(); //UTC or GMT time
+
+        $subscribers = SubscribedUser::where("user_id", Auth::user()->id)->get();
+        $subscribed_amt = 0;
+        foreach($subscribers as $subscriber){
+            $transaction_time = strtotime($subscriber->created_at);
+            if($transaction_time > $yesterday_midnight && $transaction_time < $today_midnight){
+                $price = $subscriber->package->staking_amount;
+                $qty = $subscriber->quantity;
+                $subscribed_amt += $price * $qty;
+            }            
+        }
+        return $subscribed_amt;
+    }
+
+    private function checkDailySubStatus($purchase_amount){
+        $subscribed_amt = $this->getDaySubscriptionAmount();
+        if($subscribed_amt >= 11000000){
+            return back()->with('error', 'You have exceeded your daily limit of purchase');
+        }
+        $allowed_amount = 11000000 - $subscribed_amt;
+        if($purchase_amount > $allowed_amount){
+            return back()->with('error', 'You can only subscribe ' . $allowed_amount . 'KRW worth of package for today.');
+        }
+    }
+
+
+    public function repurchasePackage(Request $request){
+        if(!Hash::check($request->input('pin'), Auth::user()->pin)){
+            return back()->with('error', 'Oops, your PIN is incorrect. Try again! ');
+        }
+        $subscriber = SubscribedUser::where('id', $request->input('package_subscription_id'))->first();
+        if($subscriber === null || $subscriber->percent_paid < 200){
+            return back()->with('error', 'Your earning cycle is not completed yet.');
+        }
+        $subscriber->repurchase++;
+        $subscriber->percent_paid = 0;
+        $subscriber->status = "active";
+        $subscriber->save();  
+
+        // Send notification on successful package repurchase
+
+        return back()->with('success', 'Package repurchase is successful.');
+    }
+
+    public function cancelPackageSub(Request $request){
+        return $request;
     }
 
 }

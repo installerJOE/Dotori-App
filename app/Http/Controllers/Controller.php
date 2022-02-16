@@ -9,7 +9,10 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Jobs\SendTransactionNotification;
+
 
 class Controller extends BaseController
 {

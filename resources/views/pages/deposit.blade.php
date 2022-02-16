@@ -12,16 +12,16 @@
 		</div>
 	</div><!--sub_top end-->
 	<div class="section_right_inner"><!--section_right_inner-->
-		<div class="col-md-12 col-sm-12 col-12 mb-4">
+		<div class="col-md-12 col-sm-12 col-12">
 			<div class="ctrl-btn col-md-3 col-sm-6 col-12"> 
 				<a href="/deposits/history"> 
 					<button class="btn btn-purple-bd"> Deposit history </button>
 				</a>
 			</div>
-		</div><br/>
+		</div>
 
 		<!--withdrawal_left-->
-		<div class="withdrawal_left">
+		<div class="withdrawal_left col-md-12 col-sm-12 col-12 mt-4">
 			<!--form01-->
 			<div class="form01">
 				<p class="title">

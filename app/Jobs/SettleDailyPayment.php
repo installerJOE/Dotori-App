@@ -33,7 +33,7 @@ class SettleDailyPayment implements ShouldQueue
     public function handle()
     {
         foreach($this->subscribers as $subscriber){
-            if($subscriber->percent_paid < 200){
+            if($subscriber->percent_paid < 200 && $subscriber->status === "active"){
                 $percent_yield = $subscriber->rank->daily_percent_yield * $subscriber->quantity;
                 $staking_amount = $subscriber->package->staking_amount;
                 $points = $subscriber->package->reward;

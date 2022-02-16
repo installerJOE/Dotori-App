@@ -32,8 +32,7 @@ class Kernel extends ConsoleKernel
             $subscribers = SubscribedUser::all();
             $schedule->job(new SettleDailyPayment($subscribers))->dailyAt('23:45');
         }
-
-        $schedule->command('queue:work')->hourly();
+        $schedule->command('queue:work')->everyTenMinutes();
     }
 
     /**

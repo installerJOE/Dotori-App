@@ -1225,7 +1225,6 @@ select::-ms-expand {
     font-size: 14px;
     border-bottom: 1px #e4e4e4 solid;
     padding-left: 10px;
-    color: #fff;
 }
 .withdrawal_input_box tr td:nth-child(1) {
     width: 35%;

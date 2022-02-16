@@ -12,7 +12,7 @@ use App\Models\SubscribedUser;
 use App\Models\Transaction;
 use App\Models\Referral;
 use App\Models\Package;
-use App\Jobs\SettleDailyPayment;
+use App\Jobs\NotifyRequestJob;
 
 
 
@@ -44,6 +44,8 @@ class PagesController extends Controller
     }
 
     public function deposit(){
+        //send notification of deposit request
+        // dispatch(new NotifyRequestJob("deposit_request"));
         return view('pages.deposit');
     }
     public function depositHistory(){

@@ -55,6 +55,8 @@ Route::post('/settings/pin',  [App\Http\Controllers\SettingsController::class, '
 Route::post('/transactions/deposit',  [App\Http\Controllers\TransactionsController::class, 'deposit']);
 Route::post('/transactions/withdraw',  [App\Http\Controllers\TransactionsController::class, 'withdraw']);
 Route::post('/package/purchase',  [App\Http\Controllers\TransactionsController::class, 'purchasePackage']);
+Route::post('/package/repurchase',  [App\Http\Controllers\TransactionsController::class, 'repurchasePackage']);
+Route::post('/package/cancel-subscription',  [App\Http\Controllers\TransactionsController::class, 'cancelPackageSub']);
 
 
 /*
