@@ -61,7 +61,7 @@
 
                                     <div class="modal-body products">
                                         <div class="col-md-8 col-sm-8 col-8">
-                                            <img src="{{('products/' . $product->filename)}}" width="100%" height="auto"/>
+                                            <img src="{{asset('products/' . $product->filename)}}" width="100%" height="auto"/>
                                         </div>
                                         <div class="col-md-4 col-sm-4 col-4">                                               
                                             <p class="modal-package-header header2 grey-bg mb-2 mt-3"> Product Status </p>
