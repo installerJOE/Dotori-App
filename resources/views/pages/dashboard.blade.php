@@ -96,7 +96,7 @@
 				</div><br/>
 				<p class="referral-link">
 					<span id="linkBar"> 
-						{{"http://127.0.0.1:8000/register?refer=" . Auth::user()->memberId}}
+						{{route('register')"?refer=" . Auth::user()->memberId}}
 					</span>
 				</p>
 				<p>
