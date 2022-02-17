@@ -16,8 +16,8 @@ class CreatePackagesTable extends Migration
         Schema::create('packages', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->decimal('staking_amount', 15,15);
-            $table->decimal('reward',15,15);
+            $table->integer('staking_amount');
+            $table->integer('reward');
             $table->timestamps();
         });
     }
