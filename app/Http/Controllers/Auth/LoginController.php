@@ -47,4 +47,22 @@ class LoginController extends Controller
         $this->performLogout($request);
         return redirect('/login');
     }
+
+       protected function validateLogin(Request $request)
+    {
+        $request->validate([
+            'phone' => 'required|string',
+            'password' => 'required|string',
+        ]);
+    }
+
+    protected function credentials(Request $request)
+    {
+        return array_merge($request->only('phone', 'password'));
+    }
+
+    public function username()
+    {
+        return 'phone';
+    }
 }
