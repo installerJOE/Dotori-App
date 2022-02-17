@@ -34,7 +34,7 @@
                 @if($products->count() > 0)
                     @foreach($products as $product)
                         @if($product->is_active)
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-12 products">
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-6 products">
                                 <div>
                                     <img src="{{URL::asset('/storage/images/products/' . $product->filename)}}" width="100%" height="auto"/>
                                     <p class="product-name mt-1">{{$product->name}}</p>

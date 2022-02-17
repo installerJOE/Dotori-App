@@ -52,6 +52,21 @@
             padding:0px 20px;
             padding-top: 1.4em;
         }
+        img {
+            display: block;
+            max-width: 100%;
+			max-height: auto;
+        }
+        .preview {
+            overflow: hidden;
+            width: 160px; 
+            height: 160px;
+            margin: 10px;
+            border: 1px solid red;
+        }
+        .modal-lg{
+            max-width: 800px !important;
+        }
     </style>
 </head>
 <body>

@@ -41,7 +41,7 @@ Route::get('/products/order-history',  [App\Http\Controllers\PagesController::cl
 
 Route::get('/announcement',  [App\Http\Controllers\PagesController::class, 'announcement']);
 Route::get('/referral',  [App\Http\Controllers\PagesController::class, 'referral']);
-Route::get('/daily-history',  [App\Http\Controllers\PagesController::class, 'dailyHistory']);
+// Route::get('/daily-history',  [App\Http\Controllers\PagesController::class, 'dailyHistory']);
 
 
 // Get Routes for User settings
@@ -81,6 +81,14 @@ Route::get('/admin/packages',  [App\Http\Controllers\AdminController::class, 'pa
 
 Route::get('/admin/shopping-products',  [App\Http\Controllers\AdminController::class, 'shoppingProducts']);
 Route::get('/admin/shopping/history',  [App\Http\Controllers\AdminController::class, 'shoppingHistory']);
+Route::get('/admin/announcements',  [App\Http\Controllers\AnnouncementController::class, 'index']);
+Route::get('/admin/announcements/{slug}',  [App\Http\Controllers\AnnouncementController::class, 'show']);
+Route::get('/admin/announcement/create',  [App\Http\Controllers\AnnouncementController::class, 'create']);
+Route::get('/admin/announcements/{slug}/edit',  [App\Http\Controllers\AnnouncementController::class, 'show']);
+
+Route::post('/admin/announcement/store',  [App\Http\Controllers\AnnouncementController::class, 'store']);
+Route::post('/admin/announcements/{id}/update',  [App\Http\Controllers\AnnouncementController::class, 'store']);
+Route::post('/admin/announcements/{id}/delete',  [App\Http\Controllers\AnnouncementController::class, 'destroy']);
 
 Route::post('/admin/packages/store',  [App\Http\Controllers\AdminController::class, 'storePackage']);
 Route::post('/admin/packages/update/{id}',  [App\Http\Controllers\AdminController::class, 'updatePackage']);
