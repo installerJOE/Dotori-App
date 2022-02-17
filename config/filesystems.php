@@ -70,6 +70,7 @@ return [
         public_path('storage') => storage_path('app/public'),
         public_path('products') => storage_path('app/products'),
         public_path('announcements') => storage_path('app/announcements'),
+        public_path('packages') => storage_path('app/packages'),
         // all new paths needed to be displayed on the frontend must be linked here before using php artisan storag:link
     ],
 

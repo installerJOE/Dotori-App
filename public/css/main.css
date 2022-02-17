@@ -168,3 +168,6 @@ input:disabled {
 .li-underlined{
     border-bottom: 1px solid #759bfa;
 }
+.package_img{
+    border-radius: 50%;
+}

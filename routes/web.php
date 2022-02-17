@@ -78,8 +78,10 @@ Route::get('/admin/withdrawals',  [App\Http\Controllers\AdminController::class, 
 Route::get('/admin/withdrawals/requests',  [App\Http\Controllers\AdminController::class, 'withdrawalRequests']);
 Route::post('/admin/withdrawal/validate',  [App\Http\Controllers\AdminController::class, 'validateWithdrawalRequest']);
 Route::get('/admin/packages',  [App\Http\Controllers\AdminController::class, 'packages']);
+Route::get('/admin/packages/{id}',  [App\Http\Controllers\AdminController::class, 'showPackage']);
 
 Route::get('/admin/shopping-products',  [App\Http\Controllers\AdminController::class, 'shoppingProducts']);
+Route::get('/admin/shopping-products/{id}',  [App\Http\Controllers\AdminController::class, 'showProduct']);
 Route::get('/admin/shopping/history',  [App\Http\Controllers\AdminController::class, 'shoppingHistory']);
 Route::get('/admin/announcements',  [App\Http\Controllers\AnnouncementController::class, 'index']);
 Route::get('/admin/announcements/{slug}',  [App\Http\Controllers\AnnouncementController::class, 'show']);

@@ -114,84 +114,13 @@
                                         </span>
                                     @endif
                                 </div>
-                                <button class="btn btn-light-blue-bg" data-bs-toggle="modal" data-bs-target="#edit-package-modal-{{$product->id}}">
-                                    View product
-                                </button>
+                                <a href="/admin/shopping-products/{{$product->id}}">
+                                    <button class="btn btn-light-blue-bg">
+                                        View product
+                                    </button>
+                                </a>
                             </div>
                         </div>
-                        
-                        <!-- Modal containing a form to edit package -->
-                        <div class="modal right fade" id="edit-package-modal-{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="edit-package-label-{{$product->id}}">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="text-blue modal-title" id="create-package-label-{{$product->id}}">
-                                            Edit Package
-                                        </h4>
-                                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-
-                                    <div class="modal-body">
-                                        <form action="/admin/shopping-products/{{$product->id}}/update" method="POST">
-                                            @csrf
-
-                                            <div class="form-group">
-                                                <span> 
-                                                    Product Name <span class="text-red">*</span> 
-                                                </span>
-                                                <input type="text" 
-                                                    class="form-control" 
-                                                    name="product_name" 
-                                                    value="{{$product->name}}" 
-                                                    required
-                                                />
-                                            </div>
-            
-                                            <div class="form-group">
-                                                <span> 
-                                                    Product Description <em class="text-grey">(Optional)</em> 
-                                                </span>
-                                                <textarea
-                                                    class="form-control" 
-                                                    name="product_description" 
-                                                    rows="5"
-                                                >{{$product->description}}</textarea>
-                                            </div>
-            
-                                            <div class="form-group">
-                                                <span> 
-                                                    Price (SPOINT) <span class="text-red">*</span> 
-                                                </span>
-                                                <input type="number" 
-                                                    class="form-control" 
-                                                    name="product_price" 
-                                                    value="{{$product->price}}" 
-                                                    required
-                                                />
-                                            </div>
-                                            <button type="submit" class="btn btn-purple-bg">
-                                                Update product
-                                            </button> &nbsp;
-                                            @if($product->is_active)
-                                                <button type="button" class="btn btn-grey-bg" onclick="updateProductStatus('disable')">
-                                                    Disable product
-                                                </button>
-                                            @else
-                                                <button type="button" class="btn btn-purple-bd" onclick="updateProductStatus('enable')">
-                                                    Enable product
-                                                </button>
-                                            @endif
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <form action="/admin/shopping-products/{{$product->id}}/update-status" method="POST" id="update-product-status-form">
-                            @csrf
-                            <input type="hidden" name="status-action" id="status-action"/>
-                        </form>
                     @endforeach
                 @else
                     <h2>
@@ -201,14 +130,4 @@
             </div>
 		</div>
 	</div><!--section_right_inner end-->
-
-    <script>
-        function updateProductStatus(statusAction){
-            var confirmDisable = confirm(`Are your sure you want to ${statusAction} this product?`);
-            if(confirmDisable){
-                document.getElementById('status-action').value = statusAction;
-                document.getElementById('update-product-status-form').submit();
-            }
-        }
-    </script>
 @endsection

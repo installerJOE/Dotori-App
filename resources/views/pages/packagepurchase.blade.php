@@ -28,7 +28,7 @@
 				@foreach($packages as $package)
 					<div class="buy_package col-lg-3 col-md-4 col-sm-6 col-12 {{'buy_package0' . $package->id}}" 
 						onclick="select_package('{{$package->id}}', '{{$package->staking_amount}}', `{{$purchase_active}}`)">
-						<img src="{{URL::asset('/img/package0' . $package->id . '.png')}}" class="package_img"/>
+						<img src="{{URL::asset('packages/' . $package->filename)}}" class="package_img"/>
 						<p class="text-white subheader mt-3">{{$package->name}}</p>
 						<h6 class="text-white">Reward - {{$package->reward}} PTS</h6>
 						<div class="total_sum {{'total_sum0' . $package->id}}">

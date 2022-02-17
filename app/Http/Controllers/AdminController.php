@@ -113,8 +113,31 @@ class AdminController extends Controller
         $package->name = $request->input('package_name');
         $package->staking_amount = $request->input("staking_amount");
         $package->reward = $request->input("reward_pts");
+        
+        if($request->input('base64image') !== null){
+            $folderPath = public_path('packages/');
+            $image_parts = explode(';base64,', $request->input('base64image'));
+            $image_types_aux = explode('image/', $image_parts[0]);
+            $image_type = $image_types_aux[1];
+            $image_base64 = base64_decode($image_parts[1]);
+            $filename =  $this->slug_generator($request->input('package_name')) . '-' . time() . "." . $image_type;
+            $file = $folderPath . $filename;
+            
+            $path = str_replace('\\', '/',  $file);
+            
+            //put image in the storage location 
+            Storage::put('packages/'. $filename, $image_base64);
+            
+            //save image name in database
+            $package->filename = $filename;
+        }              
         $package->save();
         return redirect("/admin/packages")->with("success", "Package has been created successfully.");
+    }
+
+    public function showPackage($id){
+        $package = Package::findOrFail($id);
+        return view('pages.admin.editPackage')->with('package', $package);
     }
 
     // Update information on a package in the database
@@ -129,6 +152,32 @@ class AdminController extends Controller
         $package->name = $request->input('package_name');
         $package->staking_amount = $request->input("staking_amount");
         $package->reward = $request->input("reward_pts");
+        
+        if($request->input('base64image') !== null){
+            $folderPath = public_path('packages/');
+
+            //delete the image with the present path
+            $old_path = $folderPath . $package->filename;
+            if(file_exists($old_path) && $package->filename !== "noimage.png"){
+                unlink($old_path);
+            }
+
+            $image_parts = explode(';base64,', $request->input('base64image'));
+            $image_types_aux = explode('image/', $image_parts[0]);
+            $image_type = $image_types_aux[1];
+            $image_base64 = base64_decode($image_parts[1]);
+            $filename =  $this->slug_generator($request->input('package_name')) . '-' . time() . "." . $image_type;
+            $file = $folderPath . $filename;
+            
+            $path = str_replace('\\', '/',  $file);
+            
+            //put image in the storage location 
+            Storage::put('packages/'. $filename, $image_base64);
+            
+            //save image name in database
+            $package->filename = $filename;
+        }              
+
         $package->save();
 
         return redirect("/admin/packages")->with("success", "Package has been updated successfully.");
@@ -171,7 +220,7 @@ class AdminController extends Controller
             $filename = $this->slug_generator($request->input('product_name')) . "-" . time() . "." . $image_type;
             $file = $folderPath . $filename;
             $path = str_replace('\\', '/',  $file);
-            // file_put_contents($path, $image_base64);
+            //store image in folder
             Storage::put('products/'.$filename, $image_base64);
         }
         else{
@@ -182,6 +231,11 @@ class AdminController extends Controller
         $product->save();
 
         return redirect("/admin/shopping-products")->with("success", "Product has been created successfully.");
+    }
+
+    public function showProduct($id){
+        $product = Product::findOrFail($id);
+        return view('pages.admin.editProduct')->with('product', $product);
     }
 
     public function updateProduct(Request $request, $id){
@@ -196,7 +250,13 @@ class AdminController extends Controller
         $product->price = $request->input("product_price");
                 
         if($request->input('base64image') !== null && $request->input('base64image') != '0'){
-            $folderPath = public_path('/storage/images/products/');
+            $folderPath = public_path('products/');
+            $old_path = $folderPath . $product->filename;
+            
+            if(file_exists($old_path)){
+                unlink($old_path);
+            }
+
             $image_parts = explode(';base64,', $request->input('base64image'));
             $image_types_aux = explode('image/', $image_parts[0]);
             $image_type = $image_types_aux[1];
@@ -204,9 +264,10 @@ class AdminController extends Controller
             $filename = $this->slug_generator($request->input('product_name')) . "-" . time() . "." . $image_type;
             $file = $folderPath . $filename;
             $path = str_replace('\\', '/',  $file);
-            file_put_contents($path, $image_base64);
-            // $product->filename = $filename;
+            
+            //store image in folder
             Storage::put('products/'.$filename, $image_base64);
+            $product->filename = $filename;
         }
         
         $product->save();
