@@ -100,7 +100,7 @@
 					</span>
 				</p>
 				<p>
-					<button class="btn btn-purple-bd"> Copy link </button>
+					<button class="btn btn-purple-bd" onclick="copyToClipBoard()"> Copy link </button>
 				</p>
 			</div>
 		</div>
