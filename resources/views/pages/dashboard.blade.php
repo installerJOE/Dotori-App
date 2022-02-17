@@ -60,7 +60,7 @@
 
 		<!--main_section02-->
 		<div class="main_section02">
-			<div class="bonus_div">
+			{{-- <div class="bonus_div">
 				<p class="title">
 					<i class="fas fa-chart-pie"></i>
 					Subscription Chart
@@ -85,7 +85,7 @@
 						</li>
 					</ul>
 				</div>
-			</div>
+			</div> --}}
 
 			<div class="bonus_div referral-block">
 				<div class="title">
