@@ -39,7 +39,7 @@
 				<p class="s_title01"></p>
 				<div class="total_sum total_sum01">
 		
-					<p> {{number_format($rank->title ?? 0)}} </p>
+					<p> {{$rank->title ?? 0}} </p>
 
 				</div>
 			</div>					
