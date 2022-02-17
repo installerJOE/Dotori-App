@@ -88,9 +88,9 @@
 						data-bs-toggle="modal" data-bs-target="#edit-package-modal-{{$package->id}}">
                         <img src="{{URL::asset('/img/package0' . $package->id . '.png')}}" class="package_img"/>
                         <p class="text-white subheader mt-3">{{$package->name}}</p>
-                        <h6 class="text-white">Reward - {{$package->reward}} PTS</h6>
+                        <h6 class="text-white">Reward - {{number_format($package->reward)}} PTS</h6>
                         <div class="total_sum {{'total_sum0' . $package->id}}">
-                            {{$package->staking_amount}} KRW
+                            {{number_format($package->staking_amount)}} KRW
                         </div>
                     </div>
 					
