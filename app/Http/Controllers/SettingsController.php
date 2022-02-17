@@ -35,6 +35,11 @@ class SettingsController extends Controller
         //update or create new bank account details
         $account = Account::where('user_id', Auth::user()->id)->first();
         if($account === null){
+            $this->validate($request, [
+                "bank_name" => "required",
+                "account_number" => "required",
+                "account_name" => "required",
+            ]);
             $account = new Account;
         }
         $account->bank_name = $request->input('bank_name');

@@ -27,7 +27,8 @@
                                 Email Address
                             </label>
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" 
-                                name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus disabled>
+                                value="{{ $email ?? old('email') }}" autocomplete="email" autofocus disabled>
+                            <input type="hidden" name="email"  value="{{ $email ?? old('email') }}" required autocomplete="email">
                         </div>
 
                         <div class="index_input">

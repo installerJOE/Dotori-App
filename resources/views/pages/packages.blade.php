@@ -1,16 +1,9 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> Purchase Package | Dotori </title>
+	<title> My Packages | Dotori </title>
 	<style>
-		.modal-package-header{
-			padding: 10px;
-		}
-		.modal-package-header ~ h3{
-			margin-bottom: 0.5em;
-			margin-top:10px;
-			margin-left:10px
-		}
+		
 	</style>
 @endsection
 
@@ -78,7 +71,7 @@
 							@endforeach
 						@else
 							<tr>
-								<td colspan="3"> No Package has been subscribed to yet. </td>
+								<td colspan="6"> No Package has been subscribed to yet. </td>
 							</tr>
 						@endif
 

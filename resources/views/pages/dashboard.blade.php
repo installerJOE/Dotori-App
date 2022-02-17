@@ -28,8 +28,8 @@
 		<!--main_section01--> 
 		<div class="main_section01">       
 			<div class="main_balance_box main_balance_box02">
-				<p class="title01"> My Earnings (PTS) </p>
-				<p class="s_title01"></p>
+				<p class="title01 mb-2"> My Earnings </p>
+				<p class="s_title01">(SPOINT) &nbsp;</p>
 				<div class="total_sum total_sum02">
 					<p> {{Auth::user()->earnings}} </p>
 				</div>
@@ -38,12 +38,12 @@
 				<p class="title01"> My Level</p>
 				<p class="s_title01"></p>
 				<div class="total_sum total_sum01">
-					<p> {{$rank->title ?? 0}} </p>
+					<p> {{$rank->title}} </p>
 				</div>
 			</div>					
 			<div class="main_balance_box main_balance_box04">
-				<p class="title01"> My Balance (PTS) </p>
-				<p class="s_title01">&nbsp;</p>
+				<p class="title01 mb-2"> My Balance </p>
+				<p class="s_title01">(SPOINT) &nbsp;</p>
 				<div class="total_sum total_sum04">
 					<p> {{Auth::user()->available_points}} </p>
 				</div>
@@ -110,7 +110,7 @@
 			<div class="history_box01 mb-4">
 				<p class="title">
 					<i class="fas fa-gift"></i> 
-					Bonus History	
+					Active Subscriptions
 				</p>					
 
 				<!--Daily history-->
@@ -118,20 +118,35 @@
 					<table>
 						<tr>
 							<th> Package </th>
-							<th> Amount (PTS) </th>
-							<th> Countdown </th>
+							<th> Staking Amount (KRW) </th>
+							<th> Rewards/Profit (SPOINT) </th>
 							<th> Status </th>
 						</tr>
-						<tr>
-							<td colspan="4" style="font-size:21px; padding: 10px;"> No active package yet </td>
-						</tr>
+						@if(Auth::user()->subscribed_users->count() > 0)
+							@foreach(Auth::user()->subscribed_users as $subscriber)
+								@if($subscriber->status === "active")
+									<tr>
+										<td>{{$subscriber->package->name}}</td>
+										<td>{{$subscriber->package->staking_amount * $subscriber->quantity}}</td>
+										<td> 
+											{{(($subscriber->percent_paid + (200*$subscriber->repurchase))/100) * $subscriber->quantity * $subscriber->package->staking_amount}}
+										</td>
+										<td>{{$subscriber->status}}</td>
+									</tr>	
+								@endif
+							@endforeach
+						@else
+							<tr>
+								<td colspan="4" style="font-size:21px; padding: 10px;"> You have no active subscription yet. </td>
+							</tr>
+						@endif
 					</table>
 				</div>
 				<!--Daily history end-->
 			</div>
 			<!--history_box01 end-->
 
-			<!--history_box02-->
+			{{-- <!--history_box02-->
 			<div class="col-md-12 col-sm-12 col-12 history_box02">	
 				<p class="title">
 					<i class="fas fa-history"></i>
@@ -150,7 +165,7 @@
 					</table>
 				</div>
 			</div>
-			<!--history_box02 end-->
+			<!--history_box02 end--> --}}
 		</div>
 		<!--main_section03 end-->
 	</div><!--section_right inner end-->

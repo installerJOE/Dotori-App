@@ -35,6 +35,9 @@ Route::get('/withdrawal',  [App\Http\Controllers\PagesController::class, 'withdr
 Route::get('/withdrawals/history',  [App\Http\Controllers\PagesController::class, 'withdrawalHistory']);
 Route::get('/packages/subscribe',  [App\Http\Controllers\PagesController::class, 'purchasePackage']);
 Route::get('/packages/subscribed',  [App\Http\Controllers\PagesController::class, 'subscribedPackages']);
+Route::get('/products/shop',  [App\Http\Controllers\PagesController::class, 'productShop']);
+Route::get('/products/{id}/purchase',  [App\Http\Controllers\PagesController::class, 'purchaseProduct']);
+Route::get('/products/order-history',  [App\Http\Controllers\PagesController::class, 'orderHistory']);
 
 Route::get('/announcement',  [App\Http\Controllers\PagesController::class, 'announcement']);
 Route::get('/referral',  [App\Http\Controllers\PagesController::class, 'referral']);
@@ -57,6 +60,7 @@ Route::post('/transactions/withdraw',  [App\Http\Controllers\TransactionsControl
 Route::post('/package/purchase',  [App\Http\Controllers\TransactionsController::class, 'purchasePackage']);
 Route::post('/package/repurchase',  [App\Http\Controllers\TransactionsController::class, 'repurchasePackage']);
 Route::post('/package/cancel-subscription',  [App\Http\Controllers\TransactionsController::class, 'cancelPackageSub']);
+Route::post('/products/purchase',  [App\Http\Controllers\TransactionsController::class, 'purchaseProduct']);
 
 
 /*
@@ -75,7 +79,14 @@ Route::get('/admin/withdrawals/requests',  [App\Http\Controllers\AdminController
 Route::post('/admin/withdrawal/validate',  [App\Http\Controllers\AdminController::class, 'validateWithdrawalRequest']);
 Route::get('/admin/packages',  [App\Http\Controllers\AdminController::class, 'packages']);
 
+Route::get('/admin/shopping-products',  [App\Http\Controllers\AdminController::class, 'shoppingProducts']);
+Route::get('/admin/shopping/history',  [App\Http\Controllers\AdminController::class, 'shoppingHistory']);
+
 Route::post('/admin/packages/store',  [App\Http\Controllers\AdminController::class, 'storePackage']);
 Route::post('/admin/packages/update/{id}',  [App\Http\Controllers\AdminController::class, 'updatePackage']);
+
+Route::post('/admin/shopping-product',  [App\Http\Controllers\AdminController::class, 'storeProduct']);
+Route::post('/admin/shopping-products/{id}/update',  [App\Http\Controllers\AdminController::class, 'updateProduct']);
+Route::post('/admin/shopping-products/{id}/update-status',  [App\Http\Controllers\AdminController::class, 'updateProductStatus']);
 
 Route::get('/admin/subscribers',  [App\Http\Controllers\AdminController::class, 'subscribers']);

@@ -770,7 +770,7 @@ input[type="button"]:hover, input[type="submit"]:hover{
 }
 .main_balance_box .s_title01 {
     font-size: 16px;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.85);
     font-weight: 100;
     line-height: 1;
     margin-top: 3px;
@@ -1110,7 +1110,7 @@ input[type="button"]:hover, input[type="submit"]:hover{
     background: #f3f5f6;
     padding:15px 10px;
     line-height: 1.4em;
-    font-size: 16px;
+    font-size: 14px;
     color: #44068a;
     font-weight: 700;
     text-align: center;
@@ -1119,7 +1119,7 @@ input[type="button"]:hover, input[type="submit"]:hover{
 .deposit_right .history_table table tr td {
     height: 45px;
     line-height: 1.4em;
-    font-size: 16px;
+    font-size: 14px;
     color: #333333;
     font-weight: 400;
     padding: 15px 0px;

@@ -13,6 +13,8 @@ use App\Models\SubscribedUser;
 use App\Models\Transaction;
 use App\Models\Referral;
 use App\Models\Package;
+use App\Models\Product;
+use App\Models\Order;
 use App\Mail\WithdrawalSuccessMail;
 use App\Mail\DepositSuccessMail;
 
@@ -102,7 +104,7 @@ class AdminController extends Controller
             "reward_pts" => "required",
         ]);
 
-        $package = Package::where('name', $request->input('required'))->first();
+        $package = Package::where('name', $request->input('package_name'))->first();
         if($package !== null){
             return back()->with("error", "Ooops! This package already exists.");
         }
@@ -135,5 +137,89 @@ class AdminController extends Controller
     public function subscribers(){
         $subscribers = SubscribedUser::all();
         return view('pages.admin.subscribers')->with('subscribers', $subscribers);
+    }
+
+
+    public function shoppingProducts(){
+        $products = Product::all();
+        return view('pages.admin.products')->with('products', $products);
+    }
+
+    public function storeProduct(Request $request){
+        $this->validate($request, [
+            "product_price" => "required",
+            "product_name" => "required",
+        ]);
+        
+        $product = Product::where('name', $request->input('product_name'))->first();
+        if($product !== null){
+            return back()->with("error", "Ooops! This product already exists.");
+        }
+
+        $product = new Product;
+        $product->name = $request->input('product_name');
+        $product->description = $request->input('product_description');
+        $product->price = $request->input("product_price");
+                
+        if($request->input('base64image') !== null && $request->input('base64image') != '0'){
+            $folderPath = public_path('/storage/images/products/');
+            $image_parts = explode(';base64,', $request->input('base64image'));
+            $image_types_aux = explode('image/', $image_parts[0]);
+            $image_type = $image_types_aux[1];
+            $image_base64 = base64_decode($image_parts[1]);
+            $filename = $this->slug_generator($request->input('product_name')) . "-" . time() . "." . $image_type;
+            $file = $folderPath . $filename;
+            $path = str_replace('\\', '/',  $file);
+            file_put_contents($path, $image_base64);
+        }
+        else{
+            return back()->with('error', 'Please upload an image for the product');
+        }
+        
+        $product->filename = $filename;
+        $product->save();
+
+        return redirect("/admin/shopping-products")->with("success", "Product has been created successfully.");
+    }
+
+    public function updateProduct(Request $request, $id){
+        $this->validate($request, [
+            "product_price" => "required",
+            "product_name" => "required",
+        ]);
+        
+        $product = Product::findOrFail($id);
+        $product->name = $request->input('product_name');
+        $product->description = $request->input('product_description');
+        $product->price = $request->input("product_price");
+                
+        if($request->input('base64image') !== null && $request->input('base64image') != '0'){
+            $folderPath = public_path('/storage/images/products/');
+            $image_parts = explode(';base64,', $request->input('base64image'));
+            $image_types_aux = explode('image/', $image_parts[0]);
+            $image_type = $image_types_aux[1];
+            $image_base64 = base64_decode($image_parts[1]);
+            $filename = $this->slug_generator($request->input('product_name')) . "-" . time() . "." . $image_type;
+            $file = $folderPath . $filename;
+            $path = str_replace('\\', '/',  $file);
+            file_put_contents($path, $image_base64);
+            $product->filename = $filename;
+        }
+        
+        $product->save();
+        
+        return redirect("/admin/shopping-products")->with("success", "Product has been updated successfully.");
+    }
+
+    public function updateProductStatus(Request $request, $id){
+        $product = Product::findOrFail($id);
+        $product->is_active = $request->input('status-action') == "disable" ? false : true;
+        $product->save();
+        return redirect("/admin/shopping-products")->with("success", "Product status has been updated successfully.");
+    }
+
+    public function shoppingHistory(){
+        $orders = Order::all();
+        return view('pages.admin.shoppinghistory')->with('orders', $orders);
     }
 }

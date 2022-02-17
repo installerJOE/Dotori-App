@@ -127,6 +127,7 @@
 														name='quantity' 
 														id="package_qty"
 														value="{{old('quantity')}}"
+														min="0"
 														oninput="calculateAmount(this.value)"
 													/>
 												</td>

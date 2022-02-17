@@ -13,6 +13,8 @@ use App\Models\Transaction;
 use App\Models\Package;
 use App\Models\Referral;
 use App\Models\Rank;
+use App\Models\Order;
+use App\Models\Product;
 use App\Models\SubscribedUser;
 use App\Jobs\NotifyRequestJob;
 use App\Mail\DepositRequestMail;
@@ -22,8 +24,9 @@ use App\Mail\RepurchaseSuccessMail;
 
 class TransactionsController extends Controller
 {
-    public function __construct(){
+    public function __construct(DeliveryAddress $address){
         $this->middleware(['auth', 'verified']);
+        $this->address = $address;
     } 
 
     // Send deposit request to the admin
@@ -105,7 +108,7 @@ class TransactionsController extends Controller
         }
         
         // Get the rank id of the subscribed user
-        $referrals = Referral::where('user_id', Auth::user()->id)->get()->count();
+        $referrals = User::where('referrerId', Auth::user()->id)->get()->count();
         $ranks = Rank::select('id', 'referral_limit')->orderBy('id', 'asc')->get();
         foreach($ranks as $rank){
             if($rank->referral_limit > $referrals){
@@ -116,7 +119,6 @@ class TransactionsController extends Controller
         
         // check if daily purchase limit of 11 million won is exceeded
         $this->checkDailySubStatus($request->input('total_amount'));        
-        // $time = date($timestamp); 
 
         //create new instance of subscribed user
         $subscriber = new SubscribedUser;
@@ -129,7 +131,7 @@ class TransactionsController extends Controller
         
         //update user balance
         $user = Auth::user();
-        $user->available_points = $user->available_points - $request->input('total_amount');
+        $user->available_points = $subscriber->package->reward + $user->available_points - $request->input('total_amount');
         $user->save();
 
         //send purchase success notification to user email
@@ -196,4 +198,49 @@ class TransactionsController extends Controller
         return $request;
     }
 
+    public function purchaseProduct(Request $request){
+        $this->validate($request, [
+            "quantity" => "required",
+            "product_price" => "required"
+        ]);
+        $purchase_amount = $request->input('product_price') * $request->input('quantity'); 
+        if($purchase_amount > Auth::user()->available_points){
+            return back()->with('error', 'Oops! Insuffient Balance');
+        }
+
+        $this->address = DeliveryAddress::where('user_id', Auth::user()->id)->first();
+        if($this->address === null){
+            $this->validate($request, [
+                "street" => "required|string",
+                "city" => "required|string",
+                "state" => "required|string",
+                "country" => "required|string"
+            ]);
+            $this->address = new DeliveryAddress;
+            $this->address->street = $request->input('street');
+            $this->address->city = $request->input('city');
+            $this->address->state = $request->input('state');
+            $this->address->country = $request->input('country');
+            $this->address->user_id = Auth::user()->id;
+            $this->address->save();
+        }
+        
+        $order = new Order;
+        $order->unique_id = $this->orderIDGenerator(16);
+        $order->product_id = $request->input('product_id');
+        $order->delivery_address_id = $this->address->id;
+        $order->price = $request->input('product_price');
+        $order->quantity = $request->input('quantity');
+        $order->status = "preparing";
+        $order->save();
+
+        $user = Auth::user();
+        $user->available_points = $user->available_points - $purchase_amount;
+        $user->save();
+
+        // Send Email for successful purchase
+
+        return redirect('/products/shop')->with('success', 'You have successfully made a purchase.
+            Your delivery is on its way. Your order reference ID is ' . $order->unique_id . '.');
+    }
 }

@@ -82,6 +82,7 @@
 		</div><br/>
 
 		<div class="col-md-12 col-sm-12 col-12">
+			<h4> Click on any package to view </h4>
             <div class="mt-4 col-md-12 col-sm-12 col-12">
                 @foreach($packages as $package)
                     <div class="buy_package col-lg-3 col-md-4 col-sm-6 col-12 {{'buy_package0' . $package->id}}"

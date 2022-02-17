@@ -12,6 +12,8 @@ use App\Models\SubscribedUser;
 use App\Models\Transaction;
 use App\Models\Referral;
 use App\Models\Package;
+use App\Models\Product;
+use App\Models\Order;
 use App\Jobs\NotifyRequestJob;
 
 
@@ -25,17 +27,41 @@ class PagesController extends Controller
     }
     
     public function index(){
-        $subscribedUser = Auth::user()->subscribed_user;
-        if($subscribedUser === null){
-            $rank = Rank::where('referral_limit', 5)->first();
-        }
-        else{
-            $rank = $subscribedUser->rank;
+        //create new rank instance
+        $ranks = Rank::all();
+        if($ranks->count() <= 0){
+            $rank = new Rank;
+            $rank->title = "Level 1";
+            $rank->referral_limit = 5;
+            $rank->daily_percent_yield = 1;
+            $rank->save();
         }
 
         // get total number of referrals
-        $referrals = User::where('referrerId', Auth::user()->memberId)->get()->count();
+        $referrals = User::select('id')->where('referrerId', Auth::user()->memberId)->get()->count();
+
+
+        // $referrals = User::select('id')->where('referrerId', Auth::user()->referrerId)->get()->count();
         
+        // get the rank of the user
+        $subscribed_packages = Auth::user()->subscribed_users;
+        if($subscribed_packages->count() < 1){
+            if($referrals > 0){
+                $rank = Rank::where('referral_limit', "<", $referrals)->orderBy('referral_limit', 'ASC')->first();
+            }
+            else{
+                $rank = Rank::where('referral_limit', '5')->first();
+            }
+        }
+        else{
+            //update the rank of referee
+            $referee = Auth::user();
+            $rank = Rank::where('referral_limit', '>', $referrals)->orderBy('id', 'asc')->first();    
+            foreach($subscribed_packages as $subscribed_package){
+                $subscribed_package->rank_id = $rank->id;
+                $subscribed_package->save();
+            }
+        }      
         return view('pages.dashboard')
             ->with([
                 'rank' => $rank,
@@ -59,7 +85,7 @@ class PagesController extends Controller
         $time = (float)date("H", $timestamp); //UTC or GMT time
         $day = (string)date('l', $timestamp);
         $withdraw_active = false;
-        $message = "You can only make withrawal requests on Tuesdays, Thursdays and Saturdays, between 10:00am to 9:00pm (UTC).";
+        $message = "You can only make withdrawal requests on Tuesdays, Thursdays and Saturdays, between 10:00am to 9:00pm (UTC).";
         $active_days = ["Tuesday", "Thursday", "Saturday"];
 
         for($i=0; $i<count($active_days); $i++){
@@ -109,6 +135,27 @@ class PagesController extends Controller
                 'packages' => $packages,
                 'purchase_active' => $purchase_active,
                 'inactive_message' => $message
+            ]);
+    }
+
+    public function productShop(){
+        $products = Product::all();
+        return view('pages.products')
+            ->with([
+                'products' => $products,
+            ]);
+    }
+
+    public function purchaseProduct($id){
+        $product = Product::findOrFail($id);
+        return view('pages.purchaseproduct')->with('product', $product);
+    }
+
+    public function orderHistory(){
+        $orders = Order::where('delivery_address_id', Auth::user()->delivery_address->id)->get();
+        return view('pages.orderhistory')
+            ->with([
+                'orders' => $orders,
             ]);
     }
 

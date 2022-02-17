@@ -5,6 +5,10 @@ ul{
     margin:0px;
     padding:0px;
 }
+input:disabled {
+    background-color: #f2f2f2 !important;
+    color: rgb(84, 84, 84)
+}
 .btn{
     border-radius: 10px;
     box-shadow: none;
@@ -37,6 +41,17 @@ ul{
     background-color: rgba(0,0,0,0);
     color:  #4e076e;
 }
+.btn-grey-bg{
+    border-color:   #d2d2d2;
+    background-color:  #d2d2d2;
+    color: #4e076e;
+}
+.btn-grey-bg:hover{
+    border-color:   #a2a2a2;
+    background-color:  #a2a2a2;
+    color: #000;
+}
+
 .text-purple{
     color: #4e076e;
 }
@@ -93,6 +108,11 @@ ul{
 .grey-bg{
     background-color: #e6e6e6;    
 }
+
+.purple-bg{
+    background-color:  #4e076e;
+    color: #fff;
+}
 .modal-header .close{
     background-color: red;
     padding: 3px 10px;
@@ -108,4 +128,40 @@ ul{
 }
 .level_img{
     border-radius:50%;
+}
+.modal .btn{
+    width:auto;
+}
+.box-shadow{
+    box-shadow: 0px 0.5px 4px #aaaaaa;
+    -webkit-box-shadow: 0px 0.5px 4px #aaaaaa;
+    border: 1px solid #a2a2a2;
+}
+.products{
+    padding: 10px;
+}
+.products .product-name{
+    font-size: 24px;
+    color: #759bfa;
+}
+.products .product-price{
+    font-size: 14px;
+    color: #4a4a4a;
+    margin-top: -5px;
+    margin-bottom: 15px;
+}
+.products .btn{
+    border-radius: 0px;
+}
+.products .label{
+    padding:5px;
+    border-radius:10px;
+}
+.modal-package-header{
+    padding: 10px;
+}
+.modal-package-header ~ h3{
+    margin-bottom: 0.5em;
+    margin-top:10px;
+    margin-left:10px
 }

@@ -142,6 +142,18 @@
                     Packages
                 </a>
             </li>
+
+            <li class='sub-menu'>
+                <a href="#!deposit">
+                    <i class="fas fa-fw fa-cube"></i> &nbsp;
+                    Shopping Products
+                </a>
+                <ul>
+                    <li><a href="/admin/shopping-products"> All Products </a></li>
+                    <li><a href="/admin/shopping/history"> Shopping History </a></li>
+                </ul>
+            </li>
+
             <li class='sub-menu'>
                 <a href="/admin/subscribers">
                     <i class="fas fa-fw fa-users"></i> &nbsp;
@@ -170,7 +182,18 @@
             </li>
         @else
             <li class='sub-menu'>
-                <a href="#!profile">
+                <a href="#!products">
+                    <i class="fas fa-fw fa-history"></i> &nbsp;
+                    My Products
+                </a>
+                <ul>
+                    <li><a href="/products/shop"> Shop Products </a></li>
+                    <li><a href="/products/order-history"> Order History </a></li>
+                </ul>
+            </li>
+            
+            <li class='sub-menu'>                
+                <a href="#!package">
                     <i class="fas fa-fw fa-cube"></i> &nbsp;
                     My Packages
                 </a>
