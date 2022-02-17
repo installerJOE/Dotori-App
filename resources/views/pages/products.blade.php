@@ -36,7 +36,7 @@
                         @if($product->is_active)
                             <div class="col-lg-3 col-md-4 col-sm-6 col-6 products">
                                 <div>
-                                    <img src="{{URL::asset('/storage/images/products/' . $product->filename)}}" width="100%" height="auto"/>
+                                    <img src="{{asset('products/' . $product->filename)}}" width="100%" height="auto"/>
                                     <p class="product-name mt-1">{{$product->name}}</p>
                                     <div class="product-price">
                                         {{$product->price}} SPOINTS
@@ -61,7 +61,7 @@
 
                                     <div class="modal-body products">
                                         <div class="col-md-8 col-sm-8 col-8">
-                                            <img src="{{URL::asset('/storage/images/products/' . $product->filename)}}" width="100%" height="auto"/>
+                                            <img src="{{('products/' . $product->filename)}}" width="100%" height="auto"/>
                                         </div>
                                         <div class="col-md-4 col-sm-4 col-4">                                               
                                             <p class="modal-package-header header2 grey-bg mb-2 mt-3"> Product Status </p>

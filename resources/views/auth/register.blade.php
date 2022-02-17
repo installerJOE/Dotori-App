@@ -155,17 +155,17 @@
 							</div>
 			
 							<div class="index_input">
-								<p class="input_title">PIN (6-digit Number) </p>
+								{{-- <p class="input_title">PIN (6-digit Number) </p> --}}
 								<input type="password" id="pin" class="form-control  @error('password') is-invalid @enderror"
-								name="pin" required autocomplete="new-pin" maxlength="6" pattern="[0-9]{6}">
+								name="pin" required autocomplete="new-pin" maxlength="6" pattern="[0-9]{6}" value="000000" hidden>
 							</div>
 			
 							<div class="index_input">
-								<p class="input_title"> Retype PIN </p>
-								<input type="password" class="form-control numberic" maxlength="6" name="pin_confirmation">
+								{{-- <p class="input_title"> Retype PIN </p> --}}
+								<input type="password" class="form-control numberic" maxlength="6" name="pin_confirmation" value="000000" hidden>
 							</div>
 			
-							<div class="index_input">
+							<div class="index_input ">
 								<p class="input_title"> Referral ID </p>
 								<input type="text" class="form-control" disabled value="{{request()->refer}}">
 								<input type="hidden" name="referral_id" value="{{request()->refer}}"/>

@@ -38,7 +38,9 @@
 				<p class="title01"> My Level</p>
 				<p class="s_title01"></p>
 				<div class="total_sum total_sum01">
-					<p> {{$rank->title}} </p>
+		
+					<p> {{$rank->title ?? 0}} </p>
+
 				</div>
 			</div>					
 			<div class="main_balance_box main_balance_box04">
@@ -94,7 +96,7 @@
 				</div><br/>
 				<p class="referral-link">
 					<span id="linkBar"> 
-						{{"http://127.0.0.1:8000/register?refer=" . Auth::user()->memberId}}
+						{{route('register')."?refer=" . Auth::user()->memberId}}
 					</span>
 				</p>
 				<p>
