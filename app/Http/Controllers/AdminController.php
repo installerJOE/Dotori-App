@@ -17,6 +17,7 @@ use App\Models\Product;
 use App\Models\Order;
 use App\Mail\WithdrawalSuccessMail;
 use App\Mail\DepositSuccessMail;
+use Illuminate\Support\Facades\Storage;
 
 
 
@@ -162,7 +163,7 @@ class AdminController extends Controller
         $product->price = $request->input("product_price");
                 
         if($request->input('base64image') !== null && $request->input('base64image') != '0'){
-            $folderPath = public_path('/storage/images/products/');
+            $folderPath = public_path('storage/images/products/');
             $image_parts = explode(';base64,', $request->input('base64image'));
             $image_types_aux = explode('image/', $image_parts[0]);
             $image_type = $image_types_aux[1];
@@ -170,7 +171,8 @@ class AdminController extends Controller
             $filename = $this->slug_generator($request->input('product_name')) . "-" . time() . "." . $image_type;
             $file = $folderPath . $filename;
             $path = str_replace('\\', '/',  $file);
-            file_put_contents($path, $image_base64);
+            // file_put_contents($path, $image_base64);
+            Storage::put('products/'.$filename, $image_base64);
         }
         else{
             return back()->with('error', 'Please upload an image for the product');
@@ -203,7 +205,8 @@ class AdminController extends Controller
             $file = $folderPath . $filename;
             $path = str_replace('\\', '/',  $file);
             file_put_contents($path, $image_base64);
-            $product->filename = $filename;
+            // $product->filename = $filename;
+            Storage::put('products/'.$filename, $image_base64);
         }
         
         $product->save();
