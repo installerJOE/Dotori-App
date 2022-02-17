@@ -38,15 +38,9 @@
 				<p class="title01"> My Level</p>
 				<p class="s_title01"></p>
 				<div class="total_sum total_sum01">
-<<<<<<< HEAD
-<<<<<<< HEAD
-					<p> {{$rank->title}} </p>
-=======
+		
 					<p> {{number_format($rank->title ?? 0)}} </p>
->>>>>>> 16a7e668aa4f423bde35a49670183bc79e84b0d2
-=======
-					<p> {{$rank->title ?? 0}} </p>
->>>>>>> 3bb14cb22663efa4aa0186d7f94390f25e926aff
+
 				</div>
 			</div>					
 			<div class="main_balance_box main_balance_box04">
