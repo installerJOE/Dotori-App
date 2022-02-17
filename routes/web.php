@@ -39,7 +39,7 @@ Route::get('/products/shop',  [App\Http\Controllers\PagesController::class, 'pro
 Route::get('/products/{id}/purchase',  [App\Http\Controllers\PagesController::class, 'purchaseProduct']);
 Route::get('/products/order-history',  [App\Http\Controllers\PagesController::class, 'orderHistory']);
 
-Route::get('/announcement',  [App\Http\Controllers\PagesController::class, 'announcement']);
+Route::get('/announcement',  [App\Http\Controllers\PagesController::class, 'announcements']);
 Route::get('/referral',  [App\Http\Controllers\PagesController::class, 'referral']);
 // Route::get('/daily-history',  [App\Http\Controllers\PagesController::class, 'dailyHistory']);
 
@@ -84,10 +84,10 @@ Route::get('/admin/shopping/history',  [App\Http\Controllers\AdminController::cl
 Route::get('/admin/announcements',  [App\Http\Controllers\AnnouncementController::class, 'index']);
 Route::get('/admin/announcements/{slug}',  [App\Http\Controllers\AnnouncementController::class, 'show']);
 Route::get('/admin/announcement/create',  [App\Http\Controllers\AnnouncementController::class, 'create']);
-Route::get('/admin/announcements/{slug}/edit',  [App\Http\Controllers\AnnouncementController::class, 'show']);
+Route::get('/admin/announcements/{slug}/edit',  [App\Http\Controllers\AnnouncementController::class, 'edit']);
 
 Route::post('/admin/announcement/store',  [App\Http\Controllers\AnnouncementController::class, 'store']);
-Route::post('/admin/announcements/{id}/update',  [App\Http\Controllers\AnnouncementController::class, 'store']);
+Route::post('/admin/announcements/{id}/update',  [App\Http\Controllers\AnnouncementController::class, 'update']);
 Route::post('/admin/announcements/{id}/delete',  [App\Http\Controllers\AnnouncementController::class, 'destroy']);
 
 Route::post('/admin/packages/store',  [App\Http\Controllers\AdminController::class, 'storePackage']);

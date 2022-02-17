@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 use\App\Models\Announcement;
+use Illuminate\Support\Facades\Storage;
 
 class AnnouncementController extends Controller
 {
@@ -33,29 +34,32 @@ class AnnouncementController extends Controller
             
         // Create a new blog resource
         $this->blog = new Announcement;
-        if($request->input('base64image') !== null){
-            $folderPath = public_path('/storage/images/announcements/');
-            $image_parts = explode(';base64,', $request->input('base64image'));
-            $image_types_aux = explode('image/', $image_parts[0]);
-            $image_type = $image_types_aux[1];
-            $image_base64 = base64_decode($image_parts[1]);
-            $filename =  $this->slug_generator($request->input('blog_title')) . '-' . time() . "." . $image_type;
-            $file = $folderPath . $filename;
-            $path = str_replace('\\', '/',  $file);
-
-            //put image in the storage location 
-            file_put_contents($path, $image_base64);
-        }
-        else{
-            return back()->with('error', 'Please upload a cover image for the announcement.');
-        }
         $this->blog->title = $request->input('title');
         $this->blog->slug = $this->slug_generator($this->blog->title);
         $this->blog->body = $request->input('body');
         $this->blog->caption = $request->input('caption');
-        $this->blog->image_url = $filename;
         $this->blog->is_active = true;
-        $this->blog->user_id = Auth::user()->id;            
+        $this->blog->user_id = Auth::user()->id;       
+
+        if($request->input('base64image') !== null){
+            $folderPath = public_path('announcements/');
+            $image_parts = explode(';base64,', $request->input('base64image'));
+            $image_types_aux = explode('image/', $image_parts[0]);
+            $image_type = $image_types_aux[1];
+            $image_base64 = base64_decode($image_parts[1]);
+            $filename =  $this->slug_generator($request->input('title')) . '-' . time() . "." . $image_type;
+            $file = $folderPath . $filename;
+            $path = str_replace('\\', '/',  $file);
+
+            //put image in the storage location 
+            // file_put_contents($path, $image_base64);
+            //you for generate unique name tor the announcement image, not use the title.....(no stress sha so leng e dey work)
+            Storage::put('announcements/'.$filename, $image_base64);
+            $this->blog->image_url = $filename;
+        }
+        else{
+            return back()->with('error', 'Please upload a cover image for the announcement.');
+        }     
         $this->blog->save();
 
         return redirect('/admin/announcements')->with('success', 'Announcement has been posted successfully.');
@@ -76,51 +80,60 @@ class AnnouncementController extends Controller
     // Update posted blog
     public function update(Request $request, $id){
         $this->validate($request, [
-            'title' => 'required|min:10',
-            'caption' => 'required|min:20',
+            'title' => 'required|min:3',
+            'caption' => 'required|min:10',
             'body' => 'required|min:10',
         ]);
-
+        
         $this->blog = Announcement::findOrFail($id);
-        $this->blog->title = $request->input('blog_title');
+        $this->blog->title = $request->input('title');
         $this->blog->slug = $this->slug_generator($this->blog->title);
-        $this->blog->summary = $request->input('blog_summary');
-        $this->blog->content = $request->input('blog_content');            
+        $this->blog->body = $request->input('body');
+        $this->blog->caption = $request->input('caption');
+        $this->blog->is_active = true;
+        $this->blog->user_id = Auth::user()->id;            
 
         if($request->input('base64image') !== null){
+            $folderPath = public_path('announcements/');
+
             //delete the image with the present path
-            unlink('storage/images/blog_images/' . $this->blog->image_url);
-            $folderPath = public_path('storage/images/blog_images/');
+            $old_path = $folderPath . $this->blog->image_url;
+            if(file_exists($old_path)){
+                unlink($old_path);
+            }
             $image_parts = explode(';base64,', $request->input('base64image'));
             $image_types_aux = explode('image/', $image_parts[0]);
             $image_type = $image_types_aux[1];
             $image_base64 = base64_decode($image_parts[1]);
-            $filename =  $this->slug_generator($request->input('blog_title')) . '-' . time() . "." . $image_type;
+            $filename =  $this->slug_generator($request->input('title')) . '-' . time() . "." . $image_type;
             $file = $folderPath . $filename;
+            
             $path = str_replace('\\', '/',  $file);
-
+            
             //put image in the storage location 
-            file_put_contents($path, $image_base64);
+            // file_put_contents($path, $image_base64);
+            Storage::put('announcements/'. $filename, $image_base64);
+            
             //save image name in database
             $this->blog->image_url = $filename;
         }                    
+
         $this->blog->save();
         return redirect('/admin/announcements')->with('success', 'Announcement has been updated successfully.');
     }
 
     public function destroy($id){
-        if(Gate::allows('admin-only', Auth::user())){        
-            $blog = Blog::findOrFail($id);
-            //delete the image with the present path if it exists
-            if($blog->image_url !== null){
-                unlink('storage/images/blog_images/' . $blog->image_url);
+        $announcement = Announcement::findOrFail($id);
+        //delete the image with the present path if it exists
+        if($announcement->image_url !== null){
+            $old_path = 'storage/images/blog_images/' . $announcement->image_url;
+            if(file_exists($old_path)){
+                unlink($old_path);
             }
-            $blog->delete();
-            return redirect('/admin/blogs')->with('success', 'Post has been deleted successfully.');
         }
-        else{
-            return back()->with('error', "Oops. Access Denied. You must be an admin to perform this action.");
-        }
+        $announcement->delete();
+        return redirect('/admin/announcements')->with('success', 'Announcement has been deleted successfully.');
+    
     }
 
 }

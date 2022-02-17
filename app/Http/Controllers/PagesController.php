@@ -14,6 +14,7 @@ use App\Models\Referral;
 use App\Models\Package;
 use App\Models\Product;
 use App\Models\Order;
+use\App\Models\Announcement;
 use App\Jobs\NotifyRequestJob;
 
 
@@ -177,7 +178,8 @@ class PagesController extends Controller
         return view('pages.referral')->with('referrals', $referrals);
     }
 
-    public function dailyHistory(){
-        return view('pages.daily_history');
+    public function announcements(){
+        $announcements = Announcement::all();
+        return view('pages.announcements')->with('announcements', $announcements);
     }
 }

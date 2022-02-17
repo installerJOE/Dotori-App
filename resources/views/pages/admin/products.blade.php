@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> Deposit Request | Dotori </title>
+	<title> Products | Dotori </title>
 @endsection
 
 @section('content')

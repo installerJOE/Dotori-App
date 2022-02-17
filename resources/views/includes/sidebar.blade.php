@@ -198,14 +198,14 @@
         </li>
 
         @if(Auth::user()->is_admin)
-        <li class='sub-menu li-underlined'>
+        <li class='sub-menu'>
                 <a href="/admin/packages">
                     <i class="fas fa-fw fa-cube"></i> &nbsp;
                     Packages
                 </a>
             </li>
 
-            <li class='sub-menu'>
+            <li class='sub-menu li-underlined'>
                 <a href="#!deposit">
                     <i class="fas fa-fw fa-cube"></i> &nbsp;
                     Shopping Products
@@ -216,13 +216,13 @@
                 </ul>
             </li>
 
-            <li class='sub-menu li-underlined'>
+            <li class='sub-menu'>
                 <a href="/admin/subscribers">
                     <i class="fas fa-fw fa-users"></i> &nbsp;
                     Subscribers
                 </a>
             </li>
-            <li class='sub-menu'>
+            <li class='sub-menu li-underlined'>
                 <a href="#!deposit">
                     <i class="fas fa-fw fa-money-check-alt"></i> &nbsp; 
                     Deposits
@@ -232,7 +232,7 @@
                     <li><a href="/admin/deposits/requests"> Deposit Requests </a></li>
                 </ul>
             </li>
-            <li class='sub-menu li-underlined'>
+            <li class='sub-menu'>
                 <a href="#!deposit">
                     <i class="fas fa-fw fa-share-square"></i> &nbsp;
                     Withdrawals
