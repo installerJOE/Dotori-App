@@ -52,8 +52,6 @@ class AnnouncementController extends Controller
             $path = str_replace('\\', '/',  $file);
 
             //put image in the storage location 
-            // file_put_contents($path, $image_base64);
-            //you for generate unique name tor the announcement image, not use the title.....(no stress sha so leng e dey work)
             Storage::put('announcements/'.$filename, $image_base64);
             $this->blog->image_url = $filename;
         }
@@ -111,7 +109,6 @@ class AnnouncementController extends Controller
             $path = str_replace('\\', '/',  $file);
             
             //put image in the storage location 
-            // file_put_contents($path, $image_base64);
             Storage::put('announcements/'. $filename, $image_base64);
             
             //save image name in database
