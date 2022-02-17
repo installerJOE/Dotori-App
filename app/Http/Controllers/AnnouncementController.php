@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
-use\App\Models\Announcement;
+use App\Models\Announcement;
 
 class AnnouncementController extends Controller
 {
