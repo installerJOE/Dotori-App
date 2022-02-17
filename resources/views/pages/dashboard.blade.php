@@ -31,7 +31,7 @@
 				<p class="title01 mb-2"> My Earnings </p>
 				<p class="s_title01">(SPOINT) &nbsp;</p>
 				<div class="total_sum total_sum02">
-					<p> {{number_format(Auth::user()->earnings)}} </p>
+					<p> {{Auth::user()->earnings}} </p>
 				</div>
 			</div>
 			<div class="main_balance_box main_balance_box01">
@@ -39,24 +39,28 @@
 				<p class="s_title01"></p>
 				<div class="total_sum total_sum01">
 <<<<<<< HEAD
+<<<<<<< HEAD
 					<p> {{$rank->title}} </p>
 =======
 					<p> {{number_format($rank->title ?? 0)}} </p>
 >>>>>>> 16a7e668aa4f423bde35a49670183bc79e84b0d2
+=======
+					<p> {{$rank->title ?? 0}} </p>
+>>>>>>> 3bb14cb22663efa4aa0186d7f94390f25e926aff
 				</div>
 			</div>					
 			<div class="main_balance_box main_balance_box04">
 				<p class="title01 mb-2"> My Balance </p>
 				<p class="s_title01">(SPOINT) &nbsp;</p>
 				<div class="total_sum total_sum04">
-					<p> {{number_format(Auth::user()->available_points)}} </p>
+					<p> {{Auth::user()->available_points}} </p>
 				</div>
 			</div>
 			<div class="main_balance_box main_balance_box03">
 				<p class="title01"> No. of Referrals </p>
 				<p class="s_title01">&nbsp;</p>
 				<div class="total_sum total_sum03">
-					<p> {{number_format($referrals)}} </p>
+					<p> {{$referrals}} </p>
 				</div>
 			</div>					
 		</div>
