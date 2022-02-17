@@ -96,7 +96,7 @@
 				</div><br/>
 				<p class="referral-link">
 					<span id="linkBar"> 
-						{{route('register')"?refer=" . Auth::user()->memberId}}
+						{{route('register')."?refer=" . Auth::user()->memberId}}
 					</span>
 				</p>
 				<p>
