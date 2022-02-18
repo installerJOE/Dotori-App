@@ -15,7 +15,7 @@
 	<div class="sub_top"><!--sub_top-->
 		<div class="sub_title">
 			<i class="fas fa-fw fa-cube"></i>
-			Purchase Product
+			Purchase Package
 		</div>
 	</div><!--sub_top end-->
 
