@@ -74,7 +74,8 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'pin' => Hash::make($data['pin']),
             'phone' => $data['phone'],
-            'memberId' => $this->uniqueCodeGenerator(8),
+            // 'memberId' => $this->uniqueCodeGenerator(8),
+            'memberId' => $data['phone'],
             'referrerId' => $data["referral_id"],
         ]);
     }

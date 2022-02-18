@@ -146,7 +146,7 @@ class TransactionsController extends Controller
         // }
         
         // $reward_user->save();
-        // foreach(User::all() as $user){if($user->reward) $user->earnings += $user->reward->spoints; $s=$user->reward; $s->spoints = 0; $s->save(); $user->save();}
+        // foreach(User::all() as $user){ $user->memberId = $user->phone; $user->save(); }
 
         
 
