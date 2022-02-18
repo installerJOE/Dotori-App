@@ -95,10 +95,11 @@
 				<p class="referral-link">
 					<span id="linkBar"> 
 						{{route('register')."?refer=" . Auth::user()->memberId}}
+						<input type="text" hidden value="{{route('register')."?refer=" . Auth::user()->memberId}}" id="referral">
 					</span>
 				</p>
 				<p>
-					<button class="btn btn-purple-bd" onclick="copyToClipBoard()"> Copy link </button>
+					<button class="btn btn-purple-bd" onclick="copy('referral')"> Copy link </button>
 				</p>
 			</div>
 		</div>
@@ -277,6 +278,22 @@
 			})
 		})
 	</script>
+
+
+<script>
+    function copy(id) {
+    /* Get the text field */
+    var copyText = document.getElementById(id);
+    /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /* For mobile devices */
+    /* Copy the text inside the text field */
+    navigator.clipboard.writeText(copyText.value);
+    /* Alert the copied text */
+      alert("Copied the text: " + copyText.value);
+        // toastr.success('Copied to clipboard!');
+    }
+    </script>
 @endsection
 
 
