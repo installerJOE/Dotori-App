@@ -20,8 +20,8 @@
 			<i class="fas fa-fw fa-tachometer-alt"></i>
 			Dashboard 
 		</p>
-		<div class="notice_more" onclick="locaion.href='#'">
-			MORE+ 
+		<div>
+			{{$rank->title}}
 		</div>
 	</div>
 	<div class="section_right_inner">
@@ -38,7 +38,7 @@
 				<p class="title01"> No of registered users </p>
 				<p class="s_title01"></p>
 				<div class="total_sum total_sum01">
-					<p> {{$rank->title}} </p>
+					
 				</div>
 			</div>					
 			<div class="main_balance_box main_balance_box04">

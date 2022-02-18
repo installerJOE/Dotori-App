@@ -20,8 +20,8 @@
 			<i class="fas fa-fw fa-tachometer-alt"></i>
 			Dashboard 
 		</p>
-		<div class="notice_more" onclick="locaion.href='#'">
-			MORE+ 
+		<div class="notice_more purple-bg text-white" onclick="locaion.href='#'">
+			{{$rank->title ?? 0}}
 		</div>
 	</div>
 	<div class="section_right_inner">
@@ -35,17 +35,17 @@
 				</div>
 			</div>
 			<div class="main_balance_box main_balance_box01">
-				<p class="title01"> My Level</p>
-				<p class="s_title01"></p>
+				<p class="title01 mb-2"> Rewards </p>
+				<p class="s_title01">(SPOINT) &nbsp;</p>
 				<div class="total_sum total_sum01">
 		
-					<p> {{$rank->title ?? 0}} </p>
+					<p>  </p>
 
 				</div>
 			</div>					
 			<div class="main_balance_box main_balance_box04">
 				<p class="title01 mb-2"> My Balance </p>
-				<p class="s_title01">(SPOINT) &nbsp;</p>
+				<p class="s_title01">(PTS) &nbsp;</p>
 				<div class="total_sum total_sum04">
 					<p> {{Auth::user()->available_points}} </p>
 				</div>

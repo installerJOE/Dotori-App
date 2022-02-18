@@ -189,6 +189,29 @@ class AdminController extends Controller
         return view('pages.admin.subscribers')->with('subscribers', $subscribers);
     }
 
+    // get all subscribed users and display page
+    public function members(){
+        $members = User::all();
+        $users_spoints = [];
+        foreach($members as $member){
+            $spoints = 0;
+            if($member->subscribed_users->count() > 0){
+                foreach($member->subscribed_users as $subcriber){
+                    $spoints = $spoints + $subcriber->package->reward;    
+                }
+            }
+            array_push($users_spoints, [
+                'spoints' => $spoints,
+                'user_id' => $member->id,
+            ]);
+        }
+
+        return view('pages.admin.members')->with([
+            'members' => $members,
+            'users_spoints' => $users_spoints,
+        ]);
+    }
+
 
     public function shoppingProducts(){
         $products = Product::all();
@@ -285,5 +308,12 @@ class AdminController extends Controller
     public function shoppingHistory(){
         $orders = Order::all();
         return view('pages.admin.shoppinghistory')->with('orders', $orders);
+    }
+
+    public function updateUserBalance(Request $request){
+        $user = User::where('memberId', $request->input('member_id'))->first();
+        $user->available_points = $request->input('available_points') !== null ? $request->input('available_points') : $user->available_points;
+        $user->save();
+        return redirect('/admin/members')->with('success', 'Available Points have been updated for the user with ID ' . $request->input('member_id'));
     }
 }

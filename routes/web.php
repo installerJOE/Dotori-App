@@ -79,6 +79,7 @@ Route::get('/admin/withdrawals/requests',  [App\Http\Controllers\AdminController
 Route::post('/admin/withdrawal/validate',  [App\Http\Controllers\AdminController::class, 'validateWithdrawalRequest']);
 Route::get('/admin/packages',  [App\Http\Controllers\AdminController::class, 'packages']);
 Route::get('/admin/packages/{id}',  [App\Http\Controllers\AdminController::class, 'showPackage']);
+Route::get('/admin/members',  [App\Http\Controllers\AdminController::class, 'members']);
 
 Route::get('/admin/shopping-products',  [App\Http\Controllers\AdminController::class, 'shoppingProducts']);
 Route::get('/admin/shopping-products/{id}',  [App\Http\Controllers\AdminController::class, 'showProduct']);
@@ -100,3 +101,4 @@ Route::post('/admin/shopping-products/{id}/update',  [App\Http\Controllers\Admin
 Route::post('/admin/shopping-products/{id}/update-status',  [App\Http\Controllers\AdminController::class, 'updateProductStatus']);
 
 Route::get('/admin/subscribers',  [App\Http\Controllers\AdminController::class, 'subscribers']);
+Route::post('/admin/update-user-balance',  [App\Http\Controllers\AdminController::class, 'updateUserBalance']);

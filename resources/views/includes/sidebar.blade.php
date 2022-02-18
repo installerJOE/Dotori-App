@@ -219,9 +219,17 @@
             <li class='sub-menu'>
                 <a href="/admin/subscribers">
                     <i class="fas fa-fw fa-users"></i> &nbsp;
-                    Subscribers
+                    Subscription History
                 </a>
             </li>
+
+            <li class='sub-menu'>
+                <a href="/admin/members">
+                    <i class="fas fa-fw fa-users"></i> &nbsp;
+                    All Members
+                </a>
+            </li>
+
             <li class='sub-menu li-underlined'>
                 <a href="#!deposit">
                     <i class="fas fa-fw fa-money-check-alt"></i> &nbsp; 
