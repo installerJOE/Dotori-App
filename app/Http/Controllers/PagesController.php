@@ -86,7 +86,7 @@ class PagesController extends Controller
         $time = (float)date("H", $timestamp); //UTC or GMT time
         $day = (string)date('l', $timestamp);
         $withdraw_active = false;
-        $message = "You can only make withdrawal requests on Tuesdays, Thursdays and Saturdays, between 10:00am to 9:00pm (UTC).";
+        $message = "You can only make withdrawal requests on Tuesdays, Thursdays and Saturdays, between 10:00am to 9:00pm (IST).";
         $active_days = ["Tuesday", "Thursday", "Saturday"];
 
         for($i=0; $i<count($active_days); $i++){
@@ -126,7 +126,7 @@ class PagesController extends Controller
         $message = "";
 
         if($day === "Saturday" || $day === "Sunday" || $time < 0 || $time > 18){
-            $message = "Package purchase is only available from Monday to Friday, from 10:00am to 6:00pm (UTC).";
+            $message = "Package purchase is only available from Monday to Friday, from 10:00am to 6:00pm (IST).";
             $purchase_active = false;
         }
 

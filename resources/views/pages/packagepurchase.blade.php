@@ -48,7 +48,7 @@
 				<div>
 					<h2>Note:</h2>
 					<p>
-						Package purchase is only available from Monday to Friday, from 10:00am to 6:00pm (UTC).
+						Package purchase is only available from Monday to Friday, from 10:00am to 6:00pm (IST).
 					</p>
 				</div>
 			</div>
@@ -75,7 +75,7 @@
 						@else
 							<p class="text-red">
 								Sorry, package subscription is inactive for now.
-								Package purchase is only available from Monday to Friday, from 10:00am to 6:00pm (UTC).
+								Package purchase is only available from Monday to Friday, from 10:00am to 6:00pm (IST).
 							</p>
 						@endif
 						<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
