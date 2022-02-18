@@ -125,7 +125,7 @@ class PagesController extends Controller
         $purchase_active = true;
         $message = "";
 
-        if($day === "Saturday" || $day === "Sunday" || $time < 10 || $time > 18){
+        if($day === "Saturday" || $day === "Sunday" || $time < 0 || $time > 18){
             $message = "Package purchase is only available from Monday to Friday, from 10:00am to 6:00pm (UTC).";
             $purchase_active = false;
         }

@@ -15,6 +15,8 @@ use App\Models\Referral;
 use App\Models\Rank;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\User;
+use App\Models\Reward;
 use App\Models\SubscribedUser;
 use App\Jobs\NotifyRequestJob;
 use App\Mail\DepositRequestMail;
@@ -130,9 +132,20 @@ class TransactionsController extends Controller
         $subscriber->save();
         
         //update user balance
-        $user = Auth::user();
-        $user->available_points = $subscriber->package->reward + $user->available_points - $request->input('total_amount');
-        $user->save();
+        $reward_user = Auth::user()->reward;
+        if($reward_user === null){
+            $reward_user = new Reward;
+            $reward_user->user_id = Auth::user()->id;
+            $reward_user->spoints = $subscriber->package->reward * $subscriber->quantity;
+        }
+        else{
+            $reward_user->spoints = $reward_user->spoints + ($subscriber->package->reward * $subscriber->quantity);
+        }
+        
+        $reward_user->save();
+        
+        Auth::user()->available_points = Auth::user()->available_points - $request->input('total_amount');
+        Auth::user()->save();
 
         //send purchase success notification to user email
         $notifyMail = new PurchaseSuccessMail();    
@@ -204,8 +217,8 @@ class TransactionsController extends Controller
             "product_price" => "required"
         ]);
         $purchase_amount = $request->input('product_price') * $request->input('quantity'); 
-        if($purchase_amount > Auth::user()->available_points){
-            return back()->with('error', 'Oops! Insuffient Balance');
+        if(Auth::user()->reward === null || $purchase_amount > Auth::user()->reward->spoints){
+            return back()->with('error', 'Oops! Insuffient Balance. Purchase more packages to accumulate SPOINTS.');
         }
 
         $this->address = DeliveryAddress::where('user_id', Auth::user()->id)->first();

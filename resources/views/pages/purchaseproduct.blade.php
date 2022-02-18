@@ -43,8 +43,11 @@
                                 <tr style="font-weight:bold">
                                     <td> Available Balance </td>
                                     <td>
-                                        {{Auth::user()->available_points}} SPOINTS
-                                        <input type="hidden" value="{{Auth::user()->available_points}}" id="available_amount"/>
+                                        {{Auth::user()->reward !== null ? Auth::user()->reward->spoints : 0}} SPOINTS
+                                        <input type="hidden" 
+											value="{{Auth::user()->reward !== null ? Auth::user()->reward->spoints : 0}}" 
+											id="available_amount"
+										/>
                                     </td>
                                 </tr>
 								<tr>
@@ -160,7 +163,7 @@
             var balance_ok = checkBalance();
             if(!balance_ok){
                 document.getElementById('insufficientErrorMessage').innerHTML = 
-                "*Oops! Insufficient Balance. Deposit more KRW to purchase your desired quantity"
+                "*Oops! Insufficient Balance. Purchase more packages to get more SPOINTS to buy your desired quantity"
             }
             else{
                 document.getElementById('insufficientErrorMessage').innerHTML = ""
