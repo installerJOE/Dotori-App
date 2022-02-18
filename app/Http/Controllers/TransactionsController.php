@@ -132,17 +132,22 @@ class TransactionsController extends Controller
         $subscriber->save();
         
         //update user balance
-        $reward_user = Auth::user()->reward;
-        if($reward_user === null){
-            $reward_user = new Reward;
-            $reward_user->user_id = Auth::user()->id;
-            $reward_user->spoints = $subscriber->package->reward * $subscriber->quantity;
-        }
-        else{
-            $reward_user->spoints = $reward_user->spoints + ($subscriber->package->reward * $subscriber->quantity);
-        }
+        // $reward_user = Auth::user()->reward;
+        // if($reward_user === null){
+        //     $reward_user = new Reward;
+        //     $reward_user->user_id = Auth::user()->id;
+        //     $reward_user->spoints = $subscriber->package->reward * $subscriber->quantity;
+        // }
+        // else{
+        //     $reward_user->spoints = $reward_user->spoints + ($subscriber->package->reward * $subscriber->quantity);
+        // }
         
-        $reward_user->save();
+        // $reward_user->save();
+        // foreach(User::all() as $user){if($user->reward) $user->earnings += $user->reward->spoints; $s=$user->reward; $s->spoints = 0; $s->save(); $user->save();}
+
+        
+
+        Auth::user()->earnings = $subscriber->package->reward * $subscriber->quantity;
         
         Auth::user()->available_points = Auth::user()->available_points - $request->input('total_amount');
         Auth::user()->save();
