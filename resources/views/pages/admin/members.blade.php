@@ -32,21 +32,14 @@
 									<td>{{strtoupper($member->memberId)}}</td>
 									<td> {{$member->email}}</td>
 									<td> {{$member->available_points}} </td>
-									<td> 
-										@foreach($users_spoints as $user_spoint)
-											@if($user_spoint['user_id'] === $member->id)
-												{{$user_spoint['spoints']}}
-												<input type="hidden" value="{{$user_spoint['spoints']}}" id="spoint_value_{{$member->id}}"/>
-											@endif
-										@endforeach
-									</td>
+									<td> {{$member->reward !== null ? $member->reward->spoints : 0}}</td>
 									<td> {{$member->created_at}} </td>
 									<td> 
 										<button type="button" class="btn btn-light-blue-bg"
 											onclick="showMemberModal(
 												`{{strtoupper($member->memberId)}}`, 
 												`{{$member->available_points}}`, 
-												`spoint_value_{{$member->id}}`
+												`{{$member->reward !== null ? $member->reward->spoints : 0}}`
 											)">
 											Update Balance
 										</button>
@@ -123,10 +116,10 @@
 	</div>
 
 	<script>
-		function showMemberModal(member_id, available_points, spoint){
+		function showMemberModal(member_id, available_points, spoints){
 			document.getElementById('member_id').value = member_id;
 			document.getElementById('available_points').value = available_points;
-			document.getElementById('available_points').value = available_points;
+			document.getElementById('spoints').value = spoints;
 			document.getElementById('form_member_id').value = member_id;
 			
 			var $modal;

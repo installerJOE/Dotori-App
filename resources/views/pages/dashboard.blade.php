@@ -38,9 +38,7 @@
 				<p class="title01 mb-2"> Rewards </p>
 				<p class="s_title01">(SPOINT) &nbsp;</p>
 				<div class="total_sum total_sum01">
-		
-					<p>  </p>
-
+					<p> {{Auth::user()->reward !== null ? Auth::user()->reward->spoints : 0}} </p>
 				</div>
 			</div>					
 			<div class="main_balance_box main_balance_box04">
