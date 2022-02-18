@@ -14,7 +14,7 @@ use App\Models\Referral;
 use App\Models\Package;
 use App\Models\Product;
 use App\Models\Order;
-use\App\Models\Announcement;
+use App\Models\Announcement;
 use App\Jobs\NotifyRequestJob;
 
 
