@@ -30,6 +30,7 @@
 				<i class="fas fa-fw fa-history"></i>
 				My Subscribed Packages 
 			</p>
+			
 			<div class="history_table">
 				<table class="table table-striped">
 					<tbody>
@@ -37,7 +38,7 @@
 							<th> Package </th>
 							<th> Quantity </th>
 							<th> Status </th>
-							<th> Earning Cycle </th>
+							<th> Percent Profit </th>
 							<th> Date of Staking </th>
 							<th> Action </th>
 						</tr>
@@ -48,7 +49,14 @@
 								<td> {{$subscribed->package->name}} </td>
 								<td> {{$subscribed->quantity}}</td>
 								<td> {{$subscribed->status}}</td>
-								<td> {{$subscribed->percent_paid < 200 ? "progress" : "completed"}} </td>
+								<td> 
+									<div class="myProgress">
+										<div class="myBar" style="width: {{$subscribed->percent_paid/2}}%"></div>
+									</div>
+									<p class="mt-2 text-"> 
+										{{$subscribed->percent_paid . "/200"}}
+									</p>
+								</td>
 								<td> {{$subscribed->created_at}} </td>
 								<td> 
 									<input 
@@ -131,7 +139,7 @@
 					<button type="button" id="repurchase-btn" class="btn btn-purple-bg">
 						Repurchase
 					</button> 
-					<button type="button" class="btn btn-purple-bd" onclick="cancelSub()">
+					<button type="button" id="stop-earning-btn" class="btn btn-purple-bd" onclick="cancelSub()">
 						Stop earning and withdraw
 					</button>
 				</div>
@@ -258,6 +266,7 @@
 			$modal.modal('show');
 			if(percent_paid < 200){
 				document.getElementById('repurchase-btn').style.display = "none"
+				document.getElementById('stop-earning-btn').style.display = "none"
 			}
 			else{
 				
@@ -265,6 +274,7 @@
 				$('#repurchase-btn').click(function(){
 					showRepurchaseForm(total_amount/quantity, quantity, total_amount)
 				});
+				document.getElementById('stop-earning-btn').style.display = "block"
 			}
 		}
 

@@ -50,7 +50,7 @@
 
 								<div class="form-group">
 									<span> 
-										Staking Amount (KRW) <span class="text-red">*</span> 
+										Staking Amount (SPOINT) <span class="text-red">*</span> 
 									</span>
 									<input type="number" 
 										class="form-control" 
@@ -62,7 +62,7 @@
 
 								<div class="form-group">
 									<span>
-										Reward (PTS) <span class="text-red">*</span> 
+										Reward (RPOINT) <span class="text-red">*</span> 
 									</span>
 									<input type="number" 
 										class="form-control" 
@@ -106,9 +106,9 @@
 						<div class="buy_package col-lg-3 col-md-4 col-sm-6 col-12 {{'buy_package0' . $package->id}}">
 							<img src="{{URL::asset('packages/' . $package->filename)}}" class="package_img"/>
 							<p class="text-white subheader mt-3">{{$package->name}}</p>
-							<h6 class="text-white">Reward - {{number_format($package->reward)}} PTS</h6>
+							<h6 class="text-white">Reward - {{number_format($package->reward)}} RPOINT</h6>
 							<div class="total_sum {{'total_sum0' . $package->id}}">
-								{{number_format($package->staking_amount)}} KRW
+								{{number_format($package->staking_amount + $package->reward)}} KRW
 							</div>
 						</div>
 					</a>

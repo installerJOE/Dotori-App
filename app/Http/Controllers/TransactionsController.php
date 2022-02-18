@@ -120,7 +120,10 @@ class TransactionsController extends Controller
         }        
         
         // check if daily purchase limit of 11 million won is exceeded
-        $this->checkDailySubStatus($request->input('total_amount'));        
+        $status = $this->checkDailySubStatus($request->input('total_amount')); 
+        if($status["purchase_ammount_exceeded"]){
+            return back()->with('error', $status["message"]);
+        }
 
         //create new instance of subscribed user
         $subscriber = new SubscribedUser;
@@ -170,9 +173,9 @@ class TransactionsController extends Controller
         foreach($subscribers as $subscriber){
             $transaction_time = strtotime($subscriber->created_at);
             if($transaction_time > $yesterday_midnight && $transaction_time < $today_midnight){
-                $price = $subscriber->package->staking_amount;
+                $total_amount = $subscriber->package->staking_amount + $subscriber->package->reward;
                 $qty = $subscriber->quantity;
-                $subscribed_amt += $price * $qty;
+                $subscribed_amt += $total_amount * $qty;
             }            
         }
         return $subscribed_amt;
@@ -182,12 +185,27 @@ class TransactionsController extends Controller
     private function checkDailySubStatus($purchase_amount){
         $subscribed_amt = $this->getDaySubscriptionAmount();
         if($subscribed_amt >= 11000000){
+            $status = [
+                "purchase_ammount_exceeded" => true,
+                "message" => 'You have exceeded your daily limit of purchase'
+            ];
+            return $status;
             return back()->with('error', 'You have exceeded your daily limit of purchase');
         }
         $allowed_amount = 11000000 - $subscribed_amt;
         if($purchase_amount > $allowed_amount){
+            $status = [
+                "purchase_ammount_exceeded" => true,
+                "message" => 'You can only subscribe ' . $allowed_amount . 'KRW worth of package for today.'
+            ];
+            return $status;
             return back()->with('error', 'You can only subscribe ' . $allowed_amount . 'KRW worth of package for today.');
         }
+        $status = [
+            "purchase_ammount_exceeded" => false,
+            "message" => ''
+        ];
+        return $status;
     }
 
     // repurchase an existing subscription package on completion of an earning cycle
@@ -222,7 +240,7 @@ class TransactionsController extends Controller
             "product_price" => "required"
         ]);
         $purchase_amount = $request->input('product_price') * $request->input('quantity'); 
-        if(Auth::user()->reward === null || $purchase_amount > Auth::user()->reward->spoints){
+        if($purchase_amount > Auth::user()->available_points){
             return back()->with('error', 'Oops! Insuffient Balance. Purchase more packages to accumulate SPOINTS.');
         }
 

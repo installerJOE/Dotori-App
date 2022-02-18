@@ -27,29 +27,22 @@
 				</h3>
 				@foreach($packages as $package)
 					<div class="buy_package col-lg-3 col-md-4 col-sm-6 col-12 {{'buy_package0' . $package->id}}" 
-						onclick="select_package('{{$package->id}}', '{{$package->staking_amount}}', `{{$purchase_active}}`)">
+						onclick="select_package('{{$package->id}}', '{{$package->staking_amount + $package->reward}}', `{{$purchase_active}}`)">
 						<img src="{{URL::asset('packages/' . $package->filename)}}" class="package_img"/>
 						<p class="text-white subheader mt-3">{{$package->name}}</p>
-						<h6 class="text-white">Reward - {{$package->reward}} PTS</h6>
+						<h6 class="text-white">Reward - {{$package->reward}} RPOINT</h6>
 						<div class="total_sum {{'total_sum0' . $package->id}}">
-							{{$package->staking_amount}} KRW
+							{{$package->staking_amount + $package->reward}} KRW
 						</div>
 					</div>		
 				@endforeach
 			</div>
 		</div>
 		@if($purchase_active)
-			<div class="package_left">
-				<!--form01-->
-				
-			</div>		
-
-			<div class="col-md-6 col-sm-12 col-12 note-pad">
-				<div>
-					<h2>Note:</h2>
-					<p>
-						Package purchase is only available from Monday to Friday, from 10:00am to 6:00pm (IST).
-					</p>
+			<div class="col-md-12 col-sm-12 col-12">	
+				<div class="alert alert-info fade-show" role="alert">
+					<i class="fas fa-exclamation-circle"></i>
+					Package purchase is only available from Monday to Friday, from 10:00am to 6:00pm (IST).
 				</div>
 			</div>
 		@endif

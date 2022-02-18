@@ -8,7 +8,7 @@
 	<div class="sub_top"><!--sub_top-->
 		<div class="sub_title">
 			<i class="fas fa-fw fa-money-check-alt"></i>
-			Edit Product
+			Edit Package
 		</div>
 	</div><!--sub_top end-->
 	<div class="section_right_inner"><!--section_right_inner-->
@@ -30,7 +30,7 @@
 
                 <div class="form-group">
                     <span> 
-                        Staking Amount (KRW) <span class="text-red">*</span> 
+                        Staking Amount (SPOINT) <span class="text-red">*</span> 
                     </span>
                     <input type="number" 
                         class="form-control" 
@@ -42,7 +42,7 @@
 
                 <div class="form-group">
                     <span>
-                        Reward (PTS) <span class="text-red">*</span> 
+                        Reward (RPOINT) <span class="text-red">*</span> 
                     </span>
                     <input type="number" 
                         class="form-control" 
