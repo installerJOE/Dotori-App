@@ -125,10 +125,10 @@ class PagesController extends Controller
         $purchase_active = true;
         $message = "";
 
-        if($day === "Saturday" || $day === "Sunday" || $time < 0 || $time > 18){
-            $message = "Package purchase is only available from Monday to Friday, from 10:00am to 6:00pm (IST).";
-            $purchase_active = false;
-        }
+        // if($day === "Saturday" || $day === "Sunday" || $time < 0 || $time > 18){
+        //     $message = "Package purchase is only available from Monday to Friday, from 10:00am to 6:00pm (IST).";
+        //     $purchase_active = false;
+        // }
 
         $packages = Package::all();
         return view('pages.packagepurchase')

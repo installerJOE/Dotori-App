@@ -38,14 +38,14 @@
 				@endforeach
 			</div>
 		</div>
-		@if($purchase_active)
+		{{-- @if($purchase_active)
 			<div class="col-md-12 col-sm-12 col-12">	
 				<div class="alert alert-info fade-show" role="alert">
 					<i class="fas fa-exclamation-circle"></i>
 					Package purchase is only available from Monday to Friday, from 10:00am to 6:00pm (IST).
 				</div>
 			</div>
-		@endif
+		@endif --}}
 	</div>
 
 	<div class="ctrl-btn col-md-3 col-sm-6 col-12"> 

@@ -21,7 +21,7 @@
                             <th> Member ID </th>
 							<th> Email </th>
 							<th> Available Balance (PTS) </th>
-							<th> Shopping Points (SPOINT) </th>
+							<th> Earnings (SPOINT) </th>
                             <th> Date Joined </th>
                             <th> Action </th>
 						</tr>						
@@ -32,7 +32,7 @@
 									<td>{{strtoupper($member->memberId)}}</td>
 									<td> {{$member->email}}</td>
 									<td> {{$member->available_points}} </td>
-									<td> {{$member->reward !== null ? $member->reward->spoints : 0}}</td>
+									<td> {{$member->earnings}}</td>
 									<td> {{$member->created_at}} </td>
 									<td> 
 										<button type="button" class="btn btn-light-blue-bg"

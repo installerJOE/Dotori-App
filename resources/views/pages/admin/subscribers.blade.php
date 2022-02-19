@@ -8,7 +8,7 @@
 	<div class="sub_top"><!--sub_top-->
 		<div class="sub_title">
 			<i class="fas fa-fw fa-users"></i>
-            Subscribers
+            {{$status_type === "pending" ? "Pending Subscriptions" : "Active Subscriptions"}}
 		</div>
 	</div><!--sub_top end-->
 			
@@ -23,6 +23,9 @@
 							<th> Quantity </th>
                             <th> Status </th>
                             <th> Date </th>
+							@if($status_type === "pending")
+								<th> Action </th>
+							@endif
 						</tr>						
 
 						@if($subscribers->count() > 0)
@@ -33,7 +36,17 @@
 									<td> {{$subscriber->quantity}} </td>
 									<td> {{$subscriber->status}} </td>
 									<td> {{$subscriber->updated_at}} </td>
+									@if($status_type === "pending")
+										<td> 
+											<button type="button" class="btn btn-light-blue-bg" onclick="activatePurchase()">
+												activate
+											</button>
+										</td>
+									@endif
 								</tr>
+								<form action="/admin/subscription/{{$subscriber->id}}/activate" method="POST" id="activate-package-sub-form">
+									@csrf
+								</form>
 							@endforeach
 						@else
 							<tr>
@@ -45,4 +58,13 @@
 			</div>
 		</div>
 	</div><!--section_right_inner end-->
+
+	<script>
+		function activatePurchase(){
+			var conf = confirm('Are you sure you want to activate package subscription?');
+			if(conf){
+				document.getElementById('activate-package-sub-form').submit();
+			}
+		}
+	</script>
 @endsection

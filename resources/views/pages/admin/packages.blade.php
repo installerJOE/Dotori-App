@@ -50,25 +50,41 @@
 
 								<div class="form-group">
 									<span> 
-										Staking Amount (SPOINT) <span class="text-red">*</span> 
+										Staking Amount (KRW) <span class="text-red">*</span> 
 									</span>
 									<input type="number" 
 										class="form-control" 
+										id="staking_amount"
 										name="staking_amount" 
 										value="{{old('staking_amount')}}" 
 										required
+										oninput="calculateAmount()"
 									/>
 								</div>
 
 								<div class="form-group">
 									<span>
-										Reward (RPOINT) <span class="text-red">*</span> 
+										Reward (SPOINT) <span class="text-red">*</span> 
 									</span>
 									<input type="number" 
 										class="form-control" 
+										id="reward_pts"
 										name="reward_pts" 
 										value="{{old('reward_pts')}}" 
 										required
+										oninput="calculateAmount()"
+									/>
+								</div>
+
+								<div class="form-group">
+									<span>
+										Total Purchase Amount (KRW) <span class="text-red">*</span> 
+									</span>
+									<input type="number" 
+										class="form-control" 
+										id="total_amount" 
+										value="{{old('total_amount')}}" 
+										disabled
 									/>
 								</div>
 
@@ -116,4 +132,16 @@
             </div>
 		</div>
 	</div><!--section_right_inner end-->
+
+	<script>
+		function calculateAmount(){
+			var staking_amount_input = document.getElementById('staking_amount')
+			var rewardInput = document.getElementById('reward_pts')
+
+			var staking_amount = staking_amount_input.value != "" ? staking_amount_input.value : 0
+			var reward = rewardInput.value != "" ? rewardInput.value : 0
+			var total = Number(staking_amount) + Number(reward);
+			document.getElementById('total_amount').value = total;
+		}
+	</script>
 @endsection

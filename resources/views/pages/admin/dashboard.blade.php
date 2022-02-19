@@ -10,7 +10,9 @@
 	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 	<script src="https://cdn.jsdelivr.net/npm/react-apexcharts@1.3.6/dist/react-apexcharts.iife.min.js"></script> 
 	<style>
-		
+		.title01{
+			line-height: 1.4em !important
+		}
 	</style>
 @endsection
  
@@ -20,39 +22,46 @@
 			<i class="fas fa-fw fa-tachometer-alt"></i>
 			Dashboard 
 		</p>
-		<div>
-			{{$rank->title}}
+		<div class="notice_more purple-bg text-white" onclick="locaion.href='#'">
+			Admin
 		</div>
 	</div>
 	<div class="section_right_inner">
 		<!--main_section01--> 
 		<div class="main_section01">       
-			<div class="main_balance_box main_balance_box02">
-				<p class="title01"> Total Subscribers </p>
-				<p class="s_title01"></p>
-				<div class="total_sum total_sum02">
-					<p> {{Auth::user()->earnings}} </p>
-				</div>
-			</div>
-			<div class="main_balance_box main_balance_box01">
-				<p class="title01"> No of registered users </p>
+			<div class="main_balance_box main_balance_box01 mb-3">
+				<p class="title01"> No of Members </p>
 				<p class="s_title01"></p>
 				<div class="total_sum total_sum01">
-					
+					<p> {{$registered_users}} </p>	
 				</div>
 			</div>					
-			<div class="main_balance_box main_balance_box04">
+			<div class="main_balance_box main_balance_box02 mb-3">
+				<p class="title01"> Active Subscriptions </p>
+				<p class="s_title01"></p>
+				<div class="total_sum total_sum02">
+					<p> {{$active_subscriptions}} </p>
+				</div>
+			</div>
+			<div class="main_balance_box main_balance_box03 mb-3">
+				<p class="title01"> Pending Subscriptions </p>
+				<p class="s_title01"></p>
+				<div class="total_sum total_sum03">
+					<p> {{$pending_subscriptions}} </p>
+				</div>
+			</div>
+			<div class="main_balance_box main_balance_box04 mb-3">
 				<p class="title01"> Withdrawal Requests </p>
 				<p class="s_title01">&nbsp;</p>
 				<div class="total_sum total_sum04">
-					<p> {{Auth::user()->available_points}} </p>
+					<p> {{$withdrawal_requests}} </p>
 				</div>
 			</div>
-			<div class="main_balance_box main_balance_box03">
+			<div class="main_balance_box main_balance_box04 mb-3">
 				<p class="title01"> Deposit Requests </p>
 				<p class="s_title01">&nbsp;</p>
-				<div class="total_sum total_sum03">
-					<p> {{$referrals}} </p>
+				<div class="total_sum total_sum04">
+					<p> {{$deposit_requests}} </p>
 				</div>
 			</div>					
 		</div>

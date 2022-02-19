@@ -131,7 +131,7 @@ class TransactionsController extends Controller
         $subscriber->package_id = $request->input("package_id");
         $subscriber->rank_id = $rank_id;
         $subscriber->quantity = $request->input('quantity');
-        $subscriber->status = "active";
+        $subscriber->status = "pending";
         $subscriber->save();
         
         //update user balance
@@ -148,18 +148,16 @@ class TransactionsController extends Controller
         // $reward_user->save();
         // foreach(User::all() as $user){ $user->memberId = $user->phone; $user->save(); }
 
+        // Auth::user()->earnings = Auth::user()->earnings + ($subscriber->package->reward * $subscriber->quantity);
         
-
-        Auth::user()->earnings = $subscriber->package->reward * $subscriber->quantity;
-        
-        Auth::user()->available_points = Auth::user()->available_points - $request->input('total_amount');
-        Auth::user()->save();
+        // Auth::user()->available_points = Auth::user()->available_points - $request->input('total_amount');
+        // Auth::user()->save();
 
         //send purchase success notification to user email
-        $notifyMail = new PurchaseSuccessMail();    
-        Mail::to(Auth::user()->email)->send($notifyMail);   
+        // $notifyMail = new PurchaseSuccessMail();    
+        // Mail::to(Auth::user()->email)->send($notifyMail);   
 
-        return redirect('/packages/subscribed')->with('success', 'Package has been subscribed successfully.');
+        return redirect('/packages/subscribed')->with('success', 'Package has been subscribed. Please wait for confirmation and approval of purchase request.');
     }
 
     // get the total amount that has been spent of subscription between two midnights

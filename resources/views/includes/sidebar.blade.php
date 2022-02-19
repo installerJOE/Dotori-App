@@ -34,14 +34,14 @@
                 <div class="sp10"></div>
             
                 <ul class="nav_list" style="padding:0px">
-                    <li class='sub-menu'>
-                        <a href="/dashboard">
-                            <i class="fas fa-fw fa-tachometer-alt"></i> &nbsp;
-                            Dashboard
-                        </a>
-                    </li>
-
                     @if(Auth::user()->is_admin)
+                        <li class='sub-menu'>
+                            <a href="/admin/dashboard">
+                                <i class="fas fa-fw fa-tachometer-alt"></i> &nbsp;
+                                Dashboard
+                            </a>
+                        </li>
+
                         <li class='sub-menu'>
                             <a href="/admin/packages">
                                 <i class="fas fa-fw fa-cube"></i> &nbsp;
@@ -61,11 +61,23 @@
                         </li>
 
                         <li class='sub-menu'>
-                            <a href="/admin/subscribers">
+                            <a href="#!deposit">
                                 <i class="fas fa-fw fa-users"></i> &nbsp;
-                                Subscribers
+                                Subscription History
+                            </a>
+                            <ul>
+                                <li class="tab_menu2"><a href="/admin/subscribers/active"> Active Subscriptions </a></li>
+                                <li class="tab_menu2"><a href="/admin/subscribers/pending"> Pending Subscriptions </a></li>
+                            </ul>
+                        </li>
+
+                        <li class='sub-menu'>
+                            <a href="/admin/members">
+                                <i class="fas fa-fw fa-users"></i> &nbsp;
+                                All Members
                             </a>
                         </li>
+
                         <li class='sub-menu'>
                             <a href="#!deposit">
                                 <i class="fas fa-fw fa-money-check-alt"></i> &nbsp; 
@@ -76,6 +88,7 @@
                                 <li class="tab_menu2"><a href="/admin/deposits/requests"> Deposit Requests </a></li>
                             </ul>
                         </li>
+                        
                         <li class='sub-menu'>
                             <a href="#!deposit">
                                 <i class="fas fa-fw fa-share-square"></i> &nbsp;
@@ -86,13 +99,26 @@
                                 <li class="tab_menu2"><a href="/admin/withdrawals/requests"> Withdrawal Requests </a></li>
                             </ul>
                         </li>
+
                         <li class='sub-menu'>
-                            <a href="/admin/announcement">
+                            <a href="#!announcement">
                                 <i class="fas fa-bullhorn fa-fw"></i> &nbsp;
                                 Announcement
                             </a>
+                            <ul>
+                                <li><a href="/admin/announcements"> View all  </a></li>
+                                <li><a href="/admin/announcement/create"> Create new </a></li>
+                                {{-- <li><a href="/admin/announcements/"> Withdrawal Requests </a></li> --}}
+                            </ul>
                         </li>
                     @else
+                        <li class='sub-menu'>
+                            <a href="/dashboard">
+                                <i class="fas fa-fw fa-tachometer-alt"></i> &nbsp;
+                                Dashboard
+                            </a>
+                        </li>
+                        
                         <li class='sub-menu'>
                             <a href="#!products">
                                 <i class="fas fa-fw fa-history"></i> &nbsp;
@@ -190,15 +216,15 @@
 
 <div class="left_menu"><!--left_menu PC-->
     <ul>
-        <li class='sub-menu li-underlined mt-4' style="background-color: #29033b">
-            <a href="/dashboard">
-                <i class="fas fa-fw fa-tachometer-alt"></i> &nbsp;
-                Dashboard
-            </a>
-        </li>
-
         @if(Auth::user()->is_admin)
-        <li class='sub-menu'>
+            <li class='sub-menu li-underlined mt-4' style="background-color: #29033b">
+                <a href="/admin/dashboard">
+                    <i class="fas fa-fw fa-tachometer-alt"></i> &nbsp;
+                    Dashboard
+                </a>
+            </li>
+            
+            <li class='sub-menu'>
                 <a href="/admin/packages">
                     <i class="fas fa-fw fa-cube"></i> &nbsp;
                     Packages
@@ -217,10 +243,14 @@
             </li>
 
             <li class='sub-menu'>
-                <a href="/admin/subscribers">
+                <a href="#!deposit">
                     <i class="fas fa-fw fa-users"></i> &nbsp;
                     Subscription History
                 </a>
+                <ul>
+                    <li><a href="/admin/subscribers/active"> Active Subscriptions </a></li>
+                    <li><a href="/admin/subscribers/pending"> Pending Subscriptions </a></li>
+                </ul>
             </li>
 
             <li class='sub-menu'>
@@ -263,6 +293,13 @@
                 </ul>
             </li>
         @else
+            <li class='sub-menu li-underlined mt-4' style="background-color: #29033b">
+                <a href="/dashboard">
+                    <i class="fas fa-fw fa-tachometer-alt"></i> &nbsp;
+                    Dashboard
+                </a>
+            </li>
+
             <li class='sub-menu'>
                 <a href="#!products">
                     <i class="fas fa-fw fa-history"></i> &nbsp;

@@ -100,5 +100,7 @@ Route::post('/admin/shopping-product',  [App\Http\Controllers\AdminController::c
 Route::post('/admin/shopping-products/{id}/update',  [App\Http\Controllers\AdminController::class, 'updateProduct']);
 Route::post('/admin/shopping-products/{id}/update-status',  [App\Http\Controllers\AdminController::class, 'updateProductStatus']);
 
-Route::get('/admin/subscribers',  [App\Http\Controllers\AdminController::class, 'subscribers']);
+Route::get('/admin/subscribers/{status_type}',  [App\Http\Controllers\AdminController::class, 'subscribers']);
+Route::post('/admin/subscription/{id}/activate',  [App\Http\Controllers\AdminController::class, 'activatePackagePurchase']);
+
 Route::post('/admin/update-user-balance',  [App\Http\Controllers\AdminController::class, 'updateUserBalance']);

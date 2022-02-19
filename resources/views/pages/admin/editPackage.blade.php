@@ -35,8 +35,10 @@
                     <input type="number" 
                         class="form-control" 
                         name="staking_amount" 
+                        id="staking_amount"
                         value="{{$package->staking_amount}}" 
                         required
+                        oninput="calculateAmount()"
                     />
                 </div>
 
@@ -46,9 +48,23 @@
                     </span>
                     <input type="number" 
                         class="form-control" 
+                        id="reward_pts"
                         name="reward_pts" 
                         value="{{$package->reward}}" 
                         required
+                        oninput="calculateAmount()"
+                    />
+                </div>
+
+                <div class="form-group">
+                    <span>
+                        Total Purchase Amount (KRW) <span class="text-red">*</span> 
+                    </span>
+                    <input type="number" 
+                        class="form-control" 
+                        id="total_amount" 
+                        value="{{old('total_amount')}}" 
+                        disabled
                     />
                 </div>
                 
@@ -75,13 +91,17 @@
 	</div><!--section_right_inner end-->
 	@include('includes.productImageUpload')
 
-    {{-- <script>
-        function updateProductStatus(statusAction){
-            var confirmDisable = confirm(`Are your sure you want to ${statusAction} this product?`);
-            if(confirmDisable){
-                document.getElementById('status-action').value = statusAction;
-                document.getElementById('update-product-status-form').submit();
-            }
-        }
-    </script> --}}
+    <script>
+        calculateAmount();
+        function calculateAmount(){
+			var staking_amount_input = document.getElementById('staking_amount')
+			var rewardInput = document.getElementById('reward_pts')
+
+			var staking_amount = staking_amount_input.value != "" ? staking_amount_input.value : 0
+			var reward = rewardInput.value != "" ? rewardInput.value : 0
+			var total = Number(staking_amount) + Number(reward);
+			document.getElementById('total_amount').value = total;
+		}
+    </script>
+
 @endsection

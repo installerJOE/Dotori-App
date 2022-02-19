@@ -251,6 +251,7 @@
 
 	<script src="{{URL::asset('/js/subscription.js')}}"></script>
 	<script>
+		
 		function showPackage(package_sub_id, package_name, profit, status, quantity, percent_paid, total_amount, date_created)
 		{
 			document.getElementById('package_subscription_id').value = package_sub_id;

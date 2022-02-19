@@ -18,6 +18,7 @@ use App\Models\Order;
 use App\Mail\WithdrawalSuccessMail;
 use App\Mail\DepositSuccessMail;
 use Illuminate\Support\Facades\Storage;
+use App\Mail\PurchaseSuccessMail;
 
 
 
@@ -29,7 +30,13 @@ class AdminController extends Controller
     }
 
     public function dashboard(){
-        return view('pages.admin.dashboard');
+        return view('pages.admin.dashboard')->with([
+            'active_subscriptions' => SubscribedUser::where('status', 'active')->get()->count(),
+            'registered_users' => User::all()->count(),
+            'pending_subscriptions' => SubscribedUser::where('status', 'pending')->get()->count(),
+            'withdrawal_requests' => Transaction::where('category', 'withdraw')->get()->count(),
+            'deposit_requests' => Transaction::where('category', 'deposit')->get()->count(),
+        ]);
     }
 
     
@@ -184,31 +191,37 @@ class AdminController extends Controller
     }
 
     // get all subscribed users and display page
-    public function subscribers(){
-        $subscribers = SubscribedUser::all();
-        return view('pages.admin.subscribers')->with('subscribers', $subscribers);
+    public function subscribers($status_type){
+        // $subscribers = SubscribedUser::all();
+        $subscribers = $status_type === "pending" ? 
+            SubscribedUser::where('status', 'pending')->get() : 
+            SubscribedUser::where('status', 'active')->get();
+        return view('pages.admin.subscribers')->with([
+            'subscribers' => $subscribers,
+            'status_type' => $status_type
+        ]);
+    }
+    public function activatePackagePurchase($id){
+        $subscriber = SubscribedUser::findOrFail($id);
+        $subscriber->status = "active";
+        $subscriber->save();
+
+        $subscriber->user->earnings = $subscriber->user->earnings + ($subscriber->package->reward * $subscriber->quantity);        
+        $subscriber->user->available_points = $subscriber->user->available_points - 
+                                              ($subscriber->quantity * ($subscriber->package->staking_amount + $subscriber->package->reward)); 
+        $subscriber->user->save();
+
+        $notifyMail = new PurchaseSuccessMail();    
+        Mail::to($subscriber->user->email)->send($notifyMail);   
+
+        return redirect('/admin/subscribers/pending')->with('success', 'Package purchase has been approved successfully.');
     }
 
-    // get all subscribed users and display page
-    public function members(){
+     // get all subscribed users and display page
+     public function members(){
         $members = User::all();
-        $users_spoints = [];
-        foreach($members as $member){
-            $spoints = 0;
-            if($member->subscribed_users->count() > 0){
-                foreach($member->subscribed_users as $subcriber){
-                    $spoints = $spoints + $subcriber->package->reward;    
-                }
-            }
-            array_push($users_spoints, [
-                'spoints' => $spoints,
-                'user_id' => $member->id,
-            ]);
-        }
-
         return view('pages.admin.members')->with([
             'members' => $members,
-            'users_spoints' => $users_spoints,
         ]);
     }
 

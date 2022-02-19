@@ -1,7 +1,8 @@
 @component('mail::message')
 # Package Purchase Successful
 
-Your package purchase is successful.
+Your package purchase is has been activated successfully.
+Your earning cycle starts counting now. 
 
 {{-- @component('mail::button', ['url' => ''])
 Button Text
