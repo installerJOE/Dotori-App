@@ -15,7 +15,7 @@ class ModifyEmailUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('email')->change();
+            $table->dropUnique(['email']);
         });
     }
 
@@ -28,7 +28,7 @@ class ModifyEmailUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('email')->unique()->change();
+            // $table->string('email')->unique()->change();
         });
     }
 }
