@@ -8,6 +8,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TestScheduler;
 
 class SettleDailyPayment implements ShouldQueue
 {
@@ -37,14 +39,16 @@ class SettleDailyPayment implements ShouldQueue
                 $percent_yield = $subscriber->rank->daily_percent_yield * $subscriber->quantity;
                 $staking_amount = $subscriber->package->staking_amount;
                 $points = $subscriber->package->reward;
-                $capital = $staking_amount - $points;
-                $bonus = ($percent_yield/100) * $capital;
+                $bonus = ($percent_yield/100) * $staking_amount;
                 $subscriber->user->earnings = $subscriber->user->earnings + $bonus;
-                $subscriber->user->available_points = $subscriber->user->available_points + $bonus;
+                // $subscriber->user->available_points = $subscriber->user->available_points + $bonus;
                 $subscriber->percent_paid = $subscriber->percent_paid + $percent_yield;
                 $subscriber->user->save();
                 $subscriber->save();
             }
         }
+        // test scheduler
+        // $notifyMail = new TestScheduler();    
+        // Mail::to("joemike@gmail.com", "Joe Mike")->send($notifyMail); 
     }
 }

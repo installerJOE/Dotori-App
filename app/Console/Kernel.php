@@ -30,8 +30,10 @@ class Kernel extends ConsoleKernel
         if($day !== "Saturday" || $day !== "Sunday"){
             //get all subscribed users and their ranks and update their balance with the daily bonus
             $subscribers = SubscribedUser::all();
-            $schedule->job(new SettleDailyPayment($subscribers))->dailyAt('23:45');
+            $schedule->job(new SettleDailyPayment($subscribers))->dailyAt('23:55');
+            // $schedule->job(new SettleDailyPayment($subscribers))->everyMinute(); for testing
         }
+
         $schedule->command('queue:work')->everyTenMinutes();
     }
 

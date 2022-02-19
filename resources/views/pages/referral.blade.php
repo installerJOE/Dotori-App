@@ -68,7 +68,7 @@
 							@endforeach
 						@else
 							<tr>
-								<td colspan="3"> You have not recommended anyone yet. </td>
+								<td colspan="4"> You have not recommended anyone yet. </td>
 							</tr>
 						@endif
 					</tbody>
