@@ -24,6 +24,7 @@
 							<th> Earnings (SPOINT) </th>
                             <th> Date Joined </th>
                             <th> Action </th>
+							<th>Status</th>
 						</tr>						
 
 						@if($members->count() > 0)
@@ -35,7 +36,7 @@
 									<td> {{$member->earnings}}</td>
 									<td> {{$member->created_at}} </td>
 									<td> 
-										<button type="button" class="btn btn-light-blue-bg"
+										<button type="button" class="btn btn-sm btn-light-blue-bg"
 											onclick="showMemberModal(
 												`{{strtoupper($member->memberId)}}`, 
 												`{{$member->available_points}}`, 
@@ -43,6 +44,13 @@
 											)">
 											Update Balance
 										</button>
+									</td>
+									<td>
+										@if ($member->status)
+										<a href="{{route('admin.togglestatus', ['id' => $member->id])}}" class="btn btn-sm btn-light-blue-bg">Active</a>
+										@else
+										<a href="{{route('admin.togglestatus', ['id' => $member->id])}}" class="btn btn-sm btn-light-blue-bg">Suspended</a>
+										@endif
 									</td>
 								</tr>
 							@endforeach
