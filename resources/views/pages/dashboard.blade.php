@@ -120,7 +120,7 @@
 						<tr>
 							<th> Package </th>
 							<th> Staking Amount (KRW) </th>
-							<th> Rewards/Profit (SPOINT) </th>
+							<th> Rewards/Profit (RPOINT) </th>
 							<th> Status </th>
 						</tr>
 						@if(Auth::user()->subscribed_users->count() > 0)
