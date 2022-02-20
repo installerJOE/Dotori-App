@@ -27,7 +27,7 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
 
-Artisan::command('initialize', function(){
+Artisan::command('setup', function(){
     foreach(Account::all() as $data){
         $data->delete();
     }
@@ -59,6 +59,6 @@ Artisan::command('initialize', function(){
             $user->delete();
         }
     }
-
+    $this->comment('initialized');
     
 });
