@@ -30,7 +30,7 @@
 		<div class="col-md-6 col-sm-6 col-12 card">
 			<h4 class="text-purple"> Referral Link: </h4>
 			<p class="referral-link" id="linkBar">
-				{{"http://127.0.0.1:8000/register?refer=" . Auth::user()->memberId}}
+				{{route('register')."?refer=" . Auth::user()->memberId}}
 			</p>
 			<p> 
 				<input type="button" value="Copy Link" class="btn btn-purple-bd" onclick="copyToClipBoard()"/>
