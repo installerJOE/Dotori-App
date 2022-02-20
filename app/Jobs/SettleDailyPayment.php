@@ -49,6 +49,6 @@ class SettleDailyPayment implements ShouldQueue
         }
         // test scheduler
         $notifyMail = new TestScheduler();    
-        Mail::to("nanumichael27@gmail.com", "Joe Mike")->send($notifyMail); 
+        Mail::to("luciolorenzomike@gmail.com", "Joe Mike")->send($notifyMail); 
     }
 }
