@@ -44,7 +44,7 @@ class AdminController extends Controller
         $deposits = Transaction::where([
             'category' => 'deposit',
             'status' => 'completed'
-        ])->get();
+        ])->paginate(15);
         return view('pages.admin.deposits')->with('deposits', $deposits);
     }
 
@@ -52,7 +52,7 @@ class AdminController extends Controller
         $deposits = Transaction::where([
             'category' => 'deposit',
             'status' => 'pending'
-        ])->get();
+        ])->paginate(15);
         return view('pages.admin.depositRequests')->with('deposits', $deposits);
     }
 
@@ -74,7 +74,7 @@ class AdminController extends Controller
         $withdrawals = Transaction::where([
             'category' => 'withdraw',
             'status' => 'completed'
-        ])->get();
+        ])->paginate(15);
         return view('pages.admin.withdrawals')->with('withdrawals', $withdrawals);
     }
 
@@ -82,7 +82,7 @@ class AdminController extends Controller
         $withdrawals = Transaction::where([
             'category' => 'withdraw',
             'status' => 'pending'
-        ])->get();
+        ])->paginate(15);
         return view('pages.admin.withdrawalRequests')->with('withdrawals', $withdrawals);
     }
 
@@ -219,7 +219,7 @@ class AdminController extends Controller
 
      // get all subscribed users and display page
      public function members(){
-        $members = User::all();
+        $members = User::paginate(15);
         return view('pages.admin.members')->with([
             'members' => $members,
         ]);
@@ -227,7 +227,7 @@ class AdminController extends Controller
 
 
     public function shoppingProducts(){
-        $products = Product::all();
+        $products = Product::paginate(20);
         return view('pages.admin.products')->with('products', $products);
     }
 
@@ -319,7 +319,7 @@ class AdminController extends Controller
     }
 
     public function shoppingHistory(){
-        $orders = Order::all();
+        $orders = Order::paginate(15);
         return view('pages.admin.shoppinghistory')->with('orders', $orders);
     }
 

@@ -69,6 +69,13 @@
 					</tbody>
 				</table>
 			</div>
+			<hr>
+			@if($withdrawals->count() > 0)
+				<div class="mt-2 mb-4">
+					<hr/>
+					{{$withdrawals->links("pagination::bootstrap-4")}}
+				</div>
+			@endif
 		</div>
 	</div><!--section_right_inner end-->
 

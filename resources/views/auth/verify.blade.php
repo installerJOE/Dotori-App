@@ -13,7 +13,7 @@
                 <div class="login_div">
                     <div>
                         <div class="logo">
-                            <h1> Dotori </h1>
+                            <img src="{{asset('img/acorn1.png')}}" height="auto" style="transform: scale(0.75)"/> 
                         </div>
 
                         <h3 class="subheader text-purple text-center">
