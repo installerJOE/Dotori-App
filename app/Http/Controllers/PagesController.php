@@ -87,9 +87,9 @@ class PagesController extends Controller
         $day = (string)date('l', $timestamp);
         $withdraw_active = false;
         $message = "You can only make withdrawal requests on Tuesdays, Thursdays and Saturdays, between 10:00am to 9:00pm (IST).";
-        // $active_days = ["Tuesday", "Thursday", "Saturday"];
-        $active_days = ["Monday", "Thursday", "Saturday"];
-
+        $active_days = ["Tuesday", "Thursday", "Saturday"];
+        // $active_days = ["Monday", "Thursday", "Saturday"];
+        
         for($i=0; $i<count($active_days); $i++){
             if($day === $active_days[$i] && $time > 10 && $time < 20){
                 $withdraw_active = true;
