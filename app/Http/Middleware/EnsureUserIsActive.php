@@ -18,7 +18,7 @@ class EnsureUserIsActive
     {
         if (! $request->user()->status) {
             auth()->logout();
-            return redirect()->route('login')->withErrors(['phone' => 'You have been suspened']);
+            return redirect()->route('login')->withErrors(['phone' => 'You have been suspended']);
         }
         return $next($request);
     }
