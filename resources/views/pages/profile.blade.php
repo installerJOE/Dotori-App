@@ -45,7 +45,8 @@
 								</tr>
 								<tr>
 									<td> Phone Number </td>
-									<td><input disabled type="text" class="withdrawal_input01" name='phone' value="{{Auth::user()->phone}}"></td>
+									<td><input disabled type="text" class="withdrawal_input01" value="{{Auth::user()->phone}}"></td>
+									<input type="hidden" name='phone' value="{{Auth::user()->phone}}">
 								</tr>
 							</tbody>
 						</table>

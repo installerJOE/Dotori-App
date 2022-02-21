@@ -206,7 +206,7 @@ class AdminController extends Controller
         $subscriber->status = "active";
         $subscriber->save();
 
-        $subscriber->user->earnings = $subscriber->user->earnings + ($subscriber->package->reward * $subscriber->quantity);        
+        $subscriber->user->rpoint = $subscriber->user->rpoint + ($subscriber->package->reward * $subscriber->quantity);        
         $subscriber->user->available_points = $subscriber->user->available_points - 
                                               ($subscriber->quantity * ($subscriber->package->staking_amount + $subscriber->package->reward)); 
         $subscriber->user->save();

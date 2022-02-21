@@ -1,19 +1,19 @@
-{{-- For mobile view --}}
 <div id="wrap"><!--wrap-->
     <div id="header"><!--header-->
         <div class="top_logo">
             <a href="/">
-                <h1> Dotori </h1>
+                <img src="{{asset('img/acorn1.png')}}" height="auto" style="transform: scale(0.85)"/> 
             </a>
         </div>
         
+        {{-- For mobile view --}}
         <div class="m_top_section"><!--m_top_section-->
             <div class="m_nav">
                 <img src="{{URL::asset('/img/nav.png')}}" alt="menu icon" class="m_nav menu">
             </div>
             <div class="m_logo">
                 <a href="/dashboard">
-                    <h1> Dotori </h1>
+                    <img src="{{asset('img/acorn1.png')}}" height="auto" style="transform: scale(0.85)"/> 
                 </a>
             </div>
 
@@ -118,7 +118,7 @@
                                 Dashboard
                             </a>
                         </li>
-                        
+
                         <li class='sub-menu'>
                             <a href="#!products">
                                 <i class="fas fa-fw fa-history"></i> &nbsp;

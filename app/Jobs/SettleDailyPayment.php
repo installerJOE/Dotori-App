@@ -40,9 +40,10 @@ class SettleDailyPayment implements ShouldQueue
                 $staking_amount = $subscriber->package->staking_amount;
                 $points = $subscriber->package->reward;
                 $bonus = ($percent_yield/100) * $staking_amount;
-                $subscriber->user->earnings = $subscriber->user->earnings + $bonus;
+                $subscriber->user->rpoint = $subscriber->user->rpoint + $bonus;
                 // $subscriber->user->available_points = $subscriber->user->available_points + $bonus;
-                $subscriber->percent_paid = $subscriber->percent_paid + $percent_yield;
+                $new_percent_paid = $subscriber->percent_paid + $percent_yield;
+                $subscriber->percent_paid = $new_percent_paid > 200 ? 200 : $new_percent_paid;
                 $subscriber->user->save();
                 $subscriber->save();
             }

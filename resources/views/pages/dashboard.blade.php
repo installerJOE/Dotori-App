@@ -28,14 +28,14 @@
 		<!--main_section01--> 
 		<div class="main_section01">       
 			<div class="main_balance_box main_balance_box02">
-				<p class="title01 mb-2"> My Earnings </p>
+				<p class="title01 mb-2"> My Shopping Points </p>
 				<p class="s_title01">(SPOINT) &nbsp;</p>
 				<div class="total_sum total_sum02">
 					<p> {{Auth::user()->earnings}} </p>
 				</div>
 			</div>
 			<div class="main_balance_box main_balance_box01">
-				<p class="title01 mb-2"> Rewards </p>
+				<p class="title01 mb-2"> My Rewards </p>
 				<p class="s_title01">(RPOINT) &nbsp;</p>
 				<div class="total_sum total_sum01">
 					<p> {{Auth::user()->rpoint}} </p>
