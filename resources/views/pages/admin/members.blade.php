@@ -40,7 +40,7 @@
 											onclick="showMemberModal(
 												`{{strtoupper($member->memberId)}}`, 
 												`{{$member->available_points}}`, 
-												`{{$member->reward !== null ? $member->reward->spoints : 0}}`
+												`{{$member->earnings}}`
 											)">
 											Update Balance
 										</button>
@@ -115,7 +115,7 @@
 							<input type="text"
 								class="form-control" 
 								id='spoints'
-								disabled
+								name="spoints"
 							/>
 						</div>
 
