@@ -271,7 +271,7 @@ class AdminController extends Controller
 
     public function showProduct($id){
         $product = Product::findOrFail($id);
-        return view('pages.admin.editProduct')->with('product', $product);
+        return view('pages.admin.editproduct')->with('product', $product);
     }
 
     public function updateProduct(Request $request, $id){
