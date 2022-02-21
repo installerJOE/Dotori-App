@@ -3,7 +3,11 @@
 @section('meta-content')
 	<title> My Packages | Dotori </title>
 	<style>
-		
+		.amount-block{
+			padding:15px;
+			border-radius: 10px;
+			text-align: right
+		}
 	</style>
 @endsection
 
@@ -21,6 +25,14 @@
                 <a href="/packages/subscribe"> 
                     <button class="btn btn-purple-bd"> Purchase package </button>
                 </a>
+            </div>
+			<div class="col-md-3 col-sm-6 col-12" style="float:right"> 
+                <div class="purple-bg text-white amount-block">
+					<p style="font-size:12px" class="text-light-blue">
+						Total Amount Staked
+					</p> 
+					<p style="font-size:21px"> {{$total_staking_amount}} KRW </p>
+				</div>
             </div><br/>
 		</div>
 

@@ -87,7 +87,8 @@ class PagesController extends Controller
         $day = (string)date('l', $timestamp);
         $withdraw_active = false;
         $message = "You can only make withdrawal requests on Tuesdays, Thursdays and Saturdays, between 10:00am to 9:00pm (IST).";
-        $active_days = ["Tuesday", "Thursday", "Saturday"];
+        // $active_days = ["Tuesday", "Thursday", "Saturday"];
+        $active_days = ["Monday", "Thursday", "Saturday"];
 
         for($i=0; $i<count($active_days); $i++){
             if($day === $active_days[$i] && $time > 10 && $time < 20){
@@ -112,9 +113,14 @@ class PagesController extends Controller
 
     public function subscribedPackages(){
         $subscribed_packages = SubscribedUser::where('user_id', Auth::user()->id)->get();
+        $total_staking_amount = 0;
+        foreach($subscribed_packages as $subscriber){
+            $total_staking_amount += $subscriber->package->staking_amount * $subscriber->quantity;
+        }
         return view('pages.packages')
             ->with([
-                'subscribed_packages' => $subscribed_packages
+                'subscribed_packages' => $subscribed_packages,
+                'total_staking_amount' => $total_staking_amount
             ]);
     }
     public function purchasePackage(){
@@ -153,11 +159,11 @@ class PagesController extends Controller
     }
 
     public function orderHistory(){
-        $orders = Order::where('delivery_address_id', Auth::user()->delivery_address->id)->get();
-        return view('pages.orderhistory')
-            ->with([
-                'orders' => $orders,
-            ]);
+        $user_address = Auth::user()->delivery_address;
+        $orders = $user_address !== null ? Order::where('delivery_address_id', $user_address->id)->get() : [];
+        return view('pages.orderhistory')->with([
+            'orders' => $orders,
+        ]);
     }
 
     public function profile(){
