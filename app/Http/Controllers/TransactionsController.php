@@ -69,6 +69,16 @@ class TransactionsController extends Controller
             return back()->with('error', 'Oops, your PIN is incorrect. Try again! ');
         }
 
+        $yesterday_midnight = strtotime('today midnight');
+        $today_midnight = strtotime('tomorrow midnight');
+        $transactions = Transaction::where('user_id', Auth::user()->id)->get();
+        foreach($transactions as $transaction){
+            $transaction_time = strtotime($transaction->created_at);
+            if($transaction_time > $yesterday_midnight && $transaction_time < $today_midnight){
+                return back()->with("error", "You can only send ONE withdrawal request in a day");
+            }
+        }
+
         $transaction = new Transaction;
         $transaction->user_id = Auth::user()->id;
         $transaction->category = "withdraw";
