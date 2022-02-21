@@ -18,7 +18,7 @@
 	<div class="main_notice">
 		<p class="sub_title" style="padding-top: 0px !important"> 
 			<i class="fas fa-fw fa-tachometer-alt"></i>
-			Dashboard ID: {{Auth::user()->phone}}
+			Dashboard <small>ID: {{Auth::user()->phone}}</small>
 		</p>
 		<div class="notice_more purple-bg text-white" onclick="locaion.href='#'">
 			{{$rank->title ?? 0}}
