@@ -14,7 +14,7 @@
 
                     <script type="text/javascript">
                     function googleTranslateElementInit() {
-                    new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'ko,en'}}, 'google_translate_element');
+                        new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'ko,en'}}, 'google_translate_element');
                     }
                     </script>
             
@@ -28,7 +28,7 @@
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="logo">
-                                <h1> Dotori </h1>
+                                <img src="{{asset('img/acorn1.png')}}" height="auto" style="transform: scale(0.75)"/> 
                             </div>
 
                             <h3 class="subheader text-purple text-center">

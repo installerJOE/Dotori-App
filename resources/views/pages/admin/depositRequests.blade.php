@@ -55,6 +55,12 @@
 					</tbody>
 				</table>
 			</div>
+			@if($deposits->count() > 0)
+				<div class="mt-2">
+					<hr/>
+					{{$deposits->links("pagination::bootstrap-4")}}
+				</div>
+			@endif
 		</div>
 	</div><!--section_right_inner end-->
 

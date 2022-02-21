@@ -121,7 +121,12 @@
                                 </a>
                             </div>
                         </div>
+						{{-- @if($products->count() > 0) --}}
                     @endforeach
+					<div class="mt-2 col-md-12 col-sm-12 col-12">
+						<hr/>
+						{{$products->links("pagination::bootstrap-4")}}
+					</div>
                 @else
                     <h2>
                         No Product has been created yet

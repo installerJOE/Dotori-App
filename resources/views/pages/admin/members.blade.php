@@ -47,9 +47,9 @@
 									</td>
 									<td>
 										@if ($member->status)
-										<a href="{{route('admin.togglestatus', ['id' => $member->id])}}" class="btn btn-sm btn-light-blue-bg">Active</a>
+										<a href="{{route('admin.togglestatus', ['id' => $member->id])}}" class="btn btn-light-blue-bg btn-sm">Active</a>
 										@else
-										<a href="{{route('admin.togglestatus', ['id' => $member->id])}}" class="btn btn-sm btn-light-blue-bg">Suspended</a>
+										<a href="{{route('admin.togglestatus', ['id' => $member->id])}}" class="btn btn-light-blue-bg btn-sm">Suspended</a>
 										@endif
 									</td>
 								</tr>
@@ -62,6 +62,12 @@
 					</tbody>
 				</table>
 			</div>
+			@if($members->count() > 0)
+				<div class="mt-2">
+					<hr/>
+					{{$members->links("pagination::bootstrap-4")}}
+				</div>
+			@endif
 		</div>
 	</div><!--section_right_inner end-->
 	<!-- Modal to display all the details of a deposit request -->
