@@ -326,6 +326,7 @@ class AdminController extends Controller
     public function updateUserBalance(Request $request){
         $user = User::where('memberId', $request->input('member_id'))->first();
         $user->available_points = $request->input('available_points') !== null ? $request->input('available_points') : $user->available_points;
+        $user->earnings = $request->input('spoints') !== null ? $request->input('spoints') : $user->available_points;
         $user->save();
         return redirect('/admin/members')->with('success', 'Available Points have been updated for the user with ID ' . $request->input('member_id'));
     }
