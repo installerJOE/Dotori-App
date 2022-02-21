@@ -43,7 +43,7 @@
 							<th> Date </th>
 						</tr>
 
-						@if($orders->count() > 0)
+						@if(count($orders) > 0)
 							@foreach($orders as $order)
 							<tr>
 								<td> {{$order->unique_id}} </td>
@@ -74,7 +74,7 @@
 							@endforeach
 						@else
 							<tr>
-								<td colspan="3"> No Package has been subscribed to yet. </td>
+								<td colspan="7"> No Package has been subscribed to yet. </td>
 							</tr>
 						@endif
 
