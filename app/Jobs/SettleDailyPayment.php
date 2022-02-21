@@ -10,6 +10,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\TestScheduler;
+use App\Models\SubscribedUser;
 
 class SettleDailyPayment implements ShouldQueue
 {
@@ -35,7 +36,7 @@ class SettleDailyPayment implements ShouldQueue
     public function handle()
     {
         foreach($this->subscribers as $subscriber){
-            if($subscriber->percent_paid < 200 && $subscriber->status === "active"){
+            if($subscriber->percent_paid < 200 && $subscriber->status !== "paused"){
                 $percent_yield = $subscriber->rank->daily_percent_yield * $subscriber->quantity;
                 $staking_amount = $subscriber->package->staking_amount;
                 $points = $subscriber->package->reward;
@@ -47,9 +48,15 @@ class SettleDailyPayment implements ShouldQueue
                 $subscriber->user->save();
                 $subscriber->save();
             }
+            else{
+                if($subscriber->status !== "paused"){
+                    $subscriptions = SubscribedUser::where('user_id', $subscriber->user_id)->get();
+                    foreach($subscriptions as $subscription){
+                        $subscription->status = "paused";
+                        $subscription->save();   
+                    }
+                }
+            }
         }
-        // test scheduler
-        // $notifyMail = new TestScheduler();    
-        // Mail::to("luciolorenzomike@gmail.com", "Joe Mike")->send($notifyMail); 
     }
 }
