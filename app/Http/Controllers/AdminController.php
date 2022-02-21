@@ -329,4 +329,12 @@ class AdminController extends Controller
         $user->save();
         return redirect('/admin/members')->with('success', 'Available Points have been updated for the user with ID ' . $request->input('member_id'));
     }
+
+    public function toggleUserStatus($id)
+    {
+        $user = User::findOrFail($id);
+        $user->status = !$user->status;
+        $user->save();
+        return redirect()->back()->with('success', 'User status successfully toggled');
+    }
 }

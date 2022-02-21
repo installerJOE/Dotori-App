@@ -28,6 +28,8 @@ Auth::routes(['verify' => true]);
 | Routes for users/subscribers
 |-------------------------------------------------------------------------------------------------------------
 */
+Route::middleware('activeusersonly')->group(function () {
+
 Route::get('/dashboard',  [App\Http\Controllers\PagesController::class, 'index']);
 Route::get('/deposit',  [App\Http\Controllers\PagesController::class, 'deposit']);
 Route::get('/deposits/history',  [App\Http\Controllers\PagesController::class, 'depositHistory']);
@@ -62,7 +64,7 @@ Route::post('/package/repurchase',  [App\Http\Controllers\TransactionsController
 Route::post('/package/cancel-subscription',  [App\Http\Controllers\TransactionsController::class, 'cancelPackageSub']);
 Route::post('/products/purchase',  [App\Http\Controllers\TransactionsController::class, 'purchaseProduct']);
 
-
+});
 /*
 |-------------------------------------------------------------------------------------------------------------
 | Routes for administrator
@@ -104,3 +106,4 @@ Route::get('/admin/subscribers/{status_type}',  [App\Http\Controllers\AdminContr
 Route::post('/admin/subscription/{id}/activate',  [App\Http\Controllers\AdminController::class, 'activatePackagePurchase']);
 
 Route::post('/admin/update-user-balance',  [App\Http\Controllers\AdminController::class, 'updateUserBalance']);
+Route::get('/admin/toggleuser/{id}', [App\Http\Controllers\AdminController::class, 'toggleUserStatus'])->name('admin.togglestatus');

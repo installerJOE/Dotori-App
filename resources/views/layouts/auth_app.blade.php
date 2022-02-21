@@ -11,6 +11,25 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+    <style>
+        
+        .translated-ltr{margin-top:-40px;}
+        .translated-ltr{margin-top:-40px;}
+        .goog-te-banner-frame {display: none;margin-top:-20px;}
+
+        .goog-logo-link {
+        display:none !important;
+        } 
+
+        .goog-te-combo{
+            margin-left: 12px !important;
+        }
+
+        .goog-te-gadget{
+        color: transparent !important;
+        }
+    </style>
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">

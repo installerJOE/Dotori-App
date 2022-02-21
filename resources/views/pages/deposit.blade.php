@@ -90,13 +90,13 @@
 			</p>
 			<div class="referral-link" style="margin:1em 0px; line-height:2em !important">
 				<h3 class="subheader">
-					Bank Name: Dotori Bank LTD
+					Bank Name: 농협 
 				</h3>
 				<h3 class="subheader">
-					Account Name:  Dotori
+					Account Name:  김병철
 				</h3>
 				<h3 class="subheader">
-					Account Number: 5627891728
+					Account Number: 302-1363-7061-21
 				</h3>
 			</div>
 			<p style="font-weight:bold" class="text-light-blue">
