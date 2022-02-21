@@ -62,6 +62,7 @@ class TransactionsController extends Controller
         $inputs = $request->validate([
             'pin' => 'required|string|max:6',
             'withdrawal_amount' => 'required',
+            'received_krw' => 'required',
         ]);
 
         if(!Hash::check($inputs['pin'], Auth::user()->pin)){
@@ -72,17 +73,19 @@ class TransactionsController extends Controller
         $transaction->user_id = Auth::user()->id;
         $transaction->category = "withdraw";
         $transaction->status = "pending";
-        $transaction->amount = $request->input('withdrawal_amount');
-        $transaction->fee = $request->input('fee');
-        $transaction->total_amount = $request->input('total_amount');
+        $transaction->amount = $request->input('withdrawal_amount'); //withdrawn rpoint
+        $transaction->accumulated_spoint = $request->input('accumulated_spoint'); // accumulated spoint
+        $transaction->fee = $request->input('fee'); // withdrawal fee
+        $transaction->total_amount = $request->input('received_krw'); // receive amount
         $transaction->bank_name = $request->input("bank_name");
         $transaction->account_name = $request->input("account_name");
         $transaction->account_number = $request->input("account_number");
         $transaction->save();
 
         $user = Auth::user();
-        $user->available_points = Auth::user()->available_points - $request->input('withdrawal_amount');
-        $user->save();
+        Auth::user()->rpoint = Auth::user()->rpoint - $request->input('withdrawal_amount');
+        Auth::user()->earnings = Auth::user()->earnings + $request->input('accumulated_spoint');
+        Auth::user()->save();
 
         // Send email notification of withdrawal request
         $notifyMail = new WithdrawalRequestMail();    
@@ -105,7 +108,7 @@ class TransactionsController extends Controller
             return back()->with('error', 'Oops, your PIN is incorrect. Try again! ');
         } 
         
-        if(Auth::user()->available_points < $request->input('total_amount')){
+        if(Auth::user()->rpoint < $request->input('total_amount')){
             return back()->with("error", "Insufficient funds! Please credit your Dotori account to purchase more package");
         }
         
@@ -238,7 +241,7 @@ class TransactionsController extends Controller
             "product_price" => "required"
         ]);
         $purchase_amount = $request->input('product_price') * $request->input('quantity'); 
-        if($purchase_amount > Auth::user()->available_points){
+        if($purchase_amount > Auth::user()->earnings){
             return back()->with('error', 'Oops! Insuffient Balance. Purchase more packages to accumulate SPOINTS.');
         }
 
@@ -269,7 +272,7 @@ class TransactionsController extends Controller
         $order->save();
 
         $user = Auth::user();
-        $user->available_points = $user->available_points - $purchase_amount;
+        $user->earnings = $user->earnings - $purchase_amount;
         $user->save();
 
         // Send Email for successful purchase

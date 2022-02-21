@@ -41,8 +41,8 @@
 								<tr style="font-weight:bold">
 									<td> Available Amount (KRW)</td>
 									<td>
-										{{Auth::user()->available_points}}
-										<input type="hidden" value="{{Auth::user()->available_points}}" id="available_amount"/>
+										{{Auth::user()->rpoint}}
+										<input type="hidden" value="{{Auth::user()->rpoint}}" id="available_amount"/>
 									</td>
 								</tr>
 							</tbody>
@@ -61,7 +61,7 @@
 							<table style="width:100%;">
 								<tbody>
 									<tr>
-										<td> Withdraw Amount (KRW) </td>
+										<td> Withdraw Amount (RPOINT) </td>
 										<td>
 											<input type="number" 
 												placeholder="Enter amount to withdraw" 
@@ -77,7 +77,7 @@
 									</tr>
 											
 									<tr>
-										<td> Fee (0.5% of Withdraw Amount) </td>
+										<td> Fee (5% of Withdraw Amount) </td>
 										<td>
 											<input type="number" 
 												class="withdrawal_input01" 
@@ -91,7 +91,7 @@
 									</tr>
 										
 									<tr>
-										<td> Total Amount (KRW) </td>
+										<td> Total Amount (SPOINT) </td>
 										<td>
 											<input type="number" 
 												id="total_amount" 
@@ -100,7 +100,35 @@
 												placeholder="0.00"
 												value="{{old('total_amount')}}"
 											/>
-											<input type="hidden" id='form_total_amount' name="total_amount" value="{{old('total_amount')}}">
+											<input type="hidden" id='form_total_amount' value="{{old('total_amount')}}">
+										</td>
+									</tr>
+
+									<tr>
+										<td> Acummulated SPOINT (15% of Total Amount) </td>
+										<td>
+											<input type="number" 
+												id="accumulated_spoint" 
+												class="withdrawal_input01" 
+												disabled
+												placeholder="0.00"
+												value="{{old('accumulated_spoint')}}"
+											/>
+											<input type="hidden" id='form_accumulated_spoint' name="accumulated_spoint" value="{{old('accumulated_spoint')}}">
+										</td>
+									</tr>
+
+									<tr>
+										<td> Total Amount (KRW) you will receive (85% of Total Amount) </td>
+										<td>
+											<input type="number" 
+												id="total_krw" 
+												class="withdrawal_input01" 
+												disabled
+												placeholder="0.00"
+												value="{{old('total_krw')}}"
+											/>
+											<input type="hidden" id='form_total_krw' name="received_krw" value="{{old('total_krw')}}">
 										</td>
 									</tr>
 											
@@ -176,18 +204,30 @@
 			// var amount_to_withdraw = document.getElementById('withdrawal_amount').value;
 			var withdrawal_fee = document.getElementById('withdrawal_fee');
 			var total_amount = document.getElementById('total_amount');	
+			var spoint_accumulated = document.getElementById('accumulated_spoint');
+			var receive_amount = document.getElementById('total_krw');
+
 			var balance_ok = checkBalance();
 			if(balance_ok){
 				document.getElementById('insufficientErrorMessage').innerHTML = ""
-				var fee = Number(value) * Number(0.5) / 100;
+				var fee = (Number(value) * 5) / 100;
 				withdrawal_fee.value = fee;
+
 				total_amount.value = Number(value) - Number(fee);
+				
+				spoint_accumulated.value = (total_amount.value * 15) / 100;
+				receive_amount.value = (total_amount.value * 85) / 100;
+
 				document.getElementById('form_withdraw_fee').value = fee;
 				document.getElementById('form_total_amount').value = total_amount.value;
+				document.getElementById('form_accumulated_spoint').value = spoint_accumulated.value;
+				document.getElementById('form_total_krw').value = receive_amount.value;
 			}
 			else{
 				withdrawal_fee.value = "";
 				total_amount.value = "";
+				spoint_accumulated.value = "";
+				receive_amount.value = "";
 				document.getElementById('insufficientErrorMessage').innerHTML = "*Oops! Insufficient Balance."
 			}
 		}
