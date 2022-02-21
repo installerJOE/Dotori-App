@@ -43,7 +43,7 @@
 							<th> Date </th>
 						</tr>
 
-						@if($orders->count() > 0)
+						@if(count($orders) > 0)
 							@foreach($orders as $order)
 							<tr>
 								<td> {{$order->unique_id}} </td>
