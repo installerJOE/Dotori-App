@@ -74,7 +74,7 @@
 							@endforeach
 						@else
 							<tr>
-								<td colspan="3"> No Package has been subscribed to yet. </td>
+								<td colspan="7"> No Package has been subscribed to yet. </td>
 							</tr>
 						@endif
 
