@@ -108,7 +108,7 @@ class TransactionsController extends Controller
             return back()->with('error', 'Oops, your PIN is incorrect. Try again! ');
         } 
         
-        if(Auth::user()->rpoint < $request->input('total_amount')){
+        if(Auth::user()->available_points < $request->input('total_amount')){
             return back()->with("error", "Insufficient funds! Please credit your Dotori account to purchase more package");
         }
         
