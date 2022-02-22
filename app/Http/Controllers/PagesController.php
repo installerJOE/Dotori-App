@@ -112,15 +112,18 @@ class PagesController extends Controller
     }
 
     public function subscribedPackages(){
-        $subscribed_packages = SubscribedUser::where('user_id', Auth::user()->id)->get();
+        $subscribed_packages = SubscribedUser::where('user_id', Auth::user()->id)->orderBy('percent_paid', 'ASC')->get();
         $total_staking_amount = 0;
+        $completed_payment = false;
         foreach($subscribed_packages as $subscriber){
             $total_staking_amount += $subscriber->package->staking_amount * $subscriber->quantity;
+            $completed_payment = $subscriber->percent_paid >= 200 ? true : false;
         }
         return view('pages.packages')
             ->with([
                 'subscribed_packages' => $subscribed_packages,
-                'total_staking_amount' => $total_staking_amount
+                'total_staking_amount' => $total_staking_amount,
+                'completed_payment' => $completed_payment
             ]);
     }
     public function purchasePackage(){

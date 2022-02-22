@@ -50,7 +50,7 @@
 							@endforeach
 						@else
 							<tr>
-								<td colspan="5"> No deposit has been made yet. </td>
+								<td colspan="6"> There are no pending subscription requests yet. </td>
 							</tr>
 						@endif
 					</tbody>

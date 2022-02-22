@@ -19,6 +19,15 @@
 		</div>
 	</div><!--sub_top end-->
 
+	@if($completed_payment)
+		<div class="alert-boxes">
+			<div class="alert alert-danger fade-show" role="alert">
+				You have a package that's ready for repurchase. Please repurchase the purchase to continue 
+				the earning cycle of your other packages.
+			</div>
+		</div>
+	@endif
+
 	<div class="section_right_inner"><!--section_right_inner-->
 		<div class="col-md-12 col-sm-12 col-12 mb-4">
 			<div class="ctrl-btn col-md-3 col-sm-6 col-12"> 

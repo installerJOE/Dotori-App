@@ -233,8 +233,16 @@ class TransactionsController extends Controller
         }
         $subscriber->repurchase++;
         $subscriber->percent_paid = 0;
-        $subscriber->status = "active";
         $subscriber->save();  
+
+        $subscriptions = SubscribedUser::where('user_id', Auth::user()->id)->orderBy('percent_paid', 'DESC')->get();
+        foreach($subscriptions as $subscription){
+            if($subscription->percent_paid >= 200){
+                break;
+            }
+            $subscription->status = "active";
+            $subscription->save();
+        }
 
         // Send notification on successful package repurchase
         $notifyMail = new RepurchaseSuccessMail();    
