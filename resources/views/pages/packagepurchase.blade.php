@@ -30,7 +30,7 @@
 						onclick="select_package('{{$package->id}}', '{{$package->staking_amount + $package->reward}}', `{{$purchase_active}}`)">
 						<img src="{{URL::asset('packages/' . $package->filename)}}" class="package_img"/>
 						<p class="text-white subheader mt-3">{{$package->name}}</p>
-						<h6 class="text-white">Reward - {{$package->reward}} RPOINT</h6>
+						<h6 class="text-white">Reward - {{$package->reward}} SPOINT</h6>
 						<div class="total_sum {{'total_sum0' . $package->id}}">
 							{{$package->staking_amount + $package->reward}} KRW
 						</div>
