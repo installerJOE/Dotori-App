@@ -42,7 +42,7 @@
 			<div class="col-md-12 col-sm-12 col-12">	
 				<div class="alert alert-info fade-show" role="alert">
 					<i class="fas fa-exclamation-circle"></i>
-					Package purchase is only available from Monday to Friday, from 10:00am to 6:00pm (IST).
+					Package purchase is only available from Monday to Friday, from 10:00am to 6:00pm (KST).
 				</div>
 			</div>
 		@endif --}}
@@ -68,7 +68,7 @@
 						@else
 							<p class="text-red">
 								Sorry, package subscription is inactive for now.
-								Package purchase is only available from Monday to Friday, from 10:00am to 6:00pm (IST).
+								Package purchase is only available from Monday to Friday, from 10:00am to 6:00pm (KST).
 							</p>
 						@endif
 						<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
