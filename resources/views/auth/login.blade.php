@@ -80,7 +80,7 @@
                                 Don't have an account?
                             </div>
                             <div class="index_input">
-                                <div class="col-md-12">
+                                <div class="col-12">
                                     <a href="/register">
                                         <button type="button" class="btn btn-purple-bd">
                                             Create account 

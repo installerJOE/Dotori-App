@@ -17,7 +17,7 @@
         <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
         
         {{-- For mobile view --}}
-        <div class="m_top_section"><!--m_top_section-->
+        <div class="m_top_section" style="top: -25px"><!--m_top_section-->
             <div class="m_nav">
                 <img src="{{URL::asset('/img/nav.png')}}" alt="menu icon" class="m_nav menu">
             </div>

@@ -55,7 +55,7 @@
                             </div>
         
                             <div class="index_input">
-                                <div class="col-md-12">
+                                <div class="col-12">
                                     <button type="submit" class="btn btn-purple-bg">
                                         Send Password Reset Link
                                     </button>
