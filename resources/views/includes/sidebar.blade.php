@@ -30,7 +30,7 @@
 
             <div id="m_nav" style="left:-150%;">
                 <div class="m_nav_logo"> 
-                    <img src="{{URL::asset('/storage/images/profile_images/'. Auth::user()->profile_image)}}" alt="profile image" class="level_img">
+                    {{-- <img src="{{URL::asset('/storage/images/profile_images/'. Auth::user()->profile_image)}}" alt="profile image" class="level_img"> --}}
                     <span class="username">
                         {{Auth::user()->name}}
                         <br> 

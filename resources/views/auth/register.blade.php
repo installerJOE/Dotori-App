@@ -34,9 +34,9 @@
 					<div style="left: 100px; margin-top: 30px" id="google_translate_element"></div>
 
 					<script type="text/javascript">
-					function googleTranslateElementInit() {
-					new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'ko,en'}}, 'google_translate_element');
-					}
+					 function googleTranslateElementInit() {
+                        new google.translate.TranslateElement({pageLanguage: 'ko', includedLanguages: 'ko,en', }, 'google_translate_element');
+                    }
 					</script>
 			
 					<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
@@ -176,7 +176,7 @@
 			
 							<div class="index_input ">
 								<p class="input_title"> Referral ID </p>
-								<input type="text" class="form-control" name="referral_id" value="{{request()->refer}}">
+								<input type="text" class="form-control" required name="referral_id" value="{{request()->refer}}">
 								{{-- <input type="hidden"  value="{{request()->refer}}"/> --}}
 							</div>
 		

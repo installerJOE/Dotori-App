@@ -12,8 +12,8 @@
                     <div style="left: 100px; margin-top: 30px" id="google_translate_element"></div>
 
                     <script type="text/javascript">
-                    function googleTranslateElementInit() {
-                    new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'ko,en'}}, 'google_translate_element');
+                     function googleTranslateElementInit() {
+                        new google.translate.TranslateElement({pageLanguage: 'ko', includedLanguages: 'ko,en', }, 'google_translate_element');
                     }
                     </script>
             

@@ -14,11 +14,12 @@
 
                     <script type="text/javascript">
                     function googleTranslateElementInit() {
-                        new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'ko,en'}}, 'google_translate_element');
+                        new google.translate.TranslateElement({pageLanguage: 'ko', includedLanguages: 'ko,en', }, 'google_translate_element');
                     }
                     </script>
             
                     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                    
                     <p class="text1"> Global Investment Solution</p>
                     <P class="text2"> We always provide the best services</P>
                 </div>
