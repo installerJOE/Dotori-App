@@ -9,15 +9,7 @@
     <div class="index_l_box">
         <div class="inner" style="position:relative;">
             <div class="login_v_text">
-                <div style="left: 100px; margin-top: 30px" id="google_translate_element"></div>
-
-                <script type="text/javascript">
-                 function googleTranslateElementInit() {
-                        new google.translate.TranslateElement({pageLanguage: 'ko', includedLanguages: 'ko,en', }, 'google_translate_element');
-                }
-                </script>
-        
-                <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                
             </div>
             <div class="login_div">
                 <div>
@@ -30,8 +22,18 @@
                         </div>
 
                         <h3 class="subheader text-purple text-center">
-                            Reset Password
+                            Reset Password <div style="left: 100px; margin-top: 30px" id="google_translate_element"></div>
                         </h3>
+
+                        
+
+                <script type="text/javascript">
+                 function googleTranslateElementInit() {
+                        new google.translate.TranslateElement({pageLanguage: 'ko', includedLanguages: 'ko,en', }, 'google_translate_element');
+                }
+                </script>
+        
+                <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
                         <div class="index_input">
                             <label for="email">

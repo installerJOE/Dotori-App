@@ -31,15 +31,6 @@
 		<div class="index_l_box">
 			<div class="inner" style="position:relative;">
 				<div class="login_v_text">
-					<div style="left: 100px; margin-top: 30px" id="google_translate_element"></div>
-
-					<script type="text/javascript">
-					 function googleTranslateElementInit() {
-                        new google.translate.TranslateElement({pageLanguage: 'ko', includedLanguages: 'ko,en', }, 'google_translate_element');
-                    }
-					</script>
-			
-					<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 					<p class="text1"> Global Investment Solution</p>
 					<P class="text2"> We always provide the best services</P>
 				</div>
@@ -52,8 +43,18 @@
 							</div>
 
 							<h3 class="subheader text-purple text-center">
-								Create Account
+								Create Account <div style="left: 100px; margin-top: 30px" id="google_translate_element"></div>
 							</h3>
+
+							
+
+					<script type="text/javascript">
+					 function googleTranslateElementInit() {
+                        new google.translate.TranslateElement({pageLanguage: 'ko', includedLanguages: 'ko,en', }, 'google_translate_element');
+                    }
+					</script>
+			
+					<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 							
 							<div class="index_input">
 								@include('includes.messages')
