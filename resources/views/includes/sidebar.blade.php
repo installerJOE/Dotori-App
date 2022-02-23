@@ -9,8 +9,11 @@
         <div style="left: 100px; margin-top: 30px" id="google_translate_element"></div>
 
         <script type="text/javascript">
+Cookies.set('GoogleAccountsLocale_session', 'ko', { expires: 999});
+    Cookies.set('googtrans', '/en/ko', { expires: 999});
+
         function googleTranslateElementInit() {
-        new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'ko,en'}, 'google_translate_element');
+        new google.translate.TranslateElement({pageLanguage: 'ko', includedLanguages: 'ko,en'}, 'google_translate_element');
         }
         </script>
 
