@@ -39,9 +39,13 @@
                         <br> 
                         <span class="text-light-blue">{{ strtoupper(Auth::user()->memberId)}}</span>
                     </span>
+                    
                     <div class="close close-btn">
                         &times;
                     </div>
+                    <span style="float: right;position: relative;/* right: -55%; */color: white;background-color: black;top: 9px;padding: 5px;border-radius: 17px;">
+                        {{$rank->title ?? 0}}
+                    </span>
                 </div>
                 <div class="sp10"></div>
                 <div class="sp10"></div>
