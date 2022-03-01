@@ -33,35 +33,35 @@
 				<p class="title01"> No of Members </p>
 				<p class="s_title01"></p>
 				<div class="total_sum total_sum01">
-					<p> {{$registered_users}} </p>	
+					<p> {{number_format($registered_users)}} </p>	
 				</div>
 			</div>					
 			<div class="main_balance_box main_balance_box02 mb-3">
 				<p class="title01"> Active Subscriptions </p>
 				<p class="s_title01"></p>
 				<div class="total_sum total_sum02">
-					<p> {{$active_subscriptions}} </p>
+					<p> {{number_format($active_subscriptions)}} </p>
 				</div>
 			</div>
 			<div class="main_balance_box main_balance_box03 mb-3">
 				<p class="title01"> Pending Subscriptions </p>
 				<p class="s_title01"></p>
 				<div class="total_sum total_sum03">
-					<p> {{$pending_subscriptions}} </p>
+					<p> {{number_format($pending_subscriptions)}} </p>
 				</div>
 			</div>
 			<div class="main_balance_box main_balance_box04 mb-3">
 				<p class="title01"> Withdrawal Requests </p>
-				<p class="s_title01">&nbsp;</p>
+				<p class="s_title01"> (pending) </p>
 				<div class="total_sum total_sum04">
-					<p> {{$withdrawal_requests}} </p>
+					<p> {{number_format($withdrawal_requests)}} </p>
 				</div>
 			</div>
 			<div class="main_balance_box main_balance_box04 mb-3">
 				<p class="title01"> Deposit Requests </p>
-				<p class="s_title01">&nbsp;</p>
+				<p class="s_title01"> (pending) &nbsp;</p>
 				<div class="total_sum total_sum04">
-					<p> {{$deposit_requests}} </p>
+					<p> {{number_format($deposit_requests)}} </p>
 				</div>
 			</div>					
 		</div>

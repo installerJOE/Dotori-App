@@ -41,7 +41,7 @@
 								<tr style="font-weight:bold">
 									<td> Available Amount (KRW)</td>
 									<td>
-										{{Auth::user()->rpoint}}
+										{{number_format(Auth::user()->rpoint)}}
 										<input type="hidden" value="{{Auth::user()->rpoint}}" id="available_amount"/>
 									</td>
 								</tr>

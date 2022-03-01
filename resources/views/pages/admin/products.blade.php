@@ -107,7 +107,7 @@
                                 <img src="{{asset('products/' . $product->filename)}}" width="100%" height="auto"/>
                                 <p class="product-name mt-1">{{$product->name}}</p>
                                 <div class="product-price">
-                                    {{$product->price}} SPOINTS 
+                                    {{number_format($product->price)}} SPOINTS 
                                     @if($product->is_active == false)
                                         <span class="label purple-bg">
                                             disabled

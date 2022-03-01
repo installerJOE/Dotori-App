@@ -35,7 +35,7 @@
 							@foreach($deposits as $deposit)
 							<tr>
                                 <td> {{$deposit->user->name}} </td>
-								<td> {{$deposit->amount}}</td>
+								<td> {{number_format($deposit->amount)}}</td>
 								<td> {{$deposit->bank_name}} </td>
 								<td> {{$deposit->account_name}} </td>
 								<td> {{$deposit->status}} </td>

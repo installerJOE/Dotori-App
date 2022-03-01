@@ -39,7 +39,7 @@
                                     <img src="{{asset('products/' . $product->filename)}}" width="100%" height="auto"/>
                                     <p class="product-name mt-1">{{$product->name}}</p>
                                     <div class="product-price">
-                                        {{$product->price}} SPOINTS
+                                        {{number_format($product->price)}} SPOINTS
                                     </div>
                                     <button class="btn btn-light-blue-bg" data-bs-toggle="modal" data-bs-target="#edit-package-modal-{{$product->id}}">
                                         View product
@@ -72,7 +72,7 @@
                                         <div class="col-md-12 col-sm-12 col-12">
                                             <h2 class="mt-1 text-purple">{{$product->name}}</h2>
                                             <div class="product-price">
-                                                {{$product->price}} SPOINTS 
+                                                {{number_format($product->price)}} SPOINTS 
                                             </div> <hr/>
                                             <h3 class="modal-package-header grey-bg"> Description </h3>
                                             <h3 style="font-size: 16px">

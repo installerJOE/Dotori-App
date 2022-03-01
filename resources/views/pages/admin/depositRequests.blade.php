@@ -34,14 +34,14 @@
 							@foreach($deposits as $deposit)
 							<tr>
                                 <td> {{$deposit->user->name}} </td>
-								<td> {{$deposit->amount}}</td>
+								<td> {{number_format($deposit->amount)}}</td>
 								<td> {{$deposit->status}} </td>
 								<td> {{$deposit->updated_at}} </td>
 								<td> 
 									<button 
 										class="btn btn-light-blue-bg" 
 										onclick="showDepositModal(`{{$deposit->id}}`, `{{$deposit->user->name}}`, 
-											`{{$deposit->amount}}`, `{{$deposit->bank_name}}`, `{{$deposit->account_name}}`, 
+											`{{number_format($deposit->amount)}}`, `{{$deposit->bank_name}}`, `{{$deposit->account_name}}`, 
 											`{{$deposit->status}}`, `{{$deposit->updated_at}}`)"
 									> View </button>
 								</td>
@@ -96,7 +96,7 @@
 							<span> 
 								Deposit Amount (KRW)
 							</span>
-							<input type="number" 
+							<input type="text" 
 								disabled
 								class="form-control" 
 								id='deposit_amount'

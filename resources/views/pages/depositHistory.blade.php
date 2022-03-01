@@ -31,7 +31,7 @@
 						@if($deposits->count() > 0)
 							@foreach($deposits as $deposit)
 							<tr>
-								<td> {{$deposit->amount}} </td>
+								<td> {{number_format($deposit->amount)}} </td>
 								<td> {{$deposit->updated_at}}</td>
 								<td> {{$deposit->status}} </td>
 							</tr>

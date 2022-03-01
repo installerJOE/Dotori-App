@@ -40,7 +40,7 @@
 					<p style="font-size:12px" class="text-light-blue">
 						Total Amount Staked
 					</p> 
-					<p style="font-size:21px"> {{$total_staking_amount}} KRW </p>
+					<p style="font-size:21px"> {{number_format($total_staking_amount)}} KRW </p>
 				</div>
             </div><br/>
 		</div>
@@ -86,11 +86,11 @@
 										onclick="showPackage(
 											`{{$subscribed->id}}`, 
 											`{{$subscribed->package->name}}`, 
-											`{{(($subscribed->percent_paid + (200*$subscribed->repurchase))/100) * $subscribed->quantity * $subscribed->package->staking_amount}}`,
+											`{{number_format((($subscribed->percent_paid + (200*$subscribed->repurchase))/100) * $subscribed->quantity * $subscribed->package->staking_amount)}}`,
 											`{{$subscribed->status}}`, 
 											`{{$subscribed->quantity}}`, 
 											`{{$subscribed->percent_paid}}`,
-											`{{$subscribed->quantity * $subscribed->package->staking_amount}}`,
+											`{{number_format($subscribed->quantity * $subscribed->package->staking_amount)}}`,
 											`{{$subscribed->created_at}}`, 
 										)"
 										value="view"

@@ -36,7 +36,7 @@
 							@foreach($withdrawals as $withdrawal)
 							<tr>
 								<td> {{$withdrawal->user->name}} </td>
-								<td> {{$withdrawal->amount}}</td>
+								<td> {{number_format($withdrawal->amount)}}</td>
 								<td> {{$withdrawal->bank_name}}</td>
 								<td> {{$withdrawal->account_name}}</td>
 								<td> {{$withdrawal->account_number}}</td>

@@ -43,7 +43,7 @@
                                 <tr style="font-weight:bold">
                                     <td> Available Balance </td>
                                     <td>
-                                        {{Auth::user()->earnings !== null ? Auth::user()->earnings : 0}} SPOINTS
+                                        {{Auth::user()->earnings !== null ? number_format(Auth::user()->earnings) : 0}} SPOINTS
                                         <input type="hidden" 
 											value="{{Auth::user()->earnings !== null ? Auth::user()->earnings : 0}}" 
 											id="available_amount"

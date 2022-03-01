@@ -32,8 +32,8 @@
 								<tr>
 									<td>{{strtoupper($member->memberId)}}</td>
 									<td> {{$member->email}}</td>
-									<td> {{$member->available_points}} </td>
-									<td> {{$member->earnings}}</td>
+									<td> {{number_format($member->available_points)}} </td>
+									<td> {{number_format($member->earnings)}}</td>
 									<td> {{$member->created_at}} </td>
 									<td> 
 										<button type="button" class="btn btn-sm btn-light-blue-bg"

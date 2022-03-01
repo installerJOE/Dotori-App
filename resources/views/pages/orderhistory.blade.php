@@ -48,9 +48,9 @@
 							<tr>
 								<td> {{$order->unique_id}} </td>
 								<td> {{$order->product->name}}</td>
-								<td> {{$order->price}}</td>
-								<td> {{$order->quantity}} </td>
-                                <td> {{$order->quantity * $order->price}} </td>
+								<td> {{number_format($order->price)}}</td>
+								<td> {{number_format($order->quantity)}} </td>
+                                <td> {{number_format($order->quantity * $order->price)}} </td>
                                 <td> {{$order->status}}</td>
 								<td> {{$order->created_at}} </td>
 								{{-- <td> 

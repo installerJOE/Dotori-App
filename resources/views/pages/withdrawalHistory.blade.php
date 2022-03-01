@@ -31,7 +31,7 @@
 						@if($withdrawals->count() > 0)
 							@foreach($withdrawals as $withdrawal)
 							<tr>
-								<td> {{$withdrawal->amount}} </td>
+								<td> {{number_format($withdrawal->amount)}} </td>
 								<td> {{$withdrawal->updated_at}}</td>
 								<td> {{$withdrawal->status}} </td>
 							</tr>
