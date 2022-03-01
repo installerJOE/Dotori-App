@@ -21,15 +21,13 @@ class SettingsController extends Controller
     }
 
     public function updateProfile(Request $request){
-        if(Auth::user()->phone !== $request->input('phone')){
-            $this->validate($request, [
-                'phone' => ['required', 'string', 'unique:users'],
-            ]);
-        }
+        $this->validate($request, [
+            'name' => ['required', 'string'],
+        ]);
         
         $user = Auth::user();
         $user->name = $request->input('name');
-        $user->phone = $request->input('phone');
+        // $user->phone = $request->input('phone');
         $user->save();
 
         //update or create new bank account details
