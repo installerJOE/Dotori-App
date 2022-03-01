@@ -169,6 +169,12 @@ class PagesController extends Controller
         ]);
     }
 
+    public function RewardHistory(){
+        return view('pages.rewardhistory', [
+            'rewards' => $rewards,
+        ]);
+    }
+
     public function profile(){
         return view('pages.profile');
     }

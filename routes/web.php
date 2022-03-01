@@ -40,6 +40,7 @@ Route::get('/packages/subscribed',  [App\Http\Controllers\PagesController::class
 Route::get('/products/shop',  [App\Http\Controllers\PagesController::class, 'productShop']);
 Route::get('/products/{id}/purchase',  [App\Http\Controllers\PagesController::class, 'purchaseProduct']);
 Route::get('/products/order-history',  [App\Http\Controllers\PagesController::class, 'orderHistory']);
+Route::get('/rewards/history',  [App\Http\Controllers\PagesController::class, 'RewardHistory'])->name('user.reward.history');
 
 Route::get('/announcement',  [App\Http\Controllers\PagesController::class, 'announcements']);
 Route::get('/referral',  [App\Http\Controllers\PagesController::class, 'referral']);
@@ -65,6 +66,8 @@ Route::post('/package/cancel-subscription',  [App\Http\Controllers\TransactionsC
 Route::post('/products/purchase',  [App\Http\Controllers\TransactionsController::class, 'purchaseProduct']);
 
 });
+
+
 /*
 |-------------------------------------------------------------------------------------------------------------
 | Routes for administrator
