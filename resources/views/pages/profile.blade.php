@@ -31,10 +31,10 @@
 					<div class="withdrawal_input_box">
 						<table style="width:100%;">
 							<tbody>
-								<tr>
+								{{-- <tr>
 									<td> User ID </td>
 									<td><input type="text" class="withdrawal_input01" name='member_id' value="test2" disabled></td>
-								</tr>
+								</tr> --}}
 								<tr>
 									<td> Full Name </td>
 									<td><input type="text" class="withdrawal_input01" name='name' value="{{Auth::user()->name}}"> </td>

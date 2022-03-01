@@ -86,7 +86,7 @@ class PagesController extends Controller
         $time = (float)date("H", $timestamp); //UTC or GMT time
         $day = (string)date('l', $timestamp);
         $withdraw_active = false;
-        $message = "You can only make withdrawal requests on Tuesdays, Thursdays and Saturdays, between 10:00am to 9:00pm (IST).";
+        $message = "You can only make withdrawal requests on Tuesdays, Thursdays and Saturdays, between 10:00am to 9:00pm (KST).";
         $active_days = ["Tuesday", "Thursday", "Saturday"];
         // $active_days = ["Monday", "Thursday", "Saturday"];
         

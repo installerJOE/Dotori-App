@@ -21,15 +21,7 @@
                         </h3>
 
                         <div class="login_v_text">
-                            <div style="left: 100px; margin-top: 30px" id="google_translate_element"></div>
-        
-                            <script type="text/javascript">
-                            function googleTranslateElementInit() {
-                            new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'ko,en'}}, 'google_translate_element');
-                            }
-                            </script>
-                    
-                            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+                            
                         </div>
                         <div class="index_input">
                             @if (session('resent'))
@@ -42,9 +34,19 @@
                             
                         <div class="index_input">
                             <p>
-                                Before proceeding, please check your email for a verification link.
+                                Before proceeding, please check your email for a verification link. <div style="left: 100px; margin-top: 30px" id="google_translate_element"></div>
                             </p>
                         </div>
+
+                        
+        
+                            <script type="text/javascript">
+                             function googleTranslateElementInit() {
+                        new google.translate.TranslateElement({pageLanguage: 'ko', includedLanguages: 'ko,en', }, 'google_translate_element');
+                    }
+                            </script>
+                    
+                            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
                         <div class="index_input">
                             <p style="margin-bottom:0.8em">

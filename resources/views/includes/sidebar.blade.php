@@ -9,8 +9,11 @@
         <div style="left: 100px; margin-top: 30px" id="google_translate_element"></div>
 
         <script type="text/javascript">
+// Cookies.set('GoogleAccountsLocale_session', 'ko', { expires: 999});
+//     Cookies.set('googtrans', '/en/ko', { expires: 999});
+
         function googleTranslateElementInit() {
-        new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'ko,en'}, 'google_translate_element');
+        new google.translate.TranslateElement({pageLanguage: 'ko', includedLanguages: 'ko,en'}, 'google_translate_element');
         }
         </script>
 
@@ -30,15 +33,19 @@
 
             <div id="m_nav" style="left:-150%;">
                 <div class="m_nav_logo"> 
-                    <img src="{{URL::asset('/storage/images/profile_images/'. Auth::user()->profile_image)}}" alt="profile image" class="level_img">
+                    {{-- <img src="{{URL::asset('/storage/images/profile_images/'. Auth::user()->profile_image)}}" alt="profile image" class="level_img"> --}}
                     <span class="username">
                         {{Auth::user()->name}}
                         <br> 
                         <span class="text-light-blue">{{ strtoupper(Auth::user()->memberId)}}</span>
                     </span>
+                    
                     <div class="close close-btn">
                         &times;
                     </div>
+                    <span style="float: right;position: relative;/* right: -55%; */color: white;background-color: black;top: 9px;padding: 5px;border-radius: 17px;">
+                        {{$rank->title ?? 0}}
+                    </span>
                 </div>
                 <div class="sp10"></div>
                 <div class="sp10"></div>
