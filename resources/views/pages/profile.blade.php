@@ -37,7 +37,7 @@
 								</tr>
 								<tr>
 									<td> Full Name </td>
-									<td><input type="text"class="withdrawal_input01" readonly name='name' value="{{Auth::user()->name}}"> </td>
+									<td><input type="text" class="withdrawal_input01" name='name' value="{{Auth::user()->name}}"> </td>
 								</tr>
 								<tr>
 									<td> Email Address </td>
