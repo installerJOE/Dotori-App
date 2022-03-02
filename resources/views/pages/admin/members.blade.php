@@ -13,6 +13,11 @@
 	</div><!--sub_top end-->
 			
 	<div class="section_right_inner"><!--section_right_inner-->
+		<div>
+			<a href="{{route('export.users')}}" class="btn btn-sm btn-light-blue-bg pt-3">
+				Export
+			</a>
+		</div>
 		<div class="deposit_right col-md-12 col-sm-12 col-12 mt-4">
 			<div class="history_table">
 				<table>

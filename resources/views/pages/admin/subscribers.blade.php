@@ -13,6 +13,17 @@
 	</div><!--sub_top end-->
 			
 	<div class="section_right_inner"><!--section_right_inner-->
+		<div>
+		@if ($status_type === 'pending')
+		<a href="{{route('pending.subscriptions.export')}}" class="btn btn-sm btn-light-blue-bg pt-3">
+			Export
+		</a>
+		@elseif($status_type === 'active')
+		<a href="{{route('active.subscriptions.export')}}" class="btn btn-sm btn-light-blue-bg pt-3">
+			Export
+		</a>
+		@endif
+	</div>
 		<div class="deposit_right col-md-12 col-sm-12 col-12 mt-4">
 			<div class="history_table">
 				<table>

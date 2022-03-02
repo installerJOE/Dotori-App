@@ -13,6 +13,11 @@
 	</div><!--sub_top end-->
 			
 	<div class="section_right_inner"><!--section_right_inner-->
+		<div class="my-3">
+			<a href="{{route('withdrawal.requests.export')}}" class="btn btn-sm btn-light-blue-bg pt-3">
+				Export
+			</a>
+		</div>
         <div class="ctrl-btn col-md-3 col-sm-6 col-12"> 
             <a href="/admin/withdrawals"> 
                 <button class="btn btn-purple-bd"> Withdrawals history </button>

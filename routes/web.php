@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -110,3 +111,25 @@ Route::post('/admin/subscription/{id}/activate',  [App\Http\Controllers\AdminCon
 
 Route::post('/admin/update-user-balance',  [App\Http\Controllers\AdminController::class, 'updateUserBalance']);
 Route::get('/admin/toggleuser/{id}', [App\Http\Controllers\AdminController::class, 'toggleUserStatus'])->name('admin.togglestatus');
+
+
+
+Route::get('/admin/users/export', [ExportController::class, 'users'])->name('export.users');
+
+Route::get('/admin/deposits/history/export', [ExportController::class, 'depositHistory'])
+->name('deposit.history.export');
+
+Route::get('/admin/deposits/requests/export', [ExportController::class, 'depositRequests'])
+->name('deposit.requests.export');
+
+Route::get('/admin/withdrawal/history/export', [ExportController::class, 'withdrawalHistory'])
+->name('withdrawal.history.export');
+
+Route::get('/admin/withdrawal/requests/export', [ExportController::class, 'withdrawalRequests'])
+->name('withdrawal.requests.export');
+
+Route::get('/admin/active/subscriptions/export', [ExportController::class, 'activeSubscriptions'])
+->name('active.subscriptions.export');
+
+Route::get('/admin/pending/subscriptions/export', [ExportController::class, 'pendingSubscriptions'])
+->name('pending.subscriptions.export');
