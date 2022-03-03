@@ -185,20 +185,26 @@ input:disabled {
     background-color: #759bfa;
     border-radius: 10px;
 }
+.dashboard-hr{
+    margin-bottom: 1.4em;
+    margin-top: -10px;
+}
 .search-container {
-    float: right;
+    background-color: #fff !important;
 }
   
 .search-container input[type=text] {
-    padding: 6px;
+    padding: 6px 15px;
     margin-top: 8px;
     font-size: 17px;
     border: none;
+    background-color: #e6e6e6 !important;
+    border-radius: 10px 0px 0px 10px;
+    width: 60%
 }
   
 .search-container button {
-    float: right;
-    padding: 6px 10px;
+    padding: 6px 15px;
     margin-top: 8px;
     margin-right: 16px;
     background: #759bfa;
@@ -206,28 +212,11 @@ input:disabled {
     border: none;
     cursor: pointer;
     transition: 0.5s;
-    color: #fff;
     -webkit-transition: 0.5s;
+    color: #fff;
+    border-radius: 0px 10px 10px 0px;
 }
   
 .search-container button:hover {
     background: #210369;
-}
-  
-@media screen and (max-width: 700px) {
-    .search-container form{
-        float: none;
-        display: none;
-    }
-    .search-container input[type=text], .search-container button {
-        float: none;
-        display: block;
-        text-align: left;
-        width: 100%;
-        margin: 0;
-        padding: 14px;
-    }
-    .search-container input[type=text] {
-        border: 1px solid #ccc;  
-    }
 }

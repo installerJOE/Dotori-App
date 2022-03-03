@@ -15,11 +15,24 @@
 @endsection
 
 @section('content')
-	<div class="sub_top"><!--sub_top-->
+	<div class="sub_top col-md-12 col-sm-12 col-12" style="padding-bottom:2em"><!--sub_top-->
 		<div class="sub_title">
 			<i class="fas fa-fw fa-search"></i>
-			Search Results
+			Product Search Results
 		</div>
+		<div class="ctrl-btn col-md-3 col-sm-6 col-12" style="float:right; padding-right:15px"> 
+            <a href="/products/shop"> 
+                <button class="btn btn-purple-bd"> Back to shop </button>
+            </a>
+        </div>
+        <div class="col-md-9 col-sm-6 col-12"> 
+            <div class="search-container">
+                <form action="{{route('search')}}" method="GET">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </div>
 	</div><!--sub_top end-->
 	<div class="section_right_inner"><!--section_right_inner-->
 		<div class="section_right_inner"><!--section_right_inner-->

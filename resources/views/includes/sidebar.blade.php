@@ -6,17 +6,10 @@
             </a>
         </div>
         
-        <div class="translator-element-block" style="float:left; display:block">
+        <div class="translator-element-block">
             <div style="margin-top: 20px" id="google_translate_element"></div>
         </div>
 
-        <div class="search-container" style="float: right">
-            <form action="{{route('search')}}" method="GET">
-                <input type="text" placeholder="Search.." name="search">
-                <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
-        </div>
-        
         <script type="text/javascript">
             // Cookies.set('GoogleAccountsLocale_session', 'ko', { expires: 999});
             //     Cookies.set('googtrans', '/en/ko', { expires: 999});

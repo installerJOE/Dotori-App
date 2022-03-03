@@ -67,8 +67,7 @@ Route::middleware('activeusersonly')->group(function () {
     Route::post('/products/purchase',  [App\Http\Controllers\TransactionsController::class, 'purchaseProduct']);
     
     // search route
-    Route::get('/search',  [App\Http\Controllers\SearchController::class, 'searchProduct'])->name('search');
-
+    Route::get('/products/search',  [App\Http\Controllers\PagesController::class, 'searchProduct'])->name('search.product');
 
 });
 
@@ -115,8 +114,6 @@ Route::post('/admin/subscription/{id}/activate',  [App\Http\Controllers\AdminCon
 
 Route::post('/admin/update-user-balance',  [App\Http\Controllers\AdminController::class, 'updateUserBalance']);
 Route::get('/admin/toggleuser/{id}', [App\Http\Controllers\AdminController::class, 'toggleUserStatus'])->name('admin.togglestatus');
-
-
 
 Route::get('/admin/users/export', [ExportController::class, 'users'])->name('export.users');
 

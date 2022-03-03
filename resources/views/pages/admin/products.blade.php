@@ -10,6 +10,17 @@
 			<i class="fas fa-fw fa-money-check-alt"></i>
 			Shopping Products
 		</div>
+		<div class="col-md-9 col-sm-12 col-12"> 
+            <h3 class="subheader text-grey"> 
+                Search products
+            </h3>
+            <div class="search-container">
+                <form action="{{route('search.product')}}" method="GET">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </div>
 	</div><!--sub_top end-->
 	<div class="section_right_inner"><!--section_right_inner-->
 		<div class="col-md-12 col-sm-12 col-12 mb-4">
@@ -18,7 +29,7 @@
 					Create product 
 				</button>
 			</div>
-
+			
 			<!-- Modal containing a form to add a new package -->
 			<div class="modal right fade" id="create-package-modal" tabindex="-1" role="dialog" aria-labelledby="create-package-label">
 				<div class="modal-dialog" role="document">
