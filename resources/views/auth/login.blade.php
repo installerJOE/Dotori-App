@@ -12,8 +12,8 @@
                 <div class="login_v_text">
                     
                     
-                    <p class="text1"> Global Investment Solution</p>
-                    <P class="text2"> We always provide the best services</P>
+                    <p class="text1"> {{ __('Global Investment Solution') }}</p>
+                    <P class="text2">  {{ __('We always provide the best services') }}</P>
                 </div>
                 <div class="login_div">
                     
@@ -25,20 +25,12 @@
                             </div>
 
                             <h3 class="subheader text-purple text-center">
-                                Login <div style="left: 100px; margin-top: 30px" id="google_translate_element"></div>
+                                @include('partials.language_switcher')
+                                {{ __('Login')}} <div style="left: 100px; margin-top: 30px" id="google_translate_element"></div>
                             </h3>
-                            
-
-                    <script type="text/javascript">
-                    function googleTranslateElementInit() {
-                        new google.translate.TranslateElement({pageLanguage: 'ko', includedLanguages: 'ko,en', }, 'google_translate_element');
-                    }
-                    </script>
-            
-                    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
                             <div class="index_input">
-                                Phone
+                                {{ __('Phone') }}
                                 <input id="email" type="text" class="form-control @error('phone') is-invalid @enderror" 
                                     name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
                                 @error('phone')
@@ -49,7 +41,7 @@
                             </div>
 
                             <div class="index_input">
-                                Password
+                                {{ __('Password') }}
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" 
                                     name="password" required autocomplete="current-password">
                                 @error('password')
@@ -62,30 +54,30 @@
                             <div class="index_input">
                                 <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                                 <label class="form-check-label" for="remember">
-                                    Remember Me
+                                    {{ __('Remember Me') }}
                                 </label>
                             </div>
         
                             <div class="index_input">
                                 <div class="col-md-12">
                                     <button type="submit" class="btn btn-purple-bg">
-                                        Login
+                                        {{ __('Login') }}
                                     </button>
                                     @if (Route::has('password.request'))
                                         <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            Forgot Your Password?
+                                            {{ __('Forgot Your Password?') }}
                                         </a>
                                     @endif
                                 </div>
                             </div>
                             <div class="index_input">
-                                Don't have an account?
+                                {{ __("Don't have an account?") }}
                             </div>
                             <div class="index_input">
                                 <div class="col-12">
                                     <a href="/register">
                                         <button type="button" class="btn btn-purple-bd">
-                                            Create account 
+                                            {{ __("Create account") }}
                                         </button>
                                     </a>
                                 </div>

@@ -133,3 +133,9 @@ Route::get('/admin/active/subscriptions/export', [ExportController::class, 'acti
 
 Route::get('/admin/pending/subscriptions/export', [ExportController::class, 'pendingSubscriptions'])
 ->name('pending.subscriptions.export');
+
+Route::get('language/{locale}', function ($locale) {
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
+    return redirect()->back();
+});
