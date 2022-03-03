@@ -170,7 +170,8 @@ class PagesController extends Controller
     }
 
     public function RewardHistory(){
-        return view('pages.rewardhistory', [
+        $rewards = SubscribedUser::all();
+        return view('pages.dailyrewards', [
             'rewards' => $rewards,
         ]);
     }
@@ -196,5 +197,24 @@ class PagesController extends Controller
     public function announcements(){
         $announcements = Announcement::all();
         return view('pages.announcements')->with('announcements', $announcements);
+    }
+
+    public function searchProduct(Request $request){
+        $this->validate($request, [
+           "search" => "required"
+        ]);
+        
+        // Get the search value from the request
+        $search = $request->input('search');
+        
+        // Search in the title and body columns from the posts table
+        $results = Product::query()
+            ->where('name', 'LIKE', "%{$search}%")
+            ->orWhere('description', 'LIKE', "%{$search}%")
+            ->get();
+
+        return view('pages.searches.results', [
+            'results' => $results
+        ]);
     }
 }

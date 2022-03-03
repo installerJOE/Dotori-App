@@ -182,6 +182,41 @@ input:disabled {
 .myBar {
     position: absolute;
     height: 100%;
-    background-color: #759bfa;;
+    background-color: #759bfa;
     border-radius: 10px;
+}
+.dashboard-hr{
+    margin-bottom: 1.4em;
+    margin-top: -10px;
+}
+.search-container {
+    background-color: #fff !important;
+}
+  
+.search-container input[type=text] {
+    padding: 6px 15px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+    background-color: #e6e6e6 !important;
+    border-radius: 10px 0px 0px 10px;
+    width: 60%
+}
+  
+.search-container button {
+    padding: 6px 15px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #759bfa;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    color: #fff;
+    border-radius: 0px 10px 10px 0px;
+}
+  
+.search-container button:hover {
+    background: #210369;
 }
