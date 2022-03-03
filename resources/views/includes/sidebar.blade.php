@@ -1,20 +1,29 @@
 <div id="wrap"><!--wrap-->
     <div id="header"><!--header-->
-        <div class="top_logo">
+        <div class="top_logo" style="float:left">
             <a href="/">
                 <img src="{{asset('img/acorn1.png')}}" height="auto" style="transform: scale(0.85)"/> 
             </a>
         </div>
+        
+        <div class="translator-element-block" style="float:left; display:block">
+            <div style="margin-top: 20px" id="google_translate_element"></div>
+        </div>
 
-        <div style="left: 100px; margin-top: 30px" id="google_translate_element"></div>
-
+        <div class="search-container" style="float: right">
+            <form action="{{route('search')}}" method="GET">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        
         <script type="text/javascript">
-// Cookies.set('GoogleAccountsLocale_session', 'ko', { expires: 999});
-//     Cookies.set('googtrans', '/en/ko', { expires: 999});
+            // Cookies.set('GoogleAccountsLocale_session', 'ko', { expires: 999});
+            //     Cookies.set('googtrans', '/en/ko', { expires: 999});
 
-        function googleTranslateElementInit() {
-        new google.translate.TranslateElement({pageLanguage: 'ko', includedLanguages: 'ko,en'}, 'google_translate_element');
-        }
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({pageLanguage: 'ko', includedLanguages: 'ko,en'}, 'google_translate_element');
+            }
         </script>
 
         <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
@@ -328,7 +337,7 @@
                 </ul>
             </li>
             
-            <li class='sub-menu li-underlined'>
+            <li class='sub-menu'>
                 <a href="#!package">
                     <i class="fas fa-fw fa-cube"></i> &nbsp;
                     My Packages
@@ -339,6 +348,13 @@
                 </ul>
             </li>
 
+            <li class='sub-menu li-underlined'>
+                <a href="{{route('user.reward.history')}}">
+                    <i class="fas fa-fw fa-sitemap"></i> &nbsp;
+                    Daily Rewards
+                </a>
+            </li>
+           
             <li class='sub-menu'>
                 <a href="/referral">
                     <i class="fas fa-fw fa-sitemap"></i> &nbsp;
@@ -346,7 +362,7 @@
                 </a>
             </li>
             
-            <li class='sub-menu li-underlined'>
+            <li class='sub-menu'>
                 <a href="#!deposit">
                     <i class="fas fa-fw fa-money-check-alt"></i> &nbsp; 
                     My Deposits
@@ -357,7 +373,7 @@
                 </ul>
             </li>
 
-            <li class='sub-menu'>
+            <li class='sub-menu li-underlined'>
                 <a href="#!withdrawal">
                     <i class="fas fa-fw fa-share-square"></i> &nbsp;
                     Withdrawals
@@ -378,6 +394,13 @@
                 </ul>
             </li> --}}
 
+            <li class='sub-menu'>
+                <a href="/announcement">
+                    <i class="fas fa-bullhorn fa-fw"></i> &nbsp;
+                    Announcements
+                </a>
+            </li>
+
             <li class='sub-menu li-underlined'>
                 <a href="#!profile">
                     <i class="fas fa-fw fa-cogs"></i> &nbsp;
@@ -388,13 +411,6 @@
                     <li><a href="/settings/password"> Password Settings </a></li>
                     <li><a href="/settings/pin"> PIN Settings </a></li>
                 </ul>
-            </li>
-
-            <li class='sub-menu'>
-                <a href="/announcement">
-                    <i class="fas fa-bullhorn fa-fw"></i> &nbsp;
-                    Announcement
-                </a>
             </li>
         @endif
         

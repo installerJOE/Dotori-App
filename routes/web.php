@@ -30,40 +30,44 @@ Auth::routes(['verify' => true]);
 */
 Route::middleware('activeusersonly')->group(function () {
 
-Route::get('/dashboard',  [App\Http\Controllers\PagesController::class, 'index']);
-Route::get('/deposit',  [App\Http\Controllers\PagesController::class, 'deposit']);
-Route::get('/deposits/history',  [App\Http\Controllers\PagesController::class, 'depositHistory']);
-Route::get('/withdrawal',  [App\Http\Controllers\PagesController::class, 'withdrawal']);
-Route::get('/withdrawals/history',  [App\Http\Controllers\PagesController::class, 'withdrawalHistory']);
-Route::get('/packages/subscribe',  [App\Http\Controllers\PagesController::class, 'purchasePackage']);
-Route::get('/packages/subscribed',  [App\Http\Controllers\PagesController::class, 'subscribedPackages']);
-Route::get('/products/shop',  [App\Http\Controllers\PagesController::class, 'productShop']);
-Route::get('/products/{id}/purchase',  [App\Http\Controllers\PagesController::class, 'purchaseProduct']);
-Route::get('/products/order-history',  [App\Http\Controllers\PagesController::class, 'orderHistory']);
-Route::get('/rewards/history',  [App\Http\Controllers\PagesController::class, 'RewardHistory'])->name('user.reward.history');
+    Route::get('/dashboard',  [App\Http\Controllers\PagesController::class, 'index']);
+    Route::get('/deposit',  [App\Http\Controllers\PagesController::class, 'deposit']);
+    Route::get('/deposits/history',  [App\Http\Controllers\PagesController::class, 'depositHistory']);
+    Route::get('/withdrawal',  [App\Http\Controllers\PagesController::class, 'withdrawal']);
+    Route::get('/withdrawals/history',  [App\Http\Controllers\PagesController::class, 'withdrawalHistory']);
+    Route::get('/packages/subscribe',  [App\Http\Controllers\PagesController::class, 'purchasePackage']);
+    Route::get('/packages/subscribed',  [App\Http\Controllers\PagesController::class, 'subscribedPackages']);
+    Route::get('/products/shop',  [App\Http\Controllers\PagesController::class, 'productShop']);
+    Route::get('/products/{id}/purchase',  [App\Http\Controllers\PagesController::class, 'purchaseProduct']);
+    Route::get('/products/order-history',  [App\Http\Controllers\PagesController::class, 'orderHistory']);
+    Route::get('/rewards/history',  [App\Http\Controllers\PagesController::class, 'RewardHistory'])->name('user.reward.history');
 
-Route::get('/announcement',  [App\Http\Controllers\PagesController::class, 'announcements']);
-Route::get('/referral',  [App\Http\Controllers\PagesController::class, 'referral']);
-// Route::get('/daily-history',  [App\Http\Controllers\PagesController::class, 'dailyHistory']);
+    Route::get('/announcement',  [App\Http\Controllers\PagesController::class, 'announcements']);
+    Route::get('/referral',  [App\Http\Controllers\PagesController::class, 'referral']);
+    // Route::get('/daily-history',  [App\Http\Controllers\PagesController::class, 'dailyHistory']);
 
 
-// Get Routes for User settings
-Route::get('/settings/profile',  [App\Http\Controllers\PagesController::class, 'profile']);
-Route::get('/settings/password',  [App\Http\Controllers\PagesController::class, 'changePassword']);
-Route::get('/settings/pin',  [App\Http\Controllers\PagesController::class, 'changePin']);
+    // Get Routes for User settings
+    Route::get('/settings/profile',  [App\Http\Controllers\PagesController::class, 'profile']);
+    Route::get('/settings/password',  [App\Http\Controllers\PagesController::class, 'changePassword']);
+    Route::get('/settings/pin',  [App\Http\Controllers\PagesController::class, 'changePin']);
 
-// Post Routes for user settings
-Route::post('/settings/profile',  [App\Http\Controllers\SettingsController::class, 'updateProfile']);
-Route::post('/settings/password',  [App\Http\Controllers\SettingsController::class, 'changePassword']);
-Route::post('/settings/pin',  [App\Http\Controllers\SettingsController::class, 'changePin']);
+    // Post Routes for user settings
+    Route::post('/settings/profile',  [App\Http\Controllers\SettingsController::class, 'updateProfile']);
+    Route::post('/settings/password',  [App\Http\Controllers\SettingsController::class, 'changePassword']);
+    Route::post('/settings/pin',  [App\Http\Controllers\SettingsController::class, 'changePin']);
 
-// Post Routes for user transactions
-Route::post('/transactions/deposit',  [App\Http\Controllers\TransactionsController::class, 'deposit']);
-Route::post('/transactions/withdraw',  [App\Http\Controllers\TransactionsController::class, 'withdraw']);
-Route::post('/package/purchase',  [App\Http\Controllers\TransactionsController::class, 'purchasePackage']);
-Route::post('/package/repurchase',  [App\Http\Controllers\TransactionsController::class, 'repurchasePackage']);
-Route::post('/package/cancel-subscription',  [App\Http\Controllers\TransactionsController::class, 'cancelPackageSub']);
-Route::post('/products/purchase',  [App\Http\Controllers\TransactionsController::class, 'purchaseProduct']);
+    // Post Routes for user transactions
+    Route::post('/transactions/deposit',  [App\Http\Controllers\TransactionsController::class, 'deposit']);
+    Route::post('/transactions/withdraw',  [App\Http\Controllers\TransactionsController::class, 'withdraw']);
+    Route::post('/package/purchase',  [App\Http\Controllers\TransactionsController::class, 'purchasePackage']);
+    Route::post('/package/repurchase',  [App\Http\Controllers\TransactionsController::class, 'repurchasePackage']);
+    Route::post('/package/cancel-subscription',  [App\Http\Controllers\TransactionsController::class, 'cancelPackageSub']);
+    Route::post('/products/purchase',  [App\Http\Controllers\TransactionsController::class, 'purchaseProduct']);
+    
+    // search route
+    Route::get('/search',  [App\Http\Controllers\SearchController::class, 'searchProduct'])->name('search');
+
 
 });
 

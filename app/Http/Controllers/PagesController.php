@@ -170,7 +170,8 @@ class PagesController extends Controller
     }
 
     public function RewardHistory(){
-        return view('pages.rewardhistory', [
+        $rewards = SubscribedUser::all();
+        return view('pages.dailyrewards', [
             'rewards' => $rewards,
         ]);
     }
