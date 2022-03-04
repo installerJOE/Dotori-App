@@ -94,7 +94,12 @@
 											`{{$subscribed->created_at}}`, 
 										)"
 										value="view"
-									/>
+									/> &nbsp;
+									<a href="/rewards/history/{{$subscribed->id}}">
+										<button class="btn btn-purple-bd" type="button">
+											View rewards
+										</button>
+									</a>
 								</td>
 							</tr>
 							@endforeach

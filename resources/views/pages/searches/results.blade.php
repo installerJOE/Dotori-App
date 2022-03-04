@@ -27,7 +27,7 @@
         </div>
         <div class="col-md-9 col-sm-6 col-12"> 
             <div class="search-container">
-                <form action="{{route('search')}}" method="GET">
+                <form action="{{route('search.product')}}" method="GET">
                     <input type="text" placeholder="Search.." name="search">
                     <button type="submit"><i class="fa fa-search"></i></button>
                 </form>

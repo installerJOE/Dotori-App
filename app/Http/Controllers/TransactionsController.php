@@ -315,4 +315,42 @@ class TransactionsController extends Controller
             $user->delete();
         }
     }
+
+    // test rewards payment
+    // private function testPaymentReward(){
+    //     $subscribers = SubscribedUser::orderBy('percent_paid', 'DESC')->get();
+    //     foreach($subscribers as $subscriber){
+    //         if($subscriber->percent_paid < 200 && $subscriber->status !== "paused"){
+    //             $percent_yield = $subscriber->rank->daily_percent_yield * $subscriber->quantity;
+    //             $staking_amount = $subscriber->package->staking_amount;
+    //             $points = $subscriber->package->reward;
+    //             $bonus = ($percent_yield/100) * $staking_amount;
+    //             $subscriber->user->rpoint = $subscriber->user->rpoint + $bonus;
+    //             // $subscriber->user->available_points = $subscriber->user->available_points + $bonus;
+    //             $new_percent_paid = $subscriber->percent_paid + $percent_yield;
+    //             $subscriber->percent_paid = $new_percent_paid > 200 ? 200 : $new_percent_paid;
+    //             $subscriber->user->save();
+    //             $subscriber->save();
+
+    //             $reward = new Reward;
+    //             $reward->subscribed_user_id = $subscriber->id;
+    //             $reward->rpoint = $bonus;
+    //             $reward->percent_reward = $new_percent_paid > 200 ? $new_percent_paid % 200 : $subscriber->rank->daily_percent_yield;
+    //             $reward->save();
+    //         }
+    //         else{
+    //             if($subscriber->status !== "paused"){
+    //                 $subscriptions = SubscribedUser::where('user_id', $subscriber->user_id)->get();
+    //                 foreach($subscriptions as $subscription){
+    //                     $subscription->status = "paused";
+    //                     $subscription->save();   
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     return [
+    //         // "rewards" => Reward::all(),
+    //         "users" => SubscribedUser::where('user_id', Auth::user()->id)->get()
+    //     ];
+    // }
 }

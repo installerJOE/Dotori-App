@@ -15,10 +15,11 @@ class CreateRewardsTable extends Migration
     {
         Schema::create('rewards', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')
-                ->constrained('users')
+            $table->foreignId('subscribed_user_id')
+                ->constrained('subscribed_users')
                 ->onDelete('cascade');
-            $table->integer('spoints')->default(0);
+            $table->integer('rpoint')->default(0);
+            $table->integer('percent_reward')->default(0);
             $table->timestamps();
         });
     }

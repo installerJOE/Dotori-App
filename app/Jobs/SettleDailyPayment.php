@@ -11,6 +11,8 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\TestScheduler;
 use App\Models\SubscribedUser;
+use App\Models\Reward;
+
 
 class SettleDailyPayment implements ShouldQueue
 {
@@ -47,6 +49,12 @@ class SettleDailyPayment implements ShouldQueue
                 $subscriber->percent_paid = $new_percent_paid > 200 ? 200 : $new_percent_paid;
                 $subscriber->user->save();
                 $subscriber->save();
+
+                $reward = new Reward;
+                $reward->subscribed_user_id = $subscriber->id;
+                $reward->rpoint = $bonus;
+                $reward->percent_reward = $new_percent_paid > 200 ? $new_percent_paid % 200 : $subscriber->rank->daily_percent_yield;
+                $reward->save();
             }
             else{
                 if($subscriber->status !== "paused"){
