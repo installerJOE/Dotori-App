@@ -269,16 +269,14 @@ class TransactionsController extends Controller
         $this->address = DeliveryAddress::where('user_id', Auth::user()->id)->first();
         if($this->address === null){
             $this->validate($request, [
-                "street" => "required|string",
-                "city" => "required|string",
-                "state" => "required|string",
-                "country" => "required|string"
+                "address" => "required",
+                "address_detail" => "required",
+                "zip_code" => "required",
             ]);
             $this->address = new DeliveryAddress;
-            $this->address->street = $request->input('street');
-            $this->address->city = $request->input('city');
-            $this->address->state = $request->input('state');
-            $this->address->country = $request->input('country');
+            $this->address->address = $request->input('address');
+            $this->address->address_detail = $request->input('address_detail');
+            $this->address->zip_code = $request->input('zip_code');
             $this->address->user_id = Auth::user()->id;
             $this->address->save();
         }

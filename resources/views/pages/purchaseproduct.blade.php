@@ -93,41 +93,31 @@
 						<table style="width:100%;">
 							<tbody>
 								<tr>
-									<td> Street Address </td>
+									<td> Address </td>
 									<td>
-										<input type="text" name="street" class="withdrawal_input01" 
-											placeholder="Enter street address"
-											value="{{Auth::user()->delivery_address !== null ? Auth::user()->delivery_address->street : ''}}"
+										<input type="text" name="address" class="withdrawal_input01" 
+											placeholder="Enter address"
+											value="{{Auth::user()->delivery_address !== null ? Auth::user()->delivery_address->address : ''}}"
 											{{Auth::user()->delivery_address !== null ? 'disabled' : ''}}
 										>
 									</td>
 								</tr>
 								<tr>
-									<td> City </td>
+									<td> Address Detail </td>
 									<td>
-										<input type="text" name="city" class="withdrawal_input01" 
-											placeholder="Enter name of your city"
-											value="{{Auth::user()->delivery_address !== null ? Auth::user()->delivery_address->city : ''}}"
+										<input type="text" name="address_detail" class="withdrawal_input01" 
+											placeholder="Enter address detail"
+											value="{{Auth::user()->delivery_address !== null ? Auth::user()->delivery_address->address_detail : ''}}"
                                             {{Auth::user()->delivery_address !== null ? 'disabled' : ''}}
 										/>
 									</td>
 								</tr>
 								<tr>
-									<td> State/Province </td>
+									<td> Zip Code </td>
 									<td>
-										<input type="text" name="state" class="withdrawal_input01" 
-											placeholder="Enter your state/province"
-											value="{{Auth::user()->delivery_address !== null ? Auth::user()->delivery_address->state : ''}}"
-                                            {{Auth::user()->delivery_address !== null ? 'disabled' : ''}}
-										/>
-									</td>
-								</tr>
-								<tr>
-									<td> Country </td>
-									<td>
-										<input type="text" name="country" class="withdrawal_input01" 
-											placeholder="Enter your country"
-											value="{{Auth::user()->delivery_address !== null ? Auth::user()->delivery_address->country : ''}}"
+										<input type="text" name="zip_code" class="withdrawal_input01" 
+											placeholder="Enter your zip code"
+											value="{{Auth::user()->delivery_address !== null ? Auth::user()->delivery_address->zip_code : ''}}"
                                             {{Auth::user()->delivery_address !== null ? 'disabled' : ''}}
 										/>
 									</td>
