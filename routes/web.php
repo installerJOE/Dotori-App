@@ -41,7 +41,7 @@ Route::middleware('activeusersonly')->group(function () {
     Route::get('/products/shop',  [App\Http\Controllers\PagesController::class, 'productShop']);
     Route::get('/products/{id}/purchase',  [App\Http\Controllers\PagesController::class, 'purchaseProduct']);
     Route::get('/products/order-history',  [App\Http\Controllers\PagesController::class, 'orderHistory']);
-    Route::get('/rewards/history',  [App\Http\Controllers\PagesController::class, 'RewardHistory'])->name('user.reward.history');
+    Route::get('/rewards/history',  [App\Http\Controllers\PagesController::class, 'dailyRewardsHistory'])->name('user.reward.history');
 
     Route::get('/announcement',  [App\Http\Controllers\PagesController::class, 'announcements']);
     Route::get('/referral',  [App\Http\Controllers\PagesController::class, 'referral']);
@@ -57,6 +57,8 @@ Route::middleware('activeusersonly')->group(function () {
     Route::post('/settings/profile',  [App\Http\Controllers\SettingsController::class, 'updateProfile']);
     Route::post('/settings/password',  [App\Http\Controllers\SettingsController::class, 'changePassword']);
     Route::post('/settings/pin',  [App\Http\Controllers\SettingsController::class, 'changePin']);
+    // delete account 
+    Route::post('/settings/profile/delete',  [App\Http\Controllers\SettingsController::class, 'deleteUserProfile'])->name('user.account.delete');
 
     // Post Routes for user transactions
     Route::post('/transactions/deposit',  [App\Http\Controllers\TransactionsController::class, 'deposit']);
@@ -71,6 +73,7 @@ Route::middleware('activeusersonly')->group(function () {
 
 });
 
+Route::get('/payment/test',  [App\Http\Controllers\TransactionsController::class, 'testPaymentReward']);
 
 /*
 |-------------------------------------------------------------------------------------------------------------

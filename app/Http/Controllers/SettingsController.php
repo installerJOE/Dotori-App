@@ -96,6 +96,18 @@ class SettingsController extends Controller
         return redirect('/settings/pin')->with('success', 'Your pin has been updated successfully');    
     }
     
+    public function deleteUserProfile(Request $request){
+        if(!Hash::check($request->input('pin'), Auth::user()->pin) || !Hash::check($request->input('password'), Auth::user()->password)){
+            return back()->with('error', 'Please enter correct PIN and password');
+        }
+        $referrals = User::where('referrerId', Auth::user()->memberId)->get()->count();
+        if($referrals > 1){
+            return back()->with('error', 'You already have referrals');
+        }
+        Auth::user()->delete();
+        return redirect('/');
+    }
+
     public function saveProfileImage(Request $request){
         if($request->input('base64image') !== null){
             $user = Auth::user();

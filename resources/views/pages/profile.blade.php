@@ -142,8 +142,108 @@
 
 				<!--withdrawal_input_box end-->
 				<input type="submit" class="btn btn-light-blue-bg" value="Update">
-			</form>
+			</form>					
 		</div>
 		<!--withdrawal_left end-->
+	</div>
+	<div style="clear:left;" class="col-md-6 col-sm-12 col-12 note-pad jumbotron jumbotron-info">
+		@if($referrals < 1)
+			<div class="col-md-12 col-12 col-sm-12">
+				<div class="col-md-12 col-12 col-sm-12">
+					<h2>Delete Your Account:</h2>
+					<ul class="note-ul">
+						<li>
+							Please note that Deleting your account means removing all your
+							data including your assets from our database.
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-6 col-12 col-sm-6 ctrl-btn mt-3">
+					<button class="btn btn-purple-bd" type="button" data-bs-toggle="modal" data-bs-target="#delete-account-modal">
+						Delete account
+					</button>
+				</div>
+
+				{{-- Modal to confirm account delete --}}
+				<div class="modal fade" id="delete-account-modal" tabindex="-1" role="dialog" aria-labelledby="delete-account-label">
+					<div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="text-blue modal-title" id="delete-account-label">
+									Delete Account?
+								</h4>
+								<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+
+							<div class="modal-body products">
+								<div class="col-md-12 col-sm-12 col-12">
+									Are you really sure you want to delete your account? 
+									Delete action is irreversible
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-danger" style="padding-left: 30px; padding-right: 30px"
+								data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#form-delete-account-modal">
+									Yes, delete
+								</button>
+								<button type="button" class="btn btn-light-blue-bg" data-bs-dismiss="modal" aria-label="Close">
+									No, exit
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				{{-- Modal to confirm account delete --}}
+				<div class="modal fade" id="form-delete-account-modal" tabindex="-1" role="dialog" aria-labelledby="form-delete-account-label">
+					<div class="modal-dialog modal-dialog-scrollable modal-dialog-centered" role="document">
+						<form action="{{route('user.account.delete')}}" method="POST">
+							@csrf
+							<div class="modal-content">
+								<div class="modal-header">
+									<h4 class="text-blue modal-title" id="form-delete-account-label">
+										Authenticate Delete Action
+									</h4>
+									<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+
+								<div class="modal-body products">
+									<div class="col-md-12 col-sm-12 col-12">
+										<div class="form-group">
+											<span> Enter PIN </span>
+											<input type="password" class="form-control" name="pin" maxlength="6" required> 
+										</div>
+										<div class="form-group">
+											<span> Enter Password </span>
+											<input type="password" name="password" class="form-control" required/>
+										</div>
+									</div>
+								</div>
+
+								<div class="modal-footer">
+									<button type="submit" class="btn btn-danger" style="padding-left: 30px; padding-right: 30px">
+										Delete account
+									</button>
+									<button type="button" class="btn btn-light-blue-bg" data-bs-dismiss="modal" aria-label="Close">
+										Exit
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		@else
+			<div class="col-md-12 col-12 col-sm-12">
+				<h2>Delete Your Account</h2>
+				<p class="referral-link" id="linkBar">
+					You cannot carry out this action because you have referrals.
+				</p>
+			</div>
+		@endif
 	</div>
 @endsection

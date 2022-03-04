@@ -14,6 +14,7 @@ use App\Models\Referral;
 use App\Models\Package;
 use App\Models\Product;
 use App\Models\Order;
+use App\Models\Reward;
 use App\Models\Announcement;
 use App\Jobs\NotifyRequestJob;
 
@@ -169,15 +170,9 @@ class PagesController extends Controller
         ]);
     }
 
-    public function RewardHistory(){
-        $rewards = SubscribedUser::all();
-        return view('pages.dailyrewards', [
-            'rewards' => $rewards,
-        ]);
-    }
-
     public function profile(){
-        return view('pages.profile');
+        $referrals = User::where('referrerId', Auth::user()->memberId)->get()->count();
+        return view('pages.profile', compact('referrals'));
     }
 
     public function changePassword(){
@@ -216,5 +211,16 @@ class PagesController extends Controller
         return view('pages.searches.results', [
             'results' => $results
         ]);
+    }
+
+    public function dailyRewardsHistory(){
+        $subscribed_packages = SubscribedUser::where('user_id', Auth::user()->id)->orderBy('percent_paid', 'DESC')->get();
+        $rewards = [];
+
+        foreach($subscribed_packages as $subscribed_package){
+            array_push($rewards, Reward::where('subscribed_user_id', $subscribed_package->id)->orderBy('created_at', 'DESC')->paginate(3));
+            // $subscribed_package->rewards = $subscribed_package->rewards->paginate(2);
+        }
+        return view('pages.dailyrewards', compact('subscribed_packages', 'rewards'));
     }
 }
