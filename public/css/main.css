@@ -220,3 +220,12 @@ input:disabled {
 .search-container button:hover {
     background: #210369;
 }
+
+.btn-danger{
+    background-color: rgb(192, 3, 3);
+    border-color: rgb(192, 3, 3);
+}
+.btn-danger:hover{
+    border-color: rgb(134, 0, 0);
+    background-color: rgb(134, 0, 0);
+}

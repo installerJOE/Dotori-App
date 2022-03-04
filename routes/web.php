@@ -41,7 +41,7 @@ Route::middleware('activeusersonly')->group(function () {
     Route::get('/products/shop',  [App\Http\Controllers\PagesController::class, 'productShop']);
     Route::get('/products/{id}/purchase',  [App\Http\Controllers\PagesController::class, 'purchaseProduct']);
     Route::get('/products/order-history',  [App\Http\Controllers\PagesController::class, 'orderHistory']);
-    Route::get('/rewards/history',  [App\Http\Controllers\PagesController::class, 'dailyRewardsHistory'])->name('user.reward.history');
+    Route::get('/rewards/history/{id}',  [App\Http\Controllers\PagesController::class, 'dailyRewardsHistory'])->name('user.reward.history');
 
     Route::get('/announcement',  [App\Http\Controllers\PagesController::class, 'announcements']);
     Route::get('/referral',  [App\Http\Controllers\PagesController::class, 'referral']);

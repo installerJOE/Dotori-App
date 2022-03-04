@@ -213,14 +213,9 @@ class PagesController extends Controller
         ]);
     }
 
-    public function dailyRewardsHistory(){
-        $subscribed_packages = SubscribedUser::where('user_id', Auth::user()->id)->orderBy('percent_paid', 'DESC')->get();
-        $rewards = [];
-
-        foreach($subscribed_packages as $subscribed_package){
-            array_push($rewards, Reward::where('subscribed_user_id', $subscribed_package->id)->orderBy('created_at', 'DESC')->paginate(3));
-            // $subscribed_package->rewards = $subscribed_package->rewards->paginate(2);
-        }
-        return view('pages.dailyrewards', compact('subscribed_packages', 'rewards'));
+    public function dailyRewardsHistory($id){
+        $subscription = SubscribedUser::findOrFail($id);
+        $rewards = Reward::where('subscribed_user_id', $id)->orderBy('created_at', 'DESC')->paginate(10);
+        return view('pages.dailyrewards', compact('rewards', 'subscription'));
     }
 }

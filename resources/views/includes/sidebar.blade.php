@@ -330,7 +330,7 @@
                 </ul>
             </li>
             
-            <li class='sub-menu'>
+            <li class='sub-menu li-underlined'>
                 <a href="#!package">
                     <i class="fas fa-fw fa-cube"></i> &nbsp;
                     My Packages
@@ -339,13 +339,6 @@
                     <li><a href="/packages/subscribed"> All Packages </a></li>
                     <li><a href="/packages/subscribe"> Subscribe Package </a></li>
                 </ul>
-            </li>
-
-            <li class='sub-menu li-underlined'>
-                <a href="{{route('user.reward.history')}}">
-                    <i class="fas fa-fw fa-sitemap"></i> &nbsp;
-                    Daily Rewards
-                </a>
             </li>
            
             <li class='sub-menu'>
