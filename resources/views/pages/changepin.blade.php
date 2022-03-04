@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> PIN Settings | Dotori </title>
+	<title> {{ __('PIN Settings')}} | {{ __('Dotori')}} </title>
     <style>
         .sub_title img {
             float: left;
@@ -15,7 +15,7 @@
     <div class="sub_top"><!--sub_top-->
         <div class="sub_title">
             <i class="fas fa-key"></i>
-            PIN Settings
+            {{ __('PIN Settings')}}
         </div>
     </div><!--sub_top end-->
     <div class="section_right_inner"><!--section_right_inner-->
@@ -23,7 +23,7 @@
         <div class="withdrawal_left">
             <!--form01-->
             <div class="form01">
-                <p class="title"> Change PIN </p> 
+                <p class="title"> {{ __('Change PIN')}} </p> 
                 <form action="/settings/pin" method="POST">
                     @csrf
                     <!--withdrawal_input_box-->
@@ -31,14 +31,14 @@
                         <table style="width:100%;">
                             <tbody>
                                 <tr>
-                                    <td> New PIN (6-digit Number) </td>
+                                    <td> {{ __('New PIN')}} ({{ __('6-digit Number')}}) </td>
                                     <td>
                                         <input type="password" placeholder="Enter new PIN" class="withdrawal_input01" 
                                         name="pin" maxlength="6" pattern="[0-9]{6}">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td> Confirm PIN </td>
+                                    <td> {{ __('Confirm PIN')}} </td>
                                     <td>
                                         <input type="password" placeholder="Retype new PIN" class="withdrawal_input01"
                                         name="pin_confirmation" maxlength="6"> 

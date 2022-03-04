@@ -1,30 +1,30 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> Withdrawal | Dotori </title>
+	<title> {{ __('Withdrawal')}} | {{ __('Dotori')}} </title>
 @endsection
 
 @section('content')
 			<div class="sub_top"><!--sub_top-->
 				<div class="sub_title">
 					<i class="fas fa-fw fa-history"></i>
-					Daily History
+					{{ __('Daily History')}}
 				</div>
 			</div><!--sub_top end-->
 			<div class="section_right_inner"><!--section_right_inner-->
 				<div class="bonus_history_box">
 					<p class="title">
 						<i class="fas fa-gift"></i>
-						Attracted Bonus
+						{{ __('Attracted Bonus')}}
 					</p>
 					<div class="history_table">
 						<table>
 							<tbody>
 								<tr>
-									<th> Bonus </th>
-									<th> Amount (PTS) </th>
-									<th> Date </th>
-									<th> Status </th>
+									<th> {{ __('Bonus')}} </th>
+									<th> {{ __('Amount')}} (PTS) </th>
+									<th> {{ __('Date')}} </th>
+									<th> {{ __('Status')}} </th>
 								</tr>
 								<tr>
 									<td> Inducement </td>

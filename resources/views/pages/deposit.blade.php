@@ -1,21 +1,21 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> Deposit Request | Dotori </title>
+	<title> {{ __('Deposit Request')}} | {{ __('Dotori')}} </title>
 @endsection
 
 @section('content')
 	<div class="sub_top"><!--sub_top-->
 		<div class="sub_title">
 			<i class="fas fa-fw fa-money-check-alt"></i>
-			Deposit
+			{{ __('Deposit')}}
 		</div>
 	</div><!--sub_top end-->
 	<div class="section_right_inner"><!--section_right_inner-->
 		<div class="col-md-12 col-sm-12 col-12">
 			<div class="ctrl-btn col-md-3 col-sm-6 col-12"> 
 				<a href="/deposits/history"> 
-					<button class="btn btn-purple-bd"> Deposit history </button>
+					<button class="btn btn-purple-bd"> {{ __('Deposit history')}} </button>
 				</a>
 			</div>
 		</div>
@@ -25,7 +25,7 @@
 			<!--form01-->
 			<div class="form01">
 				<p class="title">
-					Deposit Request
+					{{ __('Deposit Request')}}
 				</p>
 				<form method='POST' action='/transactions/deposit'>
 					@csrf
@@ -34,7 +34,7 @@
 						<table style="width:100%;">
 							<tbody>
 								<tr>
-									<td> Deposit Request Amount (KRW) </td>
+									<td> {{ __('Deposit Request Amount')}} ({{ __('KRW')}}) </td>
 									<td>
 										<input type="number" 
 											placeholder="Please enter deposit amount" 
@@ -46,7 +46,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td> Depositor's Bank </td>
+									<td> {{ __('Depositor\'s Bank')}} </td>
 									<td>
 										<input type="text"
 											placeholder="Enter your bank name" 
@@ -58,7 +58,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td> Depositor's Name </td>
+									<td> {{ __('Depositor\'s Name')}} </td>
 									<td>
 										<input type="text"
 											placeholder="Enter your account name" 
@@ -85,23 +85,23 @@
 	<div style="clear:left;" class="col-md-6 col-sm-12 col-12 note-pad">
 		<div>
 			<p style="font-weight:bold">
-				Send requested deposit amount to the account below to credit your Dotori 
-				account.
+				{{ __('Send requested deposit amount to the account below to credit your Dotori 
+				account.')}}
 			</p>
 			<div class="referral-link" style="margin:1em 0px; line-height:2em !important">
 				<h3 class="subheader">
-					Bank Name: 농협 
+					{{ __('Bank Name')}}: 농협 
 				</h3>
 				<h3 class="subheader">
-					Account Name:  김병철
+					{{ __('Account Name')}}:  김병철
 				</h3>
 				<h3 class="subheader">
-					Account Number: 302-1363-7061-21
+					{{ __('Account Number')}}: 302-1363-7061-21
 				</h3>
 			</div>
 			<p style="font-weight:bold" class="text-light-blue">
-				Your account will be credited after your payment to the above account has 
-				been verified and confirmed.
+				{{ __('Your account will be credited after your payment to the above account has 
+				been verified and confirmed.')}}
 			</p>
 		</div>
 	</div>

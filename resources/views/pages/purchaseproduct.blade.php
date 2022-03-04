@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> Purchase Product | Dotori </title>
+	<title> {{ __('Purchase Product')}} | {{ __('Dotori')}} </title>
 	<style>
 		.sub_title img {
 			float: left;
@@ -15,11 +15,11 @@
 	<div class="sub_top col-md-12 col-sm-12 col-12"><!--sub_top-->
 		<div class="sub_title">
 			<i class="fas fa-user-cog"></i>
-			Purchase Product
+			{{ __('Purchase Product')}}
 		</div>
         <div class="ctrl-btn col-md-3 col-sm-6 col-12"> 
             <a href="/products/shop"> 
-                <button class="btn btn-purple-bd"> Back to shop </button>
+                <button class="btn btn-purple-bd"> {{ __('Back to shop')}} </button>
             </a>
         </div><br/>
 	</div><!--sub_top end-->
@@ -32,7 +32,7 @@
                 @csrf
                 <input type="hidden" value="{{$product->id}}" name="product_id"/>
 				<div class="form01">
-					<p class="title"> Product </p> 
+					<p class="title"> {{ __('Product')}} </p> 
 					<!--withdrawal_input_box-->
                     <div style="margin-top: 15px;">
                         <span class="text-red" id="insufficientErrorMessage"></span>
@@ -41,7 +41,7 @@
 						<table style="width:100%;">
 							<tbody>
                                 <tr style="font-weight:bold">
-                                    <td> Available Balance </td>
+                                    <td> {{ __('Available Balance')}} </td>
                                     <td>
                                         {{Auth::user()->earnings !== null ? number_format(Auth::user()->earnings) : 0}} SPOINTS
                                         <input type="hidden" 
@@ -51,18 +51,18 @@
                                     </td>
                                 </tr>
 								<tr>
-									<td> Product Name </td>
+									<td> {{ __('Product Name')}} </td>
 									<td><input type="text" class="withdrawal_input01" value="{{$product->name}}" disabled></td>
 								</tr>
 								<tr>
-									<td> Price </td>
+									<td> {{ __('Price')}} </td>
 									<td>
                                         <input type="number" class="withdrawal_input01" value="{{$product->price}}" disabled> 
                                         <input type="hidden" id="product-price" name="product_price" value="{{$product->price}}">
                                     </td>
 								</tr>
 								<tr>
-									<td> Quantity </td>
+									<td> {{ __('Quantity')}} </td>
 									<td>
                                         <input type="number" 
                                             class="withdrawal_input01" 
@@ -75,7 +75,7 @@
                                     </td>
 								</tr>
 								<tr>
-									<td> Amount </td>
+									<td> {{ __('Amount')}} </td>
 									<td>
                                         <input type="text" id="form-product-amount" value="{{$product->price}}" class="withdrawal_input01" disabled >
                                         <input type="hidden" id="product-amount" value="{{$product->price}}">
@@ -87,13 +87,13 @@
 				</div><br/>
 
 				<div class="form01">
-					<p class="title"> Billing Address </p> 
+					<p class="title"> {{ __('Billing Address')}} </p> 
 					<!--withdrawal_input_box-->
 					<div class="withdrawal_input_box">
 						<table style="width:100%;">
 							<tbody>
 								<tr>
-									<td> Street Address </td>
+									<td> {{ __('Street Address')}} </td>
 									<td>
 										<input type="text" name="street" class="withdrawal_input01" 
 											placeholder="Enter street address"
@@ -103,7 +103,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td> City </td>
+									<td> {{ __('City')}} </td>
 									<td>
 										<input type="text" name="city" class="withdrawal_input01" 
 											placeholder="Enter name of your city"
@@ -113,7 +113,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td> State/Province </td>
+									<td> {{ __('State/Province')}} </td>
 									<td>
 										<input type="text" name="state" class="withdrawal_input01" 
 											placeholder="Enter your state/province"
@@ -123,7 +123,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td> Country </td>
+									<td> {{ __('Country')}} </td>
 									<td>
 										<input type="text" name="country" class="withdrawal_input01" 
 											placeholder="Enter your country"
@@ -136,7 +136,7 @@
 						</table>
                         <a href="/settings/profile#billing_address">
                             <button type="button" class="btn btn-purple-bd mt-4">
-                                Change Billing Address
+                                {{ __('Change Billing Address')}}
                             </button>
                         </a>
 					</div>
@@ -182,7 +182,7 @@
         function purchaseProduct(){
             var balance_ok = checkBalance();
             if(!balance_ok){
-                alert('Oops! Insufficient Funds.')
+                alert({{__('Oops! Insufficient Funds.')}})
             }
             else{
                 document.getElementById('purchase-product-form').submit()

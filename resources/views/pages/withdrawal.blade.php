@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> Withdrawal | Dotori </title>
+	<title> {{ __('Withdrawal')}} | {{ __('Dotori')}} </title>
 	<style>
 		.note-ul > li{
 			margin-bottom: 15px;
@@ -23,7 +23,7 @@
 	<div class="sub_top"><!--sub_top-->
 		<div class="sub_title">
 			<i class="fas fa-fw fa-share-square"></i>
-			Withdrawal
+			{{ __('Withdrawal')}}
 		</div>
 	</div><!--sub_top end-->
 
@@ -31,7 +31,7 @@
 		<!--withdrawal_left-->
 		<div class="withdrawal_left">
 			<div class="form01">
-				<p class="title"> Withdraw Funds </p> 
+				<p class="title"> {{ __('Withdraw Funds')}} </p> 
 				<!--total_box-->
 				<div class="total_box">
 					{{-- <div class="total_box_inner"> --}}
@@ -39,7 +39,7 @@
 						<table style="width:100%;">
 							<tbody>
 								<tr style="font-weight:bold">
-									<td> Available Amount (KRW)</td>
+									<td> {{ __('Available Amount')}} ({{ __('KRW')}})</td>
 									<td>
 										{{number_format(Auth::user()->rpoint)}}
 										<input type="hidden" value="{{Auth::user()->rpoint}}" id="available_amount"/>
@@ -61,7 +61,7 @@
 							<table style="width:100%;">
 								<tbody>
 									<tr>
-										<td> Withdraw Amount (RPOINT) </td>
+										<td> {{ __('Withdraw Amount')}} (RPOINT) </td>
 										<td>
 											<input type="number" 
 												placeholder="Enter amount to withdraw" 
@@ -77,7 +77,7 @@
 									</tr>
 											
 									<tr>
-										<td> Fee (5% of Withdraw Amount) </td>
+										<td> {{ __('Fee')}} ({{ __('5% of Withdraw Amount')}}) </td>
 										<td>
 											<input type="number" 
 												class="withdrawal_input01" 
@@ -91,7 +91,7 @@
 									</tr>
 										
 									<tr>
-										<td> Total Amount (SPOINT) </td>
+										<td> {{ __('Total Amount')}} (SPOINT) </td>
 										<td>
 											<input type="number" 
 												id="total_amount" 
@@ -105,7 +105,7 @@
 									</tr>
 
 									<tr>
-										<td> Acummulated SPOINT (15% of Total Amount) </td>
+										<td> {{ __('Acummulated SPOINT')}} ({{ __('15% of Total Amount')}}) </td>
 										<td>
 											<input type="number" 
 												id="accumulated_spoint" 
@@ -119,7 +119,7 @@
 									</tr>
 
 									<tr>
-										<td> Total Amount (KRW) you will receive (85% of Total Amount) </td>
+										<td> {{ __('Total Amount (KRW) you will receive (85% of Total Amount)')}} </td>
 										<td>
 											<input type="number" 
 												id="total_krw" 
@@ -133,7 +133,7 @@
 									</tr>
 											
 									<tr>
-										<td>Bank Name </td>
+										<td>{{ __('Bank Name')}} </td>
 										<td>
 											<input type="text" class="withdrawal_input01" 
 												name='bank_name' placeholder="Enter the name of your Bank"
@@ -144,7 +144,7 @@
 									</tr>
 									
 									<tr>
-										<td> Account Name</td>
+										<td> {{ __('Account Name')}}</td>
 										<td>
 											<input type="text" class="withdrawal_input01" 
 												name='account_name' placeholder="Enter your account name"
@@ -155,7 +155,7 @@
 									</tr>
 
 									<tr>
-										<td>Account Number </td>
+										<td>{{ __('Account Number')}} </td>
 										<td>
 											<input type="text" class="withdrawal_input01" 
 												name='account_number' placeholder="Enter your account number"
@@ -166,7 +166,7 @@
 									</tr>
 
 									<tr>
-										<td> PIN (6-digit Number) </td>
+										<td> {{ __('PIN')}} ({{ __('6-digit Number')}}) </td>
 										<td>
 											<input type="password" placeholder="Enter PIN" class="withdrawal_input01" 
 											name="pin" maxlength="6" pattern="[0-9]{6}" required>
@@ -187,13 +187,13 @@
 	<!--section_right_inner end-->
 	<div style="clear:left;" class="col-md-6 col-sm-12 col-12 note-pad jumbotron jumbotron-info">
 		<div>
-			<h2>Note:</h2>
+			<h2>{{ __('Note')}}:</h2>
 			<ul class="note-ul">
 				<li>
 					{{$inactive_message}}
 				</li>
 				<li>
-					You can only withdraw once each day. Withdrawals are processed on Mondays, Wednesdays and Fridays.
+					{{ __('You can only withdraw once each day. Withdrawals are processed on Mondays, Wednesdays and Fridays.')}}
 				</li>
 			</ul>
 		</div>

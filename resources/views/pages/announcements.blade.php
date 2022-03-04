@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> Announcements | Dotori </title>
+	<title> {{ __('Announcements')}} | {{ __('Dotori')}} </title>
 	<style>
 		.post-section{
 			margin-bottom: 2em;
@@ -18,7 +18,7 @@
 	<div class="sub_top"><!--sub_top-->
 		<div class="sub_title">
 			<i class="fas fa-fw fa-money-check-alt"></i>
-			Announcements
+			{{ __('Announcements')}}
 		</div>
 	</div><!--sub_top end-->
 	<div class="section_right_inner"><!--section_right_inner-->
@@ -39,7 +39,7 @@
 								</p>
 								<p style="margin-top:1.3em;" class="col-md-3 col-sm-4 col-6">
 									<button class="btn btn-light-blue-bg" data-bs-toggle="modal" data-bs-target="#edit-package-modal-{{$announcement->id}}">
-										Read more
+										{{ __('Read more')}}
 									</button>
 								</p>
 							</div>
@@ -51,7 +51,7 @@
 								<div class="modal-content">
 									<div class="modal-header">
 										<h4 class="text-blue modal-title" id="create-package-label-{{$announcement->id}}">
-											Announcement
+											{{ __('Announcement')}}
 										</h4>
 										<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
 											<span aria-hidden="true">&times;</span>
@@ -76,7 +76,7 @@
 					@endforeach
 				@else
 					<h3 style="font-size:24px"> 
-						No Announcement has been made yet. 
+						{{ __('No Announcement has been made yet.')}} 
 					</h3>
 				@endif
 			</div>

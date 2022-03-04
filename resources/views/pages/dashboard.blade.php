@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> Dashboard | Dotori </title>
+	<title> {{ __('Dashboard')}} | {{ __('Dotori')}} </title>
 	<script src="https://rawgit.com/kottenator/jquery-circle-progress/1.2.2/dist/circle-progress.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/react@16.12/umd/react.production.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/react-dom@16.12/umd/react-dom.production.min.js"></script>
@@ -18,7 +18,7 @@
 	<div class="main_notice">
 		<p class="sub_title" style="padding-top: 0px !important"> 
 			<i class="fas fa-fw fa-tachometer-alt"></i>
-			Dashboard <small style="font-size: 0.575em !important;">ID: {{Auth::user()->phone}}</small>
+			{{ __('Dashboard')}} <small style="font-size: 0.575em !important;">{{ __('ID')}}: {{Auth::user()->phone}}</small>
 		</p>
 		<div class="notice_more purple-bg text-white" onclick="locaion.href='#'">
 			{{$rank->title ?? 0}}
@@ -28,28 +28,28 @@
 		<!--main_section01--> 
 		<div class="main_section01">       
 			<div class="main_balance_box main_balance_box02">
-				<p class="title01 mb-2"> My Shopping Points </p>
+				<p class="title01 mb-2"> {{ __('My Shopping Points')}} </p>
 				<p class="s_title01">(SPOINT) &nbsp;</p>
 				<div class="total_sum total_sum02">
 					<p> {{number_format(Auth::user()->earnings)}} </p>
 				</div>
 			</div>
 			<div class="main_balance_box main_balance_box01">
-				<p class="title01 mb-2"> My Rewards </p>
+				<p class="title01 mb-2"> {{ __('My Rewards')}} </p>
 				<p class="s_title01">(RPOINT) &nbsp;</p>
 				<div class="total_sum total_sum01">
 					<p> {{number_format(Auth::user()->rpoint)}} </p>
 				</div>
 			</div>					
 			<div class="main_balance_box main_balance_box04">
-				<p class="title01 mb-2"> My Balance </p>
+				<p class="title01 mb-2"> {{ __('My Balance')}} </p>
 				<p class="s_title01">(PTS) &nbsp;</p>
 				<div class="total_sum total_sum04">
 					<p> {{number_format(Auth::user()->available_points)}} </p>
 				</div>
 			</div>
 			<div class="main_balance_box main_balance_box03">
-				<p class="title01"> No. of Referrals </p>
+				<p class="title01"> {{ __('Number of Referrals')}} </p>
 				<p class="s_title01">&nbsp;</p>
 				<div class="total_sum total_sum03">
 					<p> {{number_format($referrals)}} </p>
@@ -90,7 +90,7 @@
 			<div class="bonus_div referral-block">
 				<div class="title">
 					<i class="fas fa-link"></i>
-					Referral Link
+					{{ __('Referral Link')}}
 				</div><br/>
 				<p class="referral-link">
 					<span id="linkBar"> 
@@ -99,7 +99,7 @@
 					</span>
 				</p>
 				<p>
-					<button class="btn btn-purple-bd" onclick="copy('referral')"> Copy link </button>
+					<button class="btn btn-purple-bd" onclick="copy('referral')"> {{ __('Copy link')}} </button>
 				</p>
 			</div>
 		</div>
@@ -111,17 +111,17 @@
 			<div class="history_box01 mb-4">
 				<p class="title">
 					<i class="fas fa-gift"></i> 
-					Active Subscriptions
+					{{ __('Active Subscriptions')}}
 				</p>					
 
 				<!--Daily history-->
 				<div id ="tab-1" class="tab-content current table_a">
 					<table>
 						<tr>
-							<th> Package </th>
-							<th> Staking Amount (KRW) </th>
-							<th> Rewards/Profit (RPOINT) </th>
-							<th> Status </th>
+							<th> {{ __('Package')}} </th>
+							<th> {{ __('Staking Amount')}} (KRW) </th>
+							<th> {{ __('Rewards/Profit')}} (RPOINT) </th>
+							<th> {{ __('Status')}} </th>
 						</tr>
 						@if(Auth::user()->subscribed_users->count() > 0)
 							@foreach(Auth::user()->subscribed_users as $subscriber)
@@ -138,7 +138,7 @@
 							@endforeach
 						@else
 							<tr>
-								<td colspan="4" style="font-size:21px; padding: 10px;"> You have no active subscription yet. </td>
+								<td colspan="4" style="font-size:21px; padding: 10px;"> {{ __('You have no active subscription yet.')}} </td>
 							</tr>
 						@endif
 					</table>

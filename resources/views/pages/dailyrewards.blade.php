@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> Daily Rewards History | Dotori </title>
+	<title> {{ __('Daily Rewards History')}} | {{ __('Dotori')}} </title>
 	<style>
 		.amount-block{
 			padding:15px;
@@ -18,11 +18,11 @@
     <div class="sub_top col-md-12 col-sm-12 col-12" style="padding-bottom:2em"><!--sub_top-->
 		<div class="sub_title">
 			<i class="fas fa-fw fa-cube"></i>
-			Daily Rewards History
+			{{ __('Daily Rewards History')}}
 		</div>
         <div class="ctrl-btn col-md-3 col-sm-6 col-12" style=""> 
             <a href="/packages/subscribed"> 
-                <button class="btn btn-light-blue-bg"> Back to packages </button>
+                <button class="btn btn-light-blue-bg"> {{ __('Back to packages')}} </button>
             </a>
         </div>
 	</div><!--sub_top end-->
@@ -50,9 +50,9 @@
                 <table class="table table-striped">
                     <tbody>
                         <tr>
-                            <th> Amount (RPOINT)  </th>
-                            <th> Percent Rewarded </th>
-                            <th> Date/Time </th>
+                            <th> {{ __('Amount')}} (RPOINT)  </th>
+                            <th> {{ __('Percent Rewarded')}} </th>
+                            <th> {{ __('Date/Time')}} </th>
                         </tr>
                         @if($rewards->count() > 0)
                             @foreach($rewards as $reward)
@@ -64,7 +64,7 @@
                             @endforeach
                         @else
                             <tr>
-                                <td colspan="3"> There are no rewards yet </td>
+                                <td colspan="3"> {{ __('There are no rewards yet')}} </td>
                             </tr>
                         @endif
                     </tbody>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> Password Settings | Dotori </title>
+	<title> {{ __('Password Settings')}} | {{ __('Dotori')}} </title>
     <style>
         .sub_title img {
             float: left;
@@ -15,7 +15,7 @@
     <div class="sub_top"><!--sub_top-->
         <div class="sub_title">
             <i class="fas fa-shield-alt"></i>
-            Password Settings
+            {{ __('Password Settings')}}
         </div>
     </div><!--sub_top end-->
     <div class="section_right_inner"><!--section_right_inner-->
@@ -23,7 +23,7 @@
         <div class="withdrawal_left">
             <!--form01-->
             <div class="form01">
-                <p class="title"> Change Password </p> 
+                <p class="title"> {{ __('Change Password')}} </p> 
                 <form action="/settings/password" method="POST">
                     @csrf
                     <!--withdrawal_input_box-->
@@ -31,7 +31,7 @@
                         <table style="width:100%;">
                             <tbody>
                                 <tr>
-                                    <td> New Password </td>
+                                    <td> {{ __('New Password')}} </td>
                                     <td>
                                         <input
                                             type="password"
@@ -43,7 +43,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td> Confirm Password</td>
+                                    <td> {{ __('Confirm Password')}}</td>
                                     <td>
                                         <input 
                                             type="password" 

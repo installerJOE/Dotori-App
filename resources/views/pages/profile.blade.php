@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> Profile | Dotori </title>
+	<title> {{ __('Profile')}} | {{ __('Dotori')}} </title>
 	<style>
 		.sub_title img {
 			float: left;
@@ -15,7 +15,7 @@
 	<div class="sub_top"><!--sub_top-->
 		<div class="sub_title">
 			<i class="fas fa-user-cog"></i>
-			Profile Settings
+			{{ __('Profile Settings')}}
 		</div>
 	</div><!--sub_top end-->
 			
@@ -26,7 +26,7 @@
 			<form action="/settings/profile" method="POST">
 				@csrf
 				<div class="form01">
-					<p class="title">Profile</p> 
+					<p class="title">{{ __('Profile')}}</p> 
 					<!--withdrawal_input_box-->
 					<div class="withdrawal_input_box">
 						<table style="width:100%;">
@@ -36,15 +36,15 @@
 									<td><input type="text" class="withdrawal_input01" name='member_id' value="test2" disabled></td>
 								</tr> --}}
 								<tr>
-									<td> Full Name </td>
+									<td> {{ __('Full Name')}} </td>
 									<td><input type="text" class="withdrawal_input01" name='name' value="{{Auth::user()->name}}"> </td>
 								</tr>
 								<tr>
-									<td> Email Address </td>
+									<td> {{ __('Email Address')}} </td>
 									<td><input type="text" class="withdrawal_input01" name='email' value="{{Auth::user()->email}}" disabled></td>
 								</tr>
 								<tr>
-									<td> Phone Number </td>
+									<td> {{ __('Phone Number')}} </td>
 									<td><input disabled type="text" class="withdrawal_input01" value="{{Auth::user()->phone}}"></td>
 									<input type="hidden" name='phone' value="{{Auth::user()->phone}}">
 								</tr>
@@ -54,13 +54,13 @@
 				</div><br/>
 
 				<div class="form01">
-					<p class="title"> Bank Details </p> 
+					<p class="title"> {{ __('Bank Details')}} </p> 
 					<!--withdrawal_input_box-->
 					<div class="withdrawal_input_box">
 						<table style="width:100%;">
 							<tbody>
 								<tr>
-									<td> Bank Name </td>
+									<td> {{ __('Bank Name')}} </td>
 									<td>
 										<input type="text" class="withdrawal_input01" name='bank_name' 
 											placeholder="Enter bank name" 
@@ -70,7 +70,7 @@
 								</tr>
 								
 								<tr>
-									<td> Account Name </td>
+									<td> {{ __('Account Name')}} </td>
 									<td>
 										<input type="text" class="withdrawal_input01"  name='account_name' 
 											placeholder="Enter account name" 
@@ -80,7 +80,7 @@
 								</tr>			
 								
 								<tr>
-									<td> Account Number </td>
+									<td> {{ __('Account Number')}} </td>
 									<td>
 										<input type="number" class="withdrawal_input01" name='account_number' 
 											placeholder="Enter your account number" 
@@ -94,13 +94,13 @@
 				</div><br/><a name="billing_address"></a>
 
 				<div class="form01">
-					<p class="title"> Billing Address </p> 
+					<p class="title"> {{ __('Billing Address')}} </p> 
 					<!--withdrawal_input_box-->
 					<div class="withdrawal_input_box">
 						<table style="width:100%;">
 							<tbody>
 								<tr>
-									<td> Street Address </td>
+									<td> {{ __('Street Address')}} </td>
 									<td>
 										<input type="text" name="street" class="withdrawal_input01" 
 											placeholder="Enter street address"
@@ -109,7 +109,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td> City </td>
+									<td> {{ __('City')}} </td>
 									<td>
 										<input type="text" name="city" class="withdrawal_input01" 
 											placeholder="Enter name of your city"
@@ -118,7 +118,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td> State/Province </td>
+									<td> {{ __('State/Province')}} </td>
 									<td>
 										<input type="text" name="state" class="withdrawal_input01" 
 											placeholder="Enter your state/province"
@@ -127,7 +127,7 @@
 									</td>
 								</tr>
 								<tr>
-									<td> Country </td>
+									<td> {{ __('Country')}} </td>
 									<td>
 										<input type="text" name="country" class="withdrawal_input01" 
 											placeholder="Enter your country"
@@ -150,17 +150,17 @@
 		@if($referrals < 1)
 			<div class="col-md-12 col-12 col-sm-12">
 				<div class="col-md-12 col-12 col-sm-12">
-					<h2>Delete Your Account:</h2>
+					<h2>{{ __('Delete Your Account')}}:</h2>
 					<ul class="note-ul">
 						<li>
-							Please note that Deleting your account means removing all your
-							data including your assets from our database.
+							P{{ __('lease note that Deleting your account means removing all your
+							data including your assets from our database.')}}
 						</li>
 					</ul>
 				</div>
 				<div class="col-md-6 col-12 col-sm-6 ctrl-btn mt-3">
 					<button class="btn btn-purple-bd" type="button" data-bs-toggle="modal" data-bs-target="#delete-account-modal">
-						Delete account
+						{{ __('Delete account')}}
 					</button>
 				</div>
 
@@ -170,7 +170,7 @@
 						<div class="modal-content">
 							<div class="modal-header">
 								<h4 class="text-blue modal-title" id="delete-account-label">
-									Delete Account?
+									{{ __('Delete Account?')}}
 								</h4>
 								<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
@@ -179,17 +179,17 @@
 
 							<div class="modal-body products">
 								<div class="col-md-12 col-sm-12 col-12">
-									Are you really sure you want to delete your account? 
-									Delete action is irreversible
+									{{ __('Are you really sure you want to delete your account? 
+									Delete action is irreversible')}}
 								</div>
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-danger" style="padding-left: 30px; padding-right: 30px"
 								data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#form-delete-account-modal">
-									Yes, delete
+									{{ __('Yes, delete')}}
 								</button>
 								<button type="button" class="btn btn-light-blue-bg" data-bs-dismiss="modal" aria-label="Close">
-									No, exit
+									{{ __('No, exit')}}
 								</button>
 							</div>
 						</div>
@@ -204,7 +204,7 @@
 							<div class="modal-content">
 								<div class="modal-header">
 									<h4 class="text-blue modal-title" id="form-delete-account-label">
-										Authenticate Delete Action
+										{{ __('Authenticate Delete Action')}}
 									</h4>
 									<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
 										<span aria-hidden="true">&times;</span>
@@ -214,11 +214,11 @@
 								<div class="modal-body products">
 									<div class="col-md-12 col-sm-12 col-12">
 										<div class="form-group">
-											<span> Enter PIN </span>
+											<span> {{ __('Enter PIN')}} </span>
 											<input type="password" class="form-control" name="pin" maxlength="6" required> 
 										</div>
 										<div class="form-group">
-											<span> Enter Password </span>
+											<span> {{ __('Enter Password')}} </span>
 											<input type="password" name="password" class="form-control" required/>
 										</div>
 									</div>
@@ -226,10 +226,10 @@
 
 								<div class="modal-footer">
 									<button type="submit" class="btn btn-danger" style="padding-left: 30px; padding-right: 30px">
-										Delete account
+										{{ __('Delete account')}}
 									</button>
 									<button type="button" class="btn btn-light-blue-bg" data-bs-dismiss="modal" aria-label="Close">
-										Exit
+										{{ __('Exit')}}
 									</button>
 								</div>
 							</div>
@@ -239,9 +239,9 @@
 			</div>
 		@else
 			<div class="col-md-12 col-12 col-sm-12">
-				<h2>Delete Your Account</h2>
+				<h2>{{ __('Delete Your Account')}}</h2>
 				<p class="referral-link" id="linkBar">
-					You cannot carry out this action because you have referrals.
+					{{ __('You cannot carry out this action because you have referrals.')}}
 				</p>
 			</div>
 		@endif

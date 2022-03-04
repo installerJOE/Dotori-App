@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> Order History | Dotori </title>
+	<title> {{ __('Order History')}} | {{ __('Dotori')}} </title>
 	<style>
 		
 	</style>
@@ -11,7 +11,7 @@
 	<div class="sub_top"><!--sub_top-->
 		<div class="sub_title">
 			<i class="fas fa-fw fa-cube"></i>
-			Order History
+			{{ __('Order History')}}
 		</div>
 	</div><!--sub_top end-->
 
@@ -19,7 +19,7 @@
 		<div class="col-md-12 col-sm-12 col-12 mb-4">
 			<div class="ctrl-btn col-md-3 col-sm-6 col-12"> 
                 <a href="/products/shop"> 
-                    <button class="btn btn-purple-bd"> Back to shop </button>
+                    <button class="btn btn-purple-bd"> {{ __('Back to shop')}} </button>
                 </a>
             </div><br/>
 		</div>
@@ -28,19 +28,19 @@
 		<div class="deposit_right col-md-12 col-sm-12 col-12">
 			<p class="title">
 				<i class="fas fa-fw fa-history"></i>
-				My Orders 
+				{{ __('My Orders')}} 
 			</p>
 			<div class="history_table">
 				<table class="table table-striped">
 					<tbody>
 						<tr>
-							<th> Purchase ID </th>
-							<th> Product </th>
-							<th> Price </th>
-							<th> Quantity </th>
-                            <th> Amount </th>
-							<th> Status </th>
-							<th> Date </th>
+							<th> {{ __('Purchase ID')}} </th>
+							<th> {{ __('Product')}} </th>
+							<th> {{ __('Price')}} </th>
+							<th> {{ __('Quantity')}} </th>
+                            <th> {{ __('Amount')}} </th>
+							<th> {{ __('Status')}} </th>
+							<th> {{ __('Date')}} </th>
 						</tr>
 
 						@if(count($orders) > 0)
@@ -74,7 +74,7 @@
 							@endforeach
 						@else
 							<tr>
-								<td colspan="7"> No Package has been subscribed to yet. </td>
+								<td colspan="7"> {{ __('No Package has been subscribed to yet.')}} </td>
 							</tr>
 						@endif
 

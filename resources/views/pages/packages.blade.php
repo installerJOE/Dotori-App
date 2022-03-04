@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> My Packages | Dotori </title>
+	<title> {{ __('My Packages')}} | {{__('Dotori')}} </title>
 	<style>
 		.amount-block{
 			padding:15px;
@@ -15,15 +15,15 @@
 	<div class="sub_top"><!--sub_top-->
 		<div class="sub_title">
 			<i class="fas fa-fw fa-cube"></i>
-			My Subscribed Packages
+			{{__('My Subscribed Packages')}}
 		</div>
 	</div><!--sub_top end-->
 
 	@if($completed_payment)
 		<div class="alert-boxes">
 			<div class="alert alert-danger fade-show" role="alert">
-				You have a package that's ready for repurchase. Please repurchase the purchase to continue 
-				the earning cycle of your other packages.
+				{{__('You have a package that\'s ready for repurchase. Please repurchase the purchase to continue')}} 
+				{{__('the earning cycle of your other packages.')}}
 			</div>
 		</div>
 	@endif
@@ -32,15 +32,15 @@
 		<div class="col-md-12 col-sm-12 col-12 mb-4">
 			<div class="ctrl-btn col-md-3 col-sm-6 col-12"> 
                 <a href="/packages/subscribe"> 
-                    <button class="btn btn-purple-bd"> Purchase package </button>
+                    <button class="btn btn-purple-bd"> {{__('Purchase package')}} </button>
                 </a>
             </div>
 			<div class="col-md-3 col-sm-6 col-12" style="float:right"> 
                 <div class="purple-bg text-white amount-block">
 					<p style="font-size:12px" class="text-light-blue">
-						Total Amount Staked
+						{{__('Total Amount Staked')}}
 					</p> 
-					<p style="font-size:21px"> {{number_format($total_staking_amount)}} KRW </p>
+					<p style="font-size:21px"> {{number_format($total_staking_amount)}} {{__('KRW')}} </p>
 				</div>
             </div><br/>
 		</div>
@@ -49,19 +49,19 @@
 		<div class="deposit_right col-md-12 col-sm-12 col-12">
 			<p class="title">
 				<i class="fas fa-fw fa-history"></i>
-				My Subscribed Packages 
+				{{__('My Subscribed Packages')}} 
 			</p>
 			
 			<div class="history_table">
 				<table class="table table-striped">
 					<tbody>
 						<tr>
-							<th> Package </th>
-							<th> Quantity </th>
-							<th> Status </th>
-							<th> Percent Profit </th>
-							<th> Date of Staking </th>
-							<th> Action </th>
+							<th> {{__('Package')}} </th>
+							<th> {{__('Quantity')}} </th>
+							<th> {{__('Status')}} </th>
+							<th> {{__('Percent Profit')}} </th>
+							<th> {{__('Date of Staking')}} </th>
+							<th> {{__('Action')}} </th>
 						</tr>
 
 						@if($subscribed_packages->count() > 0)
@@ -97,7 +97,7 @@
 									/> &nbsp;
 									<a href="/rewards/history/{{$subscribed->id}}">
 										<button class="btn btn-purple-bd" type="button">
-											View rewards
+											{{__('View rewards')}}
 										</button>
 									</a>
 								</td>
@@ -105,7 +105,7 @@
 							@endforeach
 						@else
 							<tr>
-								<td colspan="6"> No Package has been subscribed to yet. </td>
+								<td colspan="6"> {{__('No Package has been subscribed to yet.')}} </td>
 							</tr>
 						@endif
 
@@ -121,7 +121,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="text-blue modal-title" id="request-withdrawal-label">
-						View Package
+						{{__('View Package')}}
 					</h4>
 					<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
@@ -132,41 +132,41 @@
 					<form id="form-validate-withdrawal" method="POST" action="/package/repurchase">
 						@csrf
 						<div>
-							<p class="modal-package-header light-blue-bg"> Package </p>
+							<p class="modal-package-header light-blue-bg"> {{__('Package')}} </p>
 							<h3 id="package_name"></h3>
 						</div>
 						<div>
-							<p class="modal-package-header grey-bg"> Quantity </p>
+							<p class="modal-package-header grey-bg"> {{__('Quantity')}} </p>
 							<h3 id="quantity"></h3>
 						</div>
 						<div>
-							<p class="modal-package-header orange-bg"> Accumulated Profit (PTS) </p>
+							<p class="modal-package-header orange-bg"> {{__('Accumulated Profit')}} (PTS) </p>
 							<h3 id="profit"></h3>
 						</div>
 						<div>
-							<p class="modal-package-header light-blue-bg"> Package Status </p>
+							<p class="modal-package-header light-blue-bg"> {{__('Package Status')}} </p>
 							<h3 id="status"></h3>
 						</div>
 						<div>
-							<p class="modal-package-header grey-bg"> Percent Paid (%) </p>
+							<p class="modal-package-header grey-bg"> {{__('Percent Paid')}} (%) </p>
 							<h3 id="percent_paid"></h3>
 						</div>
 						<div>
-							<p class="modal-package-header orange-bg"> Staking Amount (KRW) </p>
+							<p class="modal-package-header orange-bg"> {{__('Staking Amount')}} (KRW) </p>
 							<h3 id="total_paid"></h3>
 						</div>
 						<div>
-							<p class="modal-package-header light-blue-bg"> Subscription Date </p>
+							<p class="modal-package-header light-blue-bg"> {{__('Subscription Date')}} </p>
 							<h3 id="date_created"></h3>
 						</div><br/>
 					</form>
 				</div>
 				<div class="modal-footer">
 					<button type="button" id="repurchase-btn" class="btn btn-purple-bg">
-						Repurchase
+						{{__('Repurchase')}}
 					</button> 
 					<button type="button" id="stop-earning-btn" class="btn btn-purple-bd" onclick="cancelSub()">
-						Stop earning and withdraw
+						{{__('Stop earning and withdraw')}}
 					</button>
 				</div>
 			</div>
@@ -179,7 +179,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="text-blue modal-title" id="package-repurchase-label">
-						Repurchase Package
+						{{__('Repurchase Package')}}
 					</h4>
 					<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
@@ -200,29 +200,29 @@
 									<tbody>
 										<tr style="font-weight:bold">
 											<td colspan="2"> 
-												Re-purchase can be repurchased with the amount of staking.
+												{{__('Re-purchase can be repurchased with the amount of staking.')}}
 											</td>
 										</tr>
 										<tr>
-											<td>Package Price</td>
+											<td>{{__('Package Price')}}</td>
 											<td>
 												<input type="text" class="withdrawal_input01" id="package-price-input" disabled/>
 											</td>
 										</tr>
 										<tr>
-											<td> Quantity (PTS) </td>
+											<td> {{__('Quantity')}} (PTS) </td>
 											<td>
 												<input type="number" class="withdrawal_input01" name='quantity' id="package-qty-input" disabled/>
 											</td>
 										</tr>
 										<tr>
-											<td> Purchase Amount </td>
+											<td> {{__('Purchase Amount')}} </td>
 											<td>
 												<input type="text" class="withdrawal_input01" name='total' id="total-amount-input" disabled/>
 											</td>
 										</tr>
 										<tr>
-											<td> PIN </td>
+											<td> {{__('PIN')}} </td>
 											<td>
 												<input type="password" id="pin" class="withdrawal_input01" name="pin" required maxlength="6"/>
 											</td>
@@ -238,7 +238,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" id="repurchase-form-btn" class="btn btn-purple-bg" onclick="validatePurchase('repurchase', 'form-repurchase-package')">
-						Repurchase
+						{{__('Repurchase')}}
 					</button> 
 				</div>
 			</div>

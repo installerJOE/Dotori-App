@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> Purchase Package | Dotori </title>
+	<title> {{ __('Purchase Package')}} | {{ __('Dotori')}} </title>
 @endsection
 
 @section('content')
@@ -15,7 +15,7 @@
 	<div class="sub_top"><!--sub_top-->
 		<div class="sub_title">
 			<i class="fas fa-fw fa-cube"></i>
-			Purchase Package
+			{{ __('Purchase Package')}}
 		</div>
 	</div><!--sub_top end-->
 
@@ -32,7 +32,7 @@
 						<p class="text-white subheader mt-3">{{$package->name}}</p>
 						<h6 class="text-white">Reward - {{number_format($package->reward)}} SPOINT</h6>
 						<div class="total_sum {{'total_sum0' . $package->id}}">
-							{{number_format($package->staking_amount + $package->reward)}} KRW
+							{{number_format($package->staking_amount + $package->reward)}} {{ __('KRW')}}
 						</div>
 					</div>		
 				@endforeach
@@ -50,7 +50,7 @@
 
 	<div class="ctrl-btn col-md-3 col-sm-6 col-12"> 
 		<a href="/packages/subscribed"> 
-			<button class="btn btn-purple-bd"> Back to my packages </button>
+			<button class="btn btn-purple-bd"> {{ __('Back to my packages')}} </button>
 		</a>
 	</div><br/>
 
@@ -63,12 +63,12 @@
 					<div class="modal-header">
 						@if($purchase_active)
 							<h4 class="text-blue modal-title" id="request-withdrawal-label">
-								Subscribe Package
+								{{ __('Subscribe Package')}}
 							</h4>
 						@else
 							<p class="text-red">
-								Sorry, package subscription is inactive for now.
-								Package purchase is only available from Monday to Friday, from 10:00am to 6:00pm (KST).
+								{{ __('Sorry, package subscription is inactive for now.')}}
+								{{ __('Package purchase is only available from Monday to Friday, from 10:00am to 6:00pm (KST).')}}
 							</p>
 						@endif
 						<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
@@ -89,7 +89,7 @@
 									<table style="width:100%;">
 										<tbody>
 											<tr>
-												<td> Available Amount </td>
+												<td> {{ __('Available Amount')}} </td>
 												<td>
 													<input type="text" 
 														class="withdrawal_input01" 
@@ -100,7 +100,7 @@
 												</td>
 											</tr>
 											<tr>
-												<td>Package Price</td>
+												<td>{{ __('Package Price')}}</td>
 												<td>
 													<input type="text" 
 														class="withdrawal_input01" 
@@ -113,7 +113,7 @@
 												</td>
 											</tr>
 											<tr>
-												<td> Quantity (PTS) </td>
+												<td>{{ __('Quantity')}} (PTS) </td>
 												<td>
 													<input type="number" 
 														class="withdrawal_input01" 
@@ -126,7 +126,7 @@
 												</td>
 											</tr>
 											<tr>
-												<td> Purchase Amount </td>
+												<td> {{ __('Purchase Amount')}} </td>
 												<td>
 													<input type="text" 
 														class="withdrawal_input01" 
@@ -140,7 +140,7 @@
 												</td>
 											</tr>
 											<tr>
-												<td> PIN </td>
+												<td> {{ __('PIN')}} </td>
 												<td>
 													<input type="password" 
 														id="pin" 

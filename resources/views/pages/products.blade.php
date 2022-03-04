@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> Shop Products | Dotori </title>
+	<title> {{ __('Shop Products')}} | {{ __('Dotori')}} </title>
 	<style>
 		.modal .products > div{
             padding:10px;
@@ -21,16 +21,16 @@
 	<div class="sub_top col-md-12 col-sm-12 col-12" style="padding-bottom:2em"><!--sub_top-->
 		<div class="sub_title">
 			<i class="fas fa-fw fa-cube"></i>
-			Shop Products
+			{{ __('Shop Products')}}
 		</div><hr class="dashboard-hr"/>
         <div class="ctrl-btn col-md-3 col-sm-6 col-12" style="float:right; padding-right:15px"> 
             <a href="/products/order-history"> 
-                <button class="btn btn-purple-bd"> Order history </button>
+                <button class="btn btn-purple-bd"> {{ __('Order history')}} </button>
             </a>
         </div>
         <div class="col-md-9 col-sm-6 col-12"> 
             <h3 class="subheader text-grey"> 
-                Search products
+                {{ __('Search products')}}
             </h3>
             <div class="search-container">
                 <form action="{{route('search.product')}}" method="GET">
@@ -45,7 +45,7 @@
         <div class="col-md-12 col-sm-12 col-12">
 			<div class="mt-4 col-md-12 col-sm-12 col-12">
 				<h3 class="subheader text-grey"> 
-					Choose a product to purchase
+					{{ __('Choose a product to purchase')}}
 				</h3>
                 @if($products->count() > 0)
                     @foreach($products as $product)
@@ -53,7 +53,7 @@
                     @endforeach
                 @else
                     <h2>
-                        No Product has been created yet
+                        {{ __('No Product has been created yet')}}
                     </h2>
                 @endif
 			</div>

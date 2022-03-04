@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> Referrals | Dotori </title>
+	<title> {{ __('Referrals')}} | {{ __('Dotori')}} </title>
 	<style>
 		.sub_title img {
 			float: left;
@@ -22,13 +22,13 @@
 	<div class="sub_top"><!--sub_top-->
 		<div class="sub_title">
 			<i class="fas fa-fw fa-sitemap"></i> 
-			Recommendation Chart
+			{{ __('Recommendation Chart')}}
 		</div>
 	</div><!--sub_top end-->
 
 	<div class="section_right_inner"><!--section_right_inner-->				
 		<div class="col-md-6 col-sm-6 col-12 card">
-			<h4 class="text-purple"> Referral Link: </h4>
+			<h4 class="text-purple"> {{ __('Referral Link')}}: </h4>
 			<p class="referral-link" id="linkBar">
 				{{route('register')."?refer=" . Auth::user()->memberId}}
 			</p>
@@ -41,16 +41,16 @@
 		<div class="deposit_right col-md-12 col-sm-12 col-12 mt-4">
 			<p class="title">
 				<i class="fas fa-fw fa-history"></i>
-				Referral History 
+				{{ __('Referral History')}} 
 			</p>
 			<div class="history_table">
 				<table>
 					<tbody>
 						<tr>
-							<th> Member ID </th>
-							<th> Member Rank </th>
-							<th> Subscription Status </th>
-							<th> Join Date </th>
+							<th> {{ __('Member ID')}} </th>
+							<th> {{ __('Member Rank')}} </th>
+							<th> {{ __('Subscription Status')}} </th>
+							<th> {{ __('Join Date')}} </th>
 						</tr>
 
 						@if($referrals->count() > 0)
@@ -68,7 +68,7 @@
 							@endforeach
 						@else
 							<tr>
-								<td colspan="4"> You have not recommended anyone yet. </td>
+								<td colspan="4"> {{ __('You have not recommended anyone yet.')}} </td>
 							</tr>
 						@endif
 					</tbody>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> Search Result | Dotori </title>
+	<title> {{ __('Search Result')}} | {{ __('Dotori')}} </title>
 	<style>
 		.post-section{
 			margin-bottom: 2em;
@@ -18,11 +18,11 @@
 	<div class="sub_top col-md-12 col-sm-12 col-12" style="padding-bottom:2em"><!--sub_top-->
 		<div class="sub_title">
 			<i class="fas fa-fw fa-search"></i>
-			Product Search Results
+			{{ __('Product Search Results')}}
 		</div>
 		<div class="ctrl-btn col-md-3 col-sm-6 col-12" style="float:right; padding-right:15px"> 
             <a href="/products/shop"> 
-                <button class="btn btn-purple-bd"> Back to shop </button>
+                <button class="btn btn-purple-bd"> {{ __('Back to shop')}} </button>
             </a>
         </div>
         <div class="col-md-9 col-sm-6 col-12"> 
@@ -52,7 +52,7 @@
 								</p>
 								<p style="margin-top:1.3em;" class="col-md-3 col-sm-4 col-6">
 									<button class="btn btn-light-blue-bg" data-bs-toggle="modal" data-bs-target="#edit-package-modal-{{$product->id}}">
-										View product
+										{{ __('View product')}}
 									</button>
 								</p>
 							</div>
@@ -64,7 +64,7 @@
 								<div class="modal-content">
 									<div class="modal-header">
 										<h4 class="text-blue modal-title" id="create-package-label-{{$product->id}}">
-											View Product
+											{{ __('View Product')}}
 										</h4>
 										<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
 											<span aria-hidden="true">&times;</span>
@@ -76,9 +76,9 @@
 											<img src="{{asset('products/' . $product->filename)}}" width="100%" height="auto"/>
 										</div>
 										<div class="col-md-4 col-sm-4 col-4">                                               
-											<p class="modal-package-header header2 grey-bg mb-2 mt-3"> Product Status </p>
+											<p class="modal-package-header header2 grey-bg mb-2 mt-3"> {{ __('Product Status')}} </p>
 											<h3 style="font-size: 16px; font-weight:bold">
-												Available in stock
+												{{ __('Available in stock')}}
 											</h3>
 										</div>
 										<div class="col-md-12 col-sm-12 col-12">
@@ -86,7 +86,7 @@
 											<div class="product-price">
 												{{number_format($product->price)}} SPOINTS 
 											</div> <hr/>
-											<h3 class="modal-package-header grey-bg"> Description </h3>
+											<h3 class="modal-package-header grey-bg"> {{ __('Description')}} </h3>
 											<h3 style="font-size: 16px">
 												{{$product->description}}
 											</h3>
@@ -95,7 +95,7 @@
 									<div class="modal-footer">
 										<a href="/products/{{$product->id}}/purchase">
 											<button type="button" class="btn btn-purple-bg" style="padding-left: 30px; padding-right: 30px">
-												Buy product
+												{{ __('Buy product')}}
 											</button>
 										</a>
 									</div>
@@ -105,7 +105,7 @@
 					@endforeach
 				@else
 					<h3 style="font-size:32px"> 
-						Search result not found!
+						{{ __('Search result not found!')}}
 					</h3>
 				@endif
 			</div>
