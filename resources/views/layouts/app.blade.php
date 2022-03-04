@@ -94,6 +94,7 @@
                 <div class="alert-boxes">
                     @include('includes.messages')
                 </div>
+                @include('partials.language_switcher')
                 @yield('content')
             </div>
         </div>
@@ -108,7 +109,7 @@
             navigator.clipboard.writeText(copyText);
 
             /* Alert the copied text */
-            alert("Your link has been copied to clipboard.");
+            alert("{{__('Your link has been copied to clipboard.')}}");
         }                            
     </script>
     

@@ -7,6 +7,7 @@
     
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="{{asset('flag-icons-main/css/flag-icons.min.css')}}">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -67,6 +68,7 @@
     @yield('meta-content')
 </head>
 <body>
+    @include('partials.language_switcher')
     <div>
         @yield('content')
     </div>

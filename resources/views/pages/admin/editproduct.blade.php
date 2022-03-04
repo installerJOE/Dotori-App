@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> Announcements | Dotori </title>
+	<title> {{ __('Edit product')}} | {{ __('Dotori')}} </title>
 @endsection
 
 @section('content')
 	<div class="sub_top"><!--sub_top-->
 		<div class="sub_title">
 			<i class="fas fa-fw fa-money-check-alt"></i>
-			Edit Product
+			{{ __('Edit Product')}}
 		</div>
 	</div><!--sub_top end-->
 	<div class="section_right_inner"><!--section_right_inner-->
@@ -18,7 +18,7 @@
                 @csrf
                 <div class="form-group">
                     <span> 
-                        Product Name <span class="text-red">*</span> 
+                        {{ __('Product Name')}} <span class="text-red">*</span> 
                     </span>
                     <input type="text" 
                         class="form-control" 
@@ -30,7 +30,7 @@
 
                 <div class="form-group">
                     <span> 
-                        Product Description <em class="text-grey">(Optional)</em> 
+                        {{ __('Product Description')}} <em class="text-grey">({{ __('Optional')}})</em> 
                     </span>
                     <textarea
                         class="form-control" 
@@ -41,7 +41,7 @@
 
                 <div class="form-group">
                     <span> 
-                        Price (SPOINT) <span class="text-red">*</span> 
+                        {{ __('Price')}} (SPOINT) <span class="text-red">*</span> 
                     </span>
                     <input type="number" 
                         class="form-control" 
@@ -66,15 +66,15 @@
                 </div>
 
                 <button type="submit" class="btn btn-purple-bg">
-                    Update product
+                    {{ __('Update product')}}
                 </button> &nbsp;
                 @if($product->is_active)
                     <button type="button" class="btn btn-grey-bg" onclick="updateProductStatus('disable')">
-                        Disable product
+                        {{ __('Disable product')}}
                     </button>
                 @else
                     <button type="button" class="btn btn-purple-bd" onclick="updateProductStatus('enable')">
-                        Enable product
+                        {{ __('Enable product')}}
                     </button>
                 @endif
             </form>

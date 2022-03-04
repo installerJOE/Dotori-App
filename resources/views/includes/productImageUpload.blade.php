@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg box-shadow" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalLabel">Crop Image</h5>
+                <h5 class="modal-title" id="modalLabel">{{__('Crop Image')}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -20,8 +20,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" id="crop">Crop</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Cancel')}}</button>
+                <button type="button" class="btn btn-primary" id="crop">{{__('Crop')}}</button>
             </div>
         </div>
     </div>

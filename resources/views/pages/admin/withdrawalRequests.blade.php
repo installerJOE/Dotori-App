@@ -1,26 +1,26 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> Deposit History | Dotori </title>
+	<title> {{ __('Withdrawal request')}} | {{ __('Dotori')}} </title>
 @endsection
 
 @section('content')
 	<div class="sub_top"><!--sub_top-->
 		<div class="sub_title">
 			<i class="fas fa-fw fa-history"></i>
-	    	Withdrawal Requests
+	    	{{ __('Withdrawal Requests')}}
 		</div>
 	</div><!--sub_top end-->
 			
 	<div class="section_right_inner"><!--section_right_inner-->
 		<div class="my-3">
 			<a href="{{route('withdrawal.requests.export')}}" class="btn btn-sm btn-light-blue-bg pt-3">
-				Export
+				{{ __('Export')}}
 			</a>
 		</div>
         <div class="ctrl-btn col-md-3 col-sm-6 col-12"> 
             <a href="/admin/withdrawals"> 
-                <button class="btn btn-purple-bd"> Withdrawals history </button>
+                <button class="btn btn-purple-bd"> {{ __('Withdrawals history')}} </button>
             </a>
         </div><br/>
 
@@ -29,14 +29,14 @@
 				<table>
 					<tbody>
 						<tr>
-							<th> Name of Member </th>
-                            <th> Withdrawal Amount </th>
-                            <th> Bank Name </th>
-                            <th> Account Holder </th>
-                            <th> Account Number </th>
-                            <th> Status </th>
-							<th> Date </th>
-							<th> Action </th>
+							<th> {{ __('Name of Member')}} </th>
+                            <th> {{ __('Withdrawal Amount')}} </th>
+                            <th> {{ __('Bank Name')}} </th>
+                            <th> {{ __('Account Holder')}} </th>
+                            <th> {{ __('Account Number')}} </th>
+                            <th> {{ __('Status')}} </th>
+							<th> {{ __('Date')}} </th>
+							<th> {{ __('Action')}} </th>
 						</tr>						
 						@if($withdrawals->count() > 0)
 							@foreach($withdrawals as $withdrawal)
@@ -68,7 +68,7 @@
 							@endforeach
 						@else
 							<tr>
-								<td colspan="5"> There are no new withdrawal requests yet. </td>
+								<td colspan="5"> {{ __('There are no new withdrawal requests yet.')}} </td>
 							</tr>
 						@endif
 					</tbody>
@@ -90,7 +90,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="text-blue modal-title" id="request-withdrawal-label">
-						Withdrawal Request
+						{{ __('Withdrawal Request')}}
 					</h4>
 					<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
@@ -103,7 +103,7 @@
 
 						<div class="form-group">
 							<span> 
-								Dotori Account Name
+								{{ __('Dotori Account Name')}}
 							</span>
 							<input type="text" 
 								disabled
@@ -114,7 +114,7 @@
 						
 						<div class="form-group">
 							<span> 
-								Withdrawal Amount (KRW)
+								{{ __('Withdrawal Amount')}} (KRW)
 							</span>
 							<input type="number" 
 								disabled
@@ -125,7 +125,7 @@
 
 						<div class="form-group">
 							<span> 
-								Bank Name
+								{{ __('Bank Name')}}
 							</span>
 							<input type="text"
 								disabled
@@ -136,7 +136,7 @@
 
 						<div class="form-group">
 							<span>
-								Account Name
+								{{ __('Account Name')}}
 							</span>
 							<input type="text" 
 								disabled
@@ -147,7 +147,7 @@
 
 						<div class="form-group">
 							<span> 
-								Account Number
+								{{ __('Account Number')}}
 							</span>
 							<input type="text"
 								disabled
@@ -158,7 +158,7 @@
 
 						<div class="form-group">
 							<span>
-								Withdrawal Status
+								{{ __('Withdrawal Status')}}
 							</span>
 							<input type="text" 
 								disabled
@@ -169,7 +169,7 @@
 
 						<div class="form-group">
 							<span>
-								Date of Request
+								{{ __('Date of Request')}}
 							</span>
 							<input type="text" 
 								disabled
@@ -180,7 +180,7 @@
 
 						<input type="hidden" id="withdrawal_transaction_id" name="withdrawal_id"/>
 						<button type="button" class="btn btn-purple-bg" onclick="validateWithdraw()">
-							Make payment	
+							{{ __('Make payment')}}	
 						</button>
 					</form>
 				</div>

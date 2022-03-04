@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> Subscribers | Dotori </title>
+	<title> {{ __('Subscribers')}} | {{ __('Dotori')}} </title>
 @endsection
 
 @section('content')
@@ -16,11 +16,11 @@
 		<div>
 		@if ($status_type === 'pending')
 		<a href="{{route('pending.subscriptions.export')}}" class="btn btn-sm btn-light-blue-bg pt-3">
-			Export
+			{{ __('Export')}}
 		</a>
 		@elseif($status_type === 'active')
 		<a href="{{route('active.subscriptions.export')}}" class="btn btn-sm btn-light-blue-bg pt-3">
-			Export
+			{{ __('Export')}}
 		</a>
 		@endif
 	</div>
@@ -29,13 +29,13 @@
 				<table>
 					<tbody>
 						<tr>
-							<th> Name </th>
-							<th> Packages </th>
-							<th> Quantity </th>
-                            <th> Status </th>
-                            <th> Date </th>
+							<th> {{ __('Name')}} </th>
+							<th> {{ __('Packages')}} </th>
+							<th> {{ __('Quantity')}} </th>
+                            <th> {{ __('Status')}} </th>
+                            <th> {{ __('Date')}} </th>
 							@if($status_type === "pending")
-								<th> Action </th>
+								<th> {{ __('Action')}} </th>
 							@endif
 						</tr>						
 
@@ -50,7 +50,7 @@
 									@if($status_type === "pending")
 										<td> 
 											<button type="button" class="btn btn-light-blue-bg" onclick="activatePurchase()">
-												activate
+												{{ __('activate')}}
 											</button>
 										</td>
 									@endif
@@ -61,7 +61,7 @@
 							@endforeach
 						@else
 							<tr>
-								<td colspan="6"> There are no pending subscription requests yet. </td>
+								<td colspan="6"> {{ __('There are no pending subscription requests yet.')}} </td>
 							</tr>
 						@endif
 					</tbody>

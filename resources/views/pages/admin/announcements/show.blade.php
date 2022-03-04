@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> {{$announcement->title}} | Dotori </title>
+	<title> {{$announcement->title}} | {{ __('Dotori')}} </title>
     <style>
         .withdrawal_left{
             width:100%;
@@ -30,10 +30,10 @@
         <div class="col-md-12 col-12 col-sm-12 mt-4">
             <div class="ctrl-btn col-md-3 col-sm-6 col-12"> 
 				<a href="/admin/announcements/{{$announcement->slug}}/edit"> 
-					<button class="btn btn-purple-bg"> Edit post </button>
+					<button class="btn btn-purple-bg"> {{ __('Edit post')}} </button>
 				</a> &nbsp;
                 
-                <button class="btn btn-purple-bd" onclick="deletePost()"> Delete post </button>
+                <button class="btn btn-purple-bd" onclick="deletePost()"> {{ __('Delete post')}} </button>
 				
                 <form action="/admin/announcements/{{$announcement->id}}/delete" method="POST" id="delete-post-form">
                     @csrf

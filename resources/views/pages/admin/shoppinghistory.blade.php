@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> Shopping History | Dotori </title>
+	<title> {{ __('Shopping History')}} | {{ __('Dotori')}} </title>
 @endsection
 
 @section('content')
 	<div class="sub_top"><!--sub_top-->
 		<div class="sub_title">
 			<i class="fas fa-fw fa-history"></i>
-            Shopping History
+            {{ __('Shopping History')}}
 		</div>
 	</div><!--sub_top end-->
 			
@@ -18,17 +18,17 @@
 				<table>
 					<tbody>
 						<tr>
-							<th> ID </th>
-                            <th> Product Name </th>
-							<th> Price (SPOINT) </th>
-                            <th> Quantity </th>
-                            <th> Amount (SPOINT) </th>
-							<th> Address </th>
-                            <th> City </th>
-                            <th> State/Province </th>
-                            <th> Country </th>
-                            <th> Status </th>
-                            <th> Date </th>
+							<th> {{ __('ID')}} </th>
+                            <th> {{ __('Product Name')}} </th>
+							<th> {{ __('Price (SPOINT)')}} </th>
+                            <th> {{ __('Quantity')}} </th>
+                            <th> {{ __('Amount')}} (SPOINT) </th>
+							<th> {{ __('Address')}} </th>
+                            <th> {{ __('City')}} </th>
+                            <th> {{ __('State/Province')}} </th>
+                            <th> {{ __('Country')}} </th>
+                            <th> {{ __('Status')}} </th>
+                            <th> {{ __("Date")}} </th>
 						</tr>						
 
 						@if($orders->count() > 0)
@@ -49,7 +49,7 @@
 							@endforeach
 						@else
 							<tr>
-								<td colspan="10" style="font-size:24px"> No deposit has been made yet. </td>
+								<td colspan="10" style="font-size:24px"> {{ __('No deposit has been made yet.')}} </td>
 							</tr>
 						@endif
 					</tbody>

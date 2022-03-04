@@ -12,8 +12,8 @@
                     
                 </div>
                 <div class="login_v_text">
-                    <p class="text1"> Global Investment Solution</p>
-                    <P class="text2"> We always provide the best services</P>
+                    <p class="text1"> {{__('Global Investment Solution')}}</p>
+                    <P class="text2"> {{__('We always provide the best services')}}</P>
                 </div>
                 <div class="login_div">
                     <div>
@@ -24,16 +24,8 @@
                             </div>
 
                             <h3 class="subheader text-purple text-center">
-                                Forgot Password <div style="left: 100px; margin-top: 30px" id="google_translate_element"></div>
+                                {{__('Forgot Password') }}
                             </h3>
-
-                    <script type="text/javascript">
-                     function googleTranslateElementInit() {
-                        new google.translate.TranslateElement({pageLanguage: 'ko', includedLanguages: 'ko,en', }, 'google_translate_element');
-                    }
-                    </script>
-            
-                    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
                             <div class="index_input">
                                 @if (session('status'))
@@ -44,7 +36,7 @@
                             </div>
                             
                             <div class="index_input">
-                                Email Address
+                                {{__('Email Address')}}
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" 
                                     name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                                 @error('email')
@@ -57,12 +49,12 @@
                             <div class="index_input">
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-purple-bg">
-                                        Send Password Reset Link
+                                        {{__('Send Password Reset Link')}}
                                     </button>
                                 </div>
                             </div>
                             <div class="index_input">
-                                Already have an account? <a href="/login" class="text-light-blue"> Login here </a>
+                                {{__('Already have an account?')}} <a href="/login" class="text-light-blue"> {{__('Login here')}} </a>
                             </div>
                         </form>
                     </div>

@@ -1,21 +1,21 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> Members | Dotori </title>
+	<title> {{ __('Members')}} | {{ __('Dotori')}} </title>
 @endsection
 
 @section('content')
 	<div class="sub_top"><!--sub_top-->
 		<div class="sub_title">
 			<i class="fas fa-fw fa-users"></i>
-            All Members
+            {{ __('All Members')}}
 		</div>
 	</div><!--sub_top end-->
 			
 	<div class="section_right_inner"><!--section_right_inner-->
 		<div>
 			<a href="{{route('export.users')}}" class="btn btn-sm btn-light-blue-bg pt-3">
-				Export
+				{{ __('Export')}}
 			</a>
 		</div>
 		<div class="deposit_right col-md-12 col-sm-12 col-12 mt-4">
@@ -23,13 +23,13 @@
 				<table>
 					<tbody>
 						<tr>
-                            <th> Member ID </th>
-							<th> Email </th>
-							<th> Available Balance (PTS) </th>
-							<th> Earnings (SPOINT) </th>
-                            <th> Date Joined </th>
-                            <th> Action </th>
-							<th>Status</th>
+                            <th> {{ __('Member ID')}} </th>
+							<th> {{ __('Email')}} </th>
+							<th> {{ __('Available Balance')}} (PTS) </th>
+							<th> {{ __('Earnings')}} (SPOINT) </th>
+                            <th> {{ __('Date Joined')}} </th>
+                            <th> {{ __('Action')}} </th>
+							<th> {{ __('Status')}}</th>
 						</tr>						
 
 						@if($members->count() > 0)
@@ -47,21 +47,21 @@
 												`{{$member->available_points}}`, 
 												`{{$member->earnings}}`
 											)">
-											Update Balance
+											{{ __('Update Balance')}}
 										</button>
 									</td>
 									<td>
 										@if ($member->status)
-										<a href="{{route('admin.togglestatus', ['id' => $member->id])}}" class="btn btn-light-blue-bg btn-sm">Active</a>
+										<a href="{{route('admin.togglestatus', ['id' => $member->id])}}" class="btn btn-light-blue-bg btn-sm">{{ __('Active')}}</a>
 										@else
-										<a href="{{route('admin.togglestatus', ['id' => $member->id])}}" class="btn btn-light-blue-bg btn-sm">Suspended</a>
+										<a href="{{route('admin.togglestatus', ['id' => $member->id])}}" class="btn btn-light-blue-bg btn-sm">{{ __('Suspended')}}</a>
 										@endif
 									</td>
 								</tr>
 							@endforeach
 						@else
 							<tr>
-								<td colspan="5"> No deposit has been made yet. </td>
+								<td colspan="5"> {{ __('No deposit has been made yet.')}} </td>
 							</tr>
 						@endif
 					</tbody>
@@ -81,7 +81,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="text-blue modal-title" id="request-deposit-label">
-						Update User Balance
+						{{ __('Update User Balance')}}
 					</h4>
 					<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
@@ -93,7 +93,7 @@
 						@csrf
 						<div class="form-group">
 							<span> 
-								Member ID
+								{{ __('Member ID')}}
 							</span>
 							<input type="text" 
 								disabled
@@ -104,7 +104,7 @@
 						
 						<div class="form-group">
 							<span> 
-								Available Points (PTS)
+								{{ __('Available Points')}} (PTS)
 							</span>
 							<input type="number" 
 								class="form-control" 
@@ -115,7 +115,7 @@
 
 						<div class="form-group">
 							<span> 
-								Shopping Points (SPOINTS)
+								{{ __('Shopping Points')}} (SPOINTS)
 							</span>
 							<input type="text"
 								class="form-control" 
@@ -126,7 +126,7 @@
 
 						<input type="hidden" id="form_member_id" name="member_id"/>
 						<button type="button" class="btn btn-purple-bg" onclick="updateUserBalance()">
-							Update balance	
+							{{ __('Update balance')}}	
 						</button>
 					</form>
 				</div>

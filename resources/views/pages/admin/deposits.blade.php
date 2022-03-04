@@ -1,27 +1,27 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> Deposits | Dotori </title>
+	<title> {{ __('Deposits')}} | {{ __('Dotori')}} </title>
 @endsection
 
 @section('content')
 	<div class="sub_top"><!--sub_top-->
 		<div class="sub_title">
 			<i class="fas fa-fw fa-history"></i>
-	    	Deposits History
+	    	{{ __('Deposits History')}}
 		</div>
 	</div><!--sub_top end-->
 			
 	<div class="section_right_inner"><!--section_right_inner-->
 		<div class="my-3">
 			<a href="{{route('deposit.history.export')}}" class="btn btn-sm btn-light-blue-bg pt-3">
-				Export
+				{{ __('Export')}}
 			</a>
 		</div>
 
         <div class="ctrl-btn col-md-3 col-sm-6 col-12"> 
             <a href="/admin/deposits/requests"> 
-                <button class="btn btn-purple-bd"> Deposit requests </button>
+                <button class="btn btn-purple-bd"> {{ __('Deposit requests')}} </button>
             </a>
         </div><br/>
 
@@ -30,12 +30,12 @@
 				<table>
 					<tbody>
 						<tr>
-                            <th> Name of Member </th>
-                            <th> Deposit Amount </th>
-                            <th> Bank Name </th>
-                            <th> Account Holder </th>
-                            <th> Status </th>
-							<th> Date </th>
+                            <th> {{ __('Name of Member')}} </th>
+                            <th> {{ __('Deposit Amount')}} </th>
+                            <th> {{ __('Bank Name')}} </th>
+                            <th> {{ __('Account Holder')}} </th>
+                            <th> {{ __('Status')}} </th>
+							<th> {{ __('Date')}} </th>
 						</tr>						
 						@if($deposits->count() > 0)
 							@foreach($deposits as $deposit)
@@ -50,7 +50,7 @@
 							@endforeach
 						@else
 							<tr>
-								<td colspan="7"> No completed deposits has been made yet. </td>
+								<td colspan="7"> {{ __('No completed deposits has been made yet.')}} </td>
 							</tr>
 						@endif
 					</tbody>

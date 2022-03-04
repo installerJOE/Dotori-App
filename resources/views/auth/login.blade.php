@@ -25,8 +25,7 @@
                             </div>
 
                             <h3 class="subheader text-purple text-center">
-                                @include('partials.language_switcher')
-                                {{ __('Login')}} <div style="left: 100px; margin-top: 30px" id="google_translate_element"></div>
+                                {{ __('Login')}}
                             </h3>
 
                             <div class="index_input">
@@ -71,7 +70,7 @@
                                 </div>
                             </div>
                             <div class="index_input">
-                                {{ __("Don't have an account?") }}
+                                {{ __('Don\'t have an account?') }}
                             </div>
                             <div class="index_input">
                                 <div class="col-12">

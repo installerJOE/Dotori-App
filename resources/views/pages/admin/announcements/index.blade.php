@@ -15,7 +15,7 @@
 		<div class="col-md-12 col-sm-12 col-12 mb-4">
 			<div class="ctrl-btn col-md-3 col-sm-6 col-12"> 
 				<a href="/admin/announcement/create"> 
-					<button class="btn btn-purple-bd"> Compose announcement </button>
+					<button class="btn btn-purple-bd"> {{ __('Compose announcement')}} </button>
 				</a>
 			</div>
 		</div><br/>
@@ -26,11 +26,11 @@
 					<table>
 						<tbody>
 							<tr>
-								<th> Title </th>
-								<th> Caption </th>
-								<th> Body </th>
-								<th> Action </th>
-								<th> Date </th>
+								<th> {{ __('Title')}} </th>
+								<th> {{ __('Caption')}} </th>
+								<th> {{ __('Body')}} </th>
+								<th> {{ __('Action')}} </th>
+								<th> {{ __('Date')}} </th>
 							</tr>						
 	
 							@if($announcements->count() > 0)
@@ -42,7 +42,7 @@
 										<td>
 											<a href="/admin/announcements/{{$announcement->slug}}">
 												<button type="button" class="btn btn-light-blue-bg">
-													View
+													{{ __('View')}}
 												</button>
 											</a>
 										</td>
@@ -51,7 +51,7 @@
 								@endforeach
 							@else
 								<tr>
-									<td colspan="10" style="font-size:24px"> No Announcement has been made yet. </td>
+									<td colspan="10" style="font-size:24px"> {{ __('No Announcement has been made yet.')}} </td>
 								</tr>
 							@endif
 						</tbody>

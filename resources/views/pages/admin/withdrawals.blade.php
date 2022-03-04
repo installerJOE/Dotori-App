@@ -1,26 +1,26 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> Deposit History | Dotori </title>
+	<title> {{ __('Withdrawal history')}} | {{ __('Dotori')}} </title>
 @endsection
 
 @section('content')
 	<div class="sub_top"><!--sub_top-->
 		<div class="sub_title">
 			<i class="fas fa-fw fa-history"></i>
-	    	Withdrawals History
+	    	{{ __('Withdrawals History')}}
 		</div>
 	</div><!--sub_top end-->
 			
 	<div class="section_right_inner"><!--section_right_inner-->
 		<div class="my-3">
 			<a href="{{route('withdrawal.history.export')}}" class="btn btn-sm btn-light-blue-bg pt-3">
-				Export
+				{{ __('Export')}}
 			</a>
 		</div>
         <div class="ctrl-btn col-md-3 col-sm-6 col-12"> 
             <a href="/admin/withdrawals/requests"> 
-                <button class="btn btn-purple-bd"> Withdrawal requests </button>
+                <button class="btn btn-purple-bd"> {{ __('Withdrawal requests')}} </button>
             </a>
         </div><br/>
 
@@ -29,13 +29,13 @@
 				<table>
 					<tbody>
 						<tr>
-							<th> Name of Member </th>
-                            <th> Withdrawal Amount </th>
-                            <th> Bank Name </th>
-                            <th> Account Holder </th>
-                            <th> Account Number </th>
-                            <th> Status </th>
-							<th> Date </th>
+							<th> {{ __('Name of Member')}} </th>
+                            <th> {{ __('Withdrawal Amount')}} </th>
+                            <th> {{ __('Bank Name')}} </th>
+                            <th> {{ __('Account Holder')}} </th>
+                            <th> {{ __('Account Number')}} </th>
+                            <th> {{ __('Status')}} </th>
+							<th> {{ __('Date')}} </th>
 						</tr>						
 						@if($withdrawals->count() > 0)
 							@foreach($withdrawals as $withdrawal)
@@ -51,7 +51,7 @@
 							@endforeach
 						@else
 							<tr>
-								<td colspan="7"> There are no successful withdrawals yet. </td>
+								<td colspan="7"> {{ __('There are no successful withdrawals yet.')}} </td>
 							</tr>
 						@endif
 					</tbody>

@@ -1,18 +1,18 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> Products | Dotori </title>
+	<title> {{ __('Products')}} | {{ __('Dotori')}} </title>
 @endsection
 
 @section('content')
 	<div class="sub_top"><!--sub_top-->
 		<div class="sub_title">
 			<i class="fas fa-fw fa-money-check-alt"></i>
-			Shopping Products
+			{{ __('Shopping Products')}}
 		</div>
 		<div class="col-md-9 col-sm-12 col-12"> 
             <h3 class="subheader text-grey"> 
-                Search products
+                {{ __('Search products')}}
             </h3>
             <div class="search-container">
                 <form action="{{route('search.product')}}" method="GET">
@@ -26,7 +26,7 @@
 		<div class="col-md-12 col-sm-12 col-12 mb-4">
 			<div class="ctrl-btn col-md-3 col-sm-6 col-12"> 
 				<button type="button" class="btn btn-purple-bd" data-bs-toggle="modal" data-bs-target="#create-package-modal">
-					Create product 
+					{{ __('Create product')}} 
 				</button>
 			</div>
 			
@@ -36,7 +36,7 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<h4 class="text-blue modal-title" id="create-package-label">
-								Create New Product
+								{{ __('Create New Product')}}
 							</h4>
 							<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
@@ -49,7 +49,7 @@
 
 								<div class="form-group">
 									<span> 
-										Product Name <span class="text-red">*</span> 
+										{{ __('Product Name')}} <span class="text-red">*</span> 
 									</span>
 									<input type="text" 
 										class="form-control" 
@@ -61,7 +61,7 @@
 
                                 <div class="form-group">
 									<span> 
-										Product Description <em class="text-grey">(Optional)</em> 
+										{{ __('Product Description')}} <em class="text-grey">({{ __('Optional')}})</em> 
 									</span>
 									<textarea
 										class="form-control" 
@@ -73,7 +73,7 @@
 
 								<div class="form-group">
 									<span> 
-										Price (SPOINT) <span class="text-red">*</span> 
+										{{ __('Price')}} (SPOINT) <span class="text-red">*</span> 
 									</span>
 									<input type="number" 
 										class="form-control" 
@@ -99,7 +99,7 @@
 								</div>
 
 								<button type="submit" class="btn btn-purple-bg">
-									Create product
+									{{ __('Create product')}}
 								</button>
 							</form>
 						</div>
@@ -121,13 +121,13 @@
                                     {{number_format($product->price)}} SPOINTS 
                                     @if($product->is_active == false)
                                         <span class="label purple-bg">
-                                            disabled
+                                            {{ __('disabled')}}
                                         </span>
                                     @endif
                                 </div>
                                 <a href="/admin/shopping-products/{{$product->id}}">
                                     <button class="btn btn-light-blue-bg">
-                                        View product
+                                        {{ __('View product')}}
                                     </button>
                                 </a>
                             </div>
@@ -140,7 +140,7 @@
 					</div>
                 @else
                     <h2>
-                        No Product has been created yet
+                        {{ __('No Product has been created yet')}}
                     </h2>
                 @endif
             </div>

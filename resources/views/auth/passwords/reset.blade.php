@@ -22,22 +22,12 @@
                         </div>
 
                         <h3 class="subheader text-purple text-center">
-                            Reset Password <div style="left: 100px; margin-top: 30px" id="google_translate_element"></div>
+                            {{__('Reset Password')}}
                         </h3>
-
-                        
-
-                <script type="text/javascript">
-                 function googleTranslateElementInit() {
-                        new google.translate.TranslateElement({pageLanguage: 'ko', includedLanguages: 'ko,en', }, 'google_translate_element');
-                }
-                </script>
-        
-                <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
                         <div class="index_input">
                             <label for="email">
-                                Email Address
+                                {{__('Email Address')}}
                             </label>
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" 
                                 value="{{ $email ?? old('email') }}" autocomplete="email" autofocus disabled>
@@ -46,7 +36,7 @@
 
                         <div class="index_input">
                             <label for="password">
-                                Password
+                                {{__('Password')}}
                             </label>
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" 
                                 name="password" required autocomplete="new-password">
@@ -59,7 +49,7 @@
                         
                         <div class="index_input">
                             <label for="password-confirm">
-                                Confirm Password
+                                {{__('Confirm Password')}}
                             </label>
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" 
                             required autocomplete="new-password">
@@ -67,13 +57,13 @@
 
                         <div class="index_input">
                             <button type="submit" class="btn btn-purple-bg">
-                                Reset Password
+                                {{__('Reset Password')}}
                             </button>
                         </div>
     
                         <div class="index_input">
                             <a class="text-purple" href="/login">
-                                Back to login
+                                {{__('Back to login')}}
                             </a>
                         </div>
                     </form>

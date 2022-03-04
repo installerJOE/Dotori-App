@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> Dashboard | Dotori </title>
+	<title> {{ __('Dashboard')}} | {{ __('Dotori')}} </title>
 	<script src="https://rawgit.com/kottenator/jquery-circle-progress/1.2.2/dist/circle-progress.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/react@16.12/umd/react.production.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/react-dom@16.12/umd/react-dom.production.min.js"></script>
@@ -20,46 +20,46 @@
 	<div class="main_notice">
 		<p class="sub_title" style="padding-top: 0px !important"> 
 			<i class="fas fa-fw fa-tachometer-alt"></i>
-			Dashboard 
+			{{ __('Dashboard')}}
 		</p>
 		<div class="notice_more purple-bg text-white" onclick="locaion.href='#'">
-			Admin
+			{{ __('Admin')}}
 		</div>
 	</div>
 	<div class="section_right_inner">
 		<!--main_section01--> 
 		<div class="main_section01">       
 			<div class="main_balance_box main_balance_box01 mb-3">
-				<p class="title01"> No of Members </p>
+				<p class="title01"> {{ __('Number of Members')}} </p>
 				<p class="s_title01"></p>
 				<div class="total_sum total_sum01">
 					<p> {{number_format($registered_users)}} </p>	
 				</div>
 			</div>					
 			<div class="main_balance_box main_balance_box02 mb-3">
-				<p class="title01"> Active Subscriptions </p>
+				<p class="title01"> {{ __('Active Subscriptions')}} </p>
 				<p class="s_title01"></p>
 				<div class="total_sum total_sum02">
 					<p> {{number_format($active_subscriptions)}} </p>
 				</div>
 			</div>
 			<div class="main_balance_box main_balance_box03 mb-3">
-				<p class="title01"> Pending Subscriptions </p>
+				<p class="title01"> {{ __('Pending Subscriptions')}} </p>
 				<p class="s_title01"></p>
 				<div class="total_sum total_sum03">
 					<p> {{number_format($pending_subscriptions)}} </p>
 				</div>
 			</div>
 			<div class="main_balance_box main_balance_box04 mb-3">
-				<p class="title01"> Withdrawal Requests </p>
+				<p class="title01"> {{ __('Withdrawal Requests')}} </p>
 				<p class="s_title01"> (pending) </p>
 				<div class="total_sum total_sum04">
 					<p> {{number_format($withdrawal_requests)}} </p>
 				</div>
 			</div>
 			<div class="main_balance_box main_balance_box04 mb-3">
-				<p class="title01"> Deposit Requests </p>
-				<p class="s_title01"> (pending) &nbsp;</p>
+				<p class="title01"> {{ __('Deposit Requests')}} </p>
+				<p class="s_title01"> ({{ __('pending')}}) &nbsp;</p>
 				<div class="total_sum total_sum04">
 					<p> {{number_format($deposit_requests)}} </p>
 				</div>

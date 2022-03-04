@@ -43,18 +43,10 @@
 							</div>
 
 							<h3 class="subheader text-purple text-center">
-								Create Account <div style="left: 100px; margin-top: 30px" id="google_translate_element"></div>
+								{{__('Create Account')}}
 							</h3>
 
-							
-
-					<script type="text/javascript">
-					 function googleTranslateElementInit() {
-                        new google.translate.TranslateElement({pageLanguage: 'ko', includedLanguages: 'ko,en', }, 'google_translate_element');
-                    }
-					</script>
-			
-					<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+						
 							
 							<div class="index_input">
 								@include('includes.messages')
@@ -67,7 +59,7 @@
 							</div>
 			
 							<div class="index_input">
-								<p class="input_title"> Email Address </p>
+								<p class="input_title"> {{__('Email Address')}} </p>
 								<input id="email" type="email" class="form-control  @error('email') is-invalid @enderror" 
 								name="email" value="{{ old('email') }}" required autocomplete="email">
 								@error('email')
@@ -144,12 +136,12 @@
 							</div> --}}
 
 							<div class="index_input">
-								<p class="input_title">Phone Number</p>
+								<p class="input_title">{{__('Phone Number')}}</p>
 								<input type="text" class="form-control" name="phone" value="{{old('phone')}}">
 							</div>		
 
 							<div class="index_input">
-								<p class="input_title"> Password </p>
+								<p class="input_title"> {{__('Password')}} </p>
 								<input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
 								name="password" required autocomplete="new-password">
 								@error('password')
@@ -160,7 +152,7 @@
 							</div>
 			
 							<div class="index_input">
-								<p class="input_title"> Confirm Password </p>
+								<p class="input_title"> {{__('Confirm Password')}} </p>
 								<input type="password" class="form-control" name="password_confirmation">
 							</div>
 			
@@ -176,7 +168,7 @@
 							</div>
 			
 							<div class="index_input ">
-								<p class="input_title"> Referral ID </p>
+								<p class="input_title"> {{__('Referral ID')}} </p>
 								<input type="text" class="form-control" required name="referral_id" value="{{request()->refer}}">
 								{{-- <input type="hidden"  value="{{request()->refer}}"/> --}}
 							</div>
@@ -184,19 +176,19 @@
 							<div class="index_input">
 								<div class="col-12">
 									<button type="submit" class="btn btn-purple-bg">
-										Create account
+										{{__('Create account')}}
 									</button>
 								</div>
 							</div>
 
 							<div class="index_input">
-								Already have an account?
+								{{ __('Already have an account?')}}
 							</div>
 							<div class="index_input">
 								<div class="col-12">
 									<a href="/login">
 										<button type="button" class="btn btn-purple-bd">
-											Login 
+											{{ __('Login')}} 
 										</button>
 									</a>
 								</div>

@@ -6,20 +6,6 @@
             </a>
         </div>
         
-        <div class="translator-element-block">
-            <div style="margin-top: 20px" id="google_translate_element"></div>
-        </div>
-
-        <script type="text/javascript">
-            // Cookies.set('GoogleAccountsLocale_session', 'ko', { expires: 999});
-            //     Cookies.set('googtrans', '/en/ko', { expires: 999});
-
-            function googleTranslateElementInit() {
-                new google.translate.TranslateElement({pageLanguage: 'ko', includedLanguages: 'ko,en'}, 'google_translate_element');
-            }
-        </script>
-
-        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
         
         {{-- For mobile view --}}
         <div class="m_top_section" style="top: -25px"><!--m_top_section-->
@@ -57,76 +43,76 @@
                         <li class='sub-menu'>
                             <a href="/admin/dashboard">
                                 <i class="fas fa-fw fa-tachometer-alt"></i> &nbsp;
-                                Dashboard
+                                {{ __('Dashboard')}}
                             </a>
                         </li>
 
                         <li class='sub-menu'>
                             <a href="/admin/packages">
                                 <i class="fas fa-fw fa-cube"></i> &nbsp;
-                                Packages
+                                {{ __('Packages')}}
                             </a>
                         </li>
 
                         <li class='sub-menu'>
                             <a href="#!deposit">
                                 <i class="fas fa-fw fa-cube"></i> &nbsp;
-                                Shopping Products
+                                {{ __('Shopping Products')}}
                             </a>
                             <ul>
-                                <li class="tab_menu2"><a href="/admin/shopping-products"> All Products </a></li>
-                                <li class="tab_menu2"><a href="/admin/shopping/history"> Shopping History </a></li>
+                                <li class="tab_menu2"><a href="/admin/shopping-products"> {{ __('All Products')}} </a></li>
+                                <li class="tab_menu2"><a href="/admin/shopping/history"> {{ __('Shopping History')}} </a></li>
                             </ul>
                         </li>
 
                         <li class='sub-menu'>
                             <a href="#!deposit">
                                 <i class="fas fa-fw fa-users"></i> &nbsp;
-                                Subscription History
+                                {{ __('Subscription History')}}
                             </a>
                             <ul>
-                                <li class="tab_menu2"><a href="/admin/subscribers/active"> Active Subscriptions </a></li>
-                                <li class="tab_menu2"><a href="/admin/subscribers/pending"> Pending Subscriptions </a></li>
+                                <li class="tab_menu2"><a href="/admin/subscribers/active"> {{ __('Active Subscriptions')}} </a></li>
+                                <li class="tab_menu2"><a href="/admin/subscribers/pending"> {{ __('Pending Subscriptions')}} </a></li>
                             </ul>
                         </li>
 
                         <li class='sub-menu'>
                             <a href="/admin/members">
                                 <i class="fas fa-fw fa-users"></i> &nbsp;
-                                All Members
+                                {{ __('All Members')}}
                             </a>
                         </li>
 
                         <li class='sub-menu'>
                             <a href="#!deposit">
                                 <i class="fas fa-fw fa-money-check-alt"></i> &nbsp; 
-                                Deposits
+                                {{ __('Deposits')}}
                             </a>
                             <ul>
-                                <li class="tab_menu2"><a href="/admin/deposits"> Deposits History </a></li>
-                                <li class="tab_menu2"><a href="/admin/deposits/requests"> Deposit Requests </a></li>
+                                <li class="tab_menu2"><a href="/admin/deposits"> {{ __('Deposits History')}} </a></li>
+                                <li class="tab_menu2"><a href="/admin/deposits/requests"> {{ __('Deposit Requests')}} </a></li>
                             </ul>
                         </li>
                         
                         <li class='sub-menu'>
                             <a href="#!deposit">
                                 <i class="fas fa-fw fa-share-square"></i> &nbsp;
-                                Withdrawals
+                                {{ __('Withdrawals')}}
                             </a>
                             <ul>
-                                <li class="tab_menu2"><a href="/admin/withdrawals"> Withdrawal History </a></li>
-                                <li class="tab_menu2"><a href="/admin/withdrawals/requests"> Withdrawal Requests </a></li>
+                                <li class="tab_menu2"><a href="/admin/withdrawals"> {{ __('Withdrawal History')}} </a></li>
+                                <li class="tab_menu2"><a href="/admin/withdrawals/requests"> {{ __('Withdrawal Requests')}} </a></li>
                             </ul>
                         </li>
 
                         <li class='sub-menu'>
                             <a href="#!announcement">
                                 <i class="fas fa-bullhorn fa-fw"></i> &nbsp;
-                                Announcement
+                                {{ __('Announcement')}}
                             </a>
                             <ul>
-                                <li><a href="/admin/announcements"> View all  </a></li>
-                                <li><a href="/admin/announcement/create"> Create new </a></li>
+                                <li><a href="/admin/announcements"> {{ __('View all') }}  </a></li>
+                                <li><a href="/admin/announcement/create"> {{ __('Create new') }} </a></li>
                                 {{-- <li><a href="/admin/announcements/"> Withdrawal Requests </a></li> --}}
                             </ul>
                         </li>
@@ -134,47 +120,47 @@
                         <li class='sub-menu'>
                             <a href="/dashboard">
                                 <i class="fas fa-fw fa-tachometer-alt"></i> &nbsp;
-                                Dashboard
+                                {{ __('Dashboard')}}
                             </a>
                         </li>
 
                         <li class='sub-menu'>
                             <a href="#!products">
                                 <i class="fas fa-fw fa-history"></i> &nbsp;
-                                My Products
+                                {{ __('My Products')}}
                             </a>
                             <ul>
-                                <li class="tab_menu2"><a href="/products/shop"> Shop Products </a></li>
-                                <li class="tab_menu2"><a href="/products/order-history"> Order History </a></li>
+                                <li class="tab_menu2"><a href="/products/shop"> {{ __('Shop Products')}} </a></li>
+                                <li class="tab_menu2"><a href="/products/order-history"> {{ __('Order History')}} </a></li>
                             </ul>
                         </li>
 
                         <li class='sub-menu'>
                             <a href="#!profile">
                                 <i class="fas fa-fw fa-cube"></i> &nbsp;
-                                My Packages
+                                {{ __('My Packages')}}
                             </a>
                             <ul>
-                                <li class="tab_menu2"><a href="/packages/subscribed"> All Packages </a></li>
-                                <li class="tab_menu2"><a href="/packages/subscribe"> Subscribe Package </a></li>
+                                <li class="tab_menu2"><a href="/packages/subscribed"> {{ __('All Packages')}} </a></li>
+                                <li class="tab_menu2"><a href="/packages/subscribe"> {{ __('Subscribe Package')}} </a></li>
                             </ul>
                         </li>
 
                         <li class='sub-menu'>
                             <a href="/referral">
                                 <i class="fas fa-fw fa-sitemap"></i> &nbsp;
-                                Referrals
+                                {{ __('Referrals')}}
                             </a>
                         </li>
 
                         <li class='sub-menu'>
                             <a href="#!deposit">
                                 <i class="fas fa-fw fa-money-check-alt"></i> &nbsp; 
-                                My Deposits
+                                {{ __('My Deposits')}}
                             </a>
                             <ul>
-                                <li class="tab_menu2"><a href="/deposit"> Request Deposit </a></li>
-                                <li class="tab_menu2"><a href="/deposits/history"> Deposit History </a></li>
+                                <li class="tab_menu2"><a href="/deposit"> {{ __('Request Deposit')}} </a></li>
+                                <li class="tab_menu2"><a href="/deposits/history"> {{ __('Deposit History')}} </a></li>
                             </ul>
                         </li>
 
@@ -184,8 +170,8 @@
                                 Withdrawals
                             </a>
                             <ul>
-                                <li class="tab_menu2"><a href="/withdrawal"> Request Withdrawal </a></li>
-                                <li class="tab_menu2"><a href="/withdrawals/history"> Withdrawal History </a></li>
+                                <li class="tab_menu2"><a href="/withdrawal"> {{ __('Request Withdrawal')}} </a></li>
+                                <li class="tab_menu2"><a href="/withdrawals/history"> {{ __('Withdrawal History')}} </a></li>
                             </ul>
                         </li>
 
@@ -202,19 +188,19 @@
                         <li class='sub-menu'>
                             <a href="#!profile">
                                 <i class="fas fa-fw fa-cogs"></i> &nbsp;
-                                Settings
+                                {{ __('Settings')}}
                             </a>
                             <ul>
-                                <li class="tab_menu2"><a href="/settings/profile"> Profile Settings </a></li>
-                                <li class="tab_menu2"><a href="/settings/password"> Password Settings </a></li>
-                                <li class="tab_menu2"><a href="/settings/pin"> PIN Settings </a></li>
+                                <li class="tab_menu2"><a href="/settings/profile"> {{ __('Profile Settings')}} </a></li>
+                                <li class="tab_menu2"><a href="/settings/password"> {{ __('Password Settings')}} </a></li>
+                                <li class="tab_menu2"><a href="/settings/pin"> {{ __('PIN Settings')}} </a></li>
                             </ul>
                         </li>
 
                         <li class='sub-menu'>
                             <a href="/announcement">
                                 <i class="fas fa-bullhorn fa-fw"></i> &nbsp;
-                                Announcement
+                                {{ __('Announcement')}}
                             </a>
                         </li>
                     @endif
@@ -223,7 +209,7 @@
                     <li class='sub-menu'>
                         <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <i class="fas fa-fw fa-sign-out-alt"></i> &nbsp;
-                            Logout
+                            {{ __('Logout')}}
                         </a>
                     </li>	
                 </ul>
@@ -239,75 +225,75 @@
             <li class='sub-menu li-underlined mt-4' style="background-color: #29033b">
                 <a href="/admin/dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i> &nbsp;
-                    Dashboard
+                    {{ __('Dashboard')}}
                 </a>
             </li>
             
             <li class='sub-menu'>
                 <a href="/admin/packages">
                     <i class="fas fa-fw fa-cube"></i> &nbsp;
-                    Packages
+                    {{ __('Packages')}}
                 </a>
             </li>
 
             <li class='sub-menu li-underlined'>
                 <a href="#!deposit">
                     <i class="fas fa-fw fa-cube"></i> &nbsp;
-                    Shopping Products
+                    {{ __('Shopping Products')}}
                 </a>
                 <ul>
-                    <li><a href="/admin/shopping-products"> All Products </a></li>
-                    <li><a href="/admin/shopping/history"> Shopping History </a></li>
+                    <li><a href="/admin/shopping-products"> {{ __('All Products')}} </a></li>
+                    <li><a href="/admin/shopping/history"> {{ __('Shopping History')}} </a></li>
                 </ul>
             </li>
 
             <li class='sub-menu'>
                 <a href="#!deposit">
                     <i class="fas fa-fw fa-users"></i> &nbsp;
-                    Subscription History
+                    {{ __('Subscription History')}}
                 </a>
                 <ul>
-                    <li><a href="/admin/subscribers/active"> Active Subscriptions </a></li>
-                    <li><a href="/admin/subscribers/pending"> Pending Subscriptions </a></li>
+                    <li><a href="/admin/subscribers/active"> {{ __('Active Subscriptions')}} </a></li>
+                    <li><a href="/admin/subscribers/pending"> {{ __('Pending Subscriptions')}} </a></li>
                 </ul>
             </li>
 
             <li class='sub-menu'>
                 <a href="/admin/members">
                     <i class="fas fa-fw fa-users"></i> &nbsp;
-                    All Members
+                    {{ __('All Members')}}
                 </a>
             </li>
 
             <li class='sub-menu li-underlined'>
                 <a href="#!deposit">
                     <i class="fas fa-fw fa-money-check-alt"></i> &nbsp; 
-                    Deposits
+                    {{ __('Deposits')}}
                 </a>
                 <ul>
-                    <li><a href="/admin/deposits"> Deposits History </a></li>
-                    <li><a href="/admin/deposits/requests"> Deposit Requests </a></li>
+                    <li><a href="/admin/deposits"> {{ __('Deposits History')}} </a></li>
+                    <li><a href="/admin/deposits/requests"> {{ __('Deposit Requests')}} </a></li>
                 </ul>
             </li>
             <li class='sub-menu'>
                 <a href="#!deposit">
                     <i class="fas fa-fw fa-share-square"></i> &nbsp;
-                    Withdrawals
+                    {{ __('Withdrawals')}}
                 </a>
                 <ul>
-                    <li><a href="/admin/withdrawals"> Withdrawal History </a></li>
-                    <li><a href="/admin/withdrawals/requests"> Withdrawal Requests </a></li>
+                    <li><a href="/admin/withdrawals"> {{ __('Withdrawal History')}} </a></li>
+                    <li><a href="/admin/withdrawals/requests"> {{ __('Withdrawal Requests')}} </a></li>
                 </ul>
             </li>
 
             <li class='sub-menu li-underlined'>
                 <a href="#!announcement">
                     <i class="fas fa-bullhorn fa-fw"></i> &nbsp;
-                    Announcement
+                    {{ __('Announcement')}}
                 </a>
                 <ul>
-                    <li><a href="/admin/announcements"> View all  </a></li>
-                    <li><a href="/admin/announcement/create"> Create new </a></li>
+                    <li><a href="/admin/announcements"> {{ __('View all')}}  </a></li>
+                    <li><a href="/admin/announcement/create"> {{ __('Create new')}} </a></li>
                     {{-- <li><a href="/admin/announcements/"> Withdrawal Requests </a></li> --}}
                 </ul>
             </li>
@@ -315,65 +301,65 @@
             <li class='sub-menu li-underlined mt-4' style="background-color: #29033b">
                 <a href="/dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i> &nbsp;
-                    Dashboard
+                    {{ __('Dashboard')}}
                 </a>
             </li>
 
             <li class='sub-menu'>
                 <a href="#!products">
                     <i class="fas fa-fw fa-history"></i> &nbsp;
-                    My Products
+                    {{ __('My Products')}}
                 </a>
                 <ul>
-                    <li><a href="/products/shop"> Shop Products </a></li>
-                    <li><a href="/products/order-history"> Order History </a></li>
+                    <li><a href="/products/shop"> {{ __('Shop Products')}} </a></li>
+                    <li><a href="/products/order-history"> {{ __('Order History')}} </a></li>
                 </ul>
             </li>
             
             <li class='sub-menu'>
                 <a href="#!package">
                     <i class="fas fa-fw fa-cube"></i> &nbsp;
-                    My Packages
+                    {{ __('My Packages')}}
                 </a>
                 <ul>
-                    <li><a href="/packages/subscribed"> All Packages </a></li>
-                    <li><a href="/packages/subscribe"> Subscribe Package </a></li>
+                    <li><a href="/packages/subscribed"> {{ __('All Packages')}} </a></li>
+                    <li><a href="/packages/subscribe"> {{ __('Subscribe Package ')}}</a></li>
                 </ul>
             </li>
 
             <li class='sub-menu li-underlined'>
                 <a href="{{route('user.reward.history')}}">
                     <i class="fas fa-fw fa-sitemap"></i> &nbsp;
-                    Daily Rewards
+                    {{ __('Daily Rewards')}}
                 </a>
             </li>
            
             <li class='sub-menu'>
                 <a href="/referral">
                     <i class="fas fa-fw fa-sitemap"></i> &nbsp;
-                    Referrals
+                    {{ __('Referrals')}}
                 </a>
             </li>
             
             <li class='sub-menu'>
                 <a href="#!deposit">
                     <i class="fas fa-fw fa-money-check-alt"></i> &nbsp; 
-                    My Deposits
+                    {{ __('My Deposits')}}
                 </a>
                 <ul>
-                    <li><a href="/deposit"> Request Deposit </a></li>
-                    <li><a href="/deposits/history"> Deposit History </a></li>
+                    <li><a href="/deposit"> {{ __('Request Deposit')}} </a></li>
+                    <li><a href="/deposits/history"> {{ __('Deposit History')}} </a></li>
                 </ul>
             </li>
 
             <li class='sub-menu li-underlined'>
                 <a href="#!withdrawal">
                     <i class="fas fa-fw fa-share-square"></i> &nbsp;
-                    Withdrawals
+                    {{ __('Withdrawals')}}
                 </a>
                 <ul>
-                    <li><a href="/withdrawal"> Request Withdrawal </a></li>
-                    <li><a href="/withdrawals/history"> Withdrawal History </a></li>
+                    <li><a href="/withdrawal"> {{ __('Request Withdrawal')}} </a></li>
+                    <li><a href="/withdrawals/history"> {{ __('Withdrawal History')}} </a></li>
                 </ul>
             </li>
         
@@ -390,19 +376,19 @@
             <li class='sub-menu'>
                 <a href="/announcement">
                     <i class="fas fa-bullhorn fa-fw"></i> &nbsp;
-                    Announcements
+                    {{ __('Announcements')}}
                 </a>
             </li>
 
             <li class='sub-menu li-underlined'>
                 <a href="#!profile">
                     <i class="fas fa-fw fa-cogs"></i> &nbsp;
-                    Settings
+                    {{ __('Settings')}}
                 </a>
                 <ul>
-                    <li><a href="/settings/profile"> Profile Settings </a></li>
-                    <li><a href="/settings/password"> Password Settings </a></li>
-                    <li><a href="/settings/pin"> PIN Settings </a></li>
+                    <li><a href="/settings/profile"> {{ __('Profile Settings')}} </a></li>
+                    <li><a href="/settings/password"> {{ __('Password Settings')}} </a></li>
+                    <li><a href="/settings/pin"> {{ __('PIN Settings')}} </a></li>
                 </ul>
             </li>
         @endif
@@ -411,7 +397,7 @@
         <li class='sub-menu'>
             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <i class="fas fa-fw fa-sign-out-alt"></i> &nbsp;
-                Logout
+                {{__('Logout')}}
             </a>
         </li>	
         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

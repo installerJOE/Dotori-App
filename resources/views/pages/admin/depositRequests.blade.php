@@ -1,27 +1,27 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> Deposit Requests | Dotori </title>
+	<title> {{ __('Deposit Requests')}} | {{ __('Dotori')}} </title>
 @endsection
 
 @section('content')
 	<div class="sub_top"><!--sub_top-->
 		<div class="sub_title">
 			<i class="fas fa-fw fa-history"></i>
-	    	Deposit Requests
+	    	{{ __('Deposit Requests')}}
 		</div>
 	</div><!--sub_top end-->
 			
 	<div class="section_right_inner"><!--section_right_inner-->
 		<div class="my-3">
 			<a href="{{route('deposit.requests.export')}}" class="btn btn-sm btn-light-blue-bg pt-3">
-				Export
+				{{ __('Export')}}
 			</a>
 		</div>
 
         <div class="ctrl-btn col-md-3 col-sm-6 col-12"> 
             <a href="/admin/deposits"> 
-                <button class="btn btn-purple-bd"> View deposits history </button>
+                <button class="btn btn-purple-bd"> {{ __('View deposits history')}} </button>
             </a>
         </div><br/>
 
@@ -30,11 +30,11 @@
 				<table>
 					<tbody>
 						<tr>
-							<th> Name of Member </th>
-                            <th> Deposit Amount </th>
-                            <th> Status </th>
-							<th> Date </th>
-							<th> Action </th>
+							<th> {{ __('Name of Member')}} </th>
+                            <th> {{ __('Deposit Amount')}} </th>
+                            <th> {{ __('Status')}} </th>
+							<th> {{ __('Date')}} </th>
+							<th> {{ __('Action')}} </th>
 						</tr>						
 						@if($deposits->count() > 0)
 							@foreach($deposits as $deposit)
@@ -49,13 +49,13 @@
 										onclick="showDepositModal(`{{$deposit->id}}`, `{{$deposit->user->name}}`, 
 											`{{number_format($deposit->amount)}}`, `{{$deposit->bank_name}}`, `{{$deposit->account_name}}`, 
 											`{{$deposit->status}}`, `{{$deposit->updated_at}}`)"
-									> View </button>
+									> {{ __('View')}} </button>
 								</td>
 							</tr>
 							@endforeach
 						@else
 							<tr>
-								<td colspan="8"> There are no deposit requests yet. </td>
+								<td colspan="8"> {{ __('There are no deposit requests yet.')}} </td>
 							</tr>
 						@endif
 					</tbody>
@@ -76,7 +76,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="text-blue modal-title" id="request-deposit-label">
-						Deposit Request
+						{{ __('Deposit Request')}}
 					</h4>
 					<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
@@ -89,7 +89,7 @@
 
 						<div class="form-group">
 							<span> 
-								Dotori Account Name
+								{{ __('Dotori Account Name')}}
 							</span>
 							<input type="text" 
 								disabled
@@ -100,7 +100,7 @@
 						
 						<div class="form-group">
 							<span> 
-								Deposit Amount (KRW)
+								{{ __('Deposit Amount')}} ({{__('KRW')}})
 							</span>
 							<input type="text" 
 								disabled
@@ -111,7 +111,7 @@
 
 						<div class="form-group">
 							<span> 
-								Depositor's Bank
+								{{ __('Depositor\'s Bank')}}
 							</span>
 							<input type="text"
 								disabled
@@ -122,7 +122,7 @@
 
 						<div class="form-group">
 							<span>
-								Depositor's Name
+								{{ __('Depositor\'s Name')}}
 							</span>
 							<input type="text" 
 								disabled
@@ -133,7 +133,7 @@
 
 						<div class="form-group">
 							<span>
-								Deposit Status
+								{{ __('Deposit Status')}}
 							</span>
 							<input type="text" 
 								disabled
@@ -144,7 +144,7 @@
 
 						<div class="form-group">
 							<span>
-								Date of Request
+								{{ __('Date of Request')}}
 							</span>
 							<input type="text" 
 								disabled
@@ -155,7 +155,7 @@
 
 						<input type="hidden" id="deposit_transaction_id" name="deposit_id"/>
 						<button type="button" class="btn btn-purple-bg" onclick="validateDeposit()">
-							Validate deposit	
+							{{ __('Validate deposit')}}	
 						</button>
 					</form>
 				</div>

@@ -1,21 +1,21 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> Deposit Request | Dotori </title>
+	<title> {{ __('Packages')}} | {{ __('Dotori')}} </title>
 @endsection
 
 @section('content')
 	<div class="sub_top"><!--sub_top-->
 		<div class="sub_title">
 			<i class="fas fa-fw fa-money-check-alt"></i>
-			Subscription Packages
+			{{ __('Subscription Packages')}}
 		</div>
 	</div><!--sub_top end-->
 	<div class="section_right_inner"><!--section_right_inner-->
 		<div class="col-md-12 col-sm-12 col-12 mb-4">
 			<div class="ctrl-btn col-md-3 col-sm-6 col-12"> 
 				<button type="button" class="btn btn-purple-bd" data-bs-toggle="modal" data-bs-target="#create-package-modal">
-					Create package 
+					{{ __('Create package')}} 
 				</button>
 			</div>
 
@@ -25,7 +25,7 @@
 					<div class="modal-content">
 						<div class="modal-header">
 							<h4 class="text-blue modal-title" id="create-package-label">
-								Create New Package
+								{{ __('Create New Package')}}
 							</h4>
 							<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
@@ -38,7 +38,7 @@
 
 								<div class="form-group">
 									<span> 
-										Package Name <span class="text-red">*</span> 
+										{{ __('Package Name')}} <span class="text-red">*</span> 
 									</span>
 									<input type="text" 
 										class="form-control" 
@@ -50,7 +50,7 @@
 
 								<div class="form-group">
 									<span> 
-										Staking Amount (KRW) <span class="text-red">*</span> 
+										{{ __('Staking Amount')}} (KRW) <span class="text-red">*</span> 
 									</span>
 									<input type="number" 
 										class="form-control" 
@@ -64,7 +64,7 @@
 
 								<div class="form-group">
 									<span>
-										Reward (SPOINT) <span class="text-red">*</span> 
+										{{ __('Reward')}} (SPOINT) <span class="text-red">*</span> 
 									</span>
 									<input type="number" 
 										class="form-control" 
@@ -78,7 +78,7 @@
 
 								<div class="form-group">
 									<span>
-										Total Purchase Amount (KRW) <span class="text-red">*</span> 
+										{{ __('Total Purchase Amount')}} (KRW) <span class="text-red">*</span> 
 									</span>
 									<input type="number" 
 										class="form-control" 
@@ -104,7 +104,7 @@
 								</div>
 								
 								<button type="submit" class="btn btn-purple-bg">
-									Create package
+									{{ __('Create package')}}
 								</button>
 							</form>
 						</div>
@@ -115,16 +115,16 @@
 		@include('includes.productImageUpload')
 
 		<div class="col-md-12 col-sm-12 col-12">
-			<h4> Click on any package to view </h4>
+			<h4> {{ __('Click on any package to view')}} </h4>
             <div class="mt-4 col-md-12 col-sm-12 col-12">
                 @foreach($packages as $package)
                     <a href="/admin/packages/{{$package->id}}">
 						<div class="buy_package col-lg-3 col-md-4 col-sm-6 col-12 {{'buy_package0' . $package->id}}">
 							<img src="{{URL::asset('packages/' . $package->filename)}}" class="package_img"/>
 							<p class="text-white subheader mt-3">{{$package->name}}</p>
-							<h6 class="text-white">Reward - {{number_format($package->reward)}} SPOINT</h6>
+							<h6 class="text-white">{{ __('Reward')}} - {{number_format($package->reward)}} SPOINT</h6>
 							<div class="total_sum {{'total_sum0' . $package->id}}">
-								{{number_format($package->staking_amount + $package->reward)}} KRW
+								{{number_format($package->staking_amount + $package->reward)}} {{ __('KRW')}}
 							</div>
 						</div>
 					</a>

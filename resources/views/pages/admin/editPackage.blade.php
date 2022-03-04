@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('meta-content')
-	<title> Announcements | Dotori </title>
+	<title> {{__('Edit package')}} | {{ __('Dotori')}} </title>
 @endsection
 
 @section('content')
 	<div class="sub_top"><!--sub_top-->
 		<div class="sub_title">
 			<i class="fas fa-fw fa-money-check-alt"></i>
-			Edit Package
+			{{ __('Edit Package')}}
 		</div>
 	</div><!--sub_top end-->
 	<div class="section_right_inner"><!--section_right_inner-->
@@ -18,7 +18,7 @@
                 @csrf
                 <div class="form-group">
                     <span> 
-                        Package Name <span class="text-red">*</span> 
+                        {{ __('Package Name')}} <span class="text-red">*</span> 
                     </span>
                     <input type="text" 
                         class="form-control" 
@@ -30,7 +30,7 @@
 
                 <div class="form-group">
                     <span> 
-                        Staking Amount (SPOINT) <span class="text-red">*</span> 
+                        {{ __('Staking Amount')}} (SPOINT) <span class="text-red">*</span> 
                     </span>
                     <input type="number" 
                         class="form-control" 
@@ -44,7 +44,7 @@
 
                 <div class="form-group">
                     <span>
-                        Reward (RPOINT) <span class="text-red">*</span> 
+                        {{ __('Reward')}} (RPOINT) <span class="text-red">*</span> 
                     </span>
                     <input type="number" 
                         class="form-control" 
@@ -58,7 +58,7 @@
 
                 <div class="form-group">
                     <span>
-                        Total Purchase Amount (KRW) <span class="text-red">*</span> 
+                        {{ __('Total Purchase Amount')}} ({{__('KRW')}}) <span class="text-red">*</span> 
                     </span>
                     <input type="number" 
                         class="form-control" 
@@ -83,7 +83,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-purple-bg">
-                    Update package
+                    {{ __('Update package')}}
                 </button>
             </form>
 		</div>
