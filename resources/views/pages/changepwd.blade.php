@@ -36,7 +36,7 @@
                                         <input
                                             type="password"
                                             name="password"
-                                            placeholder="Enter new password" 
+                                            placeholder="{{ __('Enter new password')}}" 
                                             class="withdrawal_input01" 
                                             required
                                         />
@@ -47,7 +47,7 @@
                                     <td>
                                         <input 
                                             type="password" 
-                                            placeholder="Retype new password" 
+                                            placeholder="{{ __('Retype new password')}}" 
                                             class="withdrawal_input01" 
                                             name="password_confirmation"
                                             required
@@ -58,7 +58,7 @@
                         </table>
                     </div><br/>
                     <!--withdrawal_input_box end-->
-                    <input type="submit" class="btn btn-light-blue-bg" value="Change Password">
+                    <input type="submit" class="btn btn-light-blue-bg" value="{{ __('Change Password')}}">
                 </form>
             </div>
             <!--form01 end-->
