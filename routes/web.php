@@ -73,7 +73,7 @@ Route::middleware('activeusersonly')->group(function () {
 
 });
 
-Route::get('/payment/test',  [App\Http\Controllers\TransactionsController::class, 'testPaymentReward']);
+// Route::get('/payment/test',  [App\Http\Controllers\TransactionsController::class, 'testPaymentReward']);
 
 /*
 |-------------------------------------------------------------------------------------------------------------

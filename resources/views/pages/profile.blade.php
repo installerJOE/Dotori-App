@@ -63,7 +63,7 @@
 									<td> {{ __('Bank Name')}} </td>
 									<td>
 										<input type="text" class="withdrawal_input01" name='bank_name' 
-											placeholder="Enter bank name" 
+											placeholder="{{ __('Enter bank name')}}" 
 											value="{{Auth::user()->account !== null ? Auth::user()->account->bank_name : ""}}"
 										/>
 									</td>
@@ -73,7 +73,7 @@
 									<td> {{ __('Account Name')}} </td>
 									<td>
 										<input type="text" class="withdrawal_input01"  name='account_name' 
-											placeholder="Enter account name" 
+											placeholder="{{ __('Enter account name')}}" 
 											value="{{Auth::user()->account !== null ? Auth::user()->account->account_name : ""}}"
 										/>
 									</td>
@@ -83,7 +83,7 @@
 									<td> {{ __('Account Number')}} </td>
 									<td>
 										<input type="number" class="withdrawal_input01" name='account_number' 
-											placeholder="Enter your account number" 
+											placeholder="{{ __('Enter your account number')}}" 
 											value="{{Auth::user()->account !== null ? Auth::user()->account->account_number : ""}}"
 										/>
 									</td>
@@ -100,38 +100,32 @@
 						<table style="width:100%;">
 							<tbody>
 								<tr>
-									<td> {{ __('Street Address')}} </td>
+									<td> {{ __('Address')}} </td>
 									<td>
-										<input type="text" name="street" class="withdrawal_input01" 
-											placeholder="Enter street address"
-											value="{{Auth::user()->delivery_address !== null ? Auth::user()->delivery_address->street : ''}}"
+										<input type="text" name="address" class="withdrawal_input01" 
+											placeholder="{{ __('Enter address')}}"
+											value="{{Auth::user()->delivery_address !== null ? Auth::user()->delivery_address->address : ''}}"
+											required
 										>
 									</td>
 								</tr>
 								<tr>
-									<td> {{ __('City')}} </td>
+									<td> {{ __('Address Detail')}} </td>
 									<td>
-										<input type="text" name="city" class="withdrawal_input01" 
-											placeholder="Enter name of your city"
-											value="{{Auth::user()->delivery_address !== null ? Auth::user()->delivery_address->city : ''}}"
+										<input type="text" name="address_detail" class="withdrawal_input01" 
+											placeholder="{{ __('Enter your address detail')}}"
+											value="{{Auth::user()->delivery_address !== null ? Auth::user()->delivery_address->address_detail : ''}}"
+											required
 										/>
 									</td>
 								</tr>
 								<tr>
-									<td> {{ __('State/Province')}} </td>
+									<td> {{ __('Zip Code')}} </td>
 									<td>
-										<input type="text" name="state" class="withdrawal_input01" 
-											placeholder="Enter your state/province"
-											value="{{Auth::user()->delivery_address !== null ? Auth::user()->delivery_address->state : ''}}"
-										/>
-									</td>
-								</tr>
-								<tr>
-									<td> {{ __('Country')}} </td>
-									<td>
-										<input type="text" name="country" class="withdrawal_input01" 
-											placeholder="Enter your country"
-											value="{{Auth::user()->delivery_address !== null ? Auth::user()->delivery_address->country : ''}}"
+										<input type="text" name="zip_code" class="withdrawal_input01" 
+											placeholder="{{ __('Enter zip code')}}"
+											value="{{Auth::user()->delivery_address !== null ? Auth::user()->delivery_address->zip_code : ''}}"
+											required
 										/>
 									</td>
 								</tr>

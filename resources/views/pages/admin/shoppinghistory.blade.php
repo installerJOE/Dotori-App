@@ -24,9 +24,8 @@
                             <th> {{ __('Quantity')}} </th>
                             <th> {{ __('Amount')}} (SPOINT) </th>
 							<th> {{ __('Address')}} </th>
-                            <th> {{ __('City')}} </th>
-                            <th> {{ __('State/Province')}} </th>
-                            <th> {{ __('Country')}} </th>
+                            <th> {{ __('Address Detail')}} </th>
+                            <th> {{ __('Zip Code')}} </th>
                             <th> {{ __('Status')}} </th>
                             <th> {{ __("Date")}} </th>
 						</tr>						
@@ -39,10 +38,9 @@
 									<td>{{$order->price}}</td>
                                     <td>{{$order->quantity}}</td>
                                     <td>{{$order->price * $order->quantity}}</td>
-									<td>{{$order->delivery_address->street}}</td>
-									<td>{{$order->delivery_address->city}}</td>
-									<td>{{$order->delivery_address->state}}</td>
-									<td>{{$order->delivery_address->country}}</td>
+									<td>{{$order->delivery_address->address}}</td>
+									<td>{{$order->delivery_address->address_detail}}</td>
+									<td>{{$order->delivery_address->zip_code}}</td>
 									<td>{{$order->status}}</td>
 									<td>{{$order->created_at}}</td>
 								</tr>

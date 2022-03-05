@@ -49,13 +49,17 @@ class SettingsController extends Controller
         //update or create new delivery address for user
         $address = DeliveryAddress::where('user_id', Auth::user()->id)->first();
         if($address === null){
+            $this->validate($request, [
+                "address" => "required",
+                "address_detail" => "required",
+                "zip_code" => "required",
+            ]);
             $address = new DeliveryAddress;
+            $address->user_id = Auth::user()->id;
         }
-        $address->street = $request->input('street');
-        $address->city = $request->input('city');
-        $address->state = $request->input('state');
-        $address->country = $request->input('country');
-        $address->user_id = Auth::user()->id;
+        $address->address = $request->input('address');
+        $address->address_detail = $request->input('address_detail');
+        $address->zip_code = $request->input('zip_code');
         $address->save();
         return redirect('/settings/profile')->with('success', 'Your profile has been updated successfully');
         
