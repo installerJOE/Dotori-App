@@ -7,7 +7,7 @@
                 {{number_format($product->price)}} SPOINTS
             </div>
             <button class="btn btn-light-blue-bg" data-bs-toggle="modal" data-bs-target="#edit-package-modal-{{$product->id}}">
-                View product
+                {{__('View Product')}}
             </button>
         </div>
     </div>

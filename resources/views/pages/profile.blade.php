@@ -141,7 +141,7 @@
 				</div><br/>
 
 				<!--withdrawal_input_box end-->
-				<input type="submit" class="btn btn-light-blue-bg" value="Update">
+				<input type="submit" class="btn btn-light-blue-bg" value="{{ __('Update')}}">
 			</form>					
 		</div>
 		<!--withdrawal_left end-->
@@ -153,8 +153,7 @@
 					<h2>{{ __('Delete Your Account')}}:</h2>
 					<ul class="note-ul">
 						<li>
-							P{{ __('lease note that Deleting your account means removing all your
-							data including your assets from our database.')}}
+							{{ __('Please note that Deleting your account means removing all your data including your assets from our database.')}}
 						</li>
 					</ul>
 				</div>

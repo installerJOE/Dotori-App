@@ -31,8 +31,8 @@
 		<div class="index_l_box">
 			<div class="inner" style="position:relative;">
 				<div class="login_v_text">
-					<p class="text1"> Global Investment Solution</p>
-					<P class="text2"> We always provide the best services</P>
+					<p class="text1"> {{ __('Global Investment Solution') }}</p>
+                    <P class="text2">  {{ __('We always provide the best services') }}</P>
 				</div>
 				<div class="login_div">
 					<div>
@@ -53,7 +53,7 @@
 							</div>
 
 							<div class="index_input">
-								<p class="input_title"> Full name </p>
+								<p class="input_title"> {{ __('Full Name')}} </p>
 								<input id="name" type="text" class="form-control @error('name') is-invalid @enderror" 
 								name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 							</div>

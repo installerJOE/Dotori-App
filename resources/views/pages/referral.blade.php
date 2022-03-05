@@ -33,7 +33,7 @@
 				{{route('register')."?refer=" . Auth::user()->memberId}}
 			</p>
 			<p> 
-				<input type="button" value="Copy Link" class="btn btn-purple-bd" onclick="copyToClipBoard()"/>
+				<input type="button" value="{{ __('Copy Link')}}" class="btn btn-purple-bd" onclick="copyToClipBoard()"/>
 			</p>
 		</div><br/>
 		

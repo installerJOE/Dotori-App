@@ -37,7 +37,7 @@
 									<td> {{ __('Deposit Request Amount')}} ({{ __('KRW')}}) </td>
 									<td>
 										<input type="number" 
-											placeholder="Please enter deposit amount" 
+											placeholder="{{ __('Please enter deposit amount')}}" 
 											class="withdrawal_input01" 
 											name='deposit_amount'
 											required
@@ -49,7 +49,7 @@
 									<td> {{ __('Depositor\'s Bank')}} </td>
 									<td>
 										<input type="text"
-											placeholder="Enter your bank name" 
+											placeholder="{{ __('Enter your bank name')}}" 
 											class="withdrawal_input01" 
 											name='bank_name'
 											required
@@ -61,7 +61,7 @@
 									<td> {{ __('Depositor\'s Name')}} </td>
 									<td>
 										<input type="text"
-											placeholder="Enter your account name" 
+											placeholder="{{ __('Enter your account name')}}" 
 											class="withdrawal_input01" 
 											name='account_name' 
 											value="{{old('account_name')}}"
@@ -73,7 +73,7 @@
 						</table>
 					</div><br/>
 					<!--withdrawal_input_box end-->
-					<input type="submit" class="btn btn-light-blue-bg" value="Deposit">
+					<input type="submit" class="btn btn-light-blue-bg" value="{{ __('Deposit')}}">
 				</form>
 			</div>
 			<!--form01 end-->
@@ -85,8 +85,7 @@
 	<div style="clear:left;" class="col-md-6 col-sm-12 col-12 note-pad">
 		<div>
 			<p style="font-weight:bold">
-				{{ __('Send requested deposit amount to the account below to credit your Dotori 
-				account.')}}
+				{{ __('Send requested deposit amount to the account below to credit your Dotori account.')}}
 			</p>
 			<div class="referral-link" style="margin:1em 0px; line-height:2em !important">
 				<h3 class="subheader">
@@ -100,8 +99,7 @@
 				</h3>
 			</div>
 			<p style="font-weight:bold" class="text-light-blue">
-				{{ __('Your account will be credited after your payment to the above account has 
-				been verified and confirmed.')}}
+				{{ __('Your account will be credited after your payment to the above account has been verified and confirmed.')}}
 			</p>
 		</div>
 	</div>
