@@ -56,11 +56,11 @@ class AnnouncementController extends Controller
             $this->blog->image_url = $filename;
         }
         else{
-            return back()->with('error', 'Please upload a cover image for the announcement.');
+            return back()->with('error', __('Please upload a cover image for the announcement.'));
         }     
         $this->blog->save();
 
-        return redirect('/admin/announcements')->with('success', 'Announcement has been posted successfully.');
+        return redirect('/admin/announcements')->with('success', __('Announcement has been posted successfully.'));
     }
 
     // Show a particular posted blog or draft
@@ -116,7 +116,7 @@ class AnnouncementController extends Controller
         }                    
 
         $this->blog->save();
-        return redirect('/admin/announcements')->with('success', 'Announcement has been updated successfully.');
+        return redirect('/admin/announcements')->with('success', __('Announcement has been updated successfully.'));
     }
 
     public function destroy($id){
@@ -129,7 +129,7 @@ class AnnouncementController extends Controller
             }
         }
         $announcement->delete();
-        return redirect('/admin/announcements')->with('success', 'Announcement has been deleted successfully.');
+        return redirect('/admin/announcements')->with('success', __('Announcement has been deleted successfully.'));
     
     }
 

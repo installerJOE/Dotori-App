@@ -67,7 +67,7 @@ class AdminController extends Controller
         $notifyMail = new DepositSuccessMail();    
         Mail::to($deposit->user->email)->send($notifyMail);       
 
-        return redirect('/admin/deposits/requests')->with('success', "Deposit request has been validated successfully");
+        return redirect('/admin/deposits/requests')->with('success', __('Deposit request has been validated successfully'));
     }
 
     public function withdrawals(){
@@ -95,7 +95,7 @@ class AdminController extends Controller
         //send dotori user an email of withdrawal confirmation
         $notifyMail = new WithdrawalSuccessMail();    
         Mail::to($withdrawal->user->email, $withdrawal->user->name)->send($notifyMail); 
-        return redirect('/admin/withdrawals/requests')->with('success', "Withdrawal request has been approved successfully");
+        return redirect('/admin/withdrawals/requests')->with('success', __('Withdrawal request has been approved successfully'));
     }
 
     // display packages page showing all available packages
@@ -114,7 +114,7 @@ class AdminController extends Controller
 
         $package = Package::where('name', $request->input('package_name'))->first();
         if($package !== null){
-            return back()->with("error", "Ooops! This package already exists.");
+            return back()->with("error", __('Ooops! This package already exists.'));
         }
         $package = new Package;
         $package->name = $request->input('package_name');
@@ -139,7 +139,7 @@ class AdminController extends Controller
             $package->filename = $filename;
         }              
         $package->save();
-        return redirect("/admin/packages")->with("success", "Package has been created successfully.");
+        return redirect("/admin/packages")->with("success", __('Package has been created successfully.'));
     }
 
     public function showPackage($id){
@@ -187,7 +187,7 @@ class AdminController extends Controller
 
         $package->save();
 
-        return redirect("/admin/packages")->with("success", "Package has been updated successfully.");
+        return redirect("/admin/packages")->with("success", __('Package has been updated successfully.'));
     }
 
     // get all subscribed users and display page
@@ -214,7 +214,7 @@ class AdminController extends Controller
         $notifyMail = new PurchaseSuccessMail();    
         Mail::to($subscriber->user->email)->send($notifyMail);   
 
-        return redirect('/admin/subscribers/pending')->with('success', 'Package purchase has been approved successfully.');
+        return redirect('/admin/subscribers/pending')->with('success', __('Package purchase has been approved successfully.'));
     }
 
      // get all subscribed users and display page
@@ -239,7 +239,7 @@ class AdminController extends Controller
         
         $product = Product::where('name', $request->input('product_name'))->first();
         if($product !== null){
-            return back()->with("error", "Ooops! This product already exists.");
+            return back()->with("error", __('Ooops! This product already exists.'));
         }
 
         $product = new Product;
@@ -260,13 +260,13 @@ class AdminController extends Controller
             Storage::put('products/'.$filename, $image_base64);
         }
         else{
-            return back()->with('error', 'Please upload an image for the product');
+            return back()->with('error', __('Please upload an image for the product'));
         }
         
         $product->filename = $filename;
         $product->save();
 
-        return redirect("/admin/shopping-products")->with("success", "Product has been created successfully.");
+        return redirect("/admin/shopping-products")->with("success", __('Product has been created successfully.'));
     }
 
     public function showProduct($id){
@@ -308,14 +308,14 @@ class AdminController extends Controller
         
         $product->save();
         
-        return redirect("/admin/shopping-products")->with("success", "Product has been updated successfully.");
+        return redirect("/admin/shopping-products")->with("success", __('Product has been updated successfully.'));
     }
 
     public function updateProductStatus(Request $request, $id){
         $product = Product::findOrFail($id);
         $product->is_active = $request->input('status-action') == "disable" ? false : true;
         $product->save();
-        return redirect("/admin/shopping-products")->with("success", "Product status has been updated successfully.");
+        return redirect("/admin/shopping-products")->with("success", __('Product status has been updated successfully.'));
     }
 
     public function shoppingHistory(){
@@ -328,7 +328,7 @@ class AdminController extends Controller
         $user->available_points = $request->input('available_points') !== null ? $request->input('available_points') : $user->available_points;
         $user->earnings = $request->input('spoints') !== null ? $request->input('spoints') : $user->available_points;
         $user->save();
-        return redirect('/admin/members')->with('success', 'Available Points have been updated for the user with ID ' . $request->input('member_id'));
+        return redirect('/admin/members')->with('success', __('Available Points have been updated for the user with ID') . $request->input('member_id'));
     }
 
     public function toggleUserStatus($id)
@@ -336,6 +336,6 @@ class AdminController extends Controller
         $user = User::findOrFail($id);
         $user->status = !$user->status;
         $user->save();
-        return redirect()->back()->with('success', 'User status successfully toggled');
+        return redirect()->back()->with('success', __('User status successfully toggled'));
     }
 }

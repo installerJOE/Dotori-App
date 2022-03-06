@@ -61,7 +61,7 @@ class SettingsController extends Controller
         $address->address_detail = $request->input('address_detail');
         $address->zip_code = $request->input('zip_code');
         $address->save();
-        return redirect('/settings/profile')->with('success', 'Your profile has been updated successfully');
+        return redirect('/settings/profile')->with('success', __('Your profile has been updated successfully'));
         
     }
 
@@ -80,7 +80,7 @@ class SettingsController extends Controller
         $notifyMail = new PasswordChangeMail();    
         Mail::to(Auth::user()->email)->send($notifyMail);       
 
-        return redirect('/settings/password')->with('success', 'Your password has been updated successfully');    
+        return redirect('/settings/password')->with('success', __('Your password has been updated successfully'));    
     }
 
     public function changePin(Request $request){
@@ -97,7 +97,7 @@ class SettingsController extends Controller
         $notifyMail = new PINChangeMail();    
         Mail::to(Auth::user()->email)->send($notifyMail);       
 
-        return redirect('/settings/pin')->with('success', 'Your pin has been updated successfully');    
+        return redirect('/settings/pin')->with('success', __('Your pin has been updated successfully'));    
     }
     
     public function deleteUserProfile(Request $request){
@@ -106,7 +106,7 @@ class SettingsController extends Controller
         }
         $referrals = User::where('referrerId', Auth::user()->memberId)->get()->count();
         if($referrals > 1){
-            return back()->with('error', 'You already have referrals');
+            return back()->with('error', __('You already have referrals'));
         }
         Auth::user()->delete();
         return redirect('/');
@@ -137,7 +137,7 @@ class SettingsController extends Controller
             $user->profile_image = $filename;
             $user->save();
 
-            return redirect('/settings/profile')->with('success', "Your profile Image has been updated successfully.");
+            return redirect('/settings/profile')->with('success', __('Your profile Image has been updated successfully.'));
         }
     }
 

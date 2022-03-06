@@ -57,7 +57,7 @@ class TransactionsController extends Controller
         //send notification of deposit request
         dispatch(new NotifyRequestJob("deposit_request"));
 
-        return redirect('/deposit')->with('success', 'Your deposit request has been sent');
+        return redirect('/deposit')->with('success', __('Your deposit request has been sent'));
     }
 
     // Send withdrawal request to the admin
@@ -69,7 +69,7 @@ class TransactionsController extends Controller
         ]);
 
         if(!Hash::check($inputs['pin'], Auth::user()->pin)){
-            return back()->with('error', 'Oops, your PIN is incorrect. Try again! ');
+            return back()->with('error', __('Oops, your PIN is incorrect. Try again!'));
         }
 
         $yesterday_midnight = strtotime('today midnight');
@@ -78,7 +78,7 @@ class TransactionsController extends Controller
         foreach($transactions as $transaction){
             $transaction_time = strtotime($transaction->created_at);
             if($transaction_time > $yesterday_midnight && $transaction_time < $today_midnight){
-                return back()->with("error", "You can only send ONE withdrawal request in a day");
+                return back()->with("error", __('You can only send ONE withdrawal request in a day'));
             }
         }
 
@@ -104,7 +104,7 @@ class TransactionsController extends Controller
         $notifyMail = new WithdrawalRequestMail();    
         Mail::to(Auth::user()->email)->send($notifyMail);       
 
-        return redirect('/withdrawal')->with('success', 'Your withdrawal request has been sent');
+        return redirect('/withdrawal')->with('success', __('Your withdrawal request has been sent'));
 
     }
 
@@ -118,11 +118,11 @@ class TransactionsController extends Controller
         ]);
         
         if(!Hash::check($request->input('pin'), Auth::user()->pin)){
-            return back()->with('error', 'Oops, your PIN is incorrect. Try again! ');
+            return back()->with('error', __('Oops, your PIN is incorrect. Try again!'));
         } 
         
         if(Auth::user()->available_points < $request->input('total_amount')){
-            return back()->with("error", "Insufficient funds! Please credit your Dotori account to purchase more package");
+            return back()->with("error", __('Insufficient funds! Please credit your Dotori account to purchase more package'));
         }
         
         // Get the rank id of the subscribed user
@@ -173,7 +173,7 @@ class TransactionsController extends Controller
         // $notifyMail = new PurchaseSuccessMail();    
         // Mail::to(Auth::user()->email)->send($notifyMail);   
 
-        return redirect('/packages/subscribed')->with('success', 'Package has been subscribed. Please wait for confirmation and approval of purchase request.');
+        return redirect('/packages/subscribed')->with('success', __('Package has been subscribed. Please wait for confirmation and approval of purchase request.'));
     }
 
     // get the total amount that has been spent of subscription between two midnights
@@ -201,19 +201,19 @@ class TransactionsController extends Controller
         if($subscribed_amt >= 11000000){
             $status = [
                 "purchase_ammount_exceeded" => true,
-                "message" => 'You have exceeded your daily limit of purchase'
+                "message" => __('You have exceeded your daily limit of purchase')
             ];
             return $status;
-            return back()->with('error', 'You have exceeded your daily limit of purchase');
+            return back()->with('error', __('You have exceeded your daily limit of purchase'));
         }
         $allowed_amount = 11000000 - $subscribed_amt;
         if($purchase_amount > $allowed_amount){
             $status = [
                 "purchase_ammount_exceeded" => true,
-                "message" => 'You can only subscribe ' . $allowed_amount . 'KRW worth of package for today.'
+                "message" => __('You can only subscribe ') . $allowed_amount . __('KRW worth of package for today.')
             ];
             return $status;
-            return back()->with('error', 'You can only subscribe ' . $allowed_amount . 'KRW worth of package for today.');
+            return back()->with('error', __('You can only subscribe') . $allowed_amount . __('KRW worth of package for today.'));
         }
         $status = [
             "purchase_ammount_exceeded" => false,
@@ -225,11 +225,11 @@ class TransactionsController extends Controller
     // repurchase an existing subscription package on completion of an earning cycle
     public function repurchasePackage(Request $request){
         if(!Hash::check($request->input('pin'), Auth::user()->pin)){
-            return back()->with('error', 'Oops, your PIN is incorrect. Try again! ');
+            return back()->with('error', __('Oops, your PIN is incorrect. Try again!'));
         }
         $subscriber = SubscribedUser::where('id', $request->input('package_subscription_id'))->first();
         if($subscriber === null || $subscriber->percent_paid < 200){
-            return back()->with('error', 'Your earning cycle is not completed yet.');
+            return back()->with('error', __('Your earning cycle is not completed yet.'));
         }
         $subscriber->repurchase++;
         $subscriber->percent_paid = 0;
@@ -248,7 +248,7 @@ class TransactionsController extends Controller
         $notifyMail = new RepurchaseSuccessMail();    
         Mail::to(Auth::user()->email)->send($notifyMail);   
 
-        return back()->with('success', 'Package repurchase is successful.');
+        return back()->with('success', __('Package repurchase is successful.'));
     }
 
     // revoke a subscription and withdraw funds
@@ -263,7 +263,7 @@ class TransactionsController extends Controller
         ]);
         $purchase_amount = $request->input('product_price') * $request->input('quantity'); 
         if($purchase_amount > Auth::user()->earnings){
-            return back()->with('error', 'Oops! Insuffient Balance. Purchase more packages to accumulate SPOINTS.');
+            return back()->with('error', __('Oops! Insuffient Balance. Purchase more packages to accumulate SPOINTS.'));
         }
 
         $this->address = DeliveryAddress::where('user_id', Auth::user()->id)->first();
@@ -296,8 +296,7 @@ class TransactionsController extends Controller
 
         // Send Email for successful purchase
 
-        return redirect('/products/shop')->with('success', 'You have successfully made a purchase.
-            Your delivery is on its way. Your order reference ID is ' . $order->unique_id . '.');
+        return redirect('/products/shop')->with('success', __('You have successfully made a purchase. Your delivery is on its way. Your order reference ID is ') . $order->unique_id . '.');
     }
 
     private function zonalplay(){
